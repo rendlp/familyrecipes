@@ -8,6 +8,7 @@ class App extends Component {
       <Provider store={store}>
         <h1>Hello World</h1>
         <h2>Adam's scrambled eggs</h2>
+
       </Provider>
     )
   }
