@@ -38,6 +38,11 @@ align-items: center;
 margin: 5px;
 }
 
+.recipeForm {
+  display: 'flex';
+  flex-wrap: 'wrap';
+}
+
 .login .loginButton {
 margin-top: 20px;
 }
@@ -74,15 +79,11 @@ color: blue;
 
 input {
 width: 600px;
-height: 35px;
-margin: 20px;
+height: 52px;
+margin: 0 auto;
 font-size: 21px;
 text-align: center;
 box-shadow: 0 6px 6px -6px black;
-}
-
-input::placeholder {
-font-style: italic;
 font-size: 18px;
 }
 
@@ -96,4 +97,84 @@ box-shadow: 0 6px 6px -6px black;
 
 button:hover {
 background-color: lightgrey;
+}
+
+label {
+color:black;
+font-size: 24px;
+padding: 8px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+margin: 0 auto;
+}
+
+textarea {
+width: 600px;
+height: 250px;
+text-align: center;
+box-shadow: 0 6px 6px -6px black;
+font-size: 18px;
+}
+
+.test {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+#formcontainer {
+display: flex;
+flex-direction: row;
+background-color: whitesmoke; 
+flex-wrap: nowrap;
+width: 1400px;
+border: 1px solid lightgrey;
+height: 350px;
+margin: 0 auto;
+}
+
+.submitButton{
+margin: auto;
+margin-top: 10px;
+}
+
+h1 {
+color:black;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+input.error {
+border: 1px solid red;
+
+}
+
+label.error {
+color: red;
+}
+
+.directionDiv {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-left: 1px;
+}
+
+.recipeContainer {
+  margin: 0 auto;
+}
+
+.selectorDiv {
+  margin: 0 auto;
+}
+
+select {
+  width: 290px;
+height: 52px;
+margin: 0 auto;
+margin-left: 4px;
+margin-right: 5px;
+font-size: 21px;
+text-align: center;
+box-shadow: 0 6px 6px -6px black;
+font-size: 18px;
 }
