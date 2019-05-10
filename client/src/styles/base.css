@@ -1,0 +1,99 @@
+html {
+  box-sizing: border-box;
+  font-family: "Roboto", arial, sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: "Roboto", arial, sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.login {
+width: 400px;
+margin: 100px auto;
+opacity: 0.8;
+}
+
+.pad {
+padding: 20px;
+opacity: 0.95;
+}
+
+.loginIcon {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 5px;
+}
+
+.login .loginButton {
+margin-top: 20px;
+}
+
+.or {
+margin: 30px 0;
+font-size: 16px;
+text-align: center;
+}
+
+.mainContainer {
+width: 1600px;
+height: 800px;
+margin: auto;
+text-align: center;
+}
+
+.loginInput {
+margin: 325px;
+}
+
+.timestamp {
+font-size: 14px;
+color: blue;
+}
+
+.username {
+color: white;
+}
+
+.userClass {
+color: blue;
+}
+
+input {
+width: 600px;
+height: 35px;
+margin: 20px;
+font-size: 21px;
+text-align: center;
+box-shadow: 0 6px 6px -6px black;
+}
+
+input::placeholder {
+font-style: italic;
+font-size: 18px;
+}
+
+button {
+width: 110px;
+height: 35px;
+border-radius: 3%;
+font-size: 14px;
+box-shadow: 0 6px 6px -6px black;
+}
+
+button:hover {
+background-color: lightgrey;
+}
