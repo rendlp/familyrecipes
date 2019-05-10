@@ -1,16 +1,21 @@
+import io from "socket.io-client"
 import store from '../store'
 
-export function Date() {
-    Date.now();
+let socket = null
+
+export function connect(user) {
+ socket = io.connect("http://10.68.0.212:3001")
+
+
+socket.emit("join", user)
 }
 
-export function createUsername(username) {
-    store.dispatch({
-        type: 'SET_USERNAME',
-        payload: username
-    })
-}
+// for potential future use
 
-export function cancelCourse() { 
-    document.getElementById("create-course-form").reset();
-  }
+// export function Date() {
+//     Date.now();
+// }
+
+// export function cancelCourse() { 
+//     document.getElementById("create-course-form").reset();
+//   }
