@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import store from '../store'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Login from './auth/Login'
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <h1>i am cool</h1>
+       <Router>
+         <Login />
         
-
+       </Router>
       </Provider>
     )
   }
