@@ -1,16 +1,6 @@
-import store from '../store'
+import Axios from 'axios';
 
-export function Date() {
-    Date.now();
+export function addRecipe(recipes) {
+    Axios.post('/addrecipe', recipes)
 }
 
-export function createUsername(username) {
-    store.dispatch({
-        type: 'SET_USERNAME',
-        payload: username
-    })
-}
-
-export function cancelCourse() { 
-    document.getElementById("create-course-form").reset();
-  }
