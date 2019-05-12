@@ -188,7 +188,10 @@ class FormContainer extends Component {
 
                  {/* SUBMIT */}
                  
-                 <button className="submitButton"type="submit">Submit</button>
+                 <button 
+                 onSubmit={this.handleSubmit} 
+                 className="submitButton" 
+                 type="submit">Submit</button>
                  </div>
                 </form>
             </div>

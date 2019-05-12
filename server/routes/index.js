@@ -14,7 +14,7 @@ router.post('/recipes', (req, res, next) => {
   const directions = req.body.directions
 
   const sql = 
-  ` SELECT count(1) as count FROM recipes WHERE name = ? AND prep = ? AND directions = ?`
+  ` INSERT INTO recipes (name, prep, directions) VALUES (?, ?, ?)`
 
   conn.query(sql, [name, prep, directions], (err, results, fields) => {
     const count = results.count
