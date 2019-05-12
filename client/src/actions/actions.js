@@ -1,8 +1,6 @@
-import io from "socket.io-client"
-import store from '../store'
+
 import Axios from 'axios';
 
-let socket = null
 
 // export function connect(user) {
 //  socket = io.connect("http://10.68.0.212:3001")
@@ -12,7 +10,7 @@ let socket = null
 // }
 
 export function addRecipe(recipes) {
-    Axios.post('/addrecipe', recipes)
+    Axios.post('/recipes', recipes)
 }
 
 // for potential future use

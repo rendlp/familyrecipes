@@ -8,34 +8,21 @@ const conn = require("../db")
 
 // RECIPE POST
 
-router.post("/recipes", (req, res, next) => {
-  const recipes = req.body.recipes
+router.post('/recipes', (req, res, next) => {
+  const name = req.body.name
+  const prep = req.body.prep
+  const directions = req.body.directions
 
-  const checksql = "SELECT count(1) as count from users WHERE username = ?"
+  const sql = 
+  ` SELECT count(1) as count FROM recipes WHERE name = ? AND prep = ? AND directions = ?`
 
-  conn.query(checksql, [username], (err, results, fields) => {
-    const count = results[0].count
-
-    if (count > 0) {
-      res.status(409).json({
-        error: "Username already taken"
-      })
-    } else {
-      const sql = "INSERT INTO users (username, password) VALUES (?, ?)"
-
-      conn.query(sql, [username, password], (err, results, fields) => {
-        if (err) {
-          throw new Error("register failed")
-        } else {
-          const token = jwt.sign({ username }, config.get("secret"))
-          res.json({
-            token: token
-          })
-        }
-      })
-    }
+  conn.query(sql, [name, prep, directions], (err, results, fields) => {
+    const count = results.count
   })
 })
+
+
+// LOGIN POST
 
 router.post("/login", (req, res, next) => {
   const username = req.body.username
@@ -62,6 +49,9 @@ router.post("/login", (req, res, next) => {
   })
 
 })
+
+
+// REGISTER POST
 
 router.post("/register", (req, res, next) => {
   const username = req.body.username

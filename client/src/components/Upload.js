@@ -79,15 +79,17 @@ class FormContainer extends Component {
             <div className="recipeContainer">
              <h1>Upload A Recipe</h1>
                 <form id="formcontainer" onSubmit ={this.handleSubmit}>
-                 {/* // NAME */}
-    <div className="test">
-   
+
+                {/* // NAME */}
+
+                <div className="test">
                    <label htmlFor='name' className={this.state.nameClass}>
                      Name {this.state.nameError}
                     </label>
                     <input 
                     className={this.state.nameClass}
                     type="text" 
+                    ref="name"
                     name="name" 
                     id="name" 
                     onChange= {this.handleChange} 
@@ -101,6 +103,7 @@ class FormContainer extends Component {
                     <input 
                     className={this.state.ingredientsClass}
                     type="text" 
+                    ref="ingredients"
                     name="ingredients" 
                     id="ingredients" 
                     onChange= {this.handleChange} 
@@ -177,6 +180,7 @@ class FormContainer extends Component {
                     <textarea 
                     className={this.state.directionsClass}
                     type="text" 
+                    ref="recipes_directions"
                     name="directions" 
                     id="directions" 
                     onChange= {this.handleChange} 
