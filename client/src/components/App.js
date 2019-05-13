@@ -6,8 +6,10 @@ import Home from './Home'
 import { AuthProvider, AuthRoute } from "../lib/auth"
 import Login from "./auth/Login"
 import Register from "./auth/Register"
+
 import FormContainer from '../components/Upload'
 import Landing from './landing'
+
 
 
 

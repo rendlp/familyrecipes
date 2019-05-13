@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/base.css'
-import { addRecipe } from '../actions/actions';
+import { addRecipe, addIngredients } from '../actions/actions';
 
 class FormContainer extends Component {
 
@@ -35,6 +35,9 @@ class FormContainer extends Component {
                 nameError: '',
                 nameClass: ''
             })
+            addRecipe({
+                name: this.state.name
+            })
         } else {
             valid = false
             this.setState({
@@ -49,14 +52,15 @@ class FormContainer extends Component {
                 ingredientsError:'',
                 ingredientsClass:''
             })
+            addIngredients({
+                ingredients: this.state.ingredients
+            })
         } else {
             valid = false
             this.setState({
                 ingredientsError:" - Cannot be blank",
                 ingredientsClass:'error'
             })
-
-            addRecipe()
         }
 
 // DIRECTIONS
@@ -65,12 +69,16 @@ class FormContainer extends Component {
             directionsError:'',
             directionsClass:''
         })
+        addRecipe({
+            directions: this.state.directions
+        })
     } else {
         valid = false
         this.setState({
             directionsError:" - Cannot be blank",
             directionsClass:'error'
         })
+        
     } 
 }
 
@@ -79,15 +87,17 @@ class FormContainer extends Component {
             <div className="recipeContainer">
              <h1>Upload A Recipe</h1>
                 <form id="formcontainer" onSubmit ={this.handleSubmit}>
-                 {/* // NAME */}
-    <div className="test">
-   
+
+                {/* // NAME */}
+
+                <div className="test">
                    <label htmlFor='name' className={this.state.nameClass}>
                      Name {this.state.nameError}
                     </label>
                     <input 
                     className={this.state.nameClass}
                     type="text" 
+                    ref="name"
                     name="name" 
                     id="name" 
                     onChange= {this.handleChange} 
@@ -101,6 +111,7 @@ class FormContainer extends Component {
                     <input 
                     className={this.state.ingredientsClass}
                     type="text" 
+                    ref="ingredients"
                     name="ingredients" 
                     id="ingredients" 
                     onChange= {this.handleChange} 
@@ -177,6 +188,7 @@ class FormContainer extends Component {
                     <textarea 
                     className={this.state.directionsClass}
                     type="text" 
+                    ref="recipes_directions"
                     name="directions" 
                     id="directions" 
                     onChange= {this.handleChange} 
@@ -184,7 +196,10 @@ class FormContainer extends Component {
 
                  {/* SUBMIT */}
                  
-                 <button className="submitButton"type="submit">Submit</button>
+                 <button 
+                 onSubmit={this.handleSubmit} 
+                 className="submitButton" 
+                 type="submit">Submit</button>
                  </div>
                 </form>
             </div>
