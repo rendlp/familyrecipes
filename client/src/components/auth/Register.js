@@ -44,7 +44,7 @@ const Register = props => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            <p className="punchtalk">PUNCHTALK.</p>
+            <p className="register-now">Register Now!</p>
           </Typography>
         </div>
         <form onSubmit={sendRegister}>
@@ -80,7 +80,7 @@ const Register = props => {
               id="confirmPassword"
             />
           </FormControl>
-          
+
           <Button
             className="loginButton"
             type="submit"

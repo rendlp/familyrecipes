@@ -6,8 +6,9 @@ import Home from './Home'
 import { AuthProvider, AuthRoute } from "../lib/auth"
 import Login from "./auth/Login"
 import Register from "./auth/Register"
-import { addRecipe } from '../actions/actions';
-import Upload from '../components/Upload'
+import FormContainer from '../components/Upload'
+import Landing from './landing'
+
 
 
 class App extends Component {
@@ -20,6 +21,9 @@ class App extends Component {
               {/* public routes */}
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
+              <Route path="/upload" component={FormContainer} />
+              <Route path="/landing" component={Landing} />
+            
 
               {/* private routes */}
               <AuthRoute path="/" exact component={Home} />

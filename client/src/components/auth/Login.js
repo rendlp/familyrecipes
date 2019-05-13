@@ -23,7 +23,7 @@ const Login = props => {
     signin(username, password)
       .then(() => {
         props.history.push("/")
-        
+
       })
       .catch(err => {
         setError(true)
@@ -39,7 +39,7 @@ const Login = props => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            <p className="punchtalk">family recipes</p>
+            <p className="punchtalk">Sign In or Register!</p>
           </Typography>
         </div>
         <form onSubmit={sendLogin}>
