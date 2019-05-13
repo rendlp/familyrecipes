@@ -254,3 +254,28 @@ a {
   position: relative;
   left: 180px;
 }
+
+#canvas2 {
+  display: flex;
+  justify-content: center;
+  height: 600px;
+  margin: 0 5%;
+}
+
+.accountNAV {
+  height: 500px;
+  width: 544px;
+  border: black groove 5px;
+  margin-top: 88px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#left-panel {
+  font-size: 30px;
+}
+
+.title {
+  text-decoration: underline;
+}
