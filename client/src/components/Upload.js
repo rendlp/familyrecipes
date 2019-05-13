@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/base.css'
-import { addRecipe } from '../actions/actions';
+import { addRecipe, addIngredients } from '../actions/actions';
 
 class FormContainer extends Component {
 
@@ -35,6 +35,9 @@ class FormContainer extends Component {
                 nameError: '',
                 nameClass: ''
             })
+            addRecipe({
+                name: this.state.name
+            })
         } else {
             valid = false
             this.setState({
@@ -49,14 +52,15 @@ class FormContainer extends Component {
                 ingredientsError:'',
                 ingredientsClass:''
             })
+            addIngredients({
+                ingredients: this.state.ingredients
+            })
         } else {
             valid = false
             this.setState({
                 ingredientsError:" - Cannot be blank",
                 ingredientsClass:'error'
             })
-
-            addRecipe()
         }
 
 // DIRECTIONS
@@ -65,12 +69,16 @@ class FormContainer extends Component {
             directionsError:'',
             directionsClass:''
         })
+        addRecipe({
+            directions: this.state.directions
+        })
     } else {
         valid = false
         this.setState({
             directionsError:" - Cannot be blank",
             directionsClass:'error'
         })
+        
     } 
 }
 

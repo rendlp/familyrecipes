@@ -21,6 +21,18 @@ router.post('/recipes', (req, res, next) => {
   })
 })
 
+// INGREDIENT POST
+
+router.post('/ingredients', (req, res, next) => {
+  const ingredients = req.body.ingredients
+
+  const sql = 
+  ` INSERT INTO ingredients (ingredients) VALUES (?)`
+
+  conn.query(sql, [ingredients], (err, results, fields) => {
+    const count = results.count
+  })
+})
 
 // LOGIN POST
 
