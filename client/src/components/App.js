@@ -8,6 +8,7 @@ import Login from "./auth/Login"
 import Register from "./auth/Register"
 import FormContainer from '../components/Upload'
 import Landing from './landing'
+import AccountHome from './accountHome'
 
 
 
@@ -23,7 +24,7 @@ class App extends Component {
               <Route path="/register" component={Register} />
               <Route path="/upload" component={FormContainer} />
               <Route path="/landing" component={Landing} />
-            
+              <Route path="/:account" component={AccountHome} />
 
               {/* private routes */}
               <AuthRoute path="/" exact component={Home} />
