@@ -201,10 +201,6 @@ font-size: 18px;
   text-decoration-color: none;
 }
 
-a {
-  text-decoration: none;
-}
-
 #welcome {
   height: 372px;
   text-align: center;
@@ -278,4 +274,16 @@ a {
 
 .title {
   text-decoration: underline;
+}
+
+
+
+a {
+  text-decoration: none;
+  color: none;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
 }

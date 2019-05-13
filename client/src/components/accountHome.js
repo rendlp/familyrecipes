@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import Header from './header'
 import Footer from './footer'
 
@@ -15,7 +16,7 @@ class AccountHome extends Component {
             <p>Home</p>
             <p>My Groups</p>
             <p>My Messages</p>
-            <p>Upload Recipe</p>
+            <Link to="/upload"><p id="upload">Upload Recipe</p></Link>
             <p>My Profile</p>
           </div>
 
