@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../styles/base.css'
 import { addRecipe, addIngredients } from '../actions/actions';
+import Header from './header'
+import Footer from './footer'
 
 class FormContainer extends Component {
 
@@ -44,7 +46,7 @@ class FormContainer extends Component {
                 nameError: " - Cannot be blank",
                 nameClass: 'error'
             })
-        } 
+        }
 
  // INGREDIENTS
         if (this.state.ingredients !== '') {
@@ -78,12 +80,15 @@ class FormContainer extends Component {
             directionsError:" - Cannot be blank",
             directionsClass:'error'
         })
-        
-    } 
+
+    }
 }
 
    render() {
        return (
+         <div>
+          <Header />
+
             <div className="recipeContainer">
              <h1>Upload A Recipe</h1>
                 <form id="formcontainer" onSubmit ={this.handleSubmit}>
@@ -94,31 +99,31 @@ class FormContainer extends Component {
                    <label htmlFor='name' className={this.state.nameClass}>
                      Name {this.state.nameError}
                     </label>
-                    <input 
+                    <input
                     className={this.state.nameClass}
-                    type="text" 
+                    type="text"
                     ref="name"
-                    name="name" 
-                    id="name" 
-                    onChange= {this.handleChange} 
+                    name="name"
+                    id="name"
+                    onChange= {this.handleChange}
                     value= {this.state.name} />
- 
+
                 {/* // INGREDIENTS */}
- 
+
                    <label htmlFor='name' className={this.state.ingredientsClass}>
                      Ingredients {this.state.ingredientsError}
                     </label>
-                    <input 
+                    <input
                     className={this.state.ingredientsClass}
-                    type="text" 
+                    type="text"
                     ref="ingredients"
-                    name="ingredients" 
-                    id="ingredients" 
-                    onChange= {this.handleChange} 
+                    name="ingredients"
+                    id="ingredients"
+                    onChange= {this.handleChange}
                     value= {this.state.ingredients} />
-                    
+
                 {/* // PREP TIME */}
- 
+
                  <label htmlFor='name' className={this.state.prepClass}>
                      Prep Time {this.state.prepError}
                     </label>
@@ -126,11 +131,11 @@ class FormContainer extends Component {
 
                     <select>
                     className={this.state.prepClass}
-                    type="text" 
-                    name="prep" 
-                    id="prep" 
-                    onChange= {this.handleChange} 
-                    value= {this.state.prep} 
+                    type="text"
+                    name="prep"
+                    id="prep"
+                    onChange= {this.handleChange}
+                    value= {this.state.prep}
                     <option>0 Hours</option>
                     <option>1 Hour</option>
                     <option>2 Hours</option>
@@ -157,14 +162,14 @@ class FormContainer extends Component {
                     <option>23 Hours</option>
                     <option>24 Hours</option> */}
                     </select>
-                
+
                     <select>
                     className={this.state.prepClass}
-                    type="text" 
-                    name="prep" 
-                    id="prep" 
-                    onChange= {this.handleChange} 
-                    value= {this.state.prep} 
+                    type="text"
+                    name="prep"
+                    id="prep"
+                    onChange= {this.handleChange}
+                    value= {this.state.prep}
                     <option>0 Minutes</option>
                     <option>5 Minutes</option>
                     <option>10 Minutes</option>
@@ -176,32 +181,34 @@ class FormContainer extends Component {
                     <option>40 Minutes</option>
                     <option>45 Minutes</option>
                     <option>50 Minutes</option>
-                    <option>55 Minutes</option>      
+                    <option>55 Minutes</option>
                     </select>
                     </div>
   </div>
                 {/* // DIRECTIONS */}
- <div className="directionDiv">
+                <div className="directionDiv">
                   <label htmlFor='name' className={this.state.directionsClass}>
                      Directions {this.state.directionsError}
                     </label>
-                    <textarea 
+                    <textarea
                     className={this.state.directionsClass}
-                    type="text" 
+                    type="text"
                     ref="recipes_directions"
-                    name="directions" 
-                    id="directions" 
-                    onChange= {this.handleChange} 
+                    name="directions"
+                    id="directions"
+                    onChange= {this.handleChange}
                     value= {this.state.directions} />
 
                  {/* SUBMIT */}
-                 
-                 <button 
-                 onSubmit={this.handleSubmit} 
-                 className="submitButton" 
+
+                 <button
+                 onSubmit={this.handleSubmit}
+                 className="submitButton"
                  type="submit">Submit</button>
                  </div>
                 </form>
+                <Footer />
+              </div>
             </div>
         )
      }
