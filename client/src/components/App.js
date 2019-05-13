@@ -6,9 +6,6 @@ import Home from './Home'
 import { AuthProvider, AuthRoute } from "../lib/auth"
 import Login from "./auth/Login"
 import Register from "./auth/Register"
-import { addRecipe } from '../actions/actions';
-import Upload from '../components/Upload'
-
 
 class App extends Component {
   render() {
