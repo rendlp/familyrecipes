@@ -148,6 +148,11 @@ border: 1px solid red;
 
 }
 
+select.error {
+  color: red;
+  border: 1px solid red;
+}
+
 label.error {
 color: red;
 }

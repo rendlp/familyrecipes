@@ -10,14 +10,16 @@ const conn = require("../db")
 
 router.post('/recipes', (req, res, next) => {
   const name = req.body.name
-  const prep = req.body.prep
+  const prepMinutes = req.body.prepMinutes
+  const prepHours = req.body.prepHours
   const directions = req.body.directions
 
   const sql = 
-  ` INSERT INTO recipes (name, prep, directions) VALUES (?, ?, ?)`
+  ` INSERT INTO recipes (name, prepMinutes, prepHours, directions) VALUES (?, ?, ?, ?)`
 
-  conn.query(sql, [name, prep, directions], (err, results, fields) => {
-    const count = results.count
+  conn.query(sql, [name, prepMinutes, prepHours, directions], (err, results, fields) => {
+    res.json({"message": "recipe added" })
+    // const count = results.count
   })
 })
 

@@ -11,7 +11,8 @@ class FormContainer extends Component {
         ingredients:'',
         ingredientsError:'',
         ingredientsClass:'',
-        prep:'',
+        prepHours:'',
+        prepMinutes: '',
         prepError:'',
         prepClass:'',
         directions:'',
@@ -26,60 +27,47 @@ class FormContainer extends Component {
     }
 
     handleSubmit = (e) => {
-        e.preventDefault()
+     
         let valid = true
 
-// NAME
-        if (this.state.name !== '') {
-            this.setState({
-                nameError: '',
-                nameClass: ''
-            })
-            addRecipe({
-                name: this.state.name
-            })
-        } else {
-            valid = false
-            this.setState({
-                nameError: " - Cannot be blank",
-                nameClass: 'error'
-            })
-        } 
-
- // INGREDIENTS
-        if (this.state.ingredients !== '') {
-            this.setState({
-                ingredientsError:'',
-                ingredientsClass:''
-            })
-            addIngredients({
-                ingredients: this.state.ingredients
-            })
-        } else {
-            valid = false
-            this.setState({
-                ingredientsError:" - Cannot be blank",
-                ingredientsClass:'error'
-            })
-        }
-
-// DIRECTIONS
-    if (this.state.directions !== '') {
-        this.setState({
-            directionsError:'',
-            directionsClass:''
-        })
-        addRecipe({
-            directions: this.state.directions
-        })
-    } else {
-        valid = false
-        this.setState({
-            directionsError:" - Cannot be blank",
-            directionsClass:'error'
-        })
-        
-    } 
+        if (this.state.name && 
+            this.state.ingredients && 
+            this.state.prepHours && 
+            this.state.prepMinutes && 
+            this.state.directions !== '') {
+                this.setState({
+                    nameError:'',
+                    nameClass:'',
+                    ingredientsError:'',
+                    ingredientsClass:'',
+                    prepError:'',
+                    prepClass:'',
+                    directionsError:'',
+                    directionsClass:''
+                })
+                addRecipe({
+                    name: this.state.name,
+                    prepMinutes: this.state.prepMinutes,
+                    prepHours: this.state.prepHours,
+                    directions: this.state.directions
+                })
+                addIngredients({
+                    ingredients: this.state.ingredients
+                })
+            } else {
+                e.preventDefault()
+                valid = false
+                this.setState({
+                    nameError:' - Cannot be blank',
+                    nameClass:'error',
+                    ingredientsError:' - Cannot be blank',
+                    ingredientsClass:'',
+                    prepError:' - Cannot be blank',
+                    prepClass:'error',
+                    directionsError:' - Cannot be blank',
+                    directionsClass:'error'
+                })
+            }
 }
 
    render() {
@@ -124,67 +112,58 @@ class FormContainer extends Component {
                     </label>
                    <div className="selectorDiv">
 
-                    <select>
-                    className={this.state.prepClass}
+                <select className={this.state.prepClass}
                     type="text" 
-                    name="prep" 
-                    id="prep" 
-                    onChange= {this.handleChange} 
-                    value= {this.state.prep} 
-                    <option>0 Hours</option>
-                    <option>1 Hour</option>
-                    <option>2 Hours</option>
-                    <option>3 Hours</option>
-                    <option>4 Hours</option>
-                    <option>5 Hours</option>
-                    <option>6 Hours</option>
-                    <option>7 Hours</option>
-                    <option>8 Hours</option>
-                    <option>9 Hours</option>
-                    <option>10 Hours</option>
-                    <option>11 Hours</option>
-                    <option>12 Hours</option>
-                    {/* <option>13 Hours</option>
-                    <option>14 Hours</option>
-                    <option>15 Hours</option>
-                    <option>16 Hours</option>
-                    <option>17 Hours</option>
-                    <option>18 Hours</option>
-                    <option>19 Hours</option>
-                    <option>20 Hours</option>
-                    <option>21 Hours</option>
-                    <option>22 Hours</option>
-                    <option>23 Hours</option>
-                    <option>24 Hours</option> */}
-                    </select>
+                    name="prepHours" 
+                    id="prepHours" 
+                    onChange= {this.handleChange}  >
+                    
+                    <option>Hours?</option>
+                    <option value='0' >0 Hours</option>
+                    <option value='1'>1 Hour</option>
+                    <option value='2'>2 Hours</option>
+                    <option value='3'>3 Hours</option>
+                    <option value='4'>4 Hours</option>
+                    <option value='5'>5 Hours</option>
+                    <option value='6'>6 Hours</option>
+                    <option value='7'>7 Hours</option>
+                    <option value='8'>8 Hours</option>
+                    <option value='9'>9 Hours</option>
+                    <option value='10'>10 Hours</option>
+                    <option value='11'>11 Hours</option>
+                    <option value='12'>12 Hours</option>
+                </select>
                 
-                    <select>
-                    className={this.state.prepClass}
+                <select 
+                    className={this.state.prepMClass}
                     type="text" 
-                    name="prep" 
-                    id="prep" 
-                    onChange= {this.handleChange} 
-                    value= {this.state.prep} 
-                    <option>0 Minutes</option>
-                    <option>5 Minutes</option>
-                    <option>10 Minutes</option>
-                    <option>15 Minutes</option>
-                    <option>20 Minutes</option>
-                    <option>25 Minutes</option>
-                    <option>30 Minutes</option>
-                    <option>35 Minutes</option>
-                    <option>40 Minutes</option>
-                    <option>45 Minutes</option>
-                    <option>50 Minutes</option>
-                    <option>55 Minutes</option>      
-                    </select>
-                    </div>
-  </div>
+                    name="prepMinutes" 
+                    id="prepMinutes" 
+                    onChange= {this.handleChange} >
+                    
+                    <option>Minutes?</option>
+                    <option value="0">0 Minutes</option>
+                    <option value="5">5 Minutes</option>
+                    <option value="10">10 Minutes</option>
+                    <option value="15">15 Minutes</option>
+                    <option value="20">20 Minutes</option>
+                    <option value="25">25 Minutes</option>
+                    <option value="30">30 Minutes</option>
+                    <option value="35">35 Minutes</option>
+                    <option value="40">40 Minutes</option>
+                    <option value="45">45 Minutes</option>
+                    <option value="50">50 Minutes</option>
+                    <option value="55">55 Minutes</option>      
+                </select>
+            </div>
+        </div>
+
                 {/* // DIRECTIONS */}
- <div className="directionDiv">
+
+            <div className="directionDiv">
                   <label htmlFor='name' className={this.state.directionsClass}>
                      Directions {this.state.directionsError}
-                    </label>
+                  </label>
                     <textarea 
                     className={this.state.directionsClass}
                     type="text" 
@@ -196,7 +175,7 @@ class FormContainer extends Component {
 
                  {/* SUBMIT */}
                  
-                 <button 
+                <button 
                  onSubmit={this.handleSubmit} 
                  className="submitButton" 
                  type="submit">Submit</button>
@@ -206,7 +185,5 @@ class FormContainer extends Component {
         )
      }
    }
-
-
 
 export default FormContainer;
