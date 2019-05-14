@@ -97,7 +97,7 @@ class FormContainer extends Component {
 
                 <div className="test">
                    <label htmlFor='name' className={this.state.nameClass}>
-                     Name {this.state.nameError}
+                     Name {this.state.name}
                     </label>
                     <input
                     className={this.state.nameClass}

@@ -4,6 +4,54 @@ const config = require("config")
 const jwt = require("jsonwebtoken")
 const sha512 = require("js-sha512")
 const conn = require("../db")
+const util = require('util');
+
+// GROUPS
+
+
+
+router.get('/groups', (req, res, next) => {
+  const sql = `
+  SELECT
+	  g.groupname
+  FROM
+	  groups g, users u, group_user_links gul
+    WHERE
+	  gul.group_id = g.group_id AND gul.username = u.username AND u.username = ?
+  `
+
+  conn.query(sql, [req.query.username],(err, results, fields) => {
+    console.log('index back user - ' + util.inspect(req.params, {showHidden: false, depth: 2}))
+    res.json({
+      groups: results
+    })
+    console.log('index backend - get groups - ' + results)
+  })
+})
+
+router.post('/groups', (req, res, next) => {
+  const sql =`
+  INSERT INTO
+    groups (groupname)
+  VALUES
+    (?)
+  `
+  const sql2 =`
+  INSERT INTO group_user_links (group_id, username)
+     VALUES (?,?);
+  `
+
+  conn.query(sql, [req.body.groupname], (err, results, fields) => {
+    console.log(results)
+    conn.query(sql2, [results.insertId, req.body.username], (err, results, fields) => {
+      console.log(err)
+      res.json({
+      message: "group added"
+      })
+    })
+  })
+    
+})
 
 
 // RECIPE POST

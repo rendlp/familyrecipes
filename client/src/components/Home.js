@@ -1,27 +1,28 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import Upload from '../components/Upload'
 import Logout from "./auth/Logout"
+import GroupList from "./GroupList"
 import { AuthContext } from "../lib/auth"
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import store from '../store'
 // import { connect } from "../actions/actions"
 
 
 const Home = props => {
     const { user } = useContext(AuthContext)
 
-    useEffect(() => {
-        // connect(user)
-    }, [user])
-
     return (
+         
         <div className="homePage">
-
-            {/* <span>{user}</span> */}
 
             <span>{user}</span>
             <Logout />
-
+            <GroupList />
             <Upload />
         </div>
+    
+    
     )
 }
 

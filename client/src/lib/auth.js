@@ -21,6 +21,7 @@ function getUser() {
   try {
     const token = localStorage.getItem("authtoken")
     const decoded = decode(token)
+    console.log(decoded)
     return decoded.username
   } catch (err) {
     return null

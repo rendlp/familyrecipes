@@ -6,11 +6,10 @@ import Home from './Home'
 import { AuthProvider, AuthRoute } from "../lib/auth"
 import Login from "./auth/Login"
 import Register from "./auth/Register"
+import CreateGroup from "./CreateGroup"
 import AccountHome from './accountHome'
 import FormContainer from '../components/Upload'
 import Landing from './landing'
-
-
 
 
 class App extends Component {
@@ -34,6 +33,7 @@ class App extends Component {
 
               {/* private routes */}
               <AuthRoute path="/" exact component={Home} />
+              <AuthRoute path="/creategroup" exact component={CreateGroup} />
             </div>
           </Router>
         </Provider>
