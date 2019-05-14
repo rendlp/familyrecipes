@@ -1,7 +1,6 @@
 
 import Axios from 'axios';
 
-
 // export function connect(user) {
 //  socket = io.connect("http://10.68.0.212:3001")
 

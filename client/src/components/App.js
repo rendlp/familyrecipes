@@ -6,6 +6,7 @@ import Home from './Home'
 import { AuthProvider, AuthRoute } from "../lib/auth"
 import Login from "./auth/Login"
 import Register from "./auth/Register"
+import Upload from './Upload'
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
 
               {/* private routes */}
               <AuthRoute path="/" exact component={Home} />
+              <AuthRoute path="/upload" component={Upload} />
             </div>
           </Router>
         </Provider>
