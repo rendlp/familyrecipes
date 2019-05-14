@@ -8,6 +8,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
 import Paper from "@material-ui/core/Paper"
 import Typography from "@material-ui/core/Typography"
 import { AuthContext } from "../../lib/auth"
+import Header from '../header'
+import Footer from '../footer'
 
 const Register = props => {
   const [username, setUsername] = useState("")
@@ -37,61 +39,66 @@ const Register = props => {
   }
 
   return (
-    <div className="login">
-      <Paper className="pad">
-        <div className="loginIcon">
-          <Avatar>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            <p className="punchtalk">PUNCHTALK.</p>
-          </Typography>
-        </div>
-        <form onSubmit={sendRegister}>
-          {userError || passError ? (
-            <Typography color="error">{errorText}</Typography>
-          ) : (
+    <div>
+      <Header />
+
+      <div className="login">
+        <Paper className="pad">
+          <div className="loginIcon">
+            <Avatar>
+              <LockOutlinedIcon />
+            </Avatar>
+              <Typography component="h1" variant="h5">
+                <p className="register-now">Register Now!</p>
+              </Typography>
+          </div>
+            <form onSubmit={sendRegister}>
+            {userError || passError ? (
+              <Typography color="error">{errorText}</Typography>
+            ) : (
             ""
-          )}
-          <FormControl error={userError} margin="normal" required fullWidth>
-            <InputLabel htmlFor="email">Username</InputLabel>
-            <Input
-              onChange={e => setUsername(e.target.value)}
-              id="email"
-              name="email"
-              autoFocus
-            />
-          </FormControl>
-          <FormControl error={passError} margin="normal" required fullWidth>
-            <InputLabel htmlFor="password">Password</InputLabel>
-            <Input
-              onChange={e => setPassword(e.target.value)}
-              name="password"
-              type="password"
-              id="password"
-            />
-          </FormControl>
-          <FormControl error={passError} margin="normal" required fullWidth>
-            <InputLabel htmlFor="confirmPassword">Confirm Password</InputLabel>
-            <Input
-              onChange={e => setConfirm(e.target.value)}
-              name="confirmPassword"
-              type="password"
-              id="confirmPassword"
-            />
-          </FormControl>
-          
-          <Button
-            className="loginButton"
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="secondary"
-          >
+            )}
+            <FormControl error={userError} margin="normal" required fullWidth>
+              <InputLabel htmlFor="email">Username</InputLabel>
+              <Input
+                onChange={e => setUsername(e.target.value)}
+                id="email"
+                name="email"
+                autoFocus
+              />
+            </FormControl>
+            <FormControl error={passError} margin="normal" required fullWidth>
+              <InputLabel htmlFor="password">Password</InputLabel>
+              <Input
+                onChange={e => setPassword(e.target.value)}
+                name="password"
+                type="password"
+                id="password"
+              />
+            </FormControl>
+            <FormControl error={passError} margin="normal" required fullWidth>
+              <InputLabel htmlFor="confirmPassword">Confirm Password</InputLabel>
+              <Input
+                onChange={e => setConfirm(e.target.value)}
+                name="confirmPassword"
+                type="password"
+                id="confirmPassword"
+              />
+            </FormControl>
+
+            <Button
+              className="loginButton"
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="secondary"
+            >
             Register
           </Button>
-        </form>
-      </Paper>
+          </form>
+        </Paper>
+      </div>
+      <Footer />
     </div>
   )
 }
