@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import Header from './header'
-import Register from './auth/Register'
-import Login from './auth/Login'
-import Footer from './footer'
+import { Link } from 'react-router-dom'
+import Header from '../header'
+import Register from '../auth/Register'
+import Login from '../auth/Login'
+import Footer from '../footer'
 
 class Landing extends Component {
   render() {
@@ -20,7 +21,10 @@ class Landing extends Component {
           <div id="break">
           </div>
 
-          <Login />
+          <div id="open_sesame">
+            <Link to="/login"><button>Sign In</button></Link>
+            <Link to="register"><button>Register</button></Link>
+          </div>
 
           <div id="break2">
           </div>

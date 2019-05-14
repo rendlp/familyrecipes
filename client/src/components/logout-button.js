@@ -1,11 +1,10 @@
 import React, { useEffect, useContext } from 'react'
-import Upload from '../components/Upload'
 import Logout from "./auth/Logout"
 import { AuthContext } from "../lib/auth"
-// import { connect } from "../actions/actions"
 
 
-const Home = props => {
+
+const LogoutButton = props => {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
@@ -13,6 +12,8 @@ const Home = props => {
     }, [user])
 
     return (
+      <div>
+
         <div className="homePage">
 
             {/* <span>{user}</span> */}
@@ -20,10 +21,12 @@ const Home = props => {
             <span>{user}</span>
             <Logout />
 
-            <Upload />
+
         </div>
+
+      </div>
     )
 }
 
 
-export default Home
+export default LogoutButton

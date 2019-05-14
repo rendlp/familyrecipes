@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import '../styles/base.css'
-import { addRecipe, addIngredients } from '../actions/actions';
-import Header from './header'
-import Footer from './footer'
+import React, { Component } from 'react'
+import LogoutButton from '../logout-button'
+import { addRecipe, addIngredients } from '../../actions/actions'
+import Header from '../header'
+import Footer from '../footer'
 
 class FormContainer extends Component {
 
@@ -88,6 +88,7 @@ class FormContainer extends Component {
        return (
          <div>
           <Header />
+          <LogoutButton />
 
             <div className="recipeContainer">
              <h1>Upload A Recipe</h1>
