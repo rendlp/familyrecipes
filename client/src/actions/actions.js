@@ -24,6 +24,15 @@ export function getGroups(user) {
     })
 }
 
+export function createGroup(groupName, user) {
+    return Axios.post('/api/groups', {
+        groupname: groupName,
+        username: user
+    })
+    // .then(resp => { getGroups(user)
+    // })
+}
+
 export function addRecipe(recipes) {
     Axios.post('http:/localhost:3000/recipes', recipes, {
         name: this.state.name,

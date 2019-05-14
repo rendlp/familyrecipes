@@ -29,6 +29,30 @@ router.get('/groups', (req, res, next) => {
   })
 })
 
+router.post('/groups', (req, res, next) => {
+  const sql =`
+  INSERT INTO
+    groups (groupname)
+  VALUES
+    (?)
+  `
+  const sql2 =`
+  INSERT INTO group_user_links (group_id, username)
+     VALUES (?,?);
+  `
+
+  conn.query(sql, [req.body.groupname], (err, results, fields) => {
+    console.log(results)
+    conn.query(sql2, [results.insertId, req.body.username], (err, results, fields) => {
+      console.log(err)
+      res.json({
+      message: "group added"
+      })
+    })
+  })
+    
+})
+
 
 // RECIPE POST
 
