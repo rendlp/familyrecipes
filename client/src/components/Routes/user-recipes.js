@@ -1,11 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component, useContext } from 'react'
 import Header from '../header'
 import Footer from '../footer'
 import LogoutButton from '../logout-button'
-import { getRecipes } from '../../actions/actions'
+import { getUserRecipes } from '../../actions/actions'
+import { AuthContext } from "../../lib/auth"
+
+// const UserHooker = (props) => {
+//   const { user } = useContext(AuthContext)
+//
+//   return <UserRecipe user={user} />
+// }
 
 class UserRecipe extends Component {
 
+  componentDidMount() {
+    getUserRecipes()
+  }
 
 
   render() {

@@ -1,6 +1,6 @@
 const initialState = {
-  recipes: [],
-  groups: []
+  userRecipes: [],
+  groups: [],
 }
 
 export default function(state = initialState, action) {
@@ -10,6 +10,9 @@ export default function(state = initialState, action) {
 
     case "GET_GROUPS":
       return {...state, groups: action.groups}
+
+    case "GET_USER_RECIPES":
+      return {...state, userRecipes: action.payload}
 
     default:
       return state
