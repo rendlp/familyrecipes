@@ -16,6 +16,7 @@ import UserProfile from './Routes/user-profile'
 import UserFavRecipes from './Routes/user-fav-recipes'
 import UsermadeRecipeBook from './Routes/usermade-recipebook'
 import WhatsHappenin from './Routes/whats-happenin'
+import CreateGroup from './Routes/CreateGroup'
 
 
 
@@ -45,6 +46,7 @@ class App extends Component {
               <AuthRoute path="/user_fav_recipes" exact component={UserFavRecipes} />
               <AuthRoute path="/usermade_recipebook" exact component={UsermadeRecipeBook} />
               <AuthRoute path="/recent_updates" exact component={WhatsHappenin} />
+              <AuthRoute path="/creategroup" exact component={CreateGroup} />
             </div>
           </Router>
         </Provider>

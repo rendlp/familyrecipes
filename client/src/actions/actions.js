@@ -34,7 +34,7 @@ export function createGroup(groupName, user) {
 }
 
 export function addRecipe(recipes) {
-    axios.post('http://localhost:3000/recipes', recipes, {
+    Axios.post('http://localhost:3000/recipes', recipes, {
         name: this.state.name,
         prep: this.state.prep,
         directions: this.state.directions
@@ -42,7 +42,7 @@ export function addRecipe(recipes) {
 }
 
 export function getRecipes() {
-  axios.get('http://localhost:3000/recipes').then(resp => {
+  Axios.get('http://localhost:3000/recipes').then(resp => {
     console.log(resp.data)
     store.dispatch({
       type: "GET_USER_RECIPES",
@@ -52,7 +52,7 @@ export function getRecipes() {
 }
 
 export function addIngredients(ingredients) {
-    axios.post('http://localhost:3000/ingredients', ingredients, {
+    Axios.post('http://localhost:3000/ingredients', ingredients, {
         ingred_id: this.state.ingred_id,
         ingredient: this.state.ingredient
     })
