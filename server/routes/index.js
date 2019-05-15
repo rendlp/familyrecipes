@@ -60,7 +60,7 @@ router.post('/recipes', (req, res, next) => {
   const prep = req.body.prep
   const directions = req.body.directions
 
-  const sql = 
+  const sql =
   ` INSERT INTO recipes (name, prep, directions) VALUES (?, ?, ?)`
 
   conn.query(sql, [name, prep, directions], (err, results, fields) => {
@@ -68,12 +68,21 @@ router.post('/recipes', (req, res, next) => {
   })
 })
 
+// a router that recieves calls to all recipes in the database
+router.get('/recipe', (req, res, next) => {
+  res.json({
+    message: 'listening for a call to the database recipe list'
+  })
+
+
+})
+
 // INGREDIENT POST
 
 router.post('/ingredients', (req, res, next) => {
   const ingredients = req.body.ingredients
 
-  const sql = 
+  const sql =
   ` INSERT INTO ingredients (ingredients) VALUES (?)`
 
   conn.query(sql, [ingredients], (err, results, fields) => {
@@ -91,7 +100,7 @@ router.post("/login", (req, res, next) => {
     "SELECT count(1) as count FROM users WHERE username = ? AND password = ?"
 
   conn.query(sql, [username, password], (err, results, fields) => {
-    
+
     const count = results[0].count
 
     if (count >= 1) {
@@ -115,20 +124,20 @@ router.post("/login", (req, res, next) => {
 router.post("/register", (req, res, next) => {
   const username = req.body.username
   const password = sha512(req.body.password + config.get("salt"))
- 
+
   const checksql = "SELECT count(1) as count from users WHERE username = ?"
- 
+
   conn.query(checksql, [username], (err, results, fields) => {
     console.log(err)
     const count = results[0].count
- 
+
     if (count > 0) {
       res.status(409).json({
         error: "Username already taken"
       })
     } else {
       const sql = "INSERT INTO users (username, password) VALUES (?, ?)"
- 
+
       conn.query(sql, [username, password], (err, results, fields) => {
         if (err) {
           throw new Error("register failed")

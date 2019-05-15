@@ -285,6 +285,12 @@ font-size: 18px;
   text-decoration: underline;
 }
 
+#logo {
+  font-size: 50px;
+  position: relative;
+  top: -33px;
+  left: 29px;
+}
 
 
 a {
@@ -295,4 +301,8 @@ a {
 a:visited {
   text-decoration: none;
   color: black;
+}
+
+.MuiButton-containedPrimary-13 {
+
 }

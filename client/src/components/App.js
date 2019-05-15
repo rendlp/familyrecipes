@@ -1,15 +1,23 @@
 import React, { Component } from 'react'
+import '../styles/base.css'
 import { Provider } from 'react-redux'
 import store from '../store'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Home from './Home'
 import { AuthProvider, AuthRoute } from "../lib/auth"
-import Login from "./auth/Login"
-import Register from "./auth/Register"
-import CreateGroup from "./CreateGroup"
-import AccountHome from './accountHome'
-import FormContainer from '../components/Upload'
-import Landing from './landing'
+import AccountHome from './Routes/accountHome'
+import Landing from './Routes/landing'
+import Login from './auth/Login'
+import Register from './auth/Register'
+import FormContainer from './Routes/Upload'
+import UserRecipe from './Routes/user-recipes'
+import UserGroups from './Routes/user-groups'
+import UserMessages from './Routes/user-messages'
+import UserProfile from './Routes/user-profile'
+import UserFavRecipes from './Routes/user-fav-recipes'
+import UsermadeRecipeBook from './Routes/usermade-recipebook'
+import WhatsHappenin from './Routes/whats-happenin'
+import CreateGroup from './Routes/CreateGroup'
+
 
 
 class App extends Component {
@@ -21,18 +29,23 @@ class App extends Component {
             <div>
               {/* public routes */}
               <Switch>
+                <Route exact path="/home" component={Landing} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
-                <Route path="/upload" component={FormContainer} />
-
-                <Route exact path="/home" component={Landing} />
-                <Route path="/:account" component={AccountHome} />
               </Switch>
 
 
 
               {/* private routes */}
-              <AuthRoute path="/" exact component={Home} />
+              <AuthRoute path="/" exact component={AccountHome} />
+              <AuthRoute path="/upload" exact component={FormContainer} />
+              <AuthRoute path="/user_recipes" exact component={UserRecipe} />
+              <AuthRoute path="/user_groups" exact component={UserGroups} />
+              <AuthRoute path="/user_messages" exact component={UserMessages} />
+              <AuthRoute path="/user_profile" exact component={UserProfile} />
+              <AuthRoute path="/user_fav_recipes" exact component={UserFavRecipes} />
+              <AuthRoute path="/usermade_recipebook" exact component={UsermadeRecipeBook} />
+              <AuthRoute path="/recent_updates" exact component={WhatsHappenin} />
               <AuthRoute path="/creategroup" exact component={CreateGroup} />
             </div>
           </Router>
