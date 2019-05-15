@@ -34,15 +34,25 @@ export function createGroup(groupName, user) {
 }
 
 export function addRecipe(recipes) {
-    Axios.post('http:/localhost:3000/recipes', recipes, {
+    axios.post('http://localhost:3000/recipes', recipes, {
         name: this.state.name,
         prep: this.state.prep,
         directions: this.state.directions
     })
 }
 
+export function getRecipes() {
+  axios.get('http://localhost:3000/recipes').then(resp => {
+    console.log(resp.data)
+    store.dispatch({
+      type: "GET_USER_RECIPES",
+      payload: resp.data
+    })
+  })
+}
+
 export function addIngredients(ingredients) {
-    Axios.post('http:/localhost:3000/ingredients', ingredients, {
+    axios.post('http://localhost:3000/ingredients', ingredients, {
         ingred_id: this.state.ingred_id,
         ingredient: this.state.ingredient
     })
@@ -53,6 +63,6 @@ export function addIngredients(ingredients) {
 //     Date.now();
 // }
 
-// export function cancelCourse() { 
+// export function cancelCourse() {
 //     document.getElementById("create-course-form").reset();
 //   }

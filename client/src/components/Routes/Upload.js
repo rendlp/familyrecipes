@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import LogoutButton from '../logout-button'
-import { addRecipe, addIngredients } from '../../actions/actions';
+import { addRecipe, addIngredients } from '../../actions/actions'
 import Header from '../header'
 import Footer from '../footer'
 

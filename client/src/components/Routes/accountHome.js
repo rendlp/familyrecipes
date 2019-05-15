@@ -36,8 +36,8 @@ class AccountHome extends Component {
 
         </div>
 
-        <Footer />
 
+          <Footer />
       </div>
     )
   }

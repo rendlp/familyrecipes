@@ -42,7 +42,7 @@ const Login = props => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            <p className="punchtalk">Sign In or Register!</p>
+            <p className="punchtalk">Sign In</p>
           </Typography>
         </div>
         <form onSubmit={sendLogin}>
