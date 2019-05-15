@@ -9,11 +9,10 @@ const util = require('util');
 // GROUPS
 
 
-
 router.get('/groups', (req, res, next) => {
   const sql = `
   SELECT
-	  g.groupname
+	  g.groupname, g.group_id
   FROM
 	  groups g, users u, group_user_links gul
     WHERE
@@ -21,13 +20,13 @@ router.get('/groups', (req, res, next) => {
   `
 
   conn.query(sql, [req.query.username],(err, results, fields) => {
-    console.log('index back user - ' + util.inspect(req.params, {showHidden: false, depth: 2}))
     res.json({
       groups: results
     })
     console.log('index backend - get groups - ' + results)
   })
 })
+
 
 router.post('/groups', (req, res, next) => {
   const sql =`
