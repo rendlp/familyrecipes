@@ -25,8 +25,12 @@ const GroupList = props => {
         //     <Router>
                 <div className = "groupList">
                     <ul>
-                        {groups.map((item, i) => (
-                            <li>{item.groupname}</li>
+                    {groups.map((item, i) => (
+                            <li key={`group - `+i}>
+                                <Link to={"/group/"+item.group_id}>
+                            <span>{item.groupname}</span>
+                                </Link>   
+                            </li>
                         ))}
                     </ul>
                     <div id="createGroupLink">
