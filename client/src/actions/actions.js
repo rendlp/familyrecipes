@@ -15,6 +15,10 @@ export function addIngredients(ingredients) {
     Axios.post('/api/ingredients', ingredients)
 }
 
+export function addBoth(both) {
+    Axios.post('/api/both', both)
+}
+
 // for potential future use
 
 // export function Date() {

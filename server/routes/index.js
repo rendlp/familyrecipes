@@ -13,11 +13,12 @@ router.post('/recipes', (req, res, next) => {
   const prepMinutes = req.body.prepMinutes
   const prepHours = req.body.prepHours
   const directions = req.body.directions
+  const servings = req.body.servings
 
   const sql = 
-  ` INSERT INTO recipes (name, prepMinutes, prepHours, directions) VALUES (?, ?, ?, ?)`
+  ` INSERT INTO recipes (name, prepMinutes, prepHours, directions, servings) VALUES (?, ?, ?, ?, ?)`
 
-  conn.query(sql, [name, prepMinutes, prepHours, directions], (err, results, fields) => {
+  conn.query(sql, [name, prepMinutes, prepHours, directions, servings], (err, results, fields) => {
     res.json({"message": "recipe added" })
     // const count = results.count
   })
@@ -33,6 +34,20 @@ router.post('/ingredients', (req, res, next) => {
 
   conn.query(sql, [ingredients], (err, results, fields) => {
     const count = results.count
+  })
+})
+
+// BOTH POST
+
+router.post('/both', (req, res, next) => {
+  const ingred_id = req.body.ingred_id
+  const recipe_id = req.body.recipe_id
+
+  const sql = `
+  INSERT INTO both (ingred_id, recipe_id) VALUES (?, ?)`
+
+  conn.query(sql, [both], (err, results, fields) => {
+    res.json({ "message": "added" })
   })
 })
 

@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
-import IngredientList from './upload/IngredientList';
-import Ingredient from './upload/Ingredient';
-import { BrowserRouter as Router, Link } from 'react-router-dom'
-// import Prep from './upload/Prep'
-// import Directions from './upload/Directions'
-// import Name from './upload/Name'
-// import { addRecipe, addIngredients } from '../actions/actions';
 
+import { addRecipe } from '../actions/actions';
+import IngredientList from '../components/upload/IngredientList';
+import Ingredient from '../components/upload/Ingredient';
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 
 class Upload extends Component  {
 
@@ -23,7 +20,9 @@ class Upload extends Component  {
         prepClass:'',
         directions:'',
         directionsError:'',
-        directionsClass:''
+        directionsClass:'',
+        servings: ''
+        
     }
 
     handleChange = (e) => {
@@ -32,21 +31,30 @@ class Upload extends Component  {
         })
     }
 
-    handleSubmit = (e) => {
+    recipeSubmit(e) {
+        
+        // addRecipe({
+        //     name: this.state.name,
+        //     prepMinutes: this.state.prepMinutes,
+        //     prepHours: this.state.prepHours,
+        //     directions: this.state.directions,
+        //     servings: this.state.servings
+        // })
         e.preventDefault()
     }
-
+    
     render() {
         return (
-            <form id="formcontainer" onSubmit ={this.handleSubmit}>
+            <form id="formcontainer" onSubmit={this.recipeSubmit}>
             <div className ='uploadDiv'>
             <button><Link to='/'>Back</Link></button>
-
-            <div>
-            <div className="test">
+             <div>
+              <div className="test">
                    <label htmlFor='name' className={this.state.nameClass}>
                     <h1>Name</h1> {this.state.nameError}
                     </label>
+
+{/* NAME  */}
                     <input 
                     className={this.state.nameClass}
                     type="text" 
@@ -60,8 +68,9 @@ class Upload extends Component  {
                 <label htmlFor='name' className={this.state.prepClass}>
                 {this.state.prepError}
                 </label>
-                <div className="selectorDiv">
-              
+
+{/* PREP */}
+                <div className="selectorDiv">   
                 <select className={this.state.prepClass}
                 type="text" 
                 name="prepHours" 
@@ -126,6 +135,8 @@ class Upload extends Component  {
             </div>
             </div>
 
+{/* INGREDIENTS */}
+
             <div className="ingredients">
              <Ingredient />
              <IngredientList />
@@ -145,12 +156,14 @@ class Upload extends Component  {
               value= {this.state.directions} />
               </div>
 
-            </div>
             <button 
-             onSubmit={this.handleSubmit} 
+             onSubmit={this.recipeSubmit} 
              className="submitButton" 
              type="submit">Submit</button>
+            </div>
+           
             </form>
+        
         )
     }
 }
