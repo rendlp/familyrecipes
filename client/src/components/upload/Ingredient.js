@@ -5,7 +5,7 @@ import { addIngredients } from '../../actions/actions';
 
 class Ingredient extends Component {
     state= {
-        input: '',
+        input: [],
         ingredients: '',
         
     }
@@ -24,7 +24,7 @@ class Ingredient extends Component {
             })
             saveInput(this.state.input)
             this.setState({
-                input: ''
+                input: []
             })
         }
     }

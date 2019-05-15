@@ -14,42 +14,60 @@ router.post('/recipes', (req, res, next) => {
   const prepHours = req.body.prepHours
   const directions = req.body.directions
   const servings = req.body.servings
-
-  const sql = 
-  ` INSERT INTO recipes (name, prepMinutes, prepHours, directions, servings) VALUES (?, ?, ?, ?, ?)`
-
-  conn.query(sql, [name, prepMinutes, prepHours, directions, servings], (err, results, fields) => {
-    res.json({"message": "recipe added" })
-    // const count = results.count
-  })
-})
-
-// INGREDIENT POST
-
-router.post('/ingredients', (req, res, next) => {
   const ingredients = req.body.ingredients
-
-  const sql = 
-  ` INSERT INTO ingredients (ingredients) VALUES (?)`
-
-  conn.query(sql, [ingredients], (err, results, fields) => {
-    const count = results.count
-  })
-})
-
-// BOTH POST
-
-router.post('/both', (req, res, next) => {
   const ingred_id = req.body.ingred_id
   const recipe_id = req.body.recipe_id
 
-  const sql = `
-  INSERT INTO both (ingred_id, recipe_id) VALUES (?, ?)`
+  const sql = 
+  ` 
+  INSERT INTO 
+  recipes (name, prepMinutes, prepHours, directions, servings) 
+  VALUES 
+  (?, ?, ?, ?, ?)
+  
+  INSERT INTO 
+  ingredients (ingredients) 
+  VALUES 
+  (?)
 
-  conn.query(sql, [both], (err, results, fields) => {
-    res.json({ "message": "added" })
+  INSERT INTO 
+  both (ingred_id, recipe_id) 
+  VALUES 
+  (?, ?)
+
+  `
+
+  conn.query(sql, [name, prepMinutes, prepHours, directions, servings, ingredients, ingred_id, recipe_id], (err, results, fields) => {
+    res.json({"message": "recipe added" })
   })
 })
+
+// // INGREDIENT POST
+
+// router.post('/ingredients', (req, res, next) => {
+//   const ingredients = req.body.ingredients
+
+//   const sql = 
+//   ` INSERT INTO ingredients (ingredients) VALUES (?)`
+
+//   conn.query(sql, [ingredients], (err, results, fields) => {
+//     const count = results.count
+//   })
+// })
+
+// // BOTH POST
+
+// router.post('/both', (req, res, next) => {
+//   const ingred_id = req.body.ingred_id
+//   const recipe_id = req.body.recipe_id
+
+//   const sql = `
+//   INSERT INTO both (ingred_id, recipe_id) VALUES (?, ?)`
+
+//   conn.query(sql, [both], (err, results, fields) => {
+//     res.json({ "message": "added" })
+//   })
+// })
 
 // LOGIN POST
 

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-
-import { addRecipe } from '../actions/actions';
+import { saveInput } from '../actions/saveInput.js'
+import { addRecipe, addIngredients } from '../actions/actions';
+import Ingredient from '../components/upload/Ingredient'
+import { connect } from 'react-redux'
 import IngredientList from '../components/upload/IngredientList';
-import Ingredient from '../components/upload/Ingredient';
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 
 class Upload extends Component  {
@@ -11,7 +12,7 @@ class Upload extends Component  {
         name:'',
         nameError:'',
         nameClass:'',
-        ingredients:'',
+        // ingredients:[],
         ingredientsError:'',
         ingredientsClass:'',
         prepHours:'',
@@ -21,8 +22,13 @@ class Upload extends Component  {
         directions:'',
         directionsError:'',
         directionsClass:'',
-        servings: ''
+        servings: '',
+        input: ''
         
+    }
+
+    componentWillReceiveProps() {
+        console.log(this.props.inputs)
     }
 
     handleChange = (e) => {
@@ -32,17 +38,26 @@ class Upload extends Component  {
     }
 
     recipeSubmit(e) {
-        
-        // addRecipe({
-        //     name: this.state.name,
-        //     prepMinutes: this.state.prepMinutes,
-        //     prepHours: this.state.prepHours,
-        //     directions: this.state.directions,
-        //     servings: this.state.servings
-        // })
-        e.preventDefault()
-    }
+       
     
+        //     addIngredients({
+        //       ingredients: this.state.input
+        //   })
+           addRecipe({
+            name: this.state.name,
+            prepMinutes: this.state.prepMinutes,
+            prepHours: this.state.prepHours,
+            directions: this.state.directions,
+            servings: this.state.servings,
+            ingredients: this.props.inputs
+        })
+
+        e.preventDefault()
+          
+      }
+    
+      
+
     render() {
         return (
             <form id="formcontainer" onSubmit={this.recipeSubmit}>
@@ -138,7 +153,7 @@ class Upload extends Component  {
 {/* INGREDIENTS */}
 
             <div className="ingredients">
-             <Ingredient />
+            <Ingredient />
              <IngredientList />
             </div>
 
@@ -157,9 +172,9 @@ class Upload extends Component  {
               </div>
 
             <button 
-             onSubmit={this.recipeSubmit} 
+             onClick={this.recipeSubmit} 
              className="submitButton" 
-             type="submit">Submit</button>
+             type="onClick">Submit</button>
             </div>
            
             </form>
@@ -168,7 +183,13 @@ class Upload extends Component  {
     }
 }
 
-export default Upload;
+function mapStateToProps(appState) {
+    return {
+        inputs: appState.inputs
+    }
+}
+
+export default connect(mapStateToProps)(Upload);
 
 
 

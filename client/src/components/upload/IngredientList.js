@@ -6,12 +6,13 @@ import IngredientItem from './IngredientItem.js';
 class IngredientList extends Component {
    render() {
        return (
-        <div className="item">  
+        <div className="item">
+  
          <ul> 
           {this.props.inputs.map(item => (
             <IngredientItem {...item} />    
         ))}   
-           {/* <li><p>{this.props.inputs.filter(input => input.status === 'pending...').length} good choices...</p></li> */}
+          
          </ul>
         </div>
       )
