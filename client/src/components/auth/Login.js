@@ -9,7 +9,8 @@ import Paper from "@material-ui/core/Paper"
 import Typography from "@material-ui/core/Typography"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../lib/auth"
-import '../../styles/base.css'
+import Header from '../header'
+import Footer from '../footer'
 
 const Login = props => {
   const [username, setUsername] = useState("")
@@ -32,6 +33,8 @@ const Login = props => {
   }
 
   return (
+    <div>
+    <Header />
     <div className="login">
       <Paper className="pad">
         <div className="loginIcon">
@@ -89,6 +92,8 @@ const Login = props => {
           </Button>
         </form>
       </Paper>
+    </div>
+    <Footer />
     </div>
   )
 }
