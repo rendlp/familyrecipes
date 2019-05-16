@@ -17,26 +17,24 @@ function UploadParentFunctional () {
     const { user } = useContext(AuthContext)
     
     const forms = {
-        username: {user}
+        username: {user},
+        ingredient: {
+            list: []
+        },
         
     };
 
     
 
-    // const ingredientList = []
+    
  
 
     function manageForm(ctx, payload) {
         console.log('updating', ctx, payload);
-        
         forms[ctx] = {...payload};
     };
 
-    // function manageIngredients(ctx, payload) {
-    //     console.log('updating', ctx, payload)
-
-    //     ingredientList[ctx] = {...payload}
-    // }
+    
 
     function handleForm(e) {
         e.preventDefault();
@@ -51,10 +49,10 @@ function UploadParentFunctional () {
             
                 <Prep manageForm={manageForm} formData={forms.PrepTime} />
 
-                <TheStuff manageForm={manageForm} formData={forms.Ingredients} />
+                {/* <TheStuff manageForm={manageForm} formData={forms.Ingredients} /> */}
             
-                {/* <Ingredient />
-                <IngredientList manageForm={manageIngredients} formData={ingredientList} /> */}
+                <Ingredient manageForm={manageForm} formData={forms.ingredient} />
+                {/* <IngredientList manageForm={manageIngredients} formData={ingredientList} /> */}
             
                 <Directions manageForm={manageForm} formData={forms.Directions} />
             

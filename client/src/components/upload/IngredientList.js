@@ -1,28 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import useFormInput from '../hooks/useFormInput'
 import { connect } from 'react-redux'
 import IngredientItem from './IngredientItem.js';
 
-const IngredientList = (props) => {
+class IngredientList extends Component {
+
+  render() {
+    return (
+      <div className="item">
+       <ul> 
+        {this.props.inputs.map(item => (
+          <IngredientItem {...item} />    
+         ))}   
+       </ul>
+      </div>
+    )
+  }
    
-  const [values, changeForm, resetForm] = useFormInput({...props.formData})
-
-  let manageIngredients = props.manageForm
-
-  useEffect( () => {
-    manageIngredients = props.manageForm
-  }, [values])
+  
        
-  return (
-        <div className="item">
-         <ul> 
-          {/* {this.props.inputs.map(item => (
-            <IngredientItem {...item} />    
-           ))}    */}
-         </ul>
-        </div>
-  )
-   
+  
 }
 
 function mapStateToProps(appState) {

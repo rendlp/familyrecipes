@@ -1,47 +1,66 @@
-import React, { Component } from 'react'
-import '../../styles/base.css'
+import React, { useEffect, useState } from 'react'
+import useFormInput from '../hooks/useFormInput'
 import { saveInput } from '../../actions/saveInput'
 
-class Ingredient extends Component {
-    state= {
-        input: [],
-        ingredients: '',
-        
-    }
+const Ingredient = (props) => {
+    const [values, changeForm, resetForm] = useFormInput({...props.formData});
+    const [list, alterList] = useState(props.formData.list);
 
-    ingredientChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+    let manageFunc = props.manageForm;
 
-    submitIngredient = e => {
-        e.preventDefault();
-        if (this.state.input !== '') {   
-         saveInput(this.state.input)
-            this.setState({
-                input: ''
-            })
+    useEffect(() => {
+        manageFunc('ingredient', values);
+    }, [values]);
+
+    function handleEnter(e) {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            e.persist();
+            alterList(list => {
+                let newList = list.concat({key: new Date().getTime(), name: e.target.value});
+                values.list = newList;
+                manageFunc('ingredient', values);
+                e.target.value = '';
+                return newList;
+            });
         }
     }
 
-    render(){
-        return (
-          <form 
-          onSubmit={this.submitIngredient}>
-             <h1>Ingredients</h1>
-              <input 
-                type="text"
-                name="input"
-                className="inputClass"
-                value={this.state.input}
-                onSubmit={this.submitIngredient}
-                onChange={this.ingredientChange}
-                placeholder="What do you need?">
-              </input>
-             </form>
-        )
-    }
+
+    // state= {
+    //     input: [],
+    //     ingredients: '',
+        
+    // }
+
+    // ingredientChange = e => {
+    //     this.setState({
+    //         [e.target.name]: e.target.value
+    //     })
+    // }
+
+    // submitIngredient = e => {
+    //     e.preventDefault();
+    //     if (this.state.input !== '') {   
+    //      saveInput(this.state.input)
+    //         this.setState({
+    //             input: ''
+    //         })
+    //     }
+    // }
+
+    
+    return (
+        <form>
+            <input type="text" name="list" placeholder="what ingredients do you need?" onKeyDown={handleEnter} />
+            <ul>
+                {list.map(item => {
+                    return <li key={item.key}>{item.name}</li>
+                })}
+            </ul>
+        </form>
+    )
+    
 }
 
 export default Ingredient;
