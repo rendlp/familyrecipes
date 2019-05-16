@@ -27,6 +27,43 @@ router.get('/groups', (req, res, next) => {
   })
 })
 
+router.get('/groupUsers', (req, res, next) => {
+  const sql = `
+  SELECT
+	  gul.username, g.groupname
+  FROM
+	  group_user_links gul, groups g
+  WHERE
+  gul.group_id = g.group_id AND gul.group_id = ?
+  `
+
+  conn.query(sql, [req.query.group_id],(err, results, fields) => {
+    res.json({
+      groupUsers: results
+    })
+    
+  })
+})
+
+router.get('/usersSearch', (req, res, next) => {
+  const sql = `
+  SELECT
+	  username
+  FROM
+	  users
+  WHERE
+    username = ?
+  `
+
+  conn.query(sql, [req.query.username],(err, results, fields) => {
+    res.json({
+      username: results[0].username
+    })
+    console.log(results[0].username)
+    
+  })
+})
+
 
 router.post('/groups', (req, res, next) => {
   const sql =`

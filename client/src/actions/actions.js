@@ -14,9 +14,7 @@ import Axios from 'axios'
 //GROUPS
 
 export function getGroups(user) {
-    console.log('group user =>', user);
     Axios.get(`/api/groups?username=${user}`).then(resp => {
-        console.log('actions - get groups' ,resp.data.groups)
         store.dispatch({
             type: 'GET_GROUPS',
             groups: resp.data.groups
@@ -24,14 +22,34 @@ export function getGroups(user) {
     })
 }
 
+export function getGroupUsers(group_id) {
+    if (group_id) {
+        Axios.get(`/api/groupUsers?group_id=${group_id}`).then(resp => {
+            store.dispatch({
+                type: 'GET_GROUP_USERS',
+                payload: resp.data.groupUsers
+            })
+        })
+    }
+}
+
 export function createGroup(groupName, user) {
     return Axios.post('/api/groups', {
         groupname: groupName,
         username: user
     })
-    // .then(resp => { getGroups(user)
-    // })
 }
+
+export function searchUser(userNameSearched) {
+        Axios.get(`/api/usersSearch?username=${userNameSearched}`).then(resp => {
+            store.dispatch({
+                type: 'FOUND_USER',
+                payload: resp.data.username
+            })
+            console.log(resp.data.username)
+        })
+}
+
 
 export function addRecipe(recipes) {
     Axios.post('/api/recipes', recipes, {
