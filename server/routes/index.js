@@ -86,7 +86,7 @@ router.post('/groups', (req, res, next) => {
       })
     })
   })
-    
+
 })
 
 
@@ -105,11 +105,18 @@ router.post('/recipes', (req, res, next) => {
   })
 })
 
-// a router that recieves calls to all recipes in the database
-router.get('/recipe', (req, res, next) => {
-  res.json({
-    message: 'listening for a call to the database recipe list'
+// router that recieves calls to all recipes in the database
+router.get('/recipes', (req, res, next) => {
+  const sql = `
+  SELECT name
+  FROM recipes
+  WHERE username = ?
+  `
+  conn.query(sql, [req.query.username],(error, results, fields) => {
+    res.json(results)
+    console.log(results)
   })
+
 
 
 })

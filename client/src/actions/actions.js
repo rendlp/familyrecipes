@@ -52,16 +52,15 @@ export function searchUser(userNameSearched) {
 
 
 export function addRecipe(recipes) {
-    Axios.post('http://localhost:3000/recipes', recipes, {
+    Axios.post('/api/recipes', recipes, {
         name: this.state.name,
         prep: this.state.prep,
         directions: this.state.directions
     })
 }
 
-export function getRecipes() {
-  Axios.get('http://localhost:3000/recipes').then(resp => {
-    console.log(resp.data)
+export function getUserRecipes(user) {
+  Axios.get(`/api/recipes?username=${user}`).then(resp => {
     store.dispatch({
       type: "GET_USER_RECIPES",
       payload: resp.data
@@ -70,7 +69,7 @@ export function getRecipes() {
 }
 
 export function addIngredients(ingredients) {
-    Axios.post('http://localhost:3000/ingredients', ingredients, {
+    Axios.post('/api/ingredients', ingredients, {
         ingred_id: this.state.ingred_id,
         ingredient: this.state.ingredient
     })
