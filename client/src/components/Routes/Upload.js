@@ -46,14 +46,14 @@ class Upload extends Component  {
 
     render() {
         return (
-            <form id="formcontainer" onSubmit={this.recipeSubmit}>
+       
             <div className ='uploadDiv'>
 
 {/* BACK BUTTON */}
             <button><Link to='/'>Back</Link></button>
 
 {/* NAME  */}
-            <div>
+            <div id="name/prep">
              <Name />
 
 {/* PREP */}
@@ -67,7 +67,9 @@ class Upload extends Component  {
             </div>
 
 {/* DIRECTIONS */}
-            <Directions />
+            <div id="text-directions">
+                <Directions />
+            </div>
 
 {/* SUBMIT BUTTON */}
             <Link to='/upload/confirm'>
@@ -75,7 +77,6 @@ class Upload extends Component  {
              className="submitButton" 
              type="submit">Submit</button></Link>
             </div>
-            </form>
         )
     }
 }

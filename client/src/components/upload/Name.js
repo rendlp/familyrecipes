@@ -1,40 +1,44 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
+import useFormInput from '../hooks/useFormInput'
 
-class Name extends Component {
+const Name = (props) => {
+    // const [values, modifyForm] = useState({});
 
-    state = {
-        name:'',
-        nameError:'',
-        nameClass:'',
+    // const changeForm = (e) => {
+    //     values[e.target.name] = e.target.value;
+    //     modifyForm(values);
+    //     e.persist();
+    //     modifyForm(values => ({...values, [e.target.name]: e.target.value}));
+    // };
 
-    }
+    const [values, changeForm, resetForm] = useFormInput({...props.formData});
 
-    handleChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+    let manageFunc = props.manageForm;
 
-    render() {
+    useEffect(() => {
+        manageFunc('name', values);
+    }, [values]);
+
+    
         return (
             <form>
             <div className="test">
-                <label htmlFor='name' className={this.state.nameClass}>
-                <h1>Name</h1> {this.state.nameError}
+                <label  >
+                <h1>Name</h1>
                 </label>
             <input 
-                className={this.state.nameClass}
+                
                 type="text"
-                ref="name"
+           
                 name="name"
                 id="name"
-                onChange= {this.handleChange}
-                value= {this.state.name} 
+                onChange= {changeForm}
+                value=  {values.name || ''}
             />
         </div>
         </form>
         )
     }
-    }
+    
 
 export default Name;

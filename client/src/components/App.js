@@ -18,6 +18,7 @@ import UserFavRecipes from './Routes/user-fav-recipes'
 import UsermadeRecipeBook from './Routes/usermade-recipebook'
 import WhatsHappenin from './Routes/whats-happenin'
 import CreateGroup from './Routes/CreateGroup'
+import UploadParentFunctional from './upload/UploadParentFunctional'
 
 class App extends Component {
   render() {
@@ -35,7 +36,7 @@ class App extends Component {
 
               {/* private routes */}
               <AuthRoute path="/" exact component={AccountHome} />
-              <AuthRoute path="/upload" component={Upload} />
+              <AuthRoute path="/upload" component={UploadParentFunctional} />
               <AuthRoute path="/user_recipes" exact component={UserRecipe} />
               <AuthRoute path="/user_groups" exact component={UserGroups} />
               <AuthRoute path="/user_messages" exact component={UserMessages} />

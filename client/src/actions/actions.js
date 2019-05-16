@@ -1,8 +1,15 @@
 import store from 'react'
 import Axios from 'axios';
+import { checkPropTypes } from 'prop-types';
 
 export function addRecipe(recipes) {
-    Axios.post('/api/recipes', recipes)
+    Axios.post('/api/recipes', recipes, {
+        recipes: this.state.recipes
+    })
+
+    console.log('recipe sent to the database')
+    
+    
 }
 
 // export function addIngredients(ingredients) {

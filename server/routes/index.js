@@ -66,9 +66,9 @@ router.post('/recipes', (req, res, next) => {
   const sql = 
   ` 
   INSERT INTO 
-  recipes (name, prepMinutes, prepHours, directions, servings) 
+  recipes (name, prepMinutes, prepHours, directions, servings, username) 
   VALUES 
-  (?, ?, ?, ?, ?)
+  (?, ?, ?, ?, ?, ?)
   
   INSERT INTO 
   ingredients (ingredients) 

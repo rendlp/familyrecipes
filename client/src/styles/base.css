@@ -401,6 +401,7 @@ a:visited {
   color: black;
 }
 
-.MuiButton-containedPrimary-13 {
-
+#ingredients-textarea {
+  height: 300px;
+  width: 1000px;
 }

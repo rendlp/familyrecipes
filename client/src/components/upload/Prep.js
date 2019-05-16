@@ -1,30 +1,44 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
+import useFormInput from '../hooks/useFormInput'
 
-class Prep extends Component {
+const Prep = (props) => {
 
-    state = {
-        prepHours:'',
-        prepMinutes: '',
-        prepError:'',
-        prepClass:'',
-        servings: ''
+    const [values, changeForm, resetForm] = useFormInput({...props.formData})
+
+    let manageFunc = props.manageForm
+
+    useEffect( () => {
+        manageFunc('prepTime', values)
+    }, [values])
+
+    // state = {
+    //     prepHours:'',
+    //     prepMinutes: '',
+    //     prepError:'',
+    //     prepClass:'',
+    //     servings: ''
       
-    }
+    // }
 
-    render() {
+    // onSubmit = e => {
+    //     e.preventDefault()
+        
+    // }
+
+    
         return (
             <form>
             <div className="prep">
-            <label htmlFor='name' className={this.state.prepClass} />
+            <label htmlFor='name' className="prep-label" />
              <div className="selectorDiv">
 
 {/* HOURS */}
                 <select 
-                className={this.state.prepClass}
+                
                 type="text" 
                 name="prepHours" 
                 id="prepHours" 
-                onChange= {this.handleChange}  >
+                onChange= {changeForm}  >
 
                 <option>Hours?</option>
                 <option value='0' >0 Hours</option>
@@ -44,11 +58,11 @@ class Prep extends Component {
 
 {/* MINUTES */}
                 <select 
-                className={this.state.prepMClass}
+                
                 type="text" 
                 name="prepMinutes" 
                 id="prepMinutes" 
-                onChange= {this.handleChange} >
+                onChange= {changeForm} >
                 
                 <option>Minutes?</option>
                 <option value="0">0 Minutes</option>
@@ -71,7 +85,7 @@ class Prep extends Component {
                 type='text'
                 name='serves'
                 id='serves'
-                onChange={this.handleChange} >
+                onChange={changeForm} >
 
                 <option>How many servings?</option>
                 <option value="1">1 Serving</option>
@@ -88,7 +102,7 @@ class Prep extends Component {
             </div>
         </form>
         )
-    }
+    
 }
 
 export default Prep;
