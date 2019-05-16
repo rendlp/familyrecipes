@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react'
 import { AuthContext } from "../../lib/auth"
 import { createGroup } from '../../actions/actions'
+import Header from '../header'
+import Footer from '../footer'
 // import { getGroups } from '../actions/actions'
 // import { useSelector } from 'react-redux'
 // import {Link} from 'react-router-dom'
@@ -28,6 +30,8 @@ const CreateGroup = props => {
 
 
     return (
+      <div>
+        <Header />
                 <div className = "createGroup">
                 <span>Create Group</span>
                 <form id="postCreatedGroup" onSubmit={handleSubmit}>
@@ -50,6 +54,8 @@ const CreateGroup = props => {
 
 
                 </div>
+          <Footer />
+        </div>
 
 
 

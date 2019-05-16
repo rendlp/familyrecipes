@@ -42,9 +42,7 @@ export function addRecipe(recipes) {
 }
 
 export function getUserRecipes(user) {
-  console.log(user)
   Axios.get(`/api/recipes?username=${user}`).then(resp => {
-    console.log(resp.data)
     store.dispatch({
       type: "GET_USER_RECIPES",
       payload: resp.data
