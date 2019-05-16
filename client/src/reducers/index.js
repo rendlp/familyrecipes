@@ -1,6 +1,8 @@
 const initialState = {
   recipes: [],
-  groups: []
+  groups: [],
+  groupUsers: [],
+  currentGroup: ''
 }
 
 export default function(state = initialState, action) {
@@ -10,6 +12,9 @@ export default function(state = initialState, action) {
 
     case "GET_GROUPS":
       return {...state, groups: action.groups}
+
+    case "GET_GROUP_USERS":
+      return {...state, groupUsers: action.payload, currentGroup: action.payload[0].groupname}
 
     default:
       return state
