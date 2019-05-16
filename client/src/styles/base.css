@@ -10,8 +10,18 @@ html {
 }
 
 body {
-  background-color: rgb(200, 200, 200);
-  color: black;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 /* .homePage {
@@ -81,7 +91,7 @@ color: blue;
 }
 
 input {
-width: 600px;
+width: 300px;
 height: 52px;
 margin: 0 auto;
 font-size: 21px;
@@ -112,10 +122,16 @@ margin: 0 auto;
 
 textarea {
 width: 600px;
-height: 250px;
+height: 700px;
 text-align: center;
 box-shadow: 0 6px 6px -6px black;
 font-size: 18px;
+}
+
+.prep {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 
 .test {
@@ -129,9 +145,9 @@ display: flex;
 flex-direction: row;
 background-color: whitesmoke;
 flex-wrap: nowrap;
-width: 1400px;
+width: 100%;
 border: 1px solid lightgrey;
-height: 350px;
+height: 100%;
 margin: 0 auto;
 }
 
@@ -151,6 +167,16 @@ border: 1px solid red;
 
 }
 
+select.error {
+  color: red;
+  border: 1px solid red;
+}
+
+.ingredientsError {
+  color: red;
+  background-color: black;
+}
+
 label.error {
 color: red;
 }
@@ -159,7 +185,7 @@ color: red;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  margin-left: 1px;
+  margin-left: 40px;
 }
 
 .recipeContainer {
@@ -167,19 +193,91 @@ color: red;
 }
 
 .selectorDiv {
-  margin: 0 auto;
+display:flex;
+flex-direction: column;
 }
 
 select {
   width: 290px;
 height: 52px;
-margin: 0 auto;
-margin-left: 4px;
-margin-right: 5px;
+margin: 50px;
 font-size: 21px;
 text-align: center;
 box-shadow: 0 6px 6px -6px black;
 font-size: 18px;
+}
+
+.mainContainer {
+  background-color: whitesmoke;
+  width: 100%;
+  height: 1400px;
+  margin: 0 auto;
+ 
+}
+
+p {
+  font-size: 15px;
+  color: grey;
+  
+}
+
+.uploadDiv {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: lightgrey;
+  font-weight: 200;
+  font-size: 72px;
+  margin: 0 auto;
+}
+
+::-webkit-input-placeholder {
+  font-style: italic;
+  font-size: 16px;
+}
+
+.inputClass {
+  display: block;
+  margin: 14px;
+  width: 350px;
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 2%;
+  box-shadow: 0 1px 1px rgb(0, 0, 0, 0.15), 0 10px 0 -5px #eee rgba(0, 0, 0, 0.15);
+  font-family:  'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+ul li:hover {
+  font-size: 20px;
+  box-shadow: 0 8px 1px -4px rgb(0, 0, 0, 0.10), 0 20px 0 -10px #eee;
+}
+
+ul {
+  text-decoration: none;
+  font-style: none;
+  padding: 0;
+  
+}
+
+ul li {
+  color: black;
+  display: block;
+  margin: 0 auto;
+  width: 350px;
+  height: 50px;
+  text-align: center;
+  font-size: 18px;
+  background-color: white;
+  font-family:  'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-bottom: 1px solid lightgrey;
+  box-shadow: 0 1px 1px rgb(0, 0, 0, 0.15), 0 10px 0 -5px #eee;
+  line-height: 50px;
+  
 }
 
 #canvas {
@@ -303,6 +401,7 @@ a:visited {
   color: black;
 }
 
-.MuiButton-containedPrimary-13 {
-
+#ingredients-textarea {
+  height: 300px;
+  width: 1000px;
 }

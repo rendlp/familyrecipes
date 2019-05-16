@@ -1,30 +1,24 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import Logout from "./auth/Logout"
 import { AuthContext } from "../lib/auth"
-import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import store from '../store'
-// import { connect } from "../actions/actions"
-
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 
 const LogoutButton = props => {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        // connect(user)
+   
     }, [user])
 
     return (
-      <div>
-
+       
         <div className="homePage">
 
             <span>{user}</span>
             <Logout />
-
+            <button><Link to ='/upload'>Upload A Recipe</Link></button>
+        
         </div>
-
-      </div>
 
     )
 }

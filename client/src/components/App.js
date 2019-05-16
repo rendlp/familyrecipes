@@ -4,10 +4,11 @@ import { Provider } from 'react-redux'
 import store from '../store'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { AuthProvider, AuthRoute } from "../lib/auth"
+import Login from "./auth/Login"
+import Register from "./auth/Register"
+import Upload from './Routes/Upload'
 import AccountHome from './Routes/accountHome'
 import Landing from './Routes/landing'
-import Login from './auth/Login'
-import Register from './auth/Register'
 import FormContainer from './Routes/Upload'
 import UserRecipe from './Routes/user-recipes'
 import UserGroups from './Routes/user-groups'
@@ -17,8 +18,12 @@ import UserFavRecipes from './Routes/user-fav-recipes'
 import UsermadeRecipeBook from './Routes/usermade-recipebook'
 import WhatsHappenin from './Routes/whats-happenin'
 import CreateGroup from './Routes/CreateGroup'
+
+import UploadParentFunctional from './upload/UploadParentFunctional'
+
 import Group from './Routes/Group'
 import InviteUser from './Routes/InviteUser'
+
 
 
 
@@ -36,11 +41,9 @@ class App extends Component {
                 <Route path="/register" component={Register} />
               </Switch>
 
-
-
               {/* private routes */}
               <AuthRoute path="/" exact component={AccountHome} />
-              <AuthRoute path="/upload" exact component={FormContainer} />
+              <AuthRoute path="/upload" component={UploadParentFunctional} />
               <AuthRoute path="/user_recipes" exact component={UserRecipe} />
               <AuthRoute path="/user_groups" exact component={UserGroups} />
               <AuthRoute path="/user_messages" exact component={UserMessages} />

@@ -1,17 +1,24 @@
-import store from '../store'
-import Axios from 'axios'
+import store from 'react'
+import Axios from 'axios';
+import { checkPropTypes } from 'prop-types';
 
+export function addRecipe(recipes) {
+    Axios.post('/api/recipes', recipes, {
+        recipes: this.state.recipes
+    })
 
-//SOCKET STUFF FOR LATER
+    console.log('recipe sent to the database')
+    
+    
+}
 
-// export function connect(user) {
-//  socket = io.connect("http://10.68.0.212:3001")
-
-
-// socket.emit("join", user)
+// export function addIngredients(ingredients) {
+//     Axios.post('/api/ingredients', ingredients)
 // }
 
-//GROUPS
+export function addBoth(both) {
+    Axios.post('/api/both', both)
+}
 
 export function getGroups(user) {
     Axios.get(`/api/groups?username=${user}`).then(resp => {
@@ -39,6 +46,8 @@ export function createGroup(groupName, user) {
         username: user
     })
 }
+
+
 
 export function searchUser(userNameSearched) {
         Axios.get(`/api/usersSearch?username=${userNameSearched}`).then(resp => {
@@ -83,3 +92,4 @@ export function addIngredients(ingredients) {
 // export function cancelCourse() {
 //     document.getElementById("create-course-form").reset();
 //   }
+

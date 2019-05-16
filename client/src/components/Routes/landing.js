@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../header'
-import Register from '../auth/Register'
-import Login from '../auth/Login'
 import Footer from '../footer'
 
 class Landing extends Component {
