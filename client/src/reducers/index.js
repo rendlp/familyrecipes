@@ -2,7 +2,8 @@ const initialState = {
   recipes: [],
   groups: [],
   groupUsers: [],
-  currentGroup: ''
+  currentGroup: '',
+  foundUser: ''
 }
 
 export default function(state = initialState, action) {
@@ -15,6 +16,9 @@ export default function(state = initialState, action) {
 
     case "GET_GROUP_USERS":
       return {...state, groupUsers: action.payload, currentGroup: action.payload[0].groupname}
+
+    case "FOUND_USER":
+      return {...state, foundUser: action.payload}
 
     default:
       return state

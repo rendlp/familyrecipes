@@ -45,6 +45,25 @@ router.get('/groupUsers', (req, res, next) => {
   })
 })
 
+router.get('/usersSearch', (req, res, next) => {
+  const sql = `
+  SELECT
+	  username
+  FROM
+	  users
+  WHERE
+    username = ?
+  `
+
+  conn.query(sql, [req.query.username],(err, results, fields) => {
+    res.json({
+      username: results[0].username
+    })
+    console.log(results[0].username)
+    
+  })
+})
+
 
 router.post('/groups', (req, res, next) => {
   const sql =`

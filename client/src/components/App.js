@@ -18,6 +18,7 @@ import UsermadeRecipeBook from './Routes/usermade-recipebook'
 import WhatsHappenin from './Routes/whats-happenin'
 import CreateGroup from './Routes/CreateGroup'
 import Group from './Routes/Group'
+import InviteUser from './Routes/InviteUser'
 
 
 
@@ -49,6 +50,7 @@ class App extends Component {
               <AuthRoute path="/recent_updates" exact component={WhatsHappenin} />
               <AuthRoute path="/creategroup" exact component={CreateGroup} />
               <AuthRoute path="/group/:group_id" exact component={Group} />
+              <AuthRoute path="/group/:group_id/inviteUser" exact component={InviteUser} />
             </div>
           </Router>
         </Provider>

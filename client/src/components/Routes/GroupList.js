@@ -13,7 +13,7 @@ const GroupList = props => {
 
 
     useEffect(() => {
-        getGroups(user)
+       console.log('effect')
     },[])
 
      const groups = useSelector(appstate => appstate.groups)

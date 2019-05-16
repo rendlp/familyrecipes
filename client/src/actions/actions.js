@@ -40,6 +40,17 @@ export function createGroup(groupName, user) {
     })
 }
 
+export function searchUser(userNameSearched) {
+        Axios.get(`/api/usersSearch?username=${userNameSearched}`).then(resp => {
+            store.dispatch({
+                type: 'FOUND_USER',
+                payload: resp.data.username
+            })
+            console.log(resp.data.username)
+        })
+}
+
+
 export function addRecipe(recipes) {
     Axios.post('http://localhost:3000/recipes', recipes, {
         name: this.state.name,
