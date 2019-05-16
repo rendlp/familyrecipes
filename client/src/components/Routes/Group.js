@@ -8,17 +8,14 @@ const Group = props => {
 
     const { user } = useContext(AuthContext)
 
-    console.log(props.match.params.group_id)
+    const group_id = props.match.params.group_id
 
     useEffect(() => {
-        getGroupUsers(props.match.params.group_id)
+        getGroupUsers(group_id)
     },[])
 
     const groupUsers = useSelector(appstate => appstate.groupUsers)
     const currentGroup = useSelector(appstate => appstate.currentGroup)
-
-    console.log(groupUsers)
-    console.log(currentGroup)
 
     return (
                 <div className = "groupUserList">
@@ -33,7 +30,7 @@ const Group = props => {
                         ))}
                     </ul>
                     <div id="inviteUserLink">
-                        <Link to={"/inviteUser"}>
+                        <Link to={`/group/${group_id}/inviteUser`}>
                                 <p>Invite a user</p>
                         </Link>
                     </div>

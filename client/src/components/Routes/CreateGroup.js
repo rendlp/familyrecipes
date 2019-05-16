@@ -33,7 +33,7 @@ const CreateGroup = props => {
                 <form id="postCreatedGroup" onSubmit={handleSubmit}>
                 <label>Title:</label>
                     <input
-                        autocomplete="off"
+                        autoComplete="off"
                         type="text"
                         id="groupName"
                         name="groupName"
