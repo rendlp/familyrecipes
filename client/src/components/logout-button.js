@@ -3,11 +3,11 @@ import Logout from "./auth/Logout"
 import { AuthContext } from "../lib/auth"
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 
-const Home = props => {
+const LogoutButton = props => {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        // connect(user)
+   
     }, [user])
 
     return (
@@ -24,4 +24,4 @@ const Home = props => {
 }
 
 
-export default Home;
+export default LogoutButton

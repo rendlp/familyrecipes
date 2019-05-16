@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import '../../styles/base.css'
 import { saveInput } from '../../actions/saveInput'
-import { addIngredients } from '../../actions/actions';
 
 class Ingredient extends Component {
     state= {
@@ -18,13 +17,10 @@ class Ingredient extends Component {
 
     submitIngredient = e => {
         e.preventDefault();
-        if (this.state.input !== '') {  
-              addIngredients({
-                ingredients: this.state.input
-            })
-            saveInput(this.state.input)
+        if (this.state.input !== '') {   
+         saveInput(this.state.input)
             this.setState({
-                input: []
+                input: ''
             })
         }
     }
@@ -43,7 +39,7 @@ class Ingredient extends Component {
                 onChange={this.ingredientChange}
                 placeholder="What do you need?">
               </input>
-</form>
+             </form>
         )
     }
 }

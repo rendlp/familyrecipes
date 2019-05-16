@@ -4,6 +4,51 @@ const config = require("config")
 const jwt = require("jsonwebtoken")
 const sha512 = require("js-sha512")
 const conn = require("../db")
+const util = require('util');
+
+// GROUPS
+
+router.get('/groups', (req, res, next) => {
+  const sql = `
+  SELECT
+	  g.groupname
+  FROM
+	  groups g, users u, group_user_links gul
+    WHERE
+	  gul.group_id = g.group_id AND gul.username = u.username AND u.username = ?
+  `
+
+  conn.query(sql, [req.query.username],(err, results, fields) => {
+    console.log('index back user - ' + util.inspect(req.params, {showHidden: false, depth: 2}))
+    res.json({
+      groups: results
+    })
+    console.log('index backend - get groups - ' + results)
+  })
+})
+
+router.post('/groups', (req, res, next) => {
+  const sql =`
+  INSERT INTO
+    groups (groupname)
+  VALUES
+    (?)
+  `
+  const sql2 =`
+  INSERT INTO group_user_links (group_id, username)
+     VALUES (?,?);
+  `
+
+  conn.query(sql, [req.body.groupname], (err, results, fields) => {
+    console.log(results)
+    conn.query(sql2, [results.insertId, req.body.username], (err, results, fields) => {
+      console.log(err)
+      res.json({
+      message: "group added"
+      })
+    })
+  })
+})
 
 
 // RECIPE POST
@@ -79,7 +124,7 @@ router.post("/login", (req, res, next) => {
     "SELECT count(1) as count FROM users WHERE username = ? AND password = ?"
 
   conn.query(sql, [username, password], (err, results, fields) => {
-    
+
     const count = results[0].count
 
     if (count >= 1) {
@@ -94,29 +139,27 @@ router.post("/login", (req, res, next) => {
       })
     }
   })
-
 })
-
 
 // REGISTER POST
 
 router.post("/register", (req, res, next) => {
   const username = req.body.username
   const password = sha512(req.body.password + config.get("salt"))
- 
+
   const checksql = "SELECT count(1) as count from users WHERE username = ?"
- 
+
   conn.query(checksql, [username], (err, results, fields) => {
     console.log(err)
     const count = results[0].count
- 
+
     if (count > 0) {
       res.status(409).json({
         error: "Username already taken"
       })
     } else {
       const sql = "INSERT INTO users (username, password) VALUES (?, ?)"
- 
+
       conn.query(sql, [username, password], (err, results, fields) => {
         if (err) {
           throw new Error("register failed")

@@ -9,7 +9,8 @@ import Paper from "@material-ui/core/Paper"
 import Typography from "@material-ui/core/Typography"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../lib/auth"
-import '../../styles/base.css'
+import Header from '../header'
+import Footer from '../footer'
 
 const Login = props => {
   const [username, setUsername] = useState("")
@@ -23,7 +24,7 @@ const Login = props => {
     signin(username, password)
       .then(() => {
         props.history.push("/")
-        
+
       })
       .catch(err => {
         setError(true)
@@ -32,6 +33,8 @@ const Login = props => {
   }
 
   return (
+    <div>
+    <Header />
     <div className="login">
       <Paper className="pad">
         <div className="loginIcon">
@@ -39,7 +42,7 @@ const Login = props => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            <p className="punchtalk">family recipes</p>
+            <p className="punchtalk">Sign In</p>
           </Typography>
         </div>
         <form onSubmit={sendLogin}>
@@ -89,6 +92,8 @@ const Login = props => {
           </Button>
         </form>
       </Paper>
+    </div>
+    <Footer />
     </div>
   )
 }

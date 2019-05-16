@@ -1,32 +1,35 @@
-
+import store from 'react'
 import Axios from 'axios';
-
-// export function connect(user) {
-//  socket = io.connect("http://10.68.0.212:3001")
-
-// socket.emit("join", user)
-// }
-
-
 
 export function addRecipe(recipes) {
     Axios.post('/api/recipes', recipes)
 }
 
-export function addIngredients(ingredients) {
-    Axios.post('/api/ingredients', ingredients)
-}
+// export function addIngredients(ingredients) {
+//     Axios.post('/api/ingredients', ingredients)
+// }
 
 export function addBoth(both) {
     Axios.post('/api/both', both)
 }
 
-// for potential future use
+export function getGroups(user) {
+    console.log('group user =>', user);
+    Axios.get(`/api/groups?username=${user}`).then(resp => {
+        console.log('actions - get groups' ,resp.data.groups)
+        store.dispatch({
+            type: 'GET_GROUPS',
+            groups: resp.data.groups
+        })
+    })
+}
 
-// export function Date() {
-//     Date.now();
-// }
+export function createGroup(groupName, user) {
+    return Axios.post('/api/groups', {
+        groupname: groupName,
+        username: user
+    })
+    // .then(resp => { getGroups(user)
+    // })
+}
 
-// export function cancelCourse() { 
-//     document.getElementById("create-course-form").reset();
-//   }
