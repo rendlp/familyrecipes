@@ -46,7 +46,7 @@ function UploadParentFunctional () {
 
             {/* <TheStuff manageForm={manageForm} formData={forms.Ingredients} /> */}
         <div className="ingredients">
-            <h1 className=''>test</h1>
+            <h1 className=''>Ingredients</h1>
             <Ingredient manageForm={manageForm} formData={forms.ingredient} />
             {/* <IngredientList manageForm={manageIngredients} formData={ingredientList} /> */}
         </div>

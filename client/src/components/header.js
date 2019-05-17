@@ -5,7 +5,7 @@ class Header extends Component {
   render() {
     return (
       <div id="header">
-        <p id="logo">FamilyRecipe.com</p>
+        <p id="logo">nettles</p>
       </div>
     )
   }

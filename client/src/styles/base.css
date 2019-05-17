@@ -130,6 +130,8 @@ height: 700px;
 text-align: center;
 box-shadow: 0 6px 6px -6px black;
 font-size: 18px;
+margin: 4px;
+
 }
 
 .prep {
@@ -166,9 +168,8 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
 
-input.error {
+/* input.error {
 border: 1px solid red;
-
 }
 
 select.error {
@@ -183,18 +184,17 @@ select.error {
 
 label.error {
 color: red;
-}
+} */
 
 .directionDiv {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  margin-left: 40px;
 }
 
-.recipeContainer {
+/* .recipeContainer {
   margin: 0 auto;
-}
+} */
 
 .selectorDiv {
 display:flex;
@@ -265,14 +265,13 @@ ul {
   text-decoration: none;
   font-style: none;
   padding: 0;
+  margin: 0 auto;
 
 }
 
 ul li {
   color: black;
-  display: block;
-  margin: 0 auto;
-  width: 350px;
+  width: 300px;
   height: 50px;
   text-align: center;
   font-size: 18px;
@@ -281,6 +280,7 @@ ul li {
   border-bottom: 1px solid lightgrey;
   box-shadow: 0 1px 1px rgb(0, 0, 0, 0.15), 0 10px 0 -5px #eee;
   line-height: 50px;
+  overflow: scroll;
 
 }
 
@@ -308,8 +308,9 @@ ul li {
 .uploadDiv {
   display: flex;
   flex-direction: row;
-  margin: 5px;
+  margin: 0 auto;
   padding: 10px;
+  justify-content: space-between;
 }
 
 .uploadInput {
@@ -423,7 +424,11 @@ a:visited {
   color: black;
 }
 
-#ingredients-textarea {
+.ingredients {
+  margin: 11px;
+}
+
+/* #ingredients-textarea {
   height: 300px;
   width: 1000px;
 }
@@ -442,9 +447,9 @@ a:visited {
 #recipe-name {
   position: relative;
   top: -369px;
-}
+} */
 
-#prep-header {
+/* #prep-header {
   font-size: 40px;
   text-decoration: underline;
 }
@@ -464,9 +469,10 @@ a:visited {
 #ingredients-header {
   font-size: 40px;
   text-decoration: underline;
-}
+} */
 
-#directions {
+#text-directions {
   position: relative;
-  top: 196px;
-}
+  bottom: 5px;
+} 
+
