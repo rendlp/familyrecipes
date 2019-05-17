@@ -23,6 +23,10 @@ body {
   right: 0;
 } */
 
+.hidden {
+  display: none;
+}
+
 .login {
 width: 400px;
 margin: 100px auto;
