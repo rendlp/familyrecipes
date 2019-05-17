@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import useFormInput from '../hooks/useFormInput'
 
 const Directions = (props) => {
@@ -15,7 +15,7 @@ const Directions = (props) => {
     //     directions:'',
     //     directionsError:'',
     //     directionsClass:'',
-   
+
     // }
 
     // handleChange = e => {
@@ -23,29 +23,29 @@ const Directions = (props) => {
     //         [e.target.name]: e.target.value
     //     })
     // }
-    
- 
+
+
         return (
             <form>
                 <div id="directionDiv">
-                    <label 
-                        htmlFor='name' 
+                    <label
+                        htmlFor='name'
                         className="directions-text">
-                    <h1>Directions</h1> 
+                    <h1>Directions</h1>
                     </label>
 
-                    <textarea 
-                        type="text" 
+                    <textarea
+                        type="text"
                         // ref="recipes_directions"
-                        name="directions" 
-                        id="directions" 
-                        onChange= {changeForm} 
-                        value={values.directions || ''} 
+                        name="directions"
+                        id="directions"
+                        onChange= {changeForm}
+                        value={values.directions || ''}
                     />
                 </div>
             </form>
         )
-    
+
 }
 
 export default Directions;

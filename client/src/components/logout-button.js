@@ -7,16 +7,16 @@ const LogoutButton = props => {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-   
+
     }, [user])
 
     return (
-       
+
         <div className="homePage">
 
             <span>{user}</span>
             <Logout />
-        
+
         </div>
 
     )

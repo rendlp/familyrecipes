@@ -51,12 +51,20 @@ router.get('/groupUsers', (req, res, next) => {
 router.get('/usersSearch', (req, res, next) => {
   const sql = `
   SELECT
-	  username
+    ifnull((
+  SELECT
+    username
   FROM
 	  users
   WHERE
     username = ?
+  ), 'usernotfound') as username
   `
+  if (req.query.username === '') {
+    res.json({
+      username:''
+    })
+  } else {
 
   conn.query(sql, [req.query.username],(err, results, fields) => {
     res.json({
@@ -65,6 +73,7 @@ router.get('/usersSearch', (req, res, next) => {
     console.log(results[0].username)
     
   })
+}
 })
 
 
@@ -79,7 +88,6 @@ router.post('/groups', (req, res, next) => {
   INSERT INTO group_user_links (group_id, username)
      VALUES (?,?);
   `
-
   conn.query(sql, [req.body.groupname], (err, results, fields) => {
     console.log(results)
     conn.query(sql2, [results.insertId, req.body.username], (err, results, fields) => {
@@ -95,45 +103,71 @@ router.post('/groups', (req, res, next) => {
 
 })
 
-
-// RECIPE POST
-
-router.post('/recipes', (req, res, next) => {
-  const name = req.body.name
-  const prepMinutes = req.body.prepMinutes
-  const prepHours = req.body.prepHours
-  const directions = req.body.directions
-  const servings = req.body.servings
-  const ingredients = req.body.ingredients
-  const ingred_id = req.body.ingred_id
-  const recipe_id = req.body.recipe_id
-
-  const sql = 
-  ` 
-  INSERT INTO 
-  recipes (name, prepMinutes, prepHours, directions, servings, username) 
-  VALUES 
-  (?, ?, ?, ?, ?, ?)
-  
-  INSERT INTO 
-  ingredients (ingredients) 
-  VALUES 
-  (?)
-
-  INSERT INTO 
-  both (ingred_id, recipe_id) 
-  VALUES 
-  (?, ?)
-
+router.post('/group_user_links/addUser', (req, res, next) => {
+  const sql =`
+  INSERT INTO
+    group_user_links (group_id, username)
+  VALUES
+    (?, ?)
   `
-
-  conn.query(sql, [name, prepMinutes, prepHours, directions, servings, ingredients, ingred_id, recipe_id], (err, results, fields) => {
-    res.json({"message": "recipe added" })
+  conn.query(sql, [req.body.group_id, req.body.username], (err, results, fields) => {
+    console.log(err)
+    res.json({
+      message: "user added to group"
+    })
   })
 })
 
 
-// // INGREDIENT POST
+// RECIPE POST
+
+router.post('/recipes', (req, res, next) => {
+  const sql =`
+  INSERT INTO
+    recipes (name, prepHours, prepMinutes, directions, servings, username, ingredients)
+  VALUES
+    (?, ?, ?, ?, ?, ?, ?)
+  `
+
+  conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.directions, req.body.servings, req.body.username, req.body.ingredients], (err, results, fields) => {
+    console.log(results)
+    })
+  })
+
+// router.post('/recipes', (req, res, next) => {
+//   const name = req.body.name
+//   const prepMinutes = req.body.prepMinutes
+//   const prepHours = req.body.prepHours
+//   const directions = req.body.directions
+//   const servings = req.body.servings
+//   const ingredients = req.body.ingredients
+//   const ingred_id = req.body.ingred_id
+//   const recipe_id = req.body.recipe_id
+
+//   const sql = 
+//   ` 
+//   INSERT INTO 
+//   recipes (name, prepMinutes, prepHours, directions, servings, username) 
+//   VALUES 
+//   (?, ?, ?, ?, ?, ?)
+  
+//   INSERT INTO 
+//   ingredients (ingredients) 
+//   VALUES 
+//   (?)
+
+//   INSERT INTO 
+//   both (ingred_id, recipe_id) 
+//   VALUES 
+//   (?, ?)
+
+//   `
+
+//   conn.query(sql, [name, prepMinutes, prepHours, directions, servings, ingredients, ingred_id, recipe_id], (err, results, fields) => {
+//     res.json({"message": "recipe added" })
+//   })
+// })
+
 
 // router that recieves calls to all recipes in the database
 router.get('/recipes', (req, res, next) => {

@@ -1,6 +1,6 @@
 import store from '../store'
-import Axios from 'axios';
-import { checkPropTypes } from 'prop-types';
+import Axios from 'axios'
+import { checkPropTypes } from 'prop-types'
 
 
 
@@ -51,6 +51,14 @@ export function searchUser(userNameSearched) {
         })
 }
 
+export function addUserToGroup(group_id, username) {
+    console.log(group_id, username)
+    return Axios.post('/api/group_user_links/addUser', {
+        group_id: group_id,
+        username: username
+    })
+}
+
 
 export function addRecipe(recipes) {
     Axios.post('/api/recipes', recipes, {
@@ -59,7 +67,7 @@ export function addRecipe(recipes) {
         directions: this.state.directions
     })
 }
-
+// a function that grabs a user's uploaded recipes
 export function getUserRecipes(user) {
   Axios.get(`/api/recipes?username=${user}`).then(resp => {
     store.dispatch({

@@ -2,12 +2,7 @@ const initialState = {
 
   inputs: [],
   itemCount: 0,
-
-
   userRecipes: [],
-
-
-
   recipes: [],
   groups: [],
   groupUsers: [],

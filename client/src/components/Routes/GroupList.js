@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext} from 'react'
 import { AuthContext } from "../../lib/auth"
 import { getGroups } from '../../actions/actions'
 import { useSelector } from 'react-redux'
@@ -16,7 +16,7 @@ const GroupList = props => {
        getGroups(user)
     },[])
 
-     const groups = useSelector(appstate => appstate.groups)
+        const groups = useSelector(appstate => appstate.groups)
 
     return (
         // <Provider store={store}>
@@ -27,9 +27,9 @@ const GroupList = props => {
                             <li key={`group - `+i}>
                                 <Link to={"/group/"+item.group_id}>
                             <span>{item.groupname}</span>
-                                </Link>   
+                                </Link>
                             </li>
-                        ))}
+                      ))}
                     </ul>
                     <div id="createGroupLink">
                         <Link to={"/creategroup"}>
