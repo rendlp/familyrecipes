@@ -41,6 +41,7 @@ function UploadParentFunctional () {
     function handleForm(e) {
         e.preventDefault();
         console.log(forms);
+        addRecipe(forms)
 
     };
 
