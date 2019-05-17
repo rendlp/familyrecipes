@@ -44,7 +44,7 @@ router.get('/groupUsers', (req, res, next) => {
     res.json({
       groupUsers: results
     })
-    
+
   })
 })
 
@@ -71,7 +71,7 @@ router.get('/usersSearch', (req, res, next) => {
       username: results[0].username
     })
     console.log(results[0].username)
-    
+
   })
 }
 })
@@ -173,7 +173,7 @@ router.post('/recipes', (req, res, next) => {
 // router that recieves calls to all recipes in the database
 router.get('/recipes', (req, res, next) => {
   const sql = `
-  SELECT name
+  SELECT *
   FROM recipes
   WHERE username = ?
   `
@@ -187,7 +187,7 @@ router.get('/recipes', (req, res, next) => {
 //   const ingredients = req.body.ingredients
 
 
-//   const sql = 
+//   const sql =
 //   ` INSERT INTO ingredients (ingredients) VALUES (?)`
 
 

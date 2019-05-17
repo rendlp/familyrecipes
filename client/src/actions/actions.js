@@ -75,13 +75,14 @@ export function addRecipe(recipe) {
     console.log('ingredients join - ',ingredients.join(", "))
 }
 
+// a function that grabs a user's uploaded recipes and the ID number of those recipes
 
-// a function that grabs a user's uploaded recipes
 export function getUserRecipes(user) {
   Axios.get(`/api/recipes?username=${user}`).then(resp => {
     store.dispatch({
       type: "GET_USER_RECIPES",
-      payload: resp.data
+      userRecipes: resp.data,
+      userRecipeIDs: resp.data[0].recipe_id
     })
   })
 }
