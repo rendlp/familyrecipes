@@ -5,13 +5,13 @@ import Prep from './Prep';
 import Directions from './Directions';
 import Ingredient from './Ingredient'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
+import {addRecipe} from '../../actions/actions'
+import IngredientList from './IngredientList'
+import TheStuff from './TheStuff'
 
-// import IngredientList from './IngredientList'
-// import TheStuff from './TheStuff'
-// import {addRecipe} from '../../actions/actions'
-// import Header from '../header'
-// import Footer from '../footer'
-// import {uploadPhoto} from './uploadPhoto';
+import Header from '../header'
+import Footer from '../footer'
+import {uploadPhoto} from './uploadPhoto';
 
 function UploadParentFunctional () {
 

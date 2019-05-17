@@ -428,7 +428,7 @@ a:visited {
   margin: 8px;
 }
 
-/* #ingredients-textarea {
+#ingredients-textarea {
   height: 300px;
   width: 1000px;
 }
@@ -449,7 +449,7 @@ a:visited {
   top: -369px;
 } */
 
-/* #prep-header {
+#prep-header {
   font-size: 40px;
   text-decoration: underline;
 }
@@ -469,7 +469,7 @@ a:visited {
 #ingredients-header {
   font-size: 40px;
   text-decoration: underline;
-} */
+}
 
 #text-directions {
   position: relative;

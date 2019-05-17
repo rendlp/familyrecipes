@@ -1,5 +1,4 @@
 import React, { useEffect, useContext} from 'react'
-import { useSelector } from 'react'
 import { AuthContext } from "../../lib/auth"
 import { getGroups } from '../../actions/actions'
 import { useSelector } from 'react-redux'
