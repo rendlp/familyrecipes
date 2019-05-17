@@ -301,6 +301,12 @@ ul li {
   margin-top: 104px;
 }
 
+.uploadInput {
+  display: flex;
+  flex-direction: column;
+
+}
+
 #login-link {
   position: relative;
   left: 46px;

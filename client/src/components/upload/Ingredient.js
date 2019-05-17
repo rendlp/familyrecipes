@@ -25,30 +25,6 @@ const Ingredient = (props) => {
             });
         }
     }
-
-
-    // state= {
-    //     input: [],
-    //     ingredients: '',
-        
-    // }
-
-    // ingredientChange = e => {
-    //     this.setState({
-    //         [e.target.name]: e.target.value
-    //     })
-    // }
-
-    // submitIngredient = e => {
-    //     e.preventDefault();
-    //     if (this.state.input !== '') {   
-    //      saveInput(this.state.input)
-    //         this.setState({
-    //             input: ''
-    //         })
-    //     }
-    // }
-
     
     return (
         <form>

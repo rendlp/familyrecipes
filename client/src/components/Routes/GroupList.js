@@ -4,17 +4,13 @@ import { getGroups } from '../../actions/actions'
 import { useSelector } from 'react'
 import {Link} from 'react-router-dom'
 
-
-
-
 const GroupList = props => {
 
     const { user } = useContext(AuthContext)
 
-
     useEffect(() => {
         getGroups(user)
-    },[])
+    },[user])
 
      const groups = useSelector(appstate => appstate.groups)
 

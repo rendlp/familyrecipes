@@ -23,7 +23,6 @@ const Directions = (props) => {
     //         [e.target.name]: e.target.value
     //     })
     // }
-    
  
         return (
             <form>
