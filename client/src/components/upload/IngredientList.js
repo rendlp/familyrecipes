@@ -16,10 +16,6 @@ class IngredientList extends Component {
       </div>
     )
   }
-   
-  
-       
-  
 }
 
 function mapStateToProps(appState) {

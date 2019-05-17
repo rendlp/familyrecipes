@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { AuthContext } from "../../lib/auth"
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react'
 import {Link} from 'react-router-dom'
 import { getGroupUsers } from '../../actions/actions'
 

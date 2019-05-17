@@ -25,34 +25,10 @@ const Ingredient = (props) => {
             });
         }
     }
-
-
-    // state= {
-    //     input: [],
-    //     ingredients: '',
-        
-    // }
-
-    // ingredientChange = e => {
-    //     this.setState({
-    //         [e.target.name]: e.target.value
-    //     })
-    // }
-
-    // submitIngredient = e => {
-    //     e.preventDefault();
-    //     if (this.state.input !== '') {   
-    //      saveInput(this.state.input)
-    //         this.setState({
-    //             input: ''
-    //         })
-    //     }
-    // }
-
     
     return (
         <form>
-            <input type="text" name="list" placeholder="what ingredients do you need?" onKeyDown={handleEnter} />
+            <input className="inputClass" type="text" name="list" placeholder="2 cups of flour..." onKeyDown={handleEnter} />
             <ul>
                 {list.map(item => {
                     return <li key={item.key}>{item.name}</li>

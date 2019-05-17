@@ -130,6 +130,8 @@ height: 700px;
 text-align: center;
 box-shadow: 0 6px 6px -6px black;
 font-size: 18px;
+margin: 4px;
+
 }
 
 .prep {
@@ -166,9 +168,8 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
 
-input.error {
+/* input.error {
 border: 1px solid red;
-
 }
 
 select.error {
@@ -183,18 +184,17 @@ select.error {
 
 label.error {
 color: red;
-}
+} */
 
 .directionDiv {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  margin-left: 40px;
 }
 
-.recipeContainer {
+/* .recipeContainer {
   margin: 0 auto;
-}
+} */
 
 .selectorDiv {
 display:flex;
@@ -202,7 +202,7 @@ flex-direction: column;
 }
 
 select {
-  width: 290px;
+width: 290px;
 height: 52px;
 margin: 50px;
 font-size: 21px;
@@ -246,7 +246,7 @@ h1 {
 
 .inputClass {
   display: block;
-  margin: 14px;
+  margin: 7px;
   width: 350px;
   height: 50px;
   text-align: center;
@@ -265,13 +265,12 @@ ul {
   text-decoration: none;
   font-style: none;
   padding: 0;
+  margin: 0 auto;
 
 }
 
 ul li {
   color: black;
-  display: block;
-  margin: 0 auto;
   width: 350px;
   height: 50px;
   text-align: center;
@@ -281,6 +280,8 @@ ul li {
   border-bottom: 1px solid lightgrey;
   box-shadow: 0 1px 1px rgb(0, 0, 0, 0.15), 0 10px 0 -5px #eee;
   line-height: 50px;
+  overflow: scroll;
+  margin: 0 auto;
 
 }
 
@@ -303,6 +304,25 @@ ul li {
   justify-content: center;
   font-size: 72px;
   margin-top: 104px;
+}
+
+.uploadDiv {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.uploadInput {
+  border: 1px solid lightgrey;
+  width: 500px;
+  height:600px;
+
+}
+
+.uploadButton {
+  margin: 0 auto;
 }
 
 #login-link {
@@ -394,7 +414,6 @@ ul li {
   left: 29px;
 }
 
-
 a {
   text-decoration: none;
   color: none;
@@ -405,7 +424,11 @@ a:visited {
   color: black;
 }
 
-#ingredients-textarea {
+.ingredients {
+  margin: 8px;
+}
+
+/* #ingredients-textarea {
   height: 300px;
   width: 1000px;
 }
@@ -424,9 +447,9 @@ a:visited {
 #recipe-name {
   position: relative;
   top: -369px;
-}
+} */
 
-#prep-header {
+/* #prep-header {
   font-size: 40px;
   text-decoration: underline;
 }
@@ -446,9 +469,11 @@ a:visited {
 #ingredients-header {
   font-size: 40px;
   text-decoration: underline;
-}
+} */
 
-#directions {
+#text-directions {
   position: relative;
-  top: 196px;
-}
+  bottom: 5px;
+  left: 35px;
+} 
+

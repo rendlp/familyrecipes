@@ -1,16 +1,13 @@
 import React, { useEffect, useContext} from 'react'
+import { useSelector } from 'react'
 import { AuthContext } from "../../lib/auth"
 import { getGroups } from '../../actions/actions'
 import { useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 
-
-
-
 const GroupList = props => {
 
     const { user } = useContext(AuthContext)
-
 
     useEffect(() => {
        getGroups(user)

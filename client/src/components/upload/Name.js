@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import useFormInput from '../hooks/useFormInput'
 
 const Name = (props) => {
@@ -19,7 +19,6 @@ const Name = (props) => {
         manageFunc('name', values);
     }, [values]);
 
-    
         return (
             <form>
             <div className="test">
@@ -27,9 +26,7 @@ const Name = (props) => {
                 <h1>Name</h1>
                 </label>
             <input 
-                
                 type="text"
-           
                 name="name"
                 id="name"
                 onChange= {changeForm}

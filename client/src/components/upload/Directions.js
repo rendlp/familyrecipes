@@ -27,12 +27,12 @@ const Directions = (props) => {
 
         return (
             <form>
-                <div id="directionDiv">
+                <div className="directionDiv">
                     <label
                         htmlFor='name'
-                        className="directions-text">
+                        className="directions-text"></label>
                     <h1>Directions</h1>
-                    </label>
+            
 
                     <textarea
                         type="text"
