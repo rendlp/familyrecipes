@@ -130,7 +130,8 @@ router.post('/recipes', (req, res, next) => {
   `
 
   conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.directions, req.body.servings, req.body.username, req.body.ingredients], (err, results, fields) => {
-    console.log(results)
+    console.log(results);
+    message: 'recipe posted'
     })
   })
 
