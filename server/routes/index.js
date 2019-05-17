@@ -51,12 +51,20 @@ router.get('/groupUsers', (req, res, next) => {
 router.get('/usersSearch', (req, res, next) => {
   const sql = `
   SELECT
-	  username
+    ifnull((
+  SELECT
+    username
   FROM
 	  users
   WHERE
     username = ?
+  ), 'usernotfound') as username
   `
+  if (req.query.username === '') {
+    res.json({
+      username:''
+    })
+  } else {
 
   conn.query(sql, [req.query.username],(err, results, fields) => {
     res.json({
@@ -65,6 +73,7 @@ router.get('/usersSearch', (req, res, next) => {
     console.log(results[0].username)
     
   })
+}
 })
 
 
@@ -79,7 +88,6 @@ router.post('/groups', (req, res, next) => {
   INSERT INTO group_user_links (group_id, username)
      VALUES (?,?);
   `
-
   conn.query(sql, [req.body.groupname], (err, results, fields) => {
     console.log(results)
     conn.query(sql2, [results.insertId, req.body.username], (err, results, fields) => {
@@ -93,6 +101,21 @@ router.post('/groups', (req, res, next) => {
 
 
 
+})
+
+router.post('/group_user_links/addUser', (req, res, next) => {
+  const sql =`
+  INSERT INTO
+    group_user_links (group_id, username)
+  VALUES
+    (?, ?)
+  `
+  conn.query(sql, [req.body.group_id, req.body.username], (err, results, fields) => {
+    console.log(err)
+    res.json({
+      message: "user added to group"
+    })
+  })
 })
 
 

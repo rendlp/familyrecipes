@@ -1,5 +1,7 @@
 import store from '../store'
-import Axios from 'axios';
+
+import Axios from 'axios'
+
 import { checkPropTypes } from 'prop-types';
 
 
@@ -49,6 +51,14 @@ export function searchUser(userNameSearched) {
             })
             console.log(resp.data.username)
         })
+}
+
+export function addUserToGroup(group_id, username) {
+    console.log(group_id, username)
+    return Axios.post('/api/group_user_links/addUser', {
+        group_id: group_id,
+        username: username
+    })
 }
 
 
