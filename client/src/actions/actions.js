@@ -1,4 +1,4 @@
-import store from 'react'
+import store from '../store'
 import Axios from 'axios';
 import { checkPropTypes } from 'prop-types';
 
@@ -59,7 +59,7 @@ export function addRecipe(recipes) {
         directions: this.state.directions
     })
 }
-
+// a function that grabs a user's uploaded recipes
 export function getUserRecipes(user) {
   Axios.get(`/api/recipes?username=${user}`).then(resp => {
     store.dispatch({
