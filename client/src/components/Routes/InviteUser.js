@@ -53,6 +53,7 @@ const InviteUser = props => {
                 </div>
     )
 }
+
 function mapStateToProps(appState){
     console.log('currentGroup - ',appState.currentGroup)
     return{
@@ -61,3 +62,5 @@ function mapStateToProps(appState){
     }
 }
 export default connect(mapStateToProps)(InviteUser)
+
+

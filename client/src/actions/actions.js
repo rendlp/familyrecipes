@@ -1,18 +1,18 @@
 import store from '../store'
+
 import Axios from 'axios'
+
 import { checkPropTypes } from 'prop-types';
 
 
-//SOCKET STUFF FOR LATER
 
-// export function connect(user) {
-//  socket = io.connect("http://10.68.0.212:3001")
-
-
-// socket.emit("join", user)
+// export function addIngredients(ingredients) {
+//     Axios.post('/api/ingredients', ingredients)
 // }
 
-//GROUPS
+export function addBoth(both) {
+    Axios.post('/api/both', both)
+}
 
 export function getGroups(user) {
     Axios.get(`/api/groups?username=${user}`).then(resp => {
@@ -41,6 +41,8 @@ export function createGroup(groupName, user) {
     })
 }
 
+
+
 export function searchUser(userNameSearched) {
         Axios.get(`/api/usersSearch?username=${userNameSearched}`).then(resp => {
             store.dispatch({
@@ -61,16 +63,15 @@ export function addUserToGroup(group_id, username) {
 
 
 export function addRecipe(recipes) {
-    Axios.post('http://localhost:3000/recipes', recipes, {
+    Axios.post('/api/recipes', recipes, {
         name: this.state.name,
         prep: this.state.prep,
         directions: this.state.directions
     })
 }
-
-export function getRecipes() {
-  Axios.get('http://localhost:3000/recipes').then(resp => {
-    console.log(resp.data)
+// a function that grabs a user's uploaded recipes
+export function getUserRecipes(user) {
+  Axios.get(`/api/recipes?username=${user}`).then(resp => {
     store.dispatch({
       type: "GET_USER_RECIPES",
       payload: resp.data
@@ -79,7 +80,7 @@ export function getRecipes() {
 }
 
 export function addIngredients(ingredients) {
-    Axios.post('http://localhost:3000/ingredients', ingredients, {
+    Axios.post('/api/ingredients', ingredients, {
         ingred_id: this.state.ingred_id,
         ingredient: this.state.ingredient
     })
