@@ -26,9 +26,9 @@ class uploadPhoto extends Component {
     render() {
         return (
             <div className='uploadDiv'>
-                <h1>test</h1>
+                <h1>upload a recipe photo</h1>
                 <input className='uploadInput' type='file' onChange={this.fileSelectedHandler} />
-                <button onClick={this.fileUploadHandler}>Upload</button>
+                <button className='uploadButton' onClick={this.fileUploadHandler}>Upload</button>
             </div>
         )
     }

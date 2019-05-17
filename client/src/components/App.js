@@ -17,16 +17,10 @@ import UsermadeRecipeBook from './Routes/usermade-recipebook'
 import WhatsHappenin from './Routes/whats-happenin'
 import CreateGroup from './Routes/CreateGroup'
 import UploadParentFunctional from './upload/UploadParentFunctional'
-<<<<<<< HEAD
 import uploadPhoto from './upload/uploadPhoto';
-=======
 import Group from './Routes/Group'
 import InviteUser from './Routes/InviteUser'
 import RecipeView from './Routes/recipe-view'
-
-
-
->>>>>>> 6fa22fce838533a78d260d54e7221db2aba56fca
 
 class App extends Component {
   render() {
@@ -54,13 +48,10 @@ class App extends Component {
               <AuthRoute path="/usermade_recipebook" exact component={UsermadeRecipeBook} />
               <AuthRoute path="/recent_updates" exact component={WhatsHappenin} />
               <AuthRoute path="/creategroup" exact component={CreateGroup} />
-<<<<<<< HEAD
               
-=======
               <AuthRoute path="/group/:group_id" exact component={Group} />
               <AuthRoute path="/group/:group_id/inviteUser" exact component={InviteUser} />
               <AuthRoute path="/user_recipes/:recipe_id" exact component={RecipeView} />
->>>>>>> 6fa22fce838533a78d260d54e7221db2aba56fca
             </div>
           </Router>
         </Provider>

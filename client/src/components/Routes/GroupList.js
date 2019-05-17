@@ -1,5 +1,5 @@
 import React, { useEffect, useContext} from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react'
 import { AuthContext } from "../../lib/auth"
 import { getGroups } from '../../actions/actions'
 import {Link} from 'react-router-dom'
@@ -9,13 +9,8 @@ const GroupList = props => {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-<<<<<<< HEAD
-        getGroups(user)
-    },[user])
-=======
        getGroups(user)
     },[])
->>>>>>> 6fa22fce838533a78d260d54e7221db2aba56fca
 
         const groups = useSelector(appstate => appstate.groups)
 

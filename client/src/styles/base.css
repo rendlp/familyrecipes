@@ -305,10 +305,22 @@ ul li {
   margin-top: 104px;
 }
 
-.uploadInput {
+.uploadDiv {
   display: flex;
   flex-direction: column;
+  margin: 5px;
+  padding: 10px;
+}
 
+.uploadInput {
+  border: 1px solid lightgrey;
+  width: 500px;
+  height:600px;
+
+}
+
+.uploadButton {
+  margin: 0 auto;
 }
 
 #login-link {
