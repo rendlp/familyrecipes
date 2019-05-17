@@ -307,7 +307,7 @@ ul li {
 
 .uploadDiv {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: 5px;
   padding: 10px;
 }

@@ -6,12 +6,12 @@ import Directions from './Directions';
 import Ingredient from './Ingredient'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 
-import IngredientList from './IngredientList'
-import TheStuff from './TheStuff'
-import {addRecipe} from '../../actions/actions'
-import Header from '../header'
-import Footer from '../footer'
-import {uploadPhoto} from './uploadPhoto';
+// import IngredientList from './IngredientList'
+// import TheStuff from './TheStuff'
+// import {addRecipe} from '../../actions/actions'
+// import Header from '../header'
+// import Footer from '../footer'
+// import {uploadPhoto} from './uploadPhoto';
 
 function UploadParentFunctional () {
 
@@ -42,7 +42,6 @@ function UploadParentFunctional () {
             <Name manageForm={manageForm} formData={forms.RecipeName} />
             {/* <uploadPhoto manageForm  ={manageForm} formData={forms.RecipePhoto} /> */}
             <Prep manageForm={manageForm} formData={forms.PrepTime} />
-
         </div>
 
             {/* <TheStuff manageForm={manageForm} formData={forms.Ingredients} /> */}

@@ -10,7 +10,7 @@ const fs = require('fs')
 const { Storage } = require("@google-cloud/storage");
 const gcconfig = {
     projectId: 'nettles',
-    keyFilename:'nettles-firebase-adminsdk-ev27j-fdaed6eecc.json'
+    keyFilename:'XXX'
 }
 const gcs = new Storage(gcconfig);
 

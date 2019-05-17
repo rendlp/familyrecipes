@@ -28,7 +28,7 @@ const Ingredient = (props) => {
     
     return (
         <form>
-            <input type="text" name="list" placeholder="what ingredients do you need?" onKeyDown={handleEnter} />
+            <input type="text" name="list" placeholder="2 cups of flour..." onKeyDown={handleEnter} />
             <ul>
                 {list.map(item => {
                     return <li key={item.key}>{item.name}</li>

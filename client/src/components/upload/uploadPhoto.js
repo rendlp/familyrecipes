@@ -14,7 +14,8 @@ class uploadPhoto extends Component {
         console.log(e.target.files[0])
     }
 
-    fileUploadHandler = () => {
+    fileUploadHandler = (e) => {
+        e.preventDefault()
         const fd = new FormData();
         fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
         Axios.post('https://us-central1-nettles.cloudfunctions.net/uploadFile', fd)
