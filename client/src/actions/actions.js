@@ -1,4 +1,4 @@
-import store from 'react'
+import store from '../store'
 import Axios from 'axios';
 import { checkPropTypes } from 'prop-types';
 

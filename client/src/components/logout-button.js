@@ -16,7 +16,6 @@ const LogoutButton = props => {
 
             <span>{user}</span>
             <Logout />
-            <button><Link to ='/upload'>Upload A Recipe</Link></button>
         
         </div>
 
