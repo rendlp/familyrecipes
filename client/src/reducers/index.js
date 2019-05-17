@@ -3,7 +3,8 @@ const initialState = {
   inputs: [],
   itemCount: 0,
   userRecipes: [],
-  recipes: [],
+  userRecipeIDs: [],
+  // recipes: [],
   groups: [],
   groupUsers: [],
   currentGroup: '',
@@ -12,6 +13,7 @@ const initialState = {
 }
 
 export default function(state = initialState, action) {
+  //if (action.type) ...
   switch (action.type) {
 
     case "ADD_MESSAGE":
@@ -27,9 +29,9 @@ export default function(state = initialState, action) {
     case 'ADD_RECIPE':
     return {...state, recipes:[...state.recipes, action.recipe]}
 
-
+    // then grab a user's uploaded recipes and their associated ID numbers
     case "GET_USER_RECIPES":
-      return {...state, userRecipes: action.payload}
+      return {...state, userRecipes: action.userRecipes, userRecipeIDs: action.userRecipeIDs,}
 
     case "GET_GROUP_USERS":
       return {...state, groupUsers: action.payload, currentGroup: action.payload[0].groupname}

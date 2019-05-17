@@ -44,7 +44,7 @@ router.get('/groupUsers', (req, res, next) => {
     res.json({
       groupUsers: results
     })
-    
+
   })
 })
 
@@ -71,7 +71,7 @@ router.get('/usersSearch', (req, res, next) => {
       username: results[0].username
     })
     console.log(results[0].username)
-    
+
   })
 }
 })
@@ -131,21 +131,21 @@ router.post('/recipes', (req, res, next) => {
   const ingred_id = req.body.ingred_id
   const recipe_id = req.body.recipe_id
 
-  const sql = 
-  ` 
-  INSERT INTO 
-  recipes (name, prepMinutes, prepHours, directions, servings, username) 
-  VALUES 
+  const sql =
+  `
+  INSERT INTO
+  recipes (name, prepMinutes, prepHours, directions, servings, username)
+  VALUES
   (?, ?, ?, ?, ?, ?)
-  
-  INSERT INTO 
-  ingredients (ingredients) 
-  VALUES 
+
+  INSERT INTO
+  ingredients (ingredients)
+  VALUES
   (?)
 
-  INSERT INTO 
-  both (ingred_id, recipe_id) 
-  VALUES 
+  INSERT INTO
+  both (ingred_id, recipe_id)
+  VALUES
   (?, ?)
 
   `
@@ -161,7 +161,7 @@ router.post('/recipes', (req, res, next) => {
 // router that recieves calls to all recipes in the database
 router.get('/recipes', (req, res, next) => {
   const sql = `
-  SELECT name
+  SELECT *
   FROM recipes
   WHERE username = ?
   `
@@ -175,7 +175,7 @@ router.get('/recipes', (req, res, next) => {
 //   const ingredients = req.body.ingredients
 
 
-//   const sql = 
+//   const sql =
 //   ` INSERT INTO ingredients (ingredients) VALUES (?)`
 
 
