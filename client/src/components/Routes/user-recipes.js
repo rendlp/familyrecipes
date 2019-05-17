@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react'
+import {Link} from 'react-router-dom'
 import Header from '../header'
 import Footer from '../footer'
 import LogoutButton from '../logout-button'
@@ -13,14 +14,14 @@ const UserRecipe = (props) => {
 
   useEffect( () => {
       getUserRecipes(user)
-  },)
+  }, [])
 
   return (
       <div>
         <Header />
         <LogoutButton />
-        { props.userRecipes.map(recipe => (
-          <p>{recipe.name}</p>
+        {props.userRecipes.map(recipe => (
+          <Link to={'user_recipes/' + recipe.recipe_id}><p>{recipe.name}</p></Link>
         ))}
         <Footer />
       </div>
@@ -30,6 +31,7 @@ const UserRecipe = (props) => {
 function mapStateToProps(appState) {
   return {
     userRecipes: appState.userRecipes,
+    userRecipeIDs: appState.userRecipeIDs
   }
 }
 
