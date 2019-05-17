@@ -17,7 +17,6 @@ const LogoutButton = props => {
             <span>{user}</span>
             <Logout />
 
-
         </div>
 
     )

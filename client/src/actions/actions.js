@@ -1,8 +1,6 @@
 import store from '../store'
-
 import Axios from 'axios'
-
-import { checkPropTypes } from 'prop-types';
+import { checkPropTypes } from 'prop-types'
 
 
 
@@ -62,14 +60,23 @@ export function addUserToGroup(group_id, username) {
 }
 
 
-export function addRecipe(recipes) {
-    Axios.post('/api/recipes', recipes, {
-        name: this.state.name,
-        prep: this.state.prep,
-        directions: this.state.directions
+export function addRecipe(recipe) {
+    const ingredients = recipe.ingredient.list.map(x => x.name)
+
+    Axios.post('/api/recipes', {
+        name: recipe.name.name,
+        prepHours: recipe.prepTime.prepHours,
+        prepMinutes:recipe.prepTime.prepMinutes,
+        directions: recipe.directions.directions,
+        servings: recipe.prepTime.serves,
+        username: recipe.username.user,
+        ingredients: ingredients.join(", ")
     })
+    console.log('ingredients join - ',ingredients.join(", "))
 }
+
 // a function that grabs a user's uploaded recipes and the ID number of those recipes
+
 export function getUserRecipes(user) {
   Axios.get(`/api/recipes?username=${user}`).then(resp => {
     store.dispatch({
@@ -80,12 +87,12 @@ export function getUserRecipes(user) {
   })
 }
 
-export function addIngredients(ingredients) {
-    Axios.post('/api/ingredients', ingredients, {
-        ingred_id: this.state.ingred_id,
-        ingredient: this.state.ingredient
-    })
-}
+// export function addIngredients(ingredients) {
+//     Axios.post('/api/ingredients', ingredients, {
+//         ingred_id: this.state.ingred_id,
+//         ingredient: this.state.ingredient
+//     })
+// }
 // for potential future use
 
 // export function Date() {
