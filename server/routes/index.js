@@ -181,6 +181,21 @@ router.get('/recipes', (req, res, next) => {
     res.json(results)
     console.log(results)
   })
+})
+
+router.get('/recipes/current', (req, res, next) => {
+    const sql = `
+    SELECT *
+    FROM recipes
+    WHERE recipe_id = ?
+    `
+    conn.query(sql, [req.query.recipe_id],(error, results, fields) => {
+      res.json(results)
+      console.log(results)
+    })
+  })
+
+
 
 
 // router.post('/ingredients', (req, res, next) => {
@@ -191,7 +206,7 @@ router.get('/recipes', (req, res, next) => {
 //   ` INSERT INTO ingredients (ingredients) VALUES (?)`
 
 
-})
+
 
 
 //   conn.query(sql, [ingredients], (err, results, fields) => {
