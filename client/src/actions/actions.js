@@ -4,10 +4,6 @@ import { checkPropTypes } from 'prop-types'
 
 
 
-// export function addIngredients(ingredients) {
-//     Axios.post('/api/ingredients', ingredients)
-// }
-
 export function addBoth(both) {
     Axios.post('/api/both', both)
 }
@@ -72,28 +68,30 @@ export function addRecipe(recipe) {
         username: recipe.username.user,
         ingredients: ingredients.join(", ")
     })
-    console.log('ingredients join - ',ingredients.join(", "))
 }
 
 // a function that grabs a user's uploaded recipes and the ID number of those recipes
 
 export function getUserRecipes(user) {
   Axios.get(`/api/recipes?username=${user}`).then(resp => {
-      console.log(resp.data.ingredients)
     store.dispatch({
       type: "GET_USER_RECIPES",
       userRecipes: resp.data,
-      userRecipeIDs: resp.data[0].recipe_id
     })
   })
 }
 
-// export function addIngredients(ingredients) {
-//     Axios.post('/api/ingredients', ingredients, {
-//         ingred_id: this.state.ingred_id,
-//         ingredient: this.state.ingredient
-//     })
-// }
+export function getCurrentRecipe(recipeId) {
+    Axios.get(`/api/recipes/current?recipe_id=${recipeId}`).then(resp => {
+        console.log(resp.data[0].ingredients.split(", "))
+      store.dispatch({
+        type: "GET_CURRENT_RECIPE",
+        currentRecipe: resp.data[0],
+        currentRecipeIngredients: resp.data[0].ingredients.split(", ")
+      })
+    })
+  }
+
 // for potential future use
 
 // export function Date() {

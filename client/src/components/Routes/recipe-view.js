@@ -1,52 +1,44 @@
 import React, { useEffect, useContext } from 'react'
-import {useSelector} from 'react-redux'
 import { AuthContext } from "../../lib/auth"
 import Header from '../header'
 import Footer from '../footer'
-import {getUserRecipes} from '../../actions/actions'
+import { getCurrentRecipe } from '../../actions/actions'
 import { connect } from 'react-redux'
 
 const RecipeView = (props) => {
-
-  // variable holding which user is logged in
   const { user } = useContext(AuthContext)
-  // variable holding the recipe ID in the url link
+ 
   const recipeId = props.match.params.recipe_id
 
-  console.log('recipe - ',recipeId)
-  // hooks function that holds lifestyle methods(componentWillMount)
   useEffect(() => {
-      getUserRecipes(user)
+      getCurrentRecipe(recipeId)
   },[])
-
-  const CurrentRecipe = props.userRecipes.filter(recipe => recipe.recipe_id == recipeId)
-
-  console.log(CurrentRecipe)
 
   return (
     <div>
       <Header />
-        <div id="recipeCanvas">
+        <div id="recipe-display">
           <img id="recipe-pic" src="http://place-hold.it/400/400" />
-          {CurrentRecipe
-          .map(recipe => (
-            <div>
-              <h1 id="recipe-name">{recipe.name}</h1>
+          
+              <h1 id="recipe-name">{props.currentRecipe.name}</h1>
               <div id="prep">
-                <p id="prep-header">Prep Time</p>
-                <p id="prep-hours">Hours: {recipe.prepHours}</p>
-                <p id="prep-minutes">Minutes: {recipe.prepMinutes}</p>
+                <h2 id="prep-header">Prep Time</h2>
+                <p id="prep-hours">Hours: {props.currentRecipe.prepHours}</p>
+                <p id="prep-minutes">Minutes: {props.currentRecipe.prepMinutes}</p>
               </div>
               <div id="ingredients">
-                <p id="ingredients-header">Ingredients</p>
+                <h2 id="ingredients-header">Ingredients</h2>
+                <ul id="ingredients-content">
+                  {props.ingredients.map((ingredient, i) => (
+                    <li key={'ingredient'+i}>{ingredient}</li>
+                  ))}
+                </ul>
               </div>
               <div id="directions">
-                <h1 id="directions-header">Directions</h1>
-                <h1 id="recipe-directions">{recipe.directions}</h1>
+                <h2 id="directions-header">Directions</h2>
+                <p id="recipe-directions">{props.currentRecipe.directions}</p>
               </div>
-            </div>
-          ))}
-
+          
         </div>
       <Footer />
 
@@ -56,8 +48,8 @@ const RecipeView = (props) => {
 
 function mapStateToProps(appState) {
   return {
-    userRecipes: appState.userRecipes,
-    userRecipeIDs: appState.userRecipeIDs
+    currentRecipe: appState.currentRecipe,
+    ingredients: appState.currentRecipeIngredients
   }
 }
 
