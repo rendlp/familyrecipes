@@ -66,7 +66,7 @@ export function addRecipe(recipe) {
         directions: recipe.directions.directions,
         servings: recipe.prepTime.serves,
         username: recipe.username.user,
-        ingredients: ingredients.join(", ")
+        ingredients: ingredients.join("*/*")
     })
 }
 
@@ -83,11 +83,11 @@ export function getUserRecipes(user) {
 
 export function getCurrentRecipe(recipeId) {
     Axios.get(`/api/recipes/current?recipe_id=${recipeId}`).then(resp => {
-        console.log(resp.data[0].ingredients.split(", "))
+        console.log(resp.data[0].ingredients.split("*/*"))
       store.dispatch({
         type: "GET_CURRENT_RECIPE",
         currentRecipe: resp.data[0],
-        currentRecipeIngredients: resp.data[0].ingredients.split(", ")
+        currentRecipeIngredients: resp.data[0].ingredients.split("*/*")
       })
     })
   }
