@@ -17,6 +17,7 @@ const UserRecipe = (props) => {
 
   }, [])
 
+  
 
   return (
       <div>
@@ -27,7 +28,7 @@ const UserRecipe = (props) => {
         ))}
         <Footer />
       </div>
-    )
+  )
 }
 
 function mapStateToProps(appState) {

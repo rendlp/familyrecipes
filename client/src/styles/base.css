@@ -418,49 +418,24 @@ a:visited {
   width: 1000px;
 }
 
-#recipeCanvas {
-  height: 1500px;
-  margin: 0 10%;
+#recipe-display {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  align-items: center;
 }
 
-#recipe-pic {
-  position: relative;
-  left: 565px;
-  top: 145px;
-}
-
-#recipe-name {
-  position: relative;
-  top: -369px;
-} */
-
-#prep-header {
+#recipe-display h2 {
   font-size: 40px;
   text-decoration: underline;
+  color: gray;
 }
 
-#prep {
-  position: relative;
-  top: 65px;
-  left: 482px;
+#recipe-display ul li{
+  width: 100%;
+  color: gray;
 }
 
-#ingredients {
-  position: relative;
-  left: 864px;
-  top: -110px;
-}
-
-#ingredients-header {
-  font-size: 40px;
-  text-decoration: underline;
-}
-
-#text-directions {
-  position: relative;
-  bottom: 5px;
-  left: 35px;
-} 
 
 .imgUpload {
   margin-top: 10px;

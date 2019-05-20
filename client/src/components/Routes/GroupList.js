@@ -15,8 +15,6 @@ const GroupList = props => {
         const groups = useSelector(appstate => appstate.groups)
 
     return (
-        // <Provider store={store}>
-        //     <Router>
                 <div className = "groupList">
                     <ul>
                     {groups.map((item, i) => (
@@ -33,10 +31,6 @@ const GroupList = props => {
                         </Link>
                     </div>
                 </div>
-        //     {/* </Router>
-        // </Provider> */}
-
-
     )
 }
 

@@ -21,6 +21,10 @@ import uploadPhoto from './upload/UploadPhoto';
 import Group from './Routes/Group'
 import InviteUser from './Routes/InviteUser'
 import RecipeView from './Routes/recipe-view'
+import CreateRecipebook from './Routes/create-recipebook'
+import GroupRecipeView from './Routes/GroupRecipeView'
+import FavRecipeView from './Routes/FavRecipeView'
+import RecipeBookView from './Routes/RecipeBookView'
 
 class App extends Component {
   render() {
@@ -38,6 +42,7 @@ class App extends Component {
               </Switch>
 
               {/* private routes */}
+              <Switch>
               <AuthRoute path="/" exact component={AccountHome} />
               <AuthRoute path="/upload" component={UploadParentFunctional} />
               <AuthRoute path="/uploadphoto" exact component={uploadPhoto} />
@@ -49,10 +54,14 @@ class App extends Component {
               <AuthRoute path="/usermade_recipebook" exact component={UsermadeRecipeBook} />
               <AuthRoute path="/recent_updates" exact component={WhatsHappenin} />
               <AuthRoute path="/creategroup" exact component={CreateGroup} />
-              
+              <AuthRoute path="/createrecipebook" exact component={CreateRecipebook} />
               <AuthRoute path="/group/:group_id" exact component={Group} />
               <AuthRoute path="/group/:group_id/inviteUser" exact component={InviteUser} />
               <AuthRoute path="/user_recipes/:recipe_id" exact component={RecipeView} />
+              <AuthRoute path="/:groupname/Recipes/:recipe_id" exact component={GroupRecipeView} />
+              <AuthRoute path="/user_fav_recipes/:recipe_id" exact component={FavRecipeView} />
+              <AuthRoute path="/user_fav_recipes/recipebook/:recipebook_id" exact component={RecipeBookView} />
+              </Switch>
             </div>
           </Router>
         </Provider>
