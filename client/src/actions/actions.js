@@ -66,7 +66,15 @@ export function addRecipe(recipe) {
         directions: recipe.directions.directions,
         servings: recipe.prepTime.serves,
         username: recipe.username.user,
-        ingredients: ingredients.join(", ")
+        ingredients: ingredients.join("*/*")
+    })
+}
+
+export function shareRecipeWithGroup(recipeId, groupChosen, recipeName) {
+    Axios.post('/api/group_recipe_links', {
+        recipe_id: recipeId,
+        group_id: groupChosen,
+        name: recipeName
     })
 }
 
@@ -83,11 +91,21 @@ export function getUserRecipes(user) {
 
 export function getCurrentRecipe(recipeId) {
     Axios.get(`/api/recipes/current?recipe_id=${recipeId}`).then(resp => {
-        console.log(resp.data[0].ingredients.split(", "))
+        console.log(resp.data[0].ingredients.split("*/*"))
       store.dispatch({
         type: "GET_CURRENT_RECIPE",
         currentRecipe: resp.data[0],
-        currentRecipeIngredients: resp.data[0].ingredients.split(", ")
+        currentRecipeIngredients: resp.data[0].ingredients.split("*/*")
+      })
+    })
+  }
+
+export function getGroupRecipes(group_id) {
+    Axios.get(`/api/groupRecipes?group_id=${group_id}`).then(resp => {
+        console.log('group recipes actions - ',resp.data.results)
+      store.dispatch({
+        type: "GET_GROUP_RECIPES",
+        payload: resp.data.results
       })
     })
   }
