@@ -30,6 +30,60 @@ router.get('/groups', (req, res, next) => {
   })
 })
 
+//get call to grab a user's favorited recipe List
+router.get('/user_favorites', (req, res, next) => {
+  const sql = `
+    SELECT name
+    FROM user_favorites
+    WHERE username = ?`
+
+    conn.query(sql, [req.query.username], (err, results, fields) => {
+      res.json({
+        userFavorites: results
+      })
+    })
+})
+
+//post call to hold a recipe that a user has just favorited
+router.post('/user_favorites', (req, res, next) => {
+  const sql = `
+  INSERT INTO user_favorites (name, recipe_id, username)
+  VALUES (?, ?, ?)`
+
+  conn.query(sql, [req.body.recipeName, req.body.recipe_id, req.body.username], (err, results, fields) => {
+    console.log(err)
+    res.json({
+      message: 'recipe added to favorites list',
+    })
+  })
+})
+// get call to grab a user's list of created recipebooks from the application's database(user_recipebooks table)
+router.get('/user_recipebooks', (req, res, next) => {
+  const sql = `
+  SELECT recipebook_name
+  FROM user_recipebooks
+  WHERE username = ?`
+
+  conn.query(sql, [req.query.username], (err, results, fields) => {
+    res.json({
+      userRecipeBooks: results
+    })
+  })
+})
+//post call to insert a user's created recipebook into the application's database(user_recipebooks table)
+router.post('/user_recipebooks', (req, res, next) => {
+  const sql = `
+  INSERT INTO user_recipebooks (recipebook_id, recipebook_name, username)
+  VALUES (?, ?, ?)`
+
+  conn.query(sql, [req.body.recipebook_id, req.body.recipebook_name, req.body.username], (err, results, fields) => {
+    console.log(results)
+    res.json({
+      message: 'recipebook created',
+    })
+  })
+})
+
 router.get('/groupUsers', (req, res, next) => {
   const sql = `
   SELECT
@@ -158,21 +212,21 @@ router.post('/group_recipe_links', (req, res, next) => {
 //   const ingred_id = req.body.ingred_id
 //   const recipe_id = req.body.recipe_id
 
-//   const sql = 
-//   ` 
-//   INSERT INTO 
-//   recipes (name, prepMinutes, prepHours, directions, servings, username) 
-//   VALUES 
+//   const sql =
+//   `
+//   INSERT INTO
+//   recipes (name, prepMinutes, prepHours, directions, servings, username)
+//   VALUES
 //   (?, ?, ?, ?, ?, ?)
-  
-//   INSERT INTO 
-//   ingredients (ingredients) 
-//   VALUES 
+
+//   INSERT INTO
+//   ingredients (ingredients)
+//   VALUES
 //   (?)
 
-//   INSERT INTO 
-//   both (ingred_id, recipe_id) 
-//   VALUES 
+//   INSERT INTO
+//   both (ingred_id, recipe_id)
+//   VALUES
 //   (?, ?)
 
 //   `

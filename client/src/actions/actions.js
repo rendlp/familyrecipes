@@ -109,6 +109,40 @@ export function getGroupRecipes(group_id) {
       })
     })
   }
+  // function that grabs a user's list of favorited recipes
+  export function getUserFavorites(user) {
+    Axios.get(`/api/user_favorites?username=${user}`).then(resp => {
+      store.dispatch({
+        type: 'GET_USER_FAVORITES',
+        payload: resp.data.userFavorites,
+      })
+    })
+  }
+  // a function that will post a favorited recipe to the application's database(user_favories table)
+  export function addFavoriteRecipe(name, recipe_id, user) {
+    Axios.post(`/api/user_favorites`, {
+      recipeName: name,
+      recipe_id: recipe_id,
+      username: user
+    })
+  }
+  // a function that will grab a user's list of created recipebooks from the application's database
+  export function getRecipeBooks(user) {
+    Axios.get(`/api/user_recipebooks?username=${user}`).then(resp => {
+      console.log(resp.data.userRecipeBooks)
+      store.dispatch({
+        type: 'GET_USER_RECIPEBOOKS',
+        payload: resp.data.userRecipeBooks,
+      })
+    })
+  }
+  // a function that will add a user created recipebook to the application's database(user_recipebooks table)
+  export function createRecipebook(user, recipebookName) {
+    return Axios.post('/api/user_recipebooks', {
+      username: user,
+      recipebook_name: recipebookName
+    })
+  }
 
 // for potential future use
 
