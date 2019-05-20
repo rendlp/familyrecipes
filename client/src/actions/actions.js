@@ -70,6 +70,14 @@ export function addRecipe(recipe) {
     })
 }
 
+export function shareRecipeWithGroup(recipeId, groupChosen, recipeName) {
+    Axios.post('/api/group_recipe_links', {
+        recipe_id: recipeId,
+        group_id: groupChosen,
+        name: recipeName
+    })
+}
+
 // a function that grabs a user's uploaded recipes and the ID number of those recipes
 
 export function getUserRecipes(user) {
@@ -88,6 +96,16 @@ export function getCurrentRecipe(recipeId) {
         type: "GET_CURRENT_RECIPE",
         currentRecipe: resp.data[0],
         currentRecipeIngredients: resp.data[0].ingredients.split("*/*")
+      })
+    })
+  }
+
+export function getGroupRecipes(group_id) {
+    Axios.get(`/api/groupRecipes?group_id=${group_id}`).then(resp => {
+        console.log('group recipes actions - ',resp.data.results)
+      store.dispatch({
+        type: "GET_GROUP_RECIPES",
+        payload: resp.data.results
       })
     })
   }

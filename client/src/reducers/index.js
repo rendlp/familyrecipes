@@ -8,7 +8,8 @@ const initialState = {
   groups: [],
   groupUsers: [],
   currentGroup: '',
-  foundUser: ''
+  foundUser: '',
+  groupRecipes: []
 
 }
 
@@ -41,6 +42,9 @@ export default function(state = initialState, action) {
 
     case "FOUND_USER":
       return {...state, foundUser: action.payload}
+
+    case "GET_GROUP_RECIPES":
+      return {...state, groupRecipes: action.payload}
 
 
 

@@ -21,6 +21,7 @@ import uploadPhoto from './upload/uploadPhoto';
 import Group from './Routes/Group'
 import InviteUser from './Routes/InviteUser'
 import RecipeView from './Routes/recipe-view'
+import GroupRecipeView from './Routes/GroupRecipeView'
 
 class App extends Component {
   render() {
@@ -52,6 +53,7 @@ class App extends Component {
               <AuthRoute path="/group/:group_id" exact component={Group} />
               <AuthRoute path="/group/:group_id/inviteUser" exact component={InviteUser} />
               <AuthRoute path="/user_recipes/:recipe_id" exact component={RecipeView} />
+              <AuthRoute path="/:groupname/Recipes/:recipe_id" exact component={GroupRecipeView} />
             </div>
           </Router>
         </Provider>
