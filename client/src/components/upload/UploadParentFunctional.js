@@ -10,7 +10,8 @@ import IngredientList from './IngredientList'
 import TheStuff from './TheStuff'
 import Header from '../header'
 import Footer from '../footer'
-import {uploadPhoto} from './uploadPhoto';
+import UploadPhoto from './UploadPhoto'
+import ImageUpload from './ImageUpload';
 
 function UploadParentFunctional () {
 
@@ -19,7 +20,7 @@ function UploadParentFunctional () {
     const forms = {
         username: {user},
         ingredient: {
-            list: []
+        list: []
         },
     };
 
@@ -31,9 +32,8 @@ function UploadParentFunctional () {
     function handleForm(e) {
         e.preventDefault();
         console.log(forms);
-
         addRecipe(forms)
-
+        
     };
 
     return (
@@ -42,7 +42,7 @@ function UploadParentFunctional () {
 
         <div id="name/prep">
             <Name manageForm={manageForm} formData={forms.RecipeName} />
-            {/* <uploadPhoto manageForm  ={manageForm} formData={forms.RecipePhoto} /> */}
+            <ImageUpload manageForm={manageForm} formData={forms.image} />
             <Prep manageForm={manageForm} formData={forms.PrepTime} />
         </div>
 

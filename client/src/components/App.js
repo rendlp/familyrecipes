@@ -17,7 +17,7 @@ import UsermadeRecipeBook from './Routes/usermade-recipebook'
 import WhatsHappenin from './Routes/whats-happenin'
 import CreateGroup from './Routes/CreateGroup'
 import UploadParentFunctional from './upload/UploadParentFunctional'
-import uploadPhoto from './upload/uploadPhoto';
+import uploadPhoto from './upload/UploadPhoto';
 import Group from './Routes/Group'
 import InviteUser from './Routes/InviteUser'
 import RecipeView from './Routes/recipe-view'
@@ -33,6 +33,7 @@ class App extends Component {
         <Provider store={store}>
           <Router>
             <div>
+             
               {/* public routes */}
               <Switch>
                 <Route exact path="/home" component={Landing} />

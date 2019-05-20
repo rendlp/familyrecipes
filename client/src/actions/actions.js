@@ -1,8 +1,7 @@
 import store from '../store'
 import Axios from 'axios'
-import { checkPropTypes } from 'prop-types'
-
-
+import { checkPropTypes, string } from 'prop-types'
+import * as firebase from 'firebase'
 
 export function addBoth(both) {
     Axios.post('/api/both', both)
@@ -16,6 +15,14 @@ export function getGroups(user) {
         })
     })
 }
+
+// export function Storage(ref) {
+//     static displayFirebaseStorageImg(ref: String, callback: (url:String))
+//     const imageRef = firebase.storage().ref(ref);
+    
+//     imageRef.getDownloadURL().then((url: String) => callback(url))
+// }
+
 
 export function getGroupUsers(group_id) {
     if (group_id) {
@@ -35,8 +42,6 @@ export function createGroup(groupName, user) {
     })
 }
 
-
-
 export function searchUser(userNameSearched) {
         Axios.get(`/api/usersSearch?username=${userNameSearched}`).then(resp => {
             store.dispatch({
@@ -55,6 +60,12 @@ export function addUserToGroup(group_id, username) {
     })
 }
 
+// export function addImage(img) {
+//     Axios.post('/api/recipes', {
+//         imgURL : img.image
+//     })
+// }
+
 
 export function addRecipe(recipe) {
     const ingredients = recipe.ingredient.list.map(x => x.name)
@@ -66,6 +77,8 @@ export function addRecipe(recipe) {
         directions: recipe.directions.directions,
         servings: recipe.prepTime.serves,
         username: recipe.username.user,
+        ingredients: ingredients.join(", "),
+        image: recipe.image.url
         ingredients: ingredients.join("*/*")
     })
 }
@@ -75,6 +88,7 @@ export function shareRecipeWithGroup(recipeId, groupChosen, recipeName) {
         recipe_id: recipeId,
         group_id: groupChosen,
         name: recipeName
+
     })
 }
 
