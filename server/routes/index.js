@@ -33,9 +33,12 @@ router.get('/groups', (req, res, next) => {
 //get call to grab a user's favorited recipe List
 router.get('/user_favorites', (req, res, next) => {
   const sql = `
-    SELECT name
-    FROM user_favorites
-    WHERE username = ?`
+    SELECT 
+      name, recipe_id
+    FROM
+      user_favorites
+    WHERE
+      username = ?`
 
     conn.query(sql, [req.query.username], (err, results, fields) => {
       res.json({
@@ -60,7 +63,7 @@ router.post('/user_favorites', (req, res, next) => {
 // get call to grab a user's list of created recipebooks from the application's database(user_recipebooks table)
 router.get('/user_recipebooks', (req, res, next) => {
   const sql = `
-  SELECT recipebook_name
+  SELECT recipebook_name, recipebook_id
   FROM user_recipebooks
   WHERE username = ?`
 
