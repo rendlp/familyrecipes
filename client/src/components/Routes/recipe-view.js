@@ -4,22 +4,28 @@ import Header from '../header'
 import Footer from '../footer'
 import { getCurrentRecipe } from '../../actions/actions'
 import { connect } from 'react-redux'
+import {addFavoriteRecipe} from '../../actions/actions'
 
 const RecipeView = (props) => {
+
+
   const { user } = useContext(AuthContext)
- 
+
   const recipeId = props.match.params.recipe_id
 
   useEffect(() => {
       getCurrentRecipe(recipeId)
   },[])
 
+  function handleClick(e) {
+  addFavoriteRecipe(props.currentRecipe.name, recipeId, user )
+}
   return (
     <div>
       <Header />
         <div id="recipe-display">
           <img id="recipe-pic" src="http://place-hold.it/400/400" />
-          
+
               <h1 id="recipe-name">{props.currentRecipe.name}</h1>
               <div id="prep">
                 <h2 id="prep-header">Prep Time</h2>
@@ -38,7 +44,9 @@ const RecipeView = (props) => {
                 <h2 id="directions-header">Directions</h2>
                 <p id="recipe-directions">{props.currentRecipe.directions}</p>
               </div>
-          
+
+              <button onClick={handleClick}>Add to Favorite List</button>
+
         </div>
       <Footer />
 

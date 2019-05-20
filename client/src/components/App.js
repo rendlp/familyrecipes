@@ -21,6 +21,7 @@ import uploadPhoto from './upload/uploadPhoto';
 import Group from './Routes/Group'
 import InviteUser from './Routes/InviteUser'
 import RecipeView from './Routes/recipe-view'
+import CreateRecipebook from './Routes/create-recipebook'
 
 class App extends Component {
   render() {
@@ -48,7 +49,7 @@ class App extends Component {
               <AuthRoute path="/usermade_recipebook" exact component={UsermadeRecipeBook} />
               <AuthRoute path="/recent_updates" exact component={WhatsHappenin} />
               <AuthRoute path="/creategroup" exact component={CreateGroup} />
-              
+              <AuthRoute path="/createrecipebook" exact component={CreateRecipebook} />
               <AuthRoute path="/group/:group_id" exact component={Group} />
               <AuthRoute path="/group/:group_id/inviteUser" exact component={InviteUser} />
               <AuthRoute path="/user_recipes/:recipe_id" exact component={RecipeView} />

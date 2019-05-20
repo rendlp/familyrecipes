@@ -8,7 +8,9 @@ const initialState = {
   groups: [],
   groupUsers: [],
   currentGroup: '',
-  foundUser: ''
+  foundUser: '',
+  userFavorites: [],
+  userRecipeBooks: [],
 
 }
 
@@ -29,7 +31,7 @@ export default function(state = initialState, action) {
     case 'ADD_RECIPE':
     return {...state, recipes:[...state.recipes, action.recipe]}
 
-    // then grab a user's uploaded recipes and their associated ID numbers
+    // then grab a list of a user's uploaded recipes
     case "GET_USER_RECIPES":
       return {...state, userRecipes: action.userRecipes}
 
@@ -41,6 +43,12 @@ export default function(state = initialState, action) {
 
     case "FOUND_USER":
       return {...state, foundUser: action.payload}
+    // then grab a list of a user's favorited recipes
+    case 'GET_USER_FAVORITES':
+      return {...state, userFavorites: action.payload}
+    // then grab a list of a user's recipebooks
+    case 'GET_USER_RECIPEBOOKS':
+      return {...state, userRecipeBooks: action.payload}
 
 
 
