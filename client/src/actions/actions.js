@@ -1,14 +1,7 @@
 import store from '../store'
-
 import Axios from 'axios'
-
-import { checkPropTypes } from 'prop-types';
-
-
-
-// export function addIngredients(ingredients) {
-//     Axios.post('/api/ingredients', ingredients)
-// }
+import { checkPropTypes, string } from 'prop-types'
+import * as firebase from 'firebase'
 
 export function addBoth(both) {
     Axios.post('/api/both', both)
@@ -22,6 +15,14 @@ export function getGroups(user) {
         })
     })
 }
+
+// export function Storage(ref) {
+//     static displayFirebaseStorageImg(ref: String, callback: (url:String))
+//     const imageRef = firebase.storage().ref(ref);
+    
+//     imageRef.getDownloadURL().then((url: String) => callback(url))
+// }
+
 
 export function getGroupUsers(group_id) {
     if (group_id) {
@@ -41,8 +42,6 @@ export function createGroup(groupName, user) {
     })
 }
 
-
-
 export function searchUser(userNameSearched) {
         Axios.get(`/api/usersSearch?username=${userNameSearched}`).then(resp => {
             store.dispatch({
@@ -61,17 +60,34 @@ export function addUserToGroup(group_id, username) {
     })
 }
 
+// export function addImage(img) {
+//     Axios.post('/api/recipes', {
+//         imgURL : img.image
+//     })
+// }
 
-export function addRecipe(recipes) {
-    Axios.post('/api/recipes', recipes, {
-        name: this.state.name,
-        prep: this.state.prep,
-        directions: this.state.directions
+
+export function addRecipe(recipe) {
+    const ingredients = recipe.ingredient.list.map(x => x.name)
+
+    Axios.post('/api/recipes', {
+        name: recipe.name.name,
+        prepHours: recipe.prepTime.prepHours,
+        prepMinutes:recipe.prepTime.prepMinutes,
+        directions: recipe.directions.directions,
+        servings: recipe.prepTime.serves,
+        username: recipe.username.user,
+        ingredients: ingredients.join(", "),
+        image: recipe.image.url
     })
+    console.log('ingredients join - ',ingredients.join(", "))
 }
+
 // a function that grabs a user's uploaded recipes and the ID number of those recipes
+
 export function getUserRecipes(user) {
   Axios.get(`/api/recipes?username=${user}`).then(resp => {
+      console.log(resp.data.ingredients)
     store.dispatch({
       type: "GET_USER_RECIPES",
       userRecipes: resp.data,
@@ -80,12 +96,12 @@ export function getUserRecipes(user) {
   })
 }
 
-export function addIngredients(ingredients) {
-    Axios.post('/api/ingredients', ingredients, {
-        ingred_id: this.state.ingred_id,
-        ingredient: this.state.ingredient
-    })
-}
+// export function addIngredients(ingredients) {
+//     Axios.post('/api/ingredients', ingredients, {
+//         ingred_id: this.state.ingred_id,
+//         ingredient: this.state.ingredient
+//     })
+// }
 // for potential future use
 
 // export function Date() {

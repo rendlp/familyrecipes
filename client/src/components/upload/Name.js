@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import useFormInput from '../hooks/useFormInput'
+import UploadPhoto from '../upload/UploadPhoto'
 
 const Name = (props) => {
     // const [values, modifyForm] = useState({});
@@ -25,10 +26,11 @@ const Name = (props) => {
                 <label  >
                 <h1>Name</h1>
                 </label>
+            
             <input 
                 type="text"
                 name="name"
-                id="name"
+                className="formInput"
                 onChange= {changeForm}
                 value=  {values.name || ''}
             />

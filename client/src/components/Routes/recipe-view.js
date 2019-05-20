@@ -11,18 +11,25 @@ const RecipeView = (props) => {
   // variable holding which user is logged in
   const { user } = useContext(AuthContext)
   // variable holding the recipe ID in the url link
-  const recipe_id = props.match.params.group_id
+  const recipeId = props.match.params.recipe_id
+
+  console.log('recipe - ',recipeId)
   // hooks function that holds lifestyle methods(componentWillMount)
   useEffect(() => {
-      getUserRecipes(user, recipe_id)
+      getUserRecipes(user)
   },[])
+
+  const CurrentRecipe = props.userRecipes.filter(recipe => recipe.recipe_id == recipeId)
+
+  console.log(CurrentRecipe)
 
   return (
     <div>
       <Header />
         <div id="recipeCanvas">
           <img id="recipe-pic" src="http://place-hold.it/400/400" />
-          {props.userRecipes.map(recipe => (
+          {CurrentRecipe
+          .map(recipe => (
             <div>
               <h1 id="recipe-name">{recipe.name}</h1>
               <div id="prep">

@@ -10,22 +10,7 @@ const Prep = (props) => {
     useEffect( () => {
         manageFunc('prepTime', values)
     }, [values])
-
-    // state = {
-    //     prepHours:'',
-    //     prepMinutes: '',
-    //     prepError:'',
-    //     prepClass:'',
-    //     servings: ''
-      
-    // }
-
-    // onSubmit = e => {
-    //     e.preventDefault()
-        
-    // }
-
-    
+ 
         return (
             <form>
             <div className="prep">
@@ -37,7 +22,7 @@ const Prep = (props) => {
                 
                 type="text" 
                 name="prepHours" 
-                id="prepHours" 
+                className="formInput" 
                 onChange= {changeForm}  >
 
                 <option>Hours?</option>
@@ -61,7 +46,7 @@ const Prep = (props) => {
                 
                 type="text" 
                 name="prepMinutes" 
-                id="prepMinutes" 
+                className="formInput" 
                 onChange= {changeForm} >
                 
                 <option>Minutes?</option>
@@ -81,7 +66,7 @@ const Prep = (props) => {
 
 {/* SERVINGS */}
                 <select
-                className=''
+                className="formInput"
                 type='text'
                 name='serves'
                 id='serves'
