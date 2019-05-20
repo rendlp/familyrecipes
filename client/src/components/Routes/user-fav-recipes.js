@@ -25,11 +25,9 @@ const UserFavRecipes = (props) => {
     console.log('route user to a recipebook creation page')
   }
 
-
-
   const userFavorites = useSelector(appstate => appstate.userFavorites)
 
-
+    console.log(props.userRecipeBooks)
 
 
     return (
@@ -37,12 +35,29 @@ const UserFavRecipes = (props) => {
         <Header />
         <LogoutButton />
         <div>
-        {props.userFavorites.map((recipes, i) => (
-            <p key={'recipes' + i}>{recipes.name}</p>
-        ))}
-        {props.userRecipeBooks.map((recipebooks, i) => (
-          <p key={'recipebooks' + i}>{recipebooks.recipebook_name}</p>
-        ))}
+          <h3>{`${user}'s Recipes:`}</h3>
+            <ul>
+
+              {props.userFavorites.map((recipe, i) => (
+                  <li key={'recipe' + i}>
+                    <Link 
+                      to={`/user_fav_recipes/` + recipe.recipe_id}>
+                      {recipe.name}
+                    </Link>
+                  </li>
+              ))}
+            </ul>
+        <h3>{`${user}'s Recipe Books:`}</h3>
+        <ul>
+          {props.userRecipeBooks.map((recipebook, i) => (
+            <li key={'recipebook' + i}>
+              <Link 
+                      to={`/user_fav_recipes/recipebook/` + recipebook.recipebook_id}>
+                      {recipebook.recipebook_name}
+              </Link>
+            </li>
+          ))}
+        </ul>
         </div>
 
         <div id="createGroupLink">
