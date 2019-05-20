@@ -130,8 +130,21 @@ router.post('/recipes', (req, res, next) => {
   `
 
   conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.directions, req.body.servings, req.body.username, req.body.ingredients], (err, results, fields) => {
-    console.log(results);
     message: 'recipe posted'
+    })
+  })
+
+router.post('/group_recipe_links', (req, res, next) => {
+  const sql =`
+  INSERT INTO
+    group_recipe_links (group_id, recipe_id, name)
+  VALUES
+    (?, ?, ?)
+  `
+
+  conn.query(sql, [req.body.group_id, req.body.recipe_id, req.body.name], (err, results, fields) => {
+    console.log(results);
+    message: 'recipe added to group'
     })
   })
 
@@ -195,6 +208,20 @@ router.get('/recipes/current', (req, res, next) => {
     })
   })
 
+router.get('/groupRecipes', (req, res, next) => {
+    const sql = `
+    SELECT
+      grl.name, grl.recipe_id
+    FROM
+      group_recipe_links grl
+    WHERE
+      grl.group_id = ?
+    `
+  
+    conn.query(sql, [req.query.group_id],(err, results, fields) => {
+      res.json({results})
+    })
+  })
 
 
 
