@@ -18,8 +18,9 @@ function UploadParentFunctional () {
     const forms = {
         username: {user},
         ingredient: {
-        list: []
+          list: []
         },
+        image: []
     };
 
     function manageForm(ctx, payload) {
@@ -27,11 +28,14 @@ function UploadParentFunctional () {
         forms[ctx] = {...payload};
     };
 
+    function addImageToForm(img) {
+      forms.image = img
+    }
+
     function handleForm(e) {
         e.preventDefault();
         console.log(forms);
         addRecipe(forms)
-
     };
 
     return (
@@ -43,7 +47,7 @@ function UploadParentFunctional () {
             <Prep manageForm={manageForm} formData={forms.PrepTime} />
         </div>
 
-            {/* <TheStuff manageForm={manageForm} formData={forms.Ingredients} /> */}
+
         <div className="ingredients">
             <h1 className=''>Ingredients</h1>
             <Ingredient manageForm={manageForm} formData={forms.ingredient} />
@@ -55,7 +59,7 @@ function UploadParentFunctional () {
         </div>
         <div id="image-upload">
             <h1>Image</h1>
-            <ImageUpload manageForm={manageForm} formData={forms.image} />
+            <ImageUpload addImageToForm={addImageToForm} manageForm={manageForm} formData={forms.image} />
         </div>
 
         <form onSubmit={handleForm}>

@@ -199,12 +199,12 @@ router.post('/group_user_links/addUser', (req, res, next) => {
 router.post('/recipes', (req, res, next) => {
   const sql =`
   INSERT INTO
-    recipes (name, prepHours, prepMinutes, directions, servings, username, ingredients)
+    recipes (name, prepHours, prepMinutes, directions, servings, username, ingredients, imgURL)
   VALUES
-    (?, ?, ?, ?, ?, ?, ?)
+    (?, ?, ?, ?, ?, ?, ?, ?)
   `
 
-  conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.directions, req.body.servings, req.body.username, req.body.ingredients], (err, results, fields) => {
+  conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.directions, req.body.servings, req.body.username, req.body.ingredients, req.body.imgURL], (err, results, fields) => {
     message: 'recipe posted'
     })
   })

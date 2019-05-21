@@ -1,11 +1,20 @@
-import React, { Component, Suspense, useState } from 'react'
+import React, { Component, Suspense, useState, useEffect } from 'react'
 import { storage } from '../firebase'
+import useFormInput from '../hooks/useFormInput'
 
 
 const ImageUpload = (props) => {
     const [image, setImage] = useState(null)
     const [url, setUrl] = useState('')
     const [progress, setProgress] = useState(0)
+
+    const [values, changeForm, resetForm] = useFormInput({...props.formData})
+
+    let manageFunc = props.manageForm
+
+    useEffect( () => {
+      manageFunc('image', values)
+    }, [values])
 
     const handleChange = e => {
         if (e.target.files[0]) {
@@ -14,6 +23,7 @@ const ImageUpload = (props) => {
     }
 
     const handleUpload = e => {
+        e.preventDefault()
         const uploadTask = storage.ref(`images/${image.name}`).put(image)
         uploadTask.on('state_changed',
 
@@ -33,19 +43,26 @@ const ImageUpload = (props) => {
         () => {
             storage.ref('images').child(image.name).getDownloadURL().then(url => {
                 console.log(url);
+                props.addImageToForm(url)
                 setUrl(url)
             })
         })
+
+
     }
 
-    return(
+    return (
 
         <div className ='imgUploadDiv'>
+          <form onSubmit={handleUpload}>
            <progress className='progress' value={progress} max='100' />
-           <input className='uploadInput' type='file' onChange={handleChange} />
-           <img src={url || 'https://via.placeholder.com/150'} className='imgUpload' alt='' />
+           <input className='uploadInput' type='file' onChange={handleChange}   />
+           <input type="hidden" name="image" value={url} />
+           <img name="image" src={url || 'https://via.placeholder.com/150'} className='imgUpload' alt='' value={url}  />
            <button onClick={handleUpload}>Upload</button>
+          </form>
         </div>
+
 
    )
 }

@@ -60,11 +60,12 @@ export function addUserToGroup(group_id, username) {
     })
 }
 
-// export function addImage(img) {
-//     Axios.post('/api/recipes', {
-//         imgURL : img.image
-//     })
-// }
+// a function that will send uploaded images to the application's database
+export function addImage(img) {
+    Axios.post('/api/recipes', {
+        imgURL : img.image
+    })
+}
 
 
 export function addRecipe(recipe) {
@@ -77,7 +78,7 @@ export function addRecipe(recipe) {
         directions: recipe.directions.directions,
         servings: recipe.prepTime.serves,
         username: recipe.username.user,
-        // image: recipe.image.url,
+        imgURL: recipe.image,
         ingredients: ingredients.join("*/*")
     })
 }
