@@ -5,6 +5,9 @@ import Footer from '../footer'
 import { getCurrentRecipe, getRecipeBooks, addRecipeToRecipeBook} from '../../actions/actions'
 import { connect, useSelector } from 'react-redux'
 
+
+import GroupList from './GroupList';
+
 const FavRecipeView = (props) => {
 
 

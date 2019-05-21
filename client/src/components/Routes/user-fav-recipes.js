@@ -35,7 +35,7 @@ const UserFavRecipes = (props) => {
         <Header />
         <LogoutButton />
         <div>
-          <h3>{`${user}'s Recipes:`}</h3>
+          <h3>{`${user}'s Favorite Recipes:`}</h3>
             <ul>
 
               {props.userFavorites.map((recipe, i) => (

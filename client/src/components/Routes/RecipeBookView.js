@@ -13,22 +13,21 @@ const RecipeBookView = (props) => {
   const { user } = useContext(AuthContext)
 
   const recipebookID = props.match.params.recipebook_id
-  const recipeId = props.match.params.recipe_id
 
   useEffect( () => {
       getRecipesWithinRecipebooks(recipebookID)
 
   }, [])
 
-
+console.log(props.addedRecipesInsideRecipebooks)
 
   return (
     <div>
       <Header />
       <LogoutButton />
-      {props.addedRecipesInsideRecipebooks.map(recipes => (
+      {props.addedRecipesInsideRecipebooks.map(recipe => (
         <ul>
-          <Link to={`/user_fav_recipes/recipebook/:${recipebookID}/:${recipeId} + recipes.recipe_id`}><li>{recipes.recipe_name}</li></Link>
+          <Link to={`/user_fav_recipes/recipebook/${recipebookID}/${recipe.recipe_id}`}><li>{recipe.recipe_name}</li></Link>
         </ul>
       ))}
       <Footer />
