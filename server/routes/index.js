@@ -209,12 +209,12 @@ router.post('/group_recipe_links', (req, res, next) => {
   router.post('/user_recipebooks_links', (req, res, next) => {
     const sql =`
     INSERT INTO
-      user_recipebooks_links (recipe_id, recipebook_id, name)
+      user_recipebooks_links (recipe_id, recipebook_id, recipe_name)
     VALUES
       (?, ?, ?)
     `
   
-    conn.query(sql, [req.body.recipe_id, req.body.recipebook_id, req.body.name], (err, results, fields) => {
+    conn.query(sql, [req.body.recipe_id, req.body.recipebook_id, req.body.recipe_name], (err, results, fields) => {
       console.log(results);
       message: 'recipe added to group'
       })
