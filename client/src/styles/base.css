@@ -74,18 +74,18 @@ font-size: 16px;
 text-align: center;
 }
 
-.mainContainer {
+/* .mainContainer {
 width: 1600px;
 height: 800px;
 margin: auto;
 text-align: center;
-}
+} */
 
 .loginInput {
 margin: 325px;
 }
 
-.timestamp {
+/* .timestamp {
 font-size: 14px;
 color: blue;
 }
@@ -96,7 +96,7 @@ color: white;
 
 .userClass {
 color: blue;
-}
+} */
 
 input {
 width: 300px;
@@ -114,10 +114,15 @@ height: 35px;
 border-radius: 3%;
 font-size: 14px;
 box-shadow: 0 6px 6px -6px black;
+transition: 0.3s;
+border: none;
+
+
 }
 
 button:hover {
-background-color: lightgrey;
+  background-color: rgb(142,50,40);
+  color: white;
 }
 
 label {
@@ -171,33 +176,11 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
 
-/* input.error {
-border: 1px solid red;
-}
-
-select.error {
-  color: red;
-  border: 1px solid red;
-}
-
-.ingredientsError {
-  color: red;
-  background-color: black;
-}
-
-label.error {
-color: red;
-} */
-
 .directionDiv {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
 }
-
-/* .recipeContainer {
-  margin: 0 auto;
-} */
 
 .selectorDiv {
 display:flex;
@@ -214,13 +197,13 @@ box-shadow: 0 6px 6px -6px black;
 font-size: 18px;
 }
 
-.mainContainer {
+/* .mainContainer {
   background-color: whitesmoke;
   width: 100%;
   height: 1400px;
   margin: 0 auto;
 
-}
+} */
 
 .formInput {
   margin: 12px;
@@ -230,6 +213,7 @@ p {
   font-size: 25px;
   color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  transition: 0.3s;
 
 }
 
@@ -242,6 +226,8 @@ p:hover {
   display: flex;
   flex-direction: row;
   margin: 0 auto;
+  width: 100%;
+  height: 868px;
 }
 
 h1 {
@@ -347,12 +333,20 @@ h1 {
 
 .footer {
   width: 100%;
-  height: 400px;
+  height: 600px;
   background-color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: 72px;
-  margin-top: 104px;
+  text-align: center;
+}
+
+.footerP {
+  font-size: 28px;
+  font-family: 'Roboto';
+  margin: 50px;
+  color: black;
+
 }
 
 .login-link {
@@ -416,35 +410,33 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 100%;
+  height: 750px;
   width: 100%;
   margin: 0 auto;
-}
-
-.accountNAVleft {
-  height: 500px;
-  width: 544px;
-  margin-top: 88px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
 }
 
 .left-panel {
   display: flex;
   flex-direction:column;
-  border: 1px solid lightgrey;
+  border-bottom: 2px solid lightgrey;
   width: 200px;
-  height: 100%;
+  height: 400px;
 }
 
-.title {
-  text-decoration: underline;
+h2 {
+  font-size: 32px;
+  color: white;
+  text-decoration: none;
 }
+
+/* .title {
+  text-decoration: underline;
+} */
 
 a {
   text-decoration: none;
   color: none;
+  
 }
 
 a:visited {
@@ -489,11 +481,32 @@ a:visited {
  
 }
 
+.recipeUL {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: white;
+  list-style-type: none;
+}
+
+.recipeLI {
+  margin: 0 auto;
+  font-size: 20px;
+  color: white;
+  border-bottom: 1px solid black;
+}
+
+.recipeLI:hover {
+  text-decoration-line: line-through;
+}
+
 .imgUploadDiv {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   border: 1px solid lightgrey;
+  background-color: whitesmoke;
+  box-shadow: 0 6px 6px -6px black;
   
 }
 
@@ -516,8 +529,32 @@ a:visited {
   width: 250px;
   height: 70px;
   margin-top: 5px;
+  
 }
 
 .uploadButton {
   margin: 0 auto;
+}
+
+.footerSpan {
+  color: rgb(122,120,30);
+  font-size: 55px;
+  margin: 40px;
+}
+
+.books {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.book {
+  border: 1px solid grey;
+  width: 380px;
+  height: 700px;
+  background-color: lightgrey;
+  text-align: center;
+  align-items: center;
+  margin: 12px;
+  border-radius: 1.5%;
 }

@@ -22,21 +22,26 @@ class AccountHome extends Component {
         <div className="left-panel">
           <Link to="/user_recipes"><p className="leftP">My Recipes</p></Link>
           <Link to="/user_groups"><p className="leftP">My Groups</p></Link>
-          <Link to="user_messages"><p className="leftP">My Messages</p></Link>
+          <Link to="/user_fav_recipes"><p className="title">Favorites</p></Link>
+          {/* <Link to="user_messages"><p className="leftP">My Messages</p></Link> */}
           <Link to="/upload"><p className="leftP">Upload Recipe</p></Link>
           <Link to="/user_profile"><p className="leftP">My Profile</p></Link>
         </div>
 
-        <div className="accountNAV" id="mid-panel">
-          <Link to="/user_fav_recipes"><h2 className="title">My Favorite Recipes</h2></Link>
-          <Link to="/usermade_recipebook"><p>Recipebook(playlist) 1</p></Link>
-          <p>Recipebook(playlist) 2</p>
-          <p>Recipebook(playlist) 3</p>
-        </div>
+        <div className="books">
 
-          <div className="accountNAV" id="right-panel">
-            <Link to="/recent_updates"><h2 className="title">Recent Updates</h2></Link>
+         <div className='book'>
+          <Link to="/usermade_recipebook"><p>Recipe Book 1</p></Link>
           </div>
+
+          <div className='book'>
+          <p>Recipe Book 2</p>
+          </div>
+          <div className='book'>
+          <p>Recipe Book 3</p>
+          </div>
+      
+        </div> */}
 
         </div>
 
