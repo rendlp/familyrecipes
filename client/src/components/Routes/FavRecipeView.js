@@ -4,9 +4,9 @@ import Header from '../header'
 import Footer from '../footer'
 import { getCurrentRecipe, getRecipeBooks, addRecipeToRecipeBook} from '../../actions/actions'
 import { connect, useSelector } from 'react-redux'
-
-
 import GroupList from './GroupList';
+
+
 
 const FavRecipeView = (props) => {
 
@@ -24,16 +24,16 @@ const FavRecipeView = (props) => {
 
   const userRecipeBooks = useSelector(appstate => appstate.userRecipeBooks)
 
-  console.log(userRecipeBooks)
+  // console.log(userRecipeBooks)
 
   const [recipeBookChosen, setRecipeBookChosen] = useState('')
 
-  console.log( 'recipeId - ',recipeId, 'recipeBookChosen - ', recipeBookChosen, 'recipeName - ', recipeName)
+  // console.log( 'recipeId - ',recipeId, 'recipeBookChosen - ', recipeBookChosen, 'recipeName - ', recipeName)
 
   function handleSubmit(e) {
     e.preventDefault();
     addRecipeToRecipeBook(recipeId, recipeBookChosen, recipeName)
-};
+  };
 
 
 

@@ -3,9 +3,9 @@ import Axios from 'axios'
 import { checkPropTypes, string } from 'prop-types'
 import * as firebase from 'firebase/app'
 
-export function addBoth(both) {
-    Axios.post('/api/both', both)
-}
+// export function addBoth(both) {
+//     Axios.post('/api/both', both)
+// }
 
 export function getGroups(user) {
     Axios.get(`/api/groups?username=${user}`).then(resp => {
@@ -19,7 +19,7 @@ export function getGroups(user) {
 // export function Storage(ref) {
 //     static displayFirebaseStorageImg(ref: String, callback: (url:String))
 //     const imageRef = firebase.storage().ref(ref);
-    
+
 //     imageRef.getDownloadURL().then((url: String) => callback(url))
 // }
 
@@ -77,7 +77,7 @@ export function addRecipe(recipe) {
         directions: recipe.directions.directions,
         servings: recipe.prepTime.serves,
         username: recipe.username.user,
-        image: recipe.image.url,
+        // image: recipe.image.url,
         ingredients: ingredients.join("*/*")
     })
 }
@@ -92,7 +92,6 @@ export function shareRecipeWithGroup(recipeId, groupChosen, recipeName) {
 }
 
 // a function that grabs a user's uploaded recipes and the ID number of those recipes
-
 export function getUserRecipes(user) {
   Axios.get(`/api/recipes?username=${user}`).then(resp => {
     store.dispatch({
@@ -153,10 +152,9 @@ export function getGroupRecipes(group_id) {
 
   export function addRecipeToRecipeBook(recipeId, recipeBookChosen, recipeName) {
     Axios.post('/api/user_recipebooks_links', {
-        recipe_id: recipeId,
-        recipebook_id: recipeBookChosen,
-        recipe_name: recipeName
-
+      recipe_id: recipeId,
+      recipebook_id: recipeBookChosen,
+      recipe_name: recipeName
     })
 }
   // a function that will add a user created recipebook to the application's database(user_recipebooks table)

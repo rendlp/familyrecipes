@@ -13,7 +13,6 @@ const initialState = {
   userRecipeBooks: [],
   groupRecipes: [],
   addedRecipesInsideRecipebooks: [],
-
 }
 
 

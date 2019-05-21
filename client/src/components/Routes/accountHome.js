@@ -8,7 +8,7 @@ import {getRecipeBooks} from '../../actions/actions'
 
 class AccountHome extends Component {
 
-  
+
   render() {
     return (
       <div>
@@ -28,9 +28,6 @@ class AccountHome extends Component {
 
         <div className="accountNAV" id="mid-panel">
           <Link to="/user_fav_recipes"><h1 className="title">My Favorite Recipes</h1></Link>
-          <Link to="/usermade_recipebook"><p>Recipebook(playlist) 1</p></Link>
-          <p>Recipebook(playlist) 2</p>
-          <p>Recipebook(playlist) 3</p>
         </div>
 
           <div className="accountNAV" id="right-panel">

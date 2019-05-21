@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 
 const RecipeBookView = (props) => {
 
-  const { user } = useContext(AuthContext)
+  // const { user } = useContext(AuthContext)
 
   const recipebookID = props.match.params.recipebook_id
 
