@@ -1,5 +1,5 @@
-import React, { Component, useState, useEffect } from 'react'
-import useFormInput from '../hooks/useFormInput'
+import React, { Component } from 'react'
+// import useFormInput from '../hooks/useFormInput'
 import { connect } from 'react-redux'
 import IngredientItem from './IngredientItem.js';
 
@@ -8,10 +8,10 @@ class IngredientList extends Component {
   render() {
     return (
       <div className="item">
-       <ul> 
+       <ul>
         {this.props.inputs.map(item => (
-          <IngredientItem {...item} />    
-         ))}   
+          <IngredientItem {...item} />
+         ))}
        </ul>
       </div>
     )

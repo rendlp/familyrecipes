@@ -3,13 +3,13 @@ import useFormInput from '../hooks/useFormInput'
 
 const Name = (props) => {
 
-    const [values, changeForm, resetForm] = useFormInput({...props.formData});
+    const [values, changeForm] = useFormInput({...props.formData});
 
     let manageFunc = props.manageForm;
 
     useEffect(() => {
         manageFunc('name', values);
-    }, [values]);
+    }, [values, manageFunc]);
 
         return (
             <form>
@@ -17,8 +17,8 @@ const Name = (props) => {
                 <label  >
                 <h1>Name</h1>
                 </label>
-            
-            <input 
+
+            <input
                 type="text"
                 name="name"
                 className="formInput"
@@ -29,6 +29,6 @@ const Name = (props) => {
         </form>
         )
     }
-    
+
 
 export default Name;
