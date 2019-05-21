@@ -1,16 +1,7 @@
 import React, { useEffect } from 'react'
 import useFormInput from '../hooks/useFormInput'
-// import UploadPhoto from '../upload/uploadPhoto'
 
 const Name = (props) => {
-    // const [values, modifyForm] = useState({});
-
-    // const changeForm = (e) => {
-    //     values[e.target.name] = e.target.value;
-    //     modifyForm(values);
-    //     e.persist();
-    //     modifyForm(values => ({...values, [e.target.name]: e.target.value}));
-    // };
 
     const [values, changeForm, resetForm] = useFormInput({...props.formData});
 

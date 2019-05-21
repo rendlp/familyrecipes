@@ -4,8 +4,6 @@ import Header from '../header'
 import Footer from '../footer'
 import { getCurrentRecipe, getGroups, shareRecipeWithGroup, addFavoriteRecipe } from '../../actions/actions'
 import { connect, useSelector } from 'react-redux'
-import GroupList from './GroupList';
-
 
 const RecipeView = (props) => {
 
