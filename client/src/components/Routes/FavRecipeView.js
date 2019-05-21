@@ -2,6 +2,18 @@ import React, { useEffect, useContext, useState } from 'react'
 import { AuthContext } from "../../lib/auth"
 import Header from '../header'
 import Footer from '../footer'
+
+import { getCurrentRecipe, getGroups, shareRecipeWithGroup, addFavoriteRecipe } from '../../actions/actions'
+import { connect, useSelector } from 'react-redux'
+import GroupList from './GroupList';
+
+const FavRecipeView = (props) => {
+  
+
+
+
+
+
 import { getCurrentRecipe, getRecipeBooks, addRecipeToRecipeBook} from '../../actions/actions'
 import { connect, useSelector } from 'react-redux'
 
@@ -95,3 +107,4 @@ function mapStateToProps(appState) {
 }
 
 export default connect(mapStateToProps)(FavRecipeView)
+
