@@ -21,9 +21,9 @@ const UserFavRecipes = (props) => {
 
   }, [])
 
-  function handleClick(e) {
-    console.log('route user to a recipebook creation page')
-  }
+  // function handleClick(e) {
+  //   console.log('route user to a recipebook creation page')
+  // }
 
   const userFavorites = useSelector(appstate => appstate.userFavorites)
 

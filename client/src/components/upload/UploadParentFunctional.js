@@ -10,7 +10,6 @@ import IngredientList from './IngredientList'
 import TheStuff from './TheStuff'
 import Header from '../header'
 import Footer from '../footer'
-import UploadPhoto from './UploadPhoto'
 import ImageUpload from './ImageUpload';
 
 function UploadParentFunctional () {
@@ -42,7 +41,6 @@ function UploadParentFunctional () {
 
         <div id="name/prep">
             <Name manageForm={manageForm} formData={forms.RecipeName} />
-            <ImageUpload manageForm={manageForm} formData={forms.image} />
             <Prep manageForm={manageForm} formData={forms.PrepTime} />
         </div>
 
@@ -55,6 +53,10 @@ function UploadParentFunctional () {
         
         <div id="text-directions">
             <Directions manageForm={manageForm} formData={forms.Directions} />
+        </div>
+        <div id="image-upload">
+            <h1>Image</h1>
+            <ImageUpload manageForm={manageForm} formData={forms.image} />
         </div>
 
         <form onSubmit={handleForm}>
