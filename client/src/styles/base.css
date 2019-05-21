@@ -166,8 +166,7 @@ margin: auto;
 margin-top: 10px;
 }
 
-h1 {
-color:black;
+h2 {
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
@@ -228,9 +227,15 @@ font-size: 18px;
 }
 
 p {
-  font-size: 20px;
+  font-size: 25px;
   color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
+}
+
+p:hover {
+  text-decoration-line: line-through;
+  color: rgb(122,60,80);
 }
 
 .uploadDiv {
@@ -409,9 +414,11 @@ h1 {
 
 .canvas2 {
   display: flex;
-  justify-content: center;
-  height: 600px;
-  margin: 0 5%;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .accountNAVleft {
@@ -424,7 +431,11 @@ h1 {
 }
 
 .left-panel {
-  font-size: 30px;
+  display: flex;
+  flex-direction:column;
+  border: 1px solid lightgrey;
+  width: 200px;
+  height: 100%;
 }
 
 .title {
