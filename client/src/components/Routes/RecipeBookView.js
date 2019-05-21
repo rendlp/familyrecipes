@@ -24,7 +24,7 @@ console.log(props.addedRecipesInsideRecipebooks)
   return (
     <div>
       <Header />
-      <LogoutButton />
+      <Link to='/'><button className='backBtn'>Back</button></Link>
       {props.addedRecipesInsideRecipebooks.map(recipe => (
         <ul>
           <Link to={`/user_fav_recipes/recipebook/${recipebookID}/${recipe.recipe_id}`}><li>{recipe.recipe_name}</li></Link>

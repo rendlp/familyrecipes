@@ -30,11 +30,13 @@ const UserFavRecipes = (props) => {
     return (
       <div>
         <Header />
-        <LogoutButton />
+        <Link to='/'><button className='backBtn'>Back</button></Link>
         <div>
-          <h3>{`${user}'s Favorite Recipes:`}</h3>
-            <ul>
 
+{/* USERS FAVORITES */}
+          <h2>{`${user}'s Favorite Recipes:`}</h2>
+
+            <ul className='recipeUL'>
               {props.userFavorites.map((recipe, i) => (
                   <li key={'recipe' + i}>
                     <Link
@@ -44,19 +46,21 @@ const UserFavRecipes = (props) => {
                   </li>
               ))}
             </ul>
-        <h3>{`${user}'s Recipe Books:`}</h3>
-        <ul>
+{/* USERS RECIPES BOOKS */}
+        <h2>{`${user}'s Recipe Books:`}</h2>
+
+        <ul className='recipeUL'>
           {props.userRecipeBooks.map((recipebook, i) => (
-            <li key={'recipebook' + i}>
-              <Link
+            <li className='recipeLI' key={'recipebook' + i}>
+              <Link 
                       to={`/user_fav_recipes/recipebook/` + recipebook.recipebook_id}>
                       {recipebook.recipebook_name}
               </Link>
             </li>
           ))}
         </ul>
-        </div>
 
+        </div>
         <div id="createGroupLink">
             <Link to={"/createrecipebook"}>
               <button >Create a RecipeBook</button>

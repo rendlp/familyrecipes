@@ -3,6 +3,10 @@ html {
   font-family: "Roboto", arial, sans-serif;
 }
 
+.appContainer {
+  background-color: rgb(122,150,80);
+}
+
 *,
 *:before,
 *:after {
@@ -39,8 +43,27 @@ code {
 
 .login {
 width: 400px;
-margin: 100px auto;
+height: 900px;
+margin: 0 auto;
 opacity: 0.8;
+}
+
+.loginPageContainer {
+  background: linear-gradient( rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.4) ), url('https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-159703.jpg');
+  background-color: antiquewhite;
+  background-size: 100%;
+
+}
+
+.invisible {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 175px;
+}
+
+.background {
+  filter: blur(4px);
 }
 
 .pad {
@@ -70,18 +93,18 @@ font-size: 16px;
 text-align: center;
 }
 
-.mainContainer {
+/* .mainContainer {
 width: 1600px;
 height: 800px;
 margin: auto;
 text-align: center;
-}
+} */
 
 .loginInput {
 margin: 325px;
 }
 
-.timestamp {
+/* .timestamp {
 font-size: 14px;
 color: blue;
 }
@@ -92,7 +115,7 @@ color: white;
 
 .userClass {
 color: blue;
-}
+} */
 
 input {
 width: 300px;
@@ -110,10 +133,15 @@ height: 35px;
 border-radius: 3%;
 font-size: 14px;
 box-shadow: 0 6px 6px -6px black;
+transition: 0.3s;
+border: none;
+
+
 }
 
 button:hover {
-background-color: lightgrey;
+  background-color: rgb(142,50,40);
+  color: white;
 }
 
 label {
@@ -162,39 +190,16 @@ margin: auto;
 margin-top: 10px;
 }
 
-h1 {
-color:black;
+h2 {
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
-
-/* input.error {
-border: 1px solid red;
-}
-
-select.error {
-  color: red;
-  border: 1px solid red;
-}
-
-.ingredientsError {
-  color: red;
-  background-color: black;
-}
-
-label.error {
-color: red;
-} */
 
 .directionDiv {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
 }
-
-/* .recipeContainer {
-  margin: 0 auto;
-} */
 
 .selectorDiv {
 display:flex;
@@ -211,28 +216,37 @@ box-shadow: 0 6px 6px -6px black;
 font-size: 18px;
 }
 
-.mainContainer {
+/* .mainContainer {
   background-color: whitesmoke;
   width: 100%;
   height: 1400px;
   margin: 0 auto;
 
-}
+} */
 
 .formInput {
   margin: 12px;
 }
 
 p {
-  font-size: 15px;
-  color: grey;
+  font-size: 25px;
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  transition: 0.3s;
 
+}
+
+p:hover {
+  text-decoration-line: line-through;
+  color: rgb(122,60,80);
 }
 
 .uploadDiv {
   display: flex;
   flex-direction: row;
   margin: 0 auto;
+  width: 100%;
+  height: 868px;
 }
 
 h1 {
@@ -260,12 +274,12 @@ h1 {
   font-family:  'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-ul li:hover {
+.ingredientUL .ingredientLI:hover {
   font-size: 20px;
   box-shadow: 0 8px 1px -4px rgb(0, 0, 0, 0.10), 0 20px 0 -10px #eee;
 }
 
-ul {
+.ingredientUL {
   text-decoration: none;
   font-style: none;
   padding: 0;
@@ -273,7 +287,7 @@ ul {
 
 }
 
-ul li {
+.ingredientUL .ingredientLI {
   color: black;
   width: 350px;
   height: 50px;
@@ -286,43 +300,87 @@ ul li {
   line-height: 50px;
   overflow: scroll;
   margin: 0 auto;
+}
 
+.logoutDiv {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px;
+}
+
+.userSpan {
+  color: black;
+  font-size: 20px;
+  margin: 20px;
 }
 
 #canvas {
   height: 1500px;
 }
 
-#header {
+.logoImg {
+  width: 92px;
+  height: 92px;
+  border: none;
+}
+
+.logo {
+  font-size: 70px;
+  position: relative;
+  color: rgb(122,150,30);
+  font-weight: 300;
+}
+
+.logosDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.header {
   width: 100%;
   height: 95px;
-  background-color: rgb(142,50,40);
+  background-color: white;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
 }
 
-#footer {
+.footer {
   width: 100%;
-  height: 239px;
-  background-color: rgb(142,50,40);
+  height: 600px;
+  background-color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: 72px;
-  margin-top: 104px;
+  text-align: center;
 }
 
-#login-link {
+.footerP {
+  font-size: 28px;
+  font-family: 'Roboto';
+  margin: 50px;
+  color: black;
+
+}
+
+.login-link {
   position: relative;
   left: 46px;
   color: black;
   text-decoration-color: none;
 }
 
-#welcome {
+.welcome {
   height: 372px;
   text-align: center;
 }
 
-#break {
+.break {
   width: 81%;
   height: 30px;
   background-color: rgb(142,50,40);
@@ -331,7 +389,7 @@ ul li {
   left: 165px;
 }
 
-#break2 {
+.break2 {
   width: 81%;
   height: 30px;
   background-color: rgb(142,50,40);
@@ -340,7 +398,7 @@ ul li {
   left: 165px;
 }
 
-#landing-intro {
+.landing-intro {
   margin-top: 42px;
 }
 
@@ -349,7 +407,7 @@ ul li {
   width: 486px;
 }
 
-#landing-assets {
+.landing-assets {
   height: 483px;
   display: flex;
   justify-content: space-between;
@@ -357,9 +415,17 @@ ul li {
   margin-top: 116px;
 }
 
-#registerlogin {
+.registerlogin {
   display: flex;
   margin-top: 72px;
+}
+
+.registerButton {
+  color: white;
+}
+
+.logoTitle {
+  padding: 40px;
 }
 
 .questions {
@@ -367,41 +433,39 @@ ul li {
   left: 180px;
 }
 
-#canvas2 {
+.canvas2 {
   display: flex;
-  justify-content: center;
-  height: 600px;
-  margin: 0 5%;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 750px;
+  width: 100%;
+  margin: 0 auto;
 }
 
-.accountNAV {
-  height: 500px;
-  width: 544px;
-  border: black groove 5px;
-  margin-top: 88px;
-  text-align: center;
+.left-panel {
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
+  border-bottom: 2px solid lightgrey;
+  width: 200px;
+  height: 400px;
+  padding: 10px;
+  margin: 0 auto;
 }
 
-#left-panel {
-  font-size: 30px;
+h2 {
+  font-size: 32px;
+  color: white;
+  text-decoration: none;
 }
 
-.title {
+/* .title {
   text-decoration: underline;
-}
-
-#logo {
-  font-size: 50px;
-  position: relative;
-  top: -33px;
-  left: 29px;
-}
+} */
 
 a {
   text-decoration: none;
   color: none;
+  
 }
 
 a:visited {
@@ -413,25 +477,25 @@ a:visited {
   margin: 8px;
 }
 
-#ingredients-textarea {
+.ingredients-textarea {
   height: 300px;
   width: 1000px;
 }
 
-#recipe-display {
+.recipe-display {
   display: flex;
   flex-direction: column;
   width: 1000px;
   align-items: center;
 }
 
-#recipe-display h2 {
+.recipe-display h2 {
   font-size: 40px;
   text-decoration: underline;
   color: gray;
 }
 
-#recipe-display ul li{
+.recipe-display ul li{
   width: 100%;
   color: gray;
 }
@@ -446,11 +510,32 @@ a:visited {
  
 }
 
+.recipeUL {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: white;
+  list-style-type: none;
+}
+
+.recipeLI {
+  margin: 0 auto;
+  font-size: 20px;
+  color: white;
+  border-bottom: 1px solid black;
+}
+
+.recipeLI:hover {
+  text-decoration-line: line-through;
+}
+
 .imgUploadDiv {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   border: 1px solid lightgrey;
+  background-color: whitesmoke;
+  box-shadow: 0 6px 6px -6px black;
   
 }
 
@@ -473,8 +558,32 @@ a:visited {
   width: 250px;
   height: 70px;
   margin-top: 5px;
+  
 }
 
 .uploadButton {
   margin: 0 auto;
+}
+
+.footerSpan {
+  color: rgb(122,120,30);
+  font-size: 55px;
+  margin: 40px;
+}
+
+.books {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.book {
+  border: 1px solid grey;
+  width: 380px;
+  height: 700px;
+  background-color: red;
+  text-align: center;
+  align-items: center;
+  margin: 12px;
+  border-radius: 1.5%;
 }

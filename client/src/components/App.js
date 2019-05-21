@@ -26,13 +26,14 @@ import FavRecipeView from './Routes/FavRecipeView'
 import RecipeBookView from './Routes/RecipeBookView'
 import RecipeBookRecipeView from './Routes/RecipeBookRecipeView'
 
+
 class App extends Component {
   render() {
     return (
       <AuthProvider>
         <Provider store={store}>
           <Router>
-            <div>
+            <div className="appContainer">
              
               {/* public routes */}
               <Switch>
@@ -44,6 +45,8 @@ class App extends Component {
               {/* private routes */}
               <Switch>
               <AuthRoute path="/" exact component={AccountHome} />
+
+    
               <AuthRoute path="/upload" component={UploadParentFunctional} />
               {/* <AuthRoute path="/uploadphoto" exact component={uploadPhoto} /> */}
               <AuthRoute path="/user_recipes" exact component={UserRecipe} />

@@ -41,7 +41,7 @@ const FavRecipeView = (props) => {
     <div>
       <Header />
         <div id="recipe-display">
-          <img id="recipe-pic" src="http://place-hold.it/400/400" />
+          <img id="recipe-pic" src="http://place-hold.it/400/400" alt='' />
 
               <h1 id="recipe-name">{props.currentRecipe.name}</h1>
               <div id="prep">

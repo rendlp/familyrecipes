@@ -33,9 +33,14 @@ const Login = props => {
   }
 
   return (
-    <div>
-    <Header />
+    <div className='loginPageContainer'>
+    {/* <Header /> */}
     <div className="login">
+      
+      <div className='invisible'>
+        <h1 className='logoTitle'>nettles.</h1>
+        </div>
+
       <Paper className="pad">
         <div className="loginIcon">
           <Avatar>
@@ -51,7 +56,7 @@ const Login = props => {
             <InputLabel htmlFor="email">Username</InputLabel>
             <Input
               onChange={e => setUsername(e.target.value)}
-              id="email"
+              className="email"
               name="username"
               autoComplete="email"
               autoFocus
@@ -63,7 +68,7 @@ const Login = props => {
               onChange={e => setPassword(e.target.value)}
               name="password"
               type="password"
-              id="password"
+              className="password"
               autoComplete="current-password"
             />
           </FormControl>
@@ -88,7 +93,7 @@ const Login = props => {
             variant="contained"
             color="secondary"
           >
-            Register
+            <p>Register</p>
           </Button>
         </form>
       </Paper>

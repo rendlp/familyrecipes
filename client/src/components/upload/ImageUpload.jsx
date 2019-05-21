@@ -35,7 +35,6 @@ const ImageUpload = (props) => {
 
         // ERROR
         (err) => {
-
          console.log(err)
         },
 

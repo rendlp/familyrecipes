@@ -8,7 +8,7 @@ class IngredientList extends Component {
   render() {
     return (
       <div className="item">
-       <ul>
+       <ul className='ingredientUL'> 
         {this.props.inputs.map(item => (
           <IngredientItem {...item} />
          ))}

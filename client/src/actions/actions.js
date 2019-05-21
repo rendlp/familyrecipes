@@ -88,7 +88,6 @@ export function shareRecipeWithGroup(recipeId, groupChosen, recipeName) {
         recipe_id: recipeId,
         group_id: groupChosen,
         name: recipeName
-
     })
 }
 
@@ -176,6 +175,8 @@ export function getGroupRecipes(group_id) {
 
     })
   }
+
+  
 // for potential future use
 
 // export function Date() {

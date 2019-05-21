@@ -40,7 +40,8 @@ function UploadParentFunctional () {
 
     return (
      <div className="uploadDiv">
-        <button><Link to='/'>Back</Link></button>
+         
+        <button className='backBtn'><Link to='/'>Back</Link></button>
 
         <div id="name/prep">
             <Name manageForm={manageForm} formData={forms.RecipeName} />
@@ -60,11 +61,12 @@ function UploadParentFunctional () {
         <div id="image-upload">
             <h1>Image</h1>
             <ImageUpload addImageToForm={addImageToForm} manageForm={manageForm} formData={forms.image} />
+            <form onSubmit={handleForm}>
+         <button className='submitButton'>Submit</button>
+        </form>
         </div>
 
-        <form onSubmit={handleForm}>
-         <button>Submit</button>
-        </form>
+        
      </div>
     )
 };
