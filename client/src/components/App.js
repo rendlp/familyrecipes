@@ -17,7 +17,6 @@ import UsermadeRecipeBook from './Routes/usermade-recipebook'
 import WhatsHappenin from './Routes/whats-happenin'
 import CreateGroup from './Routes/CreateGroup'
 import UploadParentFunctional from './upload/UploadParentFunctional'
-import uploadPhoto from './upload/UploadPhoto';
 import Group from './Routes/Group'
 import InviteUser from './Routes/InviteUser'
 import RecipeView from './Routes/recipe-view'
@@ -45,7 +44,7 @@ class App extends Component {
               <Switch>
               <AuthRoute path="/" exact component={AccountHome} />
               <AuthRoute path="/upload" component={UploadParentFunctional} />
-              <AuthRoute path="/uploadphoto" exact component={uploadPhoto} />
+              {/* <AuthRoute path="/uploadphoto" exact component={uploadPhoto} /> */}
               <AuthRoute path="/user_recipes" exact component={UserRecipe} />
               <AuthRoute path="/user_groups" exact component={UserGroups} />
               <AuthRoute path="/user_messages" exact component={UserMessages} />

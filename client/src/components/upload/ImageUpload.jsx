@@ -5,6 +5,7 @@ import { storage } from '../firebase'
 class ImageUpload extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             image: null,
             url: '',
