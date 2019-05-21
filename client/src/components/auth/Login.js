@@ -36,7 +36,11 @@ const Login = props => {
     <div className='loginPageContainer'>
     {/* <Header /> */}
     <div className="login">
-      <div className='invisible'></div>
+      
+      <div className='invisible'>
+        <h1 className='logoTitle'>nettles.</h1>
+        </div>
+
       <Paper className="pad">
         <div className="loginIcon">
           <Avatar>
@@ -89,7 +93,7 @@ const Login = props => {
             variant="contained"
             color="secondary"
           >
-            Register
+            <p>Register</p>
           </Button>
         </form>
       </Paper>
