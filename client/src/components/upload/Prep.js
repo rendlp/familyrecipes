@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import useFormInput from '../hooks/useFormInput'
 
 const Prep = (props) => {
 
-    const [values, changeForm, resetForm] = useFormInput({...props.formData})
+    const [values, changeForm] = useFormInput({...props.formData})
 
     let manageFunc = props.manageForm
 
     useEffect( () => {
         manageFunc('prepTime', values)
-    }, [values])
- 
+    }, [values, manageFunc])
+
         return (
             <form>
             <div className="prep">
@@ -18,11 +18,11 @@ const Prep = (props) => {
              <div className="selectorDiv">
 
 {/* HOURS */}
-                <select 
-                
-                type="text" 
-                name="prepHours" 
-                className="formInput" 
+                <select
+
+                type="text"
+                name="prepHours"
+                className="formInput"
                 onChange= {changeForm}  >
 
                 <option>Hours?</option>
@@ -42,13 +42,13 @@ const Prep = (props) => {
                 </select>
 
 {/* MINUTES */}
-                <select 
-                
-                type="text" 
-                name="prepMinutes" 
-                className="formInput" 
+                <select
+
+                type="text"
+                name="prepMinutes"
+                className="formInput"
                 onChange= {changeForm} >
-                
+
                 <option>Minutes?</option>
                 <option value="0">0 Minutes</option>
                 <option value="5">5 Minutes</option>
@@ -61,7 +61,7 @@ const Prep = (props) => {
                 <option value="40">40 Minutes</option>
                 <option value="45">45 Minutes</option>
                 <option value="50">50 Minutes</option>
-                <option value="55">55 Minutes</option>      
+                <option value="55">55 Minutes</option>
                 </select>
 
 {/* SERVINGS */}
@@ -81,14 +81,13 @@ const Prep = (props) => {
                 <option value="6">6 Servings</option>
                 <option value="7">7 Servings</option>
                 <option value="8">8 Servings</option>
-                
+
                 </select>
                 </div>
             </div>
         </form>
         )
-    
+
 }
 
 export default Prep;
-

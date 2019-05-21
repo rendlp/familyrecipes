@@ -1,5 +1,4 @@
 const initialState = {
-
   inputs: [],
   itemCount: 0,
   userRecipes: [],
@@ -39,7 +38,7 @@ export default function(state = initialState, action) {
       return {...state, userRecipes: action.userRecipes}
 
     case "GET_CURRENT_RECIPE":
-      return {...state, currentRecipe: action.currentRecipe, currentRecipeIngredients: action. currentRecipeIngredients}
+      return {...state, currentRecipe: action.currentRecipe, currentRecipeIngredients: action.currentRecipeIngredients}
 
     case "GET_GROUP_USERS":
       return {...state, groupUsers: action.payload, currentGroup: action.payload[0].groupname}

@@ -7,7 +7,6 @@ import Ingredient from './Ingredient'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 import {addRecipe} from '../../actions/actions'
 import IngredientList from './IngredientList'
-import TheStuff from './TheStuff'
 import Header from '../header'
 import Footer from '../footer'
 import ImageUpload from './ImageUpload';
@@ -32,7 +31,7 @@ function UploadParentFunctional () {
         e.preventDefault();
         console.log(forms);
         addRecipe(forms)
-        
+
     };
 
     return (
@@ -50,7 +49,7 @@ function UploadParentFunctional () {
             <Ingredient manageForm={manageForm} formData={forms.ingredient} />
             {/* <IngredientList manageForm={manageIngredients} formData={ingredientList} /> */}
         </div>
-        
+
         <div id="text-directions">
             <Directions manageForm={manageForm} formData={forms.Directions} />
         </div>

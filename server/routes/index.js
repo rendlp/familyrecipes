@@ -208,7 +208,7 @@ router.post('/recipes', (req, res, next) => {
     message: 'recipe posted'
     })
   })
-
+// listen for a post call into the application's database(group_recipe_links table)
 router.post('/group_recipe_links', (req, res, next) => {
   const sql =`
   INSERT INTO
@@ -217,11 +217,13 @@ router.post('/group_recipe_links', (req, res, next) => {
     (?, ?, ?)
   `
 
-  conn.query(sql, [req.body.group_id, req.body.recipe_id, req.body.recipe_name], (err, results, fields) => {
+  conn.query(sql, [req.body.group_id, req.body.recipe_id, req.body.name], (err, results, fields) => {
     console.log(results);
-    message: 'recipe added to group'
+    res.json({
+      message: 'recipe added to group'
     })
   })
+})
   // allow a post call to add a link between a user and a recipebook created by said user
   router.post('/user_recipebooks_links', (req, res, next) => {
     const sql =`

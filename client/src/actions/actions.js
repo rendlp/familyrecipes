@@ -1,6 +1,6 @@
 import store from '../store'
 import Axios from 'axios'
-import { checkPropTypes, string } from 'prop-types'
+// import { checkPropTypes, string } from 'prop-types'
 import * as firebase from 'firebase/app'
 
 // export function addBoth(both) {

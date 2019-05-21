@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from 'react'
+import React, { Component } from 'react'
 import { storage } from '../firebase'
 
 
@@ -30,20 +30,20 @@ class ImageUpload extends Component {
     handleUpload = e => {
         const { image } = this.state;
         const uploadTask = storage.ref(`images/${image.name}`).put(image)
-        uploadTask.on('state_changed', 
+        uploadTask.on('state_changed',
 
         // PROGRESS
         (snapshot) => {
             const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
             this.setState({progress})
 
-        }, 
+        },
 
         // ERROR
         (err) => {
 
          console.log(err)
-        }, 
+        },
 
         // GET IMAGE AFTER UPLOAD COMPLETION
         () => {
@@ -57,14 +57,14 @@ class ImageUpload extends Component {
 
     render() {
         return(
-       
+
              <div className ='imgUploadDiv'>
                 <progress className='progress' value={this.state.progress} max='100' />
                 <input className='uploadInput' type='file' onChange={this.handleChange} />
                 <img src={this.state.url || 'https://via.placeholder.com/150'} className='imgUpload' alt='' />
                 <button onClick={this.handleUpload}>Upload</button>
              </div>
-       
+
         )
     }
 }
