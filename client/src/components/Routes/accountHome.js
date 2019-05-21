@@ -30,18 +30,21 @@ class AccountHome extends Component {
 
         <div className="books">
 
+        <Link to="/usermade_recipebook">
          <div className='book'>
-          <Link to="/usermade_recipebook"><p>Recipe Book 1</p></Link>
-          </div>
+          <p>Recipe Book 1</p>
+         </div>
+        </Link>
 
           <div className='book'>
           <p>Recipe Book 2</p>
           </div>
+
           <div className='book'>
           <p>Recipe Book 3</p>
           </div>
       
-        </div> */}
+        </div>
 
         </div>
 
@@ -52,4 +55,4 @@ class AccountHome extends Component {
   }
 }
 
-export default AccountHome
+export default AccountHome;

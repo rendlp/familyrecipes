@@ -40,7 +40,7 @@ const Register = props => {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
 
       <div className="login">
         <Paper className="pad">

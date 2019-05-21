@@ -33,9 +33,10 @@ const Login = props => {
   }
 
   return (
-    <div>
-    <Header />
+    <div className='loginPageContainer'>
+    {/* <Header /> */}
     <div className="login">
+      <div className='invisible'></div>
       <Paper className="pad">
         <div className="loginIcon">
           <Avatar>
