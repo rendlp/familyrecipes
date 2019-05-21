@@ -9,7 +9,7 @@ class UserGroups extends Component {
     return (
       <div>
         <Header />
-        <LogoutButton />
+        
           <GroupList />
         <Footer />
       </div>

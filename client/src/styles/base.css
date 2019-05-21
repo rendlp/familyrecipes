@@ -260,12 +260,12 @@ h1 {
   font-family:  'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-ul li:hover {
+.ingredientUL .ingredientLI:hover {
   font-size: 20px;
   box-shadow: 0 8px 1px -4px rgb(0, 0, 0, 0.10), 0 20px 0 -10px #eee;
 }
 
-ul {
+.ingredientUL {
   text-decoration: none;
   font-style: none;
   padding: 0;
@@ -273,7 +273,7 @@ ul {
 
 }
 
-ul li {
+.ingredientUL .ingredientLI {
   color: black;
   width: 350px;
   height: 50px;
@@ -286,21 +286,54 @@ ul li {
   line-height: 50px;
   overflow: scroll;
   margin: 0 auto;
-
 }
+
+/* .sidebar {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  background-color:#151719;
+  left: -200px;
+  transition: all 500ms linear;
+}
+
+.sidebar.active {
+  left: 0px;
+}
+
+.sidebar ul li {
+  color:rgba(230, 230, 230, 0.9);
+  list-style: none;
+  padding: 12px 10px;
+  border-bottom:1px solid rgba(100, 100, 100, 0.3)
+}
+
+.sidebar .toggle-btn {
+  position: absolute;
+  left: 230px;
+  top: 20px;
+}
+
+.sidebar .toggle-btn span {
+  display: block;
+  width: 30px;
+  height: 5px;
+  background-color:#151719;
+  margin: 4px 0px;
+} */
 
 #canvas {
   height: 1500px;
 }
 
-#header {
+.header {
   width: 100%;
   height: 95px;
   background-color: rgb(142,50,40);
   display: flex;
 }
 
-#footer {
+.footer {
   width: 100%;
   height: 239px;
   background-color: rgb(142,50,40);
@@ -310,19 +343,19 @@ ul li {
   margin-top: 104px;
 }
 
-#login-link {
+.login-link {
   position: relative;
   left: 46px;
   color: black;
   text-decoration-color: none;
 }
 
-#welcome {
+.welcome {
   height: 372px;
   text-align: center;
 }
 
-#break {
+.break {
   width: 81%;
   height: 30px;
   background-color: rgb(142,50,40);
@@ -331,7 +364,7 @@ ul li {
   left: 165px;
 }
 
-#break2 {
+.break2 {
   width: 81%;
   height: 30px;
   background-color: rgb(142,50,40);
@@ -340,7 +373,7 @@ ul li {
   left: 165px;
 }
 
-#landing-intro {
+.landing-intro {
   margin-top: 42px;
 }
 
@@ -349,7 +382,7 @@ ul li {
   width: 486px;
 }
 
-#landing-assets {
+.landing-assets {
   height: 483px;
   display: flex;
   justify-content: space-between;
@@ -357,7 +390,7 @@ ul li {
   margin-top: 116px;
 }
 
-#registerlogin {
+.registerlogin {
   display: flex;
   margin-top: 72px;
 }
@@ -367,24 +400,23 @@ ul li {
   left: 180px;
 }
 
-#canvas2 {
+.canvas2 {
   display: flex;
   justify-content: center;
   height: 600px;
   margin: 0 5%;
 }
 
-.accountNAV {
+.accountNAVleft {
   height: 500px;
   width: 544px;
-  border: black groove 5px;
   margin-top: 88px;
   text-align: center;
   display: flex;
   flex-direction: column;
 }
 
-#left-panel {
+.left-panel {
   font-size: 30px;
 }
 
@@ -392,7 +424,7 @@ ul li {
   text-decoration: underline;
 }
 
-#logo {
+.logo {
   font-size: 50px;
   position: relative;
   top: -33px;
@@ -413,25 +445,25 @@ a:visited {
   margin: 8px;
 }
 
-#ingredients-textarea {
+.ingredients-textarea {
   height: 300px;
   width: 1000px;
 }
 
-#recipe-display {
+.recipe-display {
   display: flex;
   flex-direction: column;
   width: 1000px;
   align-items: center;
 }
 
-#recipe-display h2 {
+.recipe-display h2 {
   font-size: 40px;
   text-decoration: underline;
   color: gray;
 }
 
-#recipe-display ul li{
+.recipe-display ul li{
   width: 100%;
   color: gray;
 }

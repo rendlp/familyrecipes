@@ -5,6 +5,7 @@ import Footer from '../footer'
 import { getCurrentRecipe, getGroups, shareRecipeWithGroup, addFavoriteRecipe } from '../../actions/actions'
 import { connect, useSelector } from 'react-redux'
 import GroupList from './GroupList';
+import { BrowserRouter as Route, Link } from 'react-router-dom'
 
 const RecipeView = (props) => {
 
@@ -38,8 +39,9 @@ const RecipeView = (props) => {
   return (
     <div>
       <Header />
+      <button><Link to='/'>Back</Link></button>
         <div id="recipe-display">
-          <img id="recipe-pic" src="http://place-hold.it/400/400" />
+          <img id="recipe-pic" src="http://place-hold.it/400/400" alt='' />
 
               <h1 id="recipe-name">{props.currentRecipe.name}</h1>
               <div id="prep">

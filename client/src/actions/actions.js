@@ -1,13 +1,8 @@
 import store from '../store'
 import Axios from 'axios'
-<<<<<<< HEAD
 import { checkPropTypes, string } from 'prop-types'
 import * as firebase from 'firebase'
-=======
-import { checkPropTypes } from 'prop-types'
 
-
->>>>>>> 45ac01e35e01f87d4cfb639af8fbecd6953dd2c5
 
 export function addBoth(both) {
     Axios.post('/api/both', both)
@@ -22,13 +17,9 @@ export function getGroups(user) {
     })
 }
 
-// export function Storage(ref) {
-//     static displayFirebaseStorageImg(ref: String, callback: (url:String))
-//     const imageRef = firebase.storage().ref(ref);
-    
-//     imageRef.getDownloadURL().then((url: String) => callback(url))
-// }
-
+export function sidebarToggle(){
+  document.getElementsByClassName('sidebar').classList.toggle('active');
+}
 
 export function getGroupUsers(group_id) {
     if (group_id) {
@@ -66,13 +57,6 @@ export function addUserToGroup(group_id, username) {
     })
 }
 
-// export function addImage(img) {
-//     Axios.post('/api/recipes', {
-//         imgURL : img.image
-//     })
-// }
-
-
 export function addRecipe(recipe) {
     const ingredients = recipe.ingredient.list.map(x => x.name)
 
@@ -83,10 +67,7 @@ export function addRecipe(recipe) {
         directions: recipe.directions.directions,
         servings: recipe.prepTime.serves,
         username: recipe.username.user,
-<<<<<<< HEAD
-        ingredients: ingredients.join(", "),
-        image: recipe.image.url
-=======
+        image: recipe.image.url,
         ingredients: ingredients.join("*/*")
     })
 }
@@ -96,7 +77,6 @@ export function shareRecipeWithGroup(recipeId, groupChosen, recipeName) {
         recipe_id: recipeId,
         group_id: groupChosen,
         name: recipeName
->>>>>>> 45ac01e35e01f87d4cfb639af8fbecd6953dd2c5
     })
 }
 

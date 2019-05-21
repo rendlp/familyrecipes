@@ -51,7 +51,7 @@ const Login = props => {
             <InputLabel htmlFor="email">Username</InputLabel>
             <Input
               onChange={e => setUsername(e.target.value)}
-              id="email"
+              className="email"
               name="username"
               autoComplete="email"
               autoFocus
@@ -63,7 +63,7 @@ const Login = props => {
               onChange={e => setPassword(e.target.value)}
               name="password"
               type="password"
-              id="password"
+              className="password"
               autoComplete="current-password"
             />
           </FormControl>

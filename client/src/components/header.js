@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import LogoutButton from './logout-button'
 
 class Header extends Component {
   render() {
     return (
-      <div id="header">
-        <p id="logo">nettles</p>
+      <div className="header">
+        <p className="logo">nettles</p>
+        <LogoutButton />
       </div>
     )
   }

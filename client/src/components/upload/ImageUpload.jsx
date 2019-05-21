@@ -14,6 +14,7 @@ class ImageUpload extends Component {
         this.handleChange = this
         .handleChange
         .bind(this);
+
         this.handleUpload = this
         .handleUpload
         .bind(this)
@@ -40,7 +41,6 @@ class ImageUpload extends Component {
 
         // ERROR
         (err) => {
-
          console.log(err)
         }, 
 
@@ -58,7 +58,7 @@ class ImageUpload extends Component {
         return(
        
              <div className ='imgUploadDiv'>
-                <progress className='progress' value={this.state.progress} max='100' />
+                <Suspense className='progress' value={this.state.progress} max='100' />
                 <input className='uploadInput' type='file' onChange={this.handleChange} />
                 <img src={this.state.url || 'https://via.placeholder.com/150'} className='imgUpload' alt='' />
                 <button onClick={this.handleUpload}>Upload</button>

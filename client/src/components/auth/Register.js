@@ -62,7 +62,7 @@ const Register = props => {
               <InputLabel htmlFor="email">Username</InputLabel>
               <Input
                 onChange={e => setUsername(e.target.value)}
-                id="email"
+                className="email"
                 name="email"
                 autoFocus
               />
@@ -73,7 +73,7 @@ const Register = props => {
                 onChange={e => setPassword(e.target.value)}
                 name="password"
                 type="password"
-                id="password"
+                className="password"
               />
             </FormControl>
             <FormControl error={passError} margin="normal" required fullWidth>
@@ -82,7 +82,7 @@ const Register = props => {
                 onChange={e => setConfirm(e.target.value)}
                 name="confirmPassword"
                 type="password"
-                id="confirmPassword"
+                className="confirmPassword"
               />
             </FormControl>
 

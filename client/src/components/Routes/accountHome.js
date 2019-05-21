@@ -6,6 +6,7 @@ import Header from '../header'
 import Footer from '../footer'
 import {getRecipeBooks} from '../../actions/actions'
 
+
 class AccountHome extends Component {
 
   
@@ -14,16 +15,16 @@ class AccountHome extends Component {
       <div>
 
         <Header />
-        <LogoutButton />
 
-        <div id="canvas2">
+        <div className="canvas2">
+       
 
         <div className="accountNAV" id="left-panel">
-          <Link to="/user_recipes"><p id="user-recipes">My Recipes</p></Link>
-          <Link to="/user_groups"><p id="user-groups">My Groups</p></Link>
-          <Link to="user_messages"><p id="user-messages">My Messages</p></Link>
-          <Link to="/upload"><p id="upload">Upload Recipe</p></Link>
-          <Link to="/user_profile"><p id="user-profile">My Profile</p></Link>
+          <Link to="/user_recipes"><p className="user-recipes">My Recipes</p></Link>
+          <Link to="/user_groups"><p className="user-groups">My Groups</p></Link>
+          <Link to="user_messages"><p className="user-messages">My Messages</p></Link>
+          <Link to="/upload"><p className="upload">Upload Recipe</p></Link>
+          <Link to="/user_profile"><p className="user-profile">My Profile</p></Link>
         </div>
 
         <div className="accountNAV" id="mid-panel">

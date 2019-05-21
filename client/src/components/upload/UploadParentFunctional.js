@@ -6,11 +6,7 @@ import Directions from './Directions';
 import Ingredient from './Ingredient'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 import {addRecipe} from '../../actions/actions'
-import IngredientList from './IngredientList'
-import TheStuff from './TheStuff'
-import Header from '../header'
-import Footer from '../footer'
-import UploadPhoto from './UploadPhoto'
+
 import ImageUpload from './ImageUpload';
 
 function UploadParentFunctional () {
@@ -38,6 +34,7 @@ function UploadParentFunctional () {
 
     return (
      <div className="uploadDiv">
+         
         <button><Link to='/'>Back</Link></button>
 
         <div id="name/prep">

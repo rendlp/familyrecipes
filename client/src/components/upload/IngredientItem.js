@@ -11,7 +11,7 @@ class IngredientItem extends Component {
     render() {
         return (
             <li 
-             className={this.props.status}
+             className='ingredientLI'
              onClick={this.handleClick}>{this.props.input}
             </li>
         )
