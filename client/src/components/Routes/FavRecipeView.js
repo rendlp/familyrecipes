@@ -73,7 +73,8 @@ const FavRecipeView = (props) => {
               name="shareWithGroup"
               id="shareWithGroup"
               className="shareDropdown">
-              {userRecipeBooks.map((recipeBook, i) => (
+                <option>Select a Recipe Book</option>
+                {userRecipeBooks.map((recipeBook, i) => (
                 <option value={recipeBook.recipebook_id} key={"group - "+i}>
                   {recipeBook.recipebook_name}
                 </option>
