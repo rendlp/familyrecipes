@@ -1,32 +1,21 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { AuthContext } from "../../lib/auth"
 import Header from '../header'
 import Footer from '../footer'
-import { getCurrentRecipe, getGroups, shareRecipeWithGroup, addFavoriteRecipe } from '../../actions/actions'
-import { connect, useSelector } from 'react-redux'
-import GroupList from './GroupList';
-import RecipeView from './recipe-view'
+import { getCurrentRecipe, shareRecipeWithGroup } from '../../actions/actions'
+import { connect } from 'react-redux'
 
 
-const DisplayRecipe = (props) => {
+const RecipeBookRecipeView = (props) => {
 
   const { user } = useContext(AuthContext)
   const recipeId = props.match.params.recipe_id
-  const [groupChosen, setGroupChosen] = useState('')
   const recipeName = props.currentRecipe.name
-  const groups = useSelector(appstate => appstate.groups)
   const recipebookID = props.match.params.recipebook_id
 
   useEffect(() => {
       getCurrentRecipe(recipeId)
-      getGroups(user)
   },[])
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    shareRecipeWithGroup(recipeId, groupChosen, recipeName)
-
-  };
 
   return (
     <div>
@@ -57,26 +46,7 @@ const DisplayRecipe = (props) => {
 
 
         </div>
-        <div className="shareRecipeWithGroup">
-          <form onSubmit={handleSubmit}>
-            <label>
-              Share recipe with a group:
-            </label>
-            <select onChange={e => setGroupChosen(e.target.value)}
-              name="shareWithGroup"
-              id="shareWithGroup"
-              className="shareDropdown">
-              {groups.map((group, i) => (
-                <option value={group.group_id} key={"group - "+i}>
-                  {group.groupname}
-                </option>
-              ))}
-            </select>
-            <button type="submit">
-                Share
-            </button>
-          </form>
-        </div>
+        
       <Footer />
 
     </div>
@@ -90,4 +60,4 @@ function mapStateToProps(appState) {
   }
 }
 
-export default connect(mapStateToProps)(DisplayRecipe)
+export default connect(mapStateToProps)(RecipeBookRecipeView)
