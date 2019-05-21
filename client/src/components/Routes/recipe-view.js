@@ -29,7 +29,7 @@ const RecipeView = (props) => {
 
   const [groupChosen, setGroupChosen] = useState('')
 
-  // console.log( 'recipeId - ',recipeId, 'groupChosen - ', groupChosen, 'recipeName - ', recipeName)
+  console.log( 'recipeId - ',recipeId, 'groupChosen - ', groupChosen, 'recipeName - ', recipeName)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -75,6 +75,7 @@ const RecipeView = (props) => {
               name="shareWithGroup"
               id="shareWithGroup"
               className="shareDropdown">
+                <option>Select a group</option>
               {groups.map((group, i) => (
                 <option value={group.group_id} key={"group - "+i}>
                   {group.groupname}
