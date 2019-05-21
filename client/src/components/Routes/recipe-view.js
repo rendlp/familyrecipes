@@ -7,6 +7,7 @@ import { connect, useSelector } from 'react-redux'
 import GroupList from './GroupList';
 import { BrowserRouter as Route, Link } from 'react-router-dom'
 
+
 const RecipeView = (props) => {
 
 
@@ -23,18 +24,19 @@ const RecipeView = (props) => {
 
   function handleClick(e) {
   addFavoriteRecipe(props.currentRecipe.name, recipeId, user )
-}
+  }
+
   const groups = useSelector(appstate => appstate.groups)
 
   const [groupChosen, setGroupChosen] = useState('')
 
-  console.log( 'recipeId - ',recipeId, 'groupChosen - ', groupChosen, 'recipeName - ', recipeName)
+  // console.log( 'recipeId - ',recipeId, 'groupChosen - ', groupChosen, 'recipeName - ', recipeName)
 
   function handleSubmit(e) {
     e.preventDefault();
     shareRecipeWithGroup(recipeId, groupChosen, recipeName)
 
-};
+  };
 
   return (
     <div>
@@ -63,6 +65,7 @@ const RecipeView = (props) => {
               </div>
 
               <button onClick={handleClick}>Add to Favorite List</button>
+
 
         </div>
         <div className="shareRecipeWithGroup">

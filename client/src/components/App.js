@@ -24,6 +24,7 @@ import CreateRecipebook from './Routes/create-recipebook'
 import GroupRecipeView from './Routes/GroupRecipeView'
 import FavRecipeView from './Routes/FavRecipeView'
 import RecipeBookView from './Routes/RecipeBookView'
+import RecipeBookRecipeView from './Routes/RecipeBookRecipeView'
 
 
 class App extends Component {
@@ -47,6 +48,7 @@ class App extends Component {
 
     
               <AuthRoute path="/upload" component={UploadParentFunctional} />
+              {/* <AuthRoute path="/uploadphoto" exact component={uploadPhoto} /> */}
               <AuthRoute path="/user_recipes" exact component={UserRecipe} />
               <AuthRoute path="/user_groups" exact component={UserGroups} />
               <AuthRoute path="/user_messages" exact component={UserMessages} />
@@ -62,6 +64,7 @@ class App extends Component {
               <AuthRoute path="/:groupname/Recipes/:recipe_id" exact component={GroupRecipeView} />
               <AuthRoute path="/user_fav_recipes/:recipe_id" exact component={FavRecipeView} />
               <AuthRoute path="/user_fav_recipes/recipebook/:recipebook_id" exact component={RecipeBookView} />
+              <AuthRoute path="/user_fav_recipes/recipebook/:recipebook_id/:recipe_id" exact component={RecipeBookRecipeView} />
               </Switch>
             </div>
           </Router>

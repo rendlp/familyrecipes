@@ -33,7 +33,7 @@ router.get('/groups', (req, res, next) => {
 //get call to grab a user's favorited recipe List
 router.get('/user_favorites', (req, res, next) => {
   const sql = `
-    SELECT 
+    SELECT
       name, recipe_id
     FROM
       user_favorites
@@ -41,6 +41,7 @@ router.get('/user_favorites', (req, res, next) => {
       username = ?`
 
     conn.query(sql, [req.query.username], (err, results, fields) => {
+      console.log(results)
       res.json({
         userFavorites: results
       })
@@ -60,6 +61,7 @@ router.post('/user_favorites', (req, res, next) => {
     })
   })
 })
+
 // get call to grab a user's list of created recipebooks from the application's database(user_recipebooks table)
 router.get('/user_recipebooks', (req, res, next) => {
   const sql = `
@@ -73,6 +75,7 @@ router.get('/user_recipebooks', (req, res, next) => {
     })
   })
 })
+
 //post call to insert a user's created recipebook into the application's database(user_recipebooks table)
 router.post('/user_recipebooks', (req, res, next) => {
   const sql = `
@@ -83,6 +86,21 @@ router.post('/user_recipebooks', (req, res, next) => {
     console.log(results)
     res.json({
       message: 'recipebook created',
+    })
+  })
+})
+
+// get call to grab a list of recipes that were saved inside a recipebook created by the user(user_recipebooks_links table)
+router.get('/user_recipebooks_links', (req, res, next) => {
+  const sql = `
+  SELECT *
+  FROM user_recipebooks_links
+  WHERE recipebook_id = ?`
+
+  conn.query(sql, [req.query.recipebook_id], (err, results, fields) => {
+    console.log(err)
+    res.json({
+      addedRecipesInsideRecipebooks: results,
     })
   })
 })
@@ -199,45 +217,25 @@ router.post('/group_recipe_links', (req, res, next) => {
     (?, ?, ?)
   `
 
-  conn.query(sql, [req.body.group_id, req.body.recipe_id, req.body.name], (err, results, fields) => {
+  conn.query(sql, [req.body.group_id, req.body.recipe_id, req.body.recipe_name], (err, results, fields) => {
     console.log(results);
     message: 'recipe added to group'
     })
   })
 
-// router.post('/recipes', (req, res, next) => {
-//   const name = req.body.name
-//   const prepMinutes = req.body.prepMinutes
-//   const prepHours = req.body.prepHours
-//   const directions = req.body.directions
-//   const servings = req.body.servings
-//   const ingredients = req.body.ingredients
-//   const ingred_id = req.body.ingred_id
-//   const recipe_id = req.body.recipe_id
-
-//   const sql =
-//   `
-//   INSERT INTO
-//   recipes (name, prepMinutes, prepHours, directions, servings, username)
-//   VALUES
-//   (?, ?, ?, ?, ?, ?)
-
-//   INSERT INTO
-//   ingredients (ingredients)
-//   VALUES
-//   (?)
-
-//   INSERT INTO
-//   both (ingred_id, recipe_id)
-//   VALUES
-//   (?, ?)
-
-//   `
-
-//   conn.query(sql, [name, prepMinutes, prepHours, directions, servings, ingredients, ingred_id, recipe_id], (err, results, fields) => {
-//     res.json({"message": "recipe added" })
-//   })
-// })
+  router.post('/user_recipebooks_links', (req, res, next) => {
+    const sql =`
+    INSERT INTO
+      user_recipebooks_links (recipe_id, recipebook_id, recipe_name)
+    VALUES
+      (?, ?, ?)
+    `
+  
+    conn.query(sql, [req.body.recipe_id, req.body.recipebook_id, req.body.recipe_name], (err, results, fields) => {
+      console.log(results);
+      message: 'recipe added to group'
+      })
+    })
 
 
 // router that recieves calls to all recipes in the database
@@ -274,7 +272,7 @@ router.get('/groupRecipes', (req, res, next) => {
     WHERE
       grl.group_id = ?
     `
-  
+
     conn.query(sql, [req.query.group_id],(err, results, fields) => {
       res.json({results})
     })
