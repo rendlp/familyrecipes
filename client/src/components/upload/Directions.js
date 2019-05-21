@@ -11,20 +11,6 @@ const Directions = (props) => {
         manageFunc('directions', values)
     }, [values])
 
-    // state = {
-    //     directions:'',
-    //     directionsError:'',
-    //     directionsClass:'',
-
-    // }
-
-    // handleChange = e => {
-    //     this.setState({
-    //         [e.target.name]: e.target.value
-    //     })
-    // }
-
-
         return (
             <form>
                 <div className="directionDiv">
@@ -36,7 +22,6 @@ const Directions = (props) => {
 
                     <textarea
                         type="text"
-                        // ref="recipes_directions"
                         name="directions"
                         id="directions"
                         onChange= {changeForm}

@@ -4,8 +4,6 @@ import Header from '../header'
 import Footer from '../footer'
 import { getCurrentRecipe, getGroups, shareRecipeWithGroup, addFavoriteRecipe } from '../../actions/actions'
 import { connect, useSelector } from 'react-redux'
-import GroupList from './GroupList';
-
 
 const RecipeView = (props) => {
 
@@ -29,7 +27,7 @@ const RecipeView = (props) => {
 
   const [groupChosen, setGroupChosen] = useState('')
 
-  // console.log( 'recipeId - ',recipeId, 'groupChosen - ', groupChosen, 'recipeName - ', recipeName)
+  console.log( 'recipeId - ',recipeId, 'groupChosen - ', groupChosen, 'recipeName - ', recipeName)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -41,7 +39,7 @@ const RecipeView = (props) => {
     <div>
       <Header />
         <div id="recipe-display">
-          <img id="recipe-pic" src="http://place-hold.it/400/400" />
+          <img id="recipe-pic" src={props.currentRecipe.imgURL} />
 
               <h1 id="recipe-name">{props.currentRecipe.name}</h1>
               <div id="prep">
@@ -75,6 +73,7 @@ const RecipeView = (props) => {
               name="shareWithGroup"
               id="shareWithGroup"
               className="shareDropdown">
+                <option>Select a group</option>
               {groups.map((group, i) => (
                 <option value={group.group_id} key={"group - "+i}>
                   {group.groupname}

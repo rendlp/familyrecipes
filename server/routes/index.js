@@ -199,16 +199,16 @@ router.post('/group_user_links/addUser', (req, res, next) => {
 router.post('/recipes', (req, res, next) => {
   const sql =`
   INSERT INTO
-    recipes (name, prepHours, prepMinutes, directions, servings, username, ingredients)
+    recipes (name, prepHours, prepMinutes, directions, servings, username, ingredients, imgURL)
   VALUES
-    (?, ?, ?, ?, ?, ?, ?)
+    (?, ?, ?, ?, ?, ?, ?, ?)
   `
 
-  conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.directions, req.body.servings, req.body.username, req.body.ingredients], (err, results, fields) => {
+  conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.directions, req.body.servings, req.body.username, req.body.ingredients, req.body.imgURL], (err, results, fields) => {
     message: 'recipe posted'
     })
   })
-
+// listen for a post call into the application's database(group_recipe_links table)
 router.post('/group_recipe_links', (req, res, next) => {
   const sql =`
   INSERT INTO
@@ -217,12 +217,14 @@ router.post('/group_recipe_links', (req, res, next) => {
     (?, ?, ?)
   `
 
-  conn.query(sql, [req.body.group_id, req.body.recipe_id, req.body.recipe_name], (err, results, fields) => {
+  conn.query(sql, [req.body.group_id, req.body.recipe_id, req.body.name], (err, results, fields) => {
     console.log(results);
-    message: 'recipe added to group'
+    res.json({
+      message: 'recipe added to group'
     })
   })
-
+})
+  // allow a post call to add a link between a user and a recipebook created by said user
   router.post('/user_recipebooks_links', (req, res, next) => {
     const sql =`
     INSERT INTO
@@ -230,10 +232,9 @@ router.post('/group_recipe_links', (req, res, next) => {
     VALUES
       (?, ?, ?)
     `
-  
+
     conn.query(sql, [req.body.recipe_id, req.body.recipebook_id, req.body.recipe_name], (err, results, fields) => {
-      console.log(results);
-      message: 'recipe added to group'
+      res.json({message: 'recipe added to group'})
       })
     })
 

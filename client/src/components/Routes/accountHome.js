@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import FormContainer from './Upload'
 import LogoutButton from '../logout-button'
 import Header from '../header'
 import Footer from '../footer'
-import {getRecipeBooks} from '../../actions/actions'
+import RecipeBookListAccountHome from '../RecipeBookListAccountHome'
+
 
 class AccountHome extends Component {
 
-  
+
   render() {
     return (
       <div>
@@ -26,11 +26,8 @@ class AccountHome extends Component {
           <Link to="/user_profile"><p id="user-profile">My Profile</p></Link>
         </div>
 
-        <div className="accountNAV" id="mid-panel">
-          <Link to="/user_fav_recipes"><h1 className="title">My Favorite Recipes</h1></Link>
-          <Link to="/usermade_recipebook"><p>Recipebook(playlist) 1</p></Link>
-          <p>Recipebook(playlist) 2</p>
-          <p>Recipebook(playlist) 3</p>
+        <div className="books">
+          <RecipeBookListAccountHome />
         </div>
 
           <div className="accountNAV" id="right-panel">
