@@ -24,7 +24,6 @@ import CreateRecipebook from './Routes/create-recipebook'
 import GroupRecipeView from './Routes/GroupRecipeView'
 import FavRecipeView from './Routes/FavRecipeView'
 import RecipeBookView from './Routes/RecipeBookView'
-import Sidebar from './Routes/Sidebar';
 
 
 class App extends Component {
@@ -33,7 +32,7 @@ class App extends Component {
       <AuthProvider>
         <Provider store={store}>
           <Router>
-            <div>
+            <div className="appContainer">
              
               {/* public routes */}
               <Switch>
@@ -44,8 +43,8 @@ class App extends Component {
 
               {/* private routes */}
               <Switch>
-              {/* <AuthRoute path="/" exact component={AccountHome} /> */}
-              <AuthRoute path="/" exact component={Sidebar} />
+              <AuthRoute path="/" exact component={AccountHome} />
+
     
               <AuthRoute path="/upload" component={UploadParentFunctional} />
               <AuthRoute path="/user_recipes" exact component={UserRecipe} />

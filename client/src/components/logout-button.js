@@ -12,9 +12,9 @@ const LogoutButton = props => {
 
     return (
 
-        <div className="homePage">
+        <div className="logoutDiv">
 
-            <span>{user}</span>
+            <span className='userSpan'>{user}</span>
             <Logout />
 
         </div>

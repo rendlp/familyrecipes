@@ -7,7 +7,7 @@ const Logout = (props) => {
 
     return (
         <div>
-            <Button variant="contained" color="primary" onClick={signout} >
+            <Button variant="contained" color="secondary" className='logoutButton' onClick={signout} >
                 Log Out
             </Button>
       </div>

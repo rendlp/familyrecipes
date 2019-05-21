@@ -22,7 +22,6 @@ const UserRecipe = (props) => {
   return (
       <div>
         <Header />
-        <LogoutButton />
         <button><Link to='/'>Back</Link></button>
         {props.userRecipes.map(recipe => (
           <Link to={'user_recipes/' + recipe.recipe_id}><p>{recipe.name}</p></Link>
