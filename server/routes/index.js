@@ -217,7 +217,7 @@ router.post('/group_recipe_links', (req, res, next) => {
     (?, ?, ?)
   `
 
-  conn.query(sql, [req.body.group_id, req.body.recipe_id, req.body.name], (err, results, fields) => {
+  conn.query(sql, [req.body.group_id, req.body.recipe_id, req.body.recipe_name], (err, results, fields) => {
     console.log(results);
     message: 'recipe added to group'
     })
