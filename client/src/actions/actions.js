@@ -77,7 +77,7 @@ export function addRecipe(recipe) {
         directions: recipe.directions.directions,
         servings: recipe.prepTime.serves,
         username: recipe.username.user,
-        image: recipe.image.url,
+        // image: recipe.image.url,
         ingredients: ingredients.join("*/*")
     })
 }
