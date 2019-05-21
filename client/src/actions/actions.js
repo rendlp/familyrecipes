@@ -129,7 +129,6 @@ export function getGroupRecipes(group_id) {
   // a function that will grab a user's list of created recipebooks from the application's database
   export function getRecipeBooks(user) {
     Axios.get(`/api/user_recipebooks?username=${user}`).then(resp => {
-      console.log(resp.data.userRecipeBooks)
       store.dispatch({
         type: 'GET_USER_RECIPEBOOKS',
         payload: resp.data.userRecipeBooks,
@@ -143,7 +142,17 @@ export function getGroupRecipes(group_id) {
       recipebook_name: recipebookName
     })
   }
+  // a function that will grab recipes saved within a user's created recipebook
+  export function getRecipesWithinRecipebooks(recipebook_id) {
+    Axios.get(`/api/user_recipebooks_links?recipebook_id=${recipebook_id}`).then(resp => {
+      console.log(resp.data.addedRecipesInsideRecipebooks)
+      store.dispatch({
+        type: "GET_RECIPES_WITHIN_RECIPEBOOKS",
+        payload: resp.data.addedRecipesInsideRecipebooks
+      })
 
+    })
+  }
 // for potential future use
 
 // export function Date() {

@@ -33,7 +33,7 @@ router.get('/groups', (req, res, next) => {
 //get call to grab a user's favorited recipe List
 router.get('/user_favorites', (req, res, next) => {
   const sql = `
-    SELECT 
+    SELECT
       name, recipe_id
     FROM
       user_favorites
@@ -60,6 +60,7 @@ router.post('/user_favorites', (req, res, next) => {
     })
   })
 })
+
 // get call to grab a user's list of created recipebooks from the application's database(user_recipebooks table)
 router.get('/user_recipebooks', (req, res, next) => {
   const sql = `
@@ -73,6 +74,7 @@ router.get('/user_recipebooks', (req, res, next) => {
     })
   })
 })
+
 //post call to insert a user's created recipebook into the application's database(user_recipebooks table)
 router.post('/user_recipebooks', (req, res, next) => {
   const sql = `
@@ -83,6 +85,21 @@ router.post('/user_recipebooks', (req, res, next) => {
     console.log(results)
     res.json({
       message: 'recipebook created',
+    })
+  })
+})
+
+// get call to grab a list of recipes that were saved inside a recipebook created by the user(user_recipebooks_links table)
+router.get('/user_recipebooks_links', (req, res, next) => {
+  const sql = `
+  SELECT *
+  FROM user_recipebooks_links
+  WHERE recipebook_id = ?`
+
+  conn.query(sql, [req.query.recipebook_id], (err, results, fields) => {
+    console.log(err)
+    res.json({
+      addedRecipesInsideRecipebooks: results,
     })
   })
 })
@@ -274,7 +291,7 @@ router.get('/groupRecipes', (req, res, next) => {
     WHERE
       grl.group_id = ?
     `
-  
+
     conn.query(sql, [req.query.group_id],(err, results, fields) => {
       res.json({results})
     })
