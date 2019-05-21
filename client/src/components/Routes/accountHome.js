@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import LogoutButton from '../logout-button'
 import Header from '../header'
 import Footer from '../footer'
+import RecipeBookListAccountHome from '../RecipeBookListAccountHome'
 
 
 class AccountHome extends Component {
@@ -25,8 +26,8 @@ class AccountHome extends Component {
           <Link to="/user_profile"><p id="user-profile">My Profile</p></Link>
         </div>
 
-        <div className="accountNAV" id="mid-panel">
-          <Link to="/user_fav_recipes"><h1 className="title">My Favorite Recipes</h1></Link>
+        <div className="books">
+          <RecipeBookListAccountHome />
         </div>
 
           <div className="accountNAV" id="right-panel">

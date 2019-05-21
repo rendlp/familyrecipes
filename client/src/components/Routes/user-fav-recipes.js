@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-// import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import {AuthContext} from '../../lib/auth'
 import { connect } from 'react-redux'
 import {getUserFavorites} from '../../actions/actions'
@@ -21,11 +21,8 @@ const UserFavRecipes = (props) => {
 
   }, [user])
 
-  // function handleClick(e) {
-  //   console.log('route user to a recipebook creation page')
-  // }
+  const userFavorites = useSelector(appstate => appstate.userFavorites)
 
-  // const userFavorites = useSelector(appstate => appstate.userFavorites)
 
     console.log(props.userRecipeBooks)
 
