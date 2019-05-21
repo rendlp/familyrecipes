@@ -24,7 +24,7 @@ const GroupRecipeView = (props) => {
     <div>
       <Header />
         <div id="recipe-display">
-          <img id="recipe-pic" src="http://place-hold.it/400/400" alt='' />
+          <img id="recipe-pic" src={props.currentRecipe.imgURL} alt='' />
 
               <h1 id="recipe-name">{recipeName}</h1>
               <div id="prep">
