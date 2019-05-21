@@ -1,8 +1,7 @@
 import store from '../store'
 import Axios from 'axios'
-import { checkPropTypes } from 'prop-types'
-
-
+import { checkPropTypes, string } from 'prop-types'
+import * as firebase from 'firebase/app'
 
 export function addBoth(both) {
     Axios.post('/api/both', both)
@@ -16,6 +15,14 @@ export function getGroups(user) {
         })
     })
 }
+
+// export function Storage(ref) {
+//     static displayFirebaseStorageImg(ref: String, callback: (url:String))
+//     const imageRef = firebase.storage().ref(ref);
+    
+//     imageRef.getDownloadURL().then((url: String) => callback(url))
+// }
+
 
 export function getGroupUsers(group_id) {
     if (group_id) {
@@ -35,8 +42,6 @@ export function createGroup(groupName, user) {
     })
 }
 
-
-
 export function searchUser(userNameSearched) {
         Axios.get(`/api/usersSearch?username=${userNameSearched}`).then(resp => {
             store.dispatch({
@@ -55,6 +60,12 @@ export function addUserToGroup(group_id, username) {
     })
 }
 
+// export function addImage(img) {
+//     Axios.post('/api/recipes', {
+//         imgURL : img.image
+//     })
+// }
+
 
 export function addRecipe(recipe) {
     const ingredients = recipe.ingredient.list.map(x => x.name)
@@ -66,6 +77,7 @@ export function addRecipe(recipe) {
         directions: recipe.directions.directions,
         servings: recipe.prepTime.serves,
         username: recipe.username.user,
+        image: recipe.image.url,
         ingredients: ingredients.join("*/*")
     })
 }
@@ -75,6 +87,7 @@ export function shareRecipeWithGroup(recipeId, groupChosen, recipeName) {
         recipe_id: recipeId,
         group_id: groupChosen,
         name: recipeName
+
     })
 }
 
@@ -112,6 +125,7 @@ export function getGroupRecipes(group_id) {
   // function that grabs a user's list of favorited recipes
   export function getUserFavorites(user) {
     Axios.get(`/api/user_favorites?username=${user}`).then(resp => {
+        console.log(resp.data)
       store.dispatch({
         type: 'GET_USER_FAVORITES',
         payload: resp.data.userFavorites,
@@ -126,6 +140,7 @@ export function getGroupRecipes(group_id) {
       username: user
     })
   }
+
   // a function that will grab a user's list of created recipebooks from the application's database
   export function getRecipeBooks(user) {
     Axios.get(`/api/user_recipebooks?username=${user}`).then(resp => {
@@ -135,6 +150,15 @@ export function getGroupRecipes(group_id) {
       })
     })
   }
+
+  export function addRecipeToRecipeBook(recipeId, recipeBookChosen, recipeName) {
+    Axios.post('/api/user_recipebooks_links', {
+        recipe_id: recipeId,
+        recdipebook_id: recipeBookChosen,
+        name: recipeName
+
+    })
+}
   // a function that will add a user created recipebook to the application's database(user_recipebooks table)
   export function createRecipebook(user, recipebookName) {
     return Axios.post('/api/user_recipebooks', {
