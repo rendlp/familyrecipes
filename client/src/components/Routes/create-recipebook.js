@@ -20,16 +20,7 @@ const CreateRecipebook = (props) => {
       })
 
   }
-
-  // const recipeInput = {
-  //   recipebookName: name
-  // }
-  //
-  // function handleInput(e) {
-  //   e.preventDefault()
-  //   console.log(recipeInput)
-  // }
-
+  
   return (
     <div>
       <form onSubmit={handleSubmit}>

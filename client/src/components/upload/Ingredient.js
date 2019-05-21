@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import useFormInput from '../hooks/useFormInput'
-import { saveInput } from '../../actions/saveInput'
+// import { saveInput } from '../../actions/saveInput'
 
 const Ingredient = (props) => {
-    const [values, changeForm, resetForm] = useFormInput({...props.formData});
+    const [values] = useFormInput({...props.formData});
     const [list, alterList] = useState(props.formData.list);
 
     let manageFunc = props.manageForm;
 
     useEffect(() => {
         manageFunc('ingredient', values);
-    }, [values]);
+    }, [values, manageFunc]);
 
     function handleEnter(e) {
         if (e.keyCode === 13) {
@@ -25,7 +25,7 @@ const Ingredient = (props) => {
             });
         }
     }
-    
+
     return (
         <form>
             <input className="inputClass" type="text" name="list" placeholder="2 cups of flour..." onKeyDown={handleEnter} />
@@ -36,7 +36,7 @@ const Ingredient = (props) => {
             </ul>
         </form>
     )
-    
+
 }
 
 export default Ingredient;

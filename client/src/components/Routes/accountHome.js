@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import FormContainer from './Upload'
 import LogoutButton from '../logout-button'
 import Header from '../header'
 import Footer from '../footer'
-import {getRecipeBooks} from '../../actions/actions'
+import RecipeBookListAccountHome from '../RecipeBookListAccountHome'
+
 
 
 class AccountHome extends Component {
 
-  
+
   render() {
     return (
       <div>
@@ -29,28 +29,20 @@ class AccountHome extends Component {
         </div>
 
         <div className="books">
+          <RecipeBookListAccountHome />
+        </div>
 
-        <Link to="/usermade_recipebook">
-         <div className='book'>
-          <p>Recipe Book 1</p>
-         </div>
-        </Link>
-
-          <div className='book'>
+          {/* <div className='book'>
           <p>Recipe Book 2</p>
           </div>
 
           <div className='book'>
           <p>Recipe Book 3</p>
-          </div>
+          </div> */}
       
         </div>
-
+        <Footer />
         </div>
-
-
-          <Footer />
-      </div>
     )
   }
 }

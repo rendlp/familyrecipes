@@ -1,8 +1,8 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { AuthContext } from "../../lib/auth"
 import Header from '../header'
 import Footer from '../footer'
-import { getCurrentRecipe, getGroups, shareRecipeWithGroup, addFavoriteRecipe } from '../../actions/actions'
+import { getCurrentRecipe, addFavoriteRecipe } from '../../actions/actions'
 import { connect } from 'react-redux'
 
 const GroupRecipeView = (props) => {
@@ -18,7 +18,7 @@ const GroupRecipeView = (props) => {
 
   useEffect(() => {
       getCurrentRecipe(recipeId)
-  },[])
+  },[recipeId])
 
   return (
     <div>

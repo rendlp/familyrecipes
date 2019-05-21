@@ -19,13 +19,10 @@ const UserFavRecipes = (props) => {
       getUserFavorites(user)
       getRecipeBooks(user)
 
-  }, [])
-
-  // function handleClick(e) {
-  //   console.log('route user to a recipebook creation page')
-  // }
+  }, [user])
 
   const userFavorites = useSelector(appstate => appstate.userFavorites)
+
 
     console.log(props.userRecipeBooks)
 
@@ -33,7 +30,7 @@ const UserFavRecipes = (props) => {
     return (
       <div>
         <Header />
-        <button className='backBtn'><Link to='/'>Back</Link></button>
+        <Link to='/'><button className='backBtn'>Back</button></Link>
         <div>
 
 {/* USERS FAVORITES */}
@@ -41,8 +38,8 @@ const UserFavRecipes = (props) => {
 
             <ul className='recipeUL'>
               {props.userFavorites.map((recipe, i) => (
-                  <li className='recipeLI' key={'recipe' + i}>
-                    <Link 
+                  <li key={'recipe' + i}>
+                    <Link
                       to={`/user_fav_recipes/` + recipe.recipe_id}>
                       {recipe.name}
                     </Link>

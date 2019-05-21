@@ -2,12 +2,11 @@ import React, { useEffect, useContext, useState } from 'react'
 import { AuthContext } from "../../lib/auth"
 import Header from '../header'
 import Footer from '../footer'
-
-
-import { connect, useSelector } from 'react-redux'
 import { getCurrentRecipe, getRecipeBooks, addRecipeToRecipeBook} from '../../actions/actions'
-
+import { connect, useSelector } from 'react-redux'
 import GroupList from './GroupList';
+
+
 
 const FavRecipeView = (props) => {
 
@@ -25,16 +24,16 @@ const FavRecipeView = (props) => {
 
   const userRecipeBooks = useSelector(appstate => appstate.userRecipeBooks)
 
-  console.log(userRecipeBooks)
+  // console.log(userRecipeBooks)
 
   const [recipeBookChosen, setRecipeBookChosen] = useState('')
 
-  console.log( 'recipeId - ',recipeId, 'recipeBookChosen - ', recipeBookChosen, 'recipeName - ', recipeName)
+  // console.log( 'recipeId - ',recipeId, 'recipeBookChosen - ', recipeBookChosen, 'recipeName - ', recipeName)
 
   function handleSubmit(e) {
     e.preventDefault();
     addRecipeToRecipeBook(recipeId, recipeBookChosen, recipeName)
-};
+  };
 
 
 
@@ -42,7 +41,7 @@ const FavRecipeView = (props) => {
     <div>
       <Header />
         <div id="recipe-display">
-          <img id="recipe-pic" src="http://place-hold.it/400/400" />
+          <img id="recipe-pic" src="http://place-hold.it/400/400" alt='' />
 
               <h1 id="recipe-name">{props.currentRecipe.name}</h1>
               <div id="prep">
@@ -73,7 +72,8 @@ const FavRecipeView = (props) => {
               name="shareWithGroup"
               id="shareWithGroup"
               className="shareDropdown">
-              {userRecipeBooks.map((recipeBook, i) => (
+                <option>Select a Recipe Book</option>
+                {userRecipeBooks.map((recipeBook, i) => (
                 <option value={recipeBook.recipebook_id} key={"group - "+i}>
                   {recipeBook.recipebook_name}
                 </option>
@@ -99,4 +99,3 @@ function mapStateToProps(appState) {
 }
 
 export default connect(mapStateToProps)(FavRecipeView)
-

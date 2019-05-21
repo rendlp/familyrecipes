@@ -4,31 +4,23 @@ import Header from '../header'
 import Footer from '../footer'
 import { getCurrentRecipe, getGroups, shareRecipeWithGroup, addFavoriteRecipe } from '../../actions/actions'
 import { connect, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import GroupList from './GroupList';
+import RecipeView from './recipe-view'
 
-const RecipeView = (props) => {
 
+const DisplayRecipe = (props) => {
 
   const { user } = useContext(AuthContext)
-
   const recipeId = props.match.params.recipe_id
-
+  const [groupChosen, setGroupChosen] = useState('')
   const recipeName = props.currentRecipe.name
+  const groups = useSelector(appstate => appstate.groups)
+  const recipebookID = props.match.params.recipebook_id
 
   useEffect(() => {
       getCurrentRecipe(recipeId)
       getGroups(user)
   },[])
-
-  function handleClick(e) {
-  addFavoriteRecipe(props.currentRecipe.name, recipeId, user )
-  }
-
-  const groups = useSelector(appstate => appstate.groups)
-
-  const [groupChosen, setGroupChosen] = useState('')
-
-  console.log( 'recipeId - ',recipeId, 'groupChosen - ', groupChosen, 'recipeName - ', recipeName)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -39,9 +31,8 @@ const RecipeView = (props) => {
   return (
     <div>
       <Header />
-      <button><Link to='/'>Back</Link></button>
         <div id="recipe-display">
-          <img id="recipe-pic" src={props.currentRecipe.imgURL} alt='' />
+          <img id="recipe-pic" src="http://place-hold.it/400/400" />
 
               <h1 id="recipe-name">{props.currentRecipe.name}</h1>
               <div id="prep">
@@ -62,7 +53,7 @@ const RecipeView = (props) => {
                 <p id="recipe-directions">{props.currentRecipe.directions}</p>
               </div>
 
-              <button onClick={handleClick}>Add to Favorite List</button>
+
 
 
         </div>
@@ -75,7 +66,6 @@ const RecipeView = (props) => {
               name="shareWithGroup"
               id="shareWithGroup"
               className="shareDropdown">
-                <option>Select a group</option>
               {groups.map((group, i) => (
                 <option value={group.group_id} key={"group - "+i}>
                   {group.groupname}
@@ -100,4 +90,4 @@ function mapStateToProps(appState) {
   }
 }
 
-export default connect(mapStateToProps)(RecipeView)
+export default connect(mapStateToProps)(DisplayRecipe)
