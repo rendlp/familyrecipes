@@ -1,11 +1,20 @@
-import React, { Component, Suspense, useState } from 'react'
+import React, { Component, Suspense, useState, useEffect } from 'react'
 import { storage } from '../firebase'
+import useFormInput from '../hooks/useFormInput'
 
 
 const ImageUpload = (props) => {
     const [image, setImage] = useState(null)
     const [url, setUrl] = useState('')
     const [progress, setProgress] = useState(0)
+
+    const [values, changeForm, resetForm] = useFormInput({...props.formData})
+
+    let manageFunc = props.manageForm
+
+    useEffect( () => {
+      manageFunc('image', values)
+    }, [values])
 
     const handleChange = e => {
         if (e.target.files[0]) {
@@ -14,44 +23,52 @@ const ImageUpload = (props) => {
     }
 
     const handleUpload = e => {
+        e.preventDefault()
         const uploadTask = storage.ref(`images/${image.name}`).put(image)
-        uploadTask.on('state_changed', 
+        uploadTask.on('state_changed',
 
         // PROGRESS
         (snapshot) => {
             const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
             setProgress(progress)
-        }, 
+        },
 
         // ERROR
         (err) => {
 
          console.log(err)
-        }, 
+        },
 
         // GET IMAGE AFTER UPLOAD COMPLETION
         () => {
             storage.ref('images').child(image.name).getDownloadURL().then(url => {
                 console.log(url);
+                props.addImageToForm(url)
                 setUrl(url)
             })
         })
+
+
     }
 
-    return(
-       
+    return (
+
         <div className ='imgUploadDiv'>
+          <form onSubmit={handleUpload}>
            <progress className='progress' value={progress} max='100' />
-           <input className='uploadInput' type='file' onChange={handleChange} />
-           <img src={url || 'https://via.placeholder.com/150'} className='imgUpload' alt='' />
+           <input className='uploadInput' type='file' onChange={handleChange}   />
+           <input type="hidden" name="image" value={url} />
+           <img name="image" src={url || 'https://via.placeholder.com/150'} className='imgUpload' alt='' value={url}  />
            <button onClick={handleUpload}>Upload</button>
+          </form>
         </div>
-  
+
+
    )
 }
 
 // class ImageUpload extends Component {
-    
+
 //         state = {
 //             image: null,
 //             url: '',
@@ -68,20 +85,20 @@ const ImageUpload = (props) => {
 //     handleUpload = e => {
 //         const { image } = this.state;
 //         const uploadTask = storage.ref(`images/${image.name}`).put(image)
-//         uploadTask.on('state_changed', 
+//         uploadTask.on('state_changed',
 
 //         // PROGRESS
 //         (snapshot) => {
 //             const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 //             this.setState({progress})
 
-//         }, 
+//         },
 
 //         // ERROR
 //         (err) => {
 
 //          console.log(err)
-//         }, 
+//         },
 
 //         // GET IMAGE AFTER UPLOAD COMPLETION
 //         () => {
@@ -95,14 +112,14 @@ const ImageUpload = (props) => {
 
 //     render() {
 //         return(
-       
+
 //              <div className ='imgUploadDiv'>
 //                 <progress className='progress' value={this.state.progress} max='100' />
 //                 <input className='uploadInput' type='file' onChange={this.handleChange} />
 //                 <img src={this.state.url || 'https://via.placeholder.com/150'} className='imgUpload' alt='' />
 //                 <button onClick={this.handleUpload}>Upload</button>
 //              </div>
-       
+
 //         )
 //     }
 // }

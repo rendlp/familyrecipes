@@ -2,40 +2,31 @@ import React, { useEffect, useContext, useState } from 'react'
 import { AuthContext } from "../../lib/auth"
 import Header from '../header'
 import Footer from '../footer'
-import { getCurrentRecipe, getRecipeBooks, addRecipeToRecipeBook} from '../../actions/actions'
+import { getCurrentRecipe, getGroups, shareRecipeWithGroup, addFavoriteRecipe } from '../../actions/actions'
 import { connect, useSelector } from 'react-redux'
 import GroupList from './GroupList';
+import RecipeView from './recipe-view'
 
 
-
-const FavRecipeView = (props) => {
-
+const DisplayRecipe = (props) => {
 
   const { user } = useContext(AuthContext)
-
   const recipeId = props.match.params.recipe_id
-
+  const [groupChosen, setGroupChosen] = useState('')
   const recipeName = props.currentRecipe.name
+  const groups = useSelector(appstate => appstate.groups)
+  const recipebookID = props.match.params.recipebook_id
 
   useEffect(() => {
       getCurrentRecipe(recipeId)
-      getRecipeBooks(user)
+      getGroups(user)
   },[])
-
-  const userRecipeBooks = useSelector(appstate => appstate.userRecipeBooks)
-
-  // console.log(userRecipeBooks)
-
-  const [recipeBookChosen, setRecipeBookChosen] = useState('')
-
-  // console.log( 'recipeId - ',recipeId, 'recipeBookChosen - ', recipeBookChosen, 'recipeName - ', recipeName)
 
   function handleSubmit(e) {
     e.preventDefault();
-    addRecipeToRecipeBook(recipeId, recipeBookChosen, recipeName)
+    shareRecipeWithGroup(recipeId, groupChosen, recipeName)
+
   };
-
-
 
   return (
     <div>
@@ -62,25 +53,27 @@ const FavRecipeView = (props) => {
                 <p id="recipe-directions">{props.currentRecipe.directions}</p>
               </div>
 
+
+
+
         </div>
         <div className="shareRecipeWithGroup">
           <form onSubmit={handleSubmit}>
             <label>
-              Add recipe to a recipe book:
+              Share recipe with a group:
             </label>
-            <select onChange={e => setRecipeBookChosen(e.target.value)}
+            <select onChange={e => setGroupChosen(e.target.value)}
               name="shareWithGroup"
               id="shareWithGroup"
               className="shareDropdown">
-                <option>Select a Recipe Book</option>
-                {userRecipeBooks.map((recipeBook, i) => (
-                <option value={recipeBook.recipebook_id} key={"group - "+i}>
-                  {recipeBook.recipebook_name}
+              {groups.map((group, i) => (
+                <option value={group.group_id} key={"group - "+i}>
+                  {group.groupname}
                 </option>
               ))}
             </select>
             <button type="submit">
-                Add
+                Share
             </button>
           </form>
         </div>
@@ -93,9 +86,8 @@ const FavRecipeView = (props) => {
 function mapStateToProps(appState) {
   return {
     currentRecipe: appState.currentRecipe,
-    ingredients: appState.currentRecipeIngredients,
-    userRecipeBooks: appState.userRecipeBooks
+    ingredients: appState.currentRecipeIngredients
   }
 }
 
-export default connect(mapStateToProps)(FavRecipeView)
+export default connect(mapStateToProps)(DisplayRecipe)

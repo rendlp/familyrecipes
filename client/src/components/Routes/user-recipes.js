@@ -15,9 +15,9 @@ const UserRecipe = (props) => {
   useEffect( () => {
       getUserRecipes(user)
 
-  }, [])
+  }, [user])
 
-  
+
 
   return (
       <div>

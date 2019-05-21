@@ -7,11 +7,11 @@ const InviteUser = props => {
     const [userNameSearched, setUserName] = useState('')
 
     const group_id = props.match.params.group_id
-    
+
     useEffect(() => {
         searchUser('')
         getGroupUsers(group_id)
-    }, [])
+    }, [group_id])
 
 
     function handleSubmit(e) {
@@ -19,7 +19,7 @@ const InviteUser = props => {
 
         searchUser(userNameSearched)
         setUserName('')
-        
+
     }
 
     function handleAddUser (e){
@@ -62,5 +62,3 @@ function mapStateToProps(appState){
     }
 }
 export default connect(mapStateToProps)(InviteUser)
-
-
