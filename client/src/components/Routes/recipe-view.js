@@ -75,14 +75,14 @@ const RecipeView = (props) => {
               name="shareWithGroup"
               id="shareWithGroup"
               className="shareDropdown">
-                <option>Select a group</option>
+                <option value=''>Select a group</option>
               {groups.map((group, i) => (
                 <option value={group.group_id} key={"group - "+i}>
                   {group.groupname}
                 </option>
               ))}
             </select>
-            <button type="submit">
+            <button className={groupChosen === '' ? 'hidden' : ''} type="submit">
                 Share
             </button>
           </form>
