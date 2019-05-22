@@ -193,10 +193,6 @@ router.post('/groups', (req, res, next) => {
       })
     })
   })
-
-
-
-
 })
 
 router.post('/group_user_links/addUser', (req, res, next) => {

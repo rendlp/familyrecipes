@@ -72,14 +72,16 @@ const FavRecipeView = (props) => {
               name="shareWithGroup"
               id="shareWithGroup"
               className="shareDropdown">
-                <option>Select a Recipe Book</option>
+                <option value=''>Select a Recipe Book</option>
                 {userRecipeBooks.map((recipeBook, i) => (
                 <option value={recipeBook.recipebook_id} key={"group - "+i}>
                   {recipeBook.recipebook_name}
                 </option>
               ))}
             </select>
-            <button type="submit">
+            <button 
+              className={recipeBookChosen === '' ? 'hidden' : ''}
+              type="submit">
                 Add
             </button>
           </form>
