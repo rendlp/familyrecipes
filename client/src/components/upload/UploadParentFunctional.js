@@ -4,14 +4,14 @@ import Name from './Name';
 import Prep from './Prep';
 import Directions from './Directions';
 import Ingredient from './Ingredient'
-import { BrowserRouter as Router, Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import {addRecipe} from '../../actions/actions'
 import IngredientList from './IngredientList'
 import Header from '../header'
 import Footer from '../footer'
 import ImageUpload from './ImageUpload';
 
-function UploadParentFunctional () {
+function UploadParentFunctional (props) {
 
     const { user } = useContext(AuthContext)
 
@@ -35,7 +35,8 @@ function UploadParentFunctional () {
     function handleForm(e) {
         e.preventDefault();
         console.log(forms);
-        addRecipe(forms)
+        addRecipe(forms);
+        props.history.push('/user_recipes');
     };
 
     return (
@@ -71,4 +72,4 @@ function UploadParentFunctional () {
     )
 };
 
-export default UploadParentFunctional;
+export default withRouter(UploadParentFunctional);
