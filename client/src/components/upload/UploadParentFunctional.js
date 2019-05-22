@@ -10,8 +10,9 @@ import {addRecipe} from '../../actions/actions'
 // import Header from '../header'
 // import Footer from '../footer'
 import ImageUpload from './ImageUpload';
+import { withRouter } from 'react-router-dom'
 
-function UploadParentFunctional () {
+function UploadParentFunctional (props) {
 
     const { user } = useContext(AuthContext)
 
@@ -35,7 +36,8 @@ function UploadParentFunctional () {
     function handleForm(e) {
         e.preventDefault();
         console.log(forms);
-        addRecipe(forms)
+        addRecipe(forms);
+        props.history.push('/user_recipes');
     };
 
     return (
@@ -71,4 +73,4 @@ function UploadParentFunctional () {
     )
 };
 
-export default UploadParentFunctional;
+export default withRouter(UploadParentFunctional);
