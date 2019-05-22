@@ -50,16 +50,37 @@ router.get('/user_favorites', (req, res, next) => {
 
 //post call to hold a recipe that a user has just favorited
 router.post('/user_favorites', (req, res, next) => {
-  const sql = `
-  INSERT INTO user_favorites (name, recipe_id, username)
-  VALUES (?, ?, ?)`
+  
+  const checksql = `
+    SELECT 
+      count(1) as count 
+    FROM
+      user_favorites
+    WHERE 
+      name = ? AND recipe_id = ? AND username = ?
+    `
 
-  conn.query(sql, [req.body.recipeName, req.body.recipe_id, req.body.username], (err, results, fields) => {
-    console.log(err)
-    res.json({
-      message: 'recipe added to favorites list',
-    })
-  })
+    conn.query(checksql, [req.body.recipeName, req.body.recipe_id, req.body.username], (err, results, fields) => {
+
+    const count = results[0].count
+
+      if (count > 0) {
+        res.status(409).json({
+          error: "recipe is a favorite already"
+        })
+      } else {
+      const sql = `
+      INSERT INTO user_favorites (name, recipe_id, username)
+      VALUES (?, ?, ?)`
+
+      conn.query(sql, [req.body.recipeName, req.body.recipe_id, req.body.username], (err, results, fields) => {
+        console.log(err)
+        res.json({
+          message: 'recipe added to favorites list',
+        })
+      })
+    }
+   })
 })
 
 // get call to grab a user's list of created recipebooks from the application's database(user_recipebooks table)
@@ -233,18 +254,40 @@ router.post('/recipes', (req, res, next) => {
 
 // listen for a post call into the application's database(group_recipe_links table)
 router.post('/group_recipe_links', (req, res, next) => {
-  const sql =`
-  INSERT INTO
-    group_recipe_links (group_id, recipe_id, name)
-  VALUES
-    (?, ?, ?)
-  `
 
-  conn.query(sql, [req.body.group_id, req.body.recipe_id, req.body.name], (err, results, fields) => {
-    console.log(results);
-    res.json({
-      message: 'recipe added to group'
-    })
+  const checksql = `
+    SELECT 
+      count(1) as count 
+    FROM
+      group_recipe_links
+    WHERE 
+      group_id =? AND recipe_id = ? AND name = ?
+    `
+
+  conn.query(checksql, [req.body.group_id, req.body.recipe_id, req.body.name], (err, results, fields) => {
+    console.log(err)
+
+    const count = results[0].count
+
+    if (count > 0) {
+      res.status(409).json({
+        error: "recipe already shared with group"
+      })
+    } else {
+      const sql =`
+        INSERT INTO
+          group_recipe_links (group_id, recipe_id, name)
+        VALUES
+          (?, ?, ?)
+        `
+
+      conn.query(sql, [req.body.group_id, req.body.recipe_id, req.body.name], (err, results, fields) => {
+        console.log(results);
+        res.json({
+          message: 'recipe added to group'
+        })
+      })
+    }
   })
 })
   // allow a post call to add a link between a user and a recipebook created by said user
@@ -286,19 +329,6 @@ router.post('/group_recipe_links', (req, res, next) => {
       } 
     })
 })
-
-    // router.post('/user_recipebooks_links', (req, res, next) => {
-    //   const sql =`
-    //   INSERT INTO
-    //     user_recipebooks_links (recipe_id, recipebook_id, recipe_name)
-    //   VALUES
-    //     (?, ?, ?)
-    //   `
-  
-    //   conn.query(sql, [req.body.recipe_id, req.body.recipebook_id, req.body.recipe_name], (err, results, fields) => {
-    //     res.json({message: 'recipe added to recipebook'})
-    //     })
-    //   })
 
 
 // router that recieves calls to all recipes in the database
