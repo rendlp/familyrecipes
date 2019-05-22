@@ -42,6 +42,7 @@ const InviteUser = props => {
                             id="groupName"
                             placeholder="Search a username..."
                             onChange={e => setUserName(e.target.value)}
+                            value={userNameSearched}
                         />
                         <button type="submit">
                             Search
