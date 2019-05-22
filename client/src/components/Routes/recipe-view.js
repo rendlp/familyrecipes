@@ -28,7 +28,7 @@ const RecipeView = (props) => {
 
   const [groupChosen, setGroupChosen] = useState('')
 
-  console.log( 'recipeId - ',recipeId, 'groupChosen - ', groupChosen, 'recipeName - ', recipeName)
+  // console.log( 'recipeId - ',recipeId, 'groupChosen - ', groupChosen, 'recipeName - ', recipeName)
 
   function handleSubmit(e) {
     e.preventDefault();
