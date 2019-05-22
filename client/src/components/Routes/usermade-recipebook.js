@@ -9,7 +9,7 @@ class UsermadeRecipeBook extends Component {
     return (
       <div>
         <Header />
-        <button><Link to='/'>Back</Link></button>
+        <Link to='/'><button className='backBtn'>Back</button></Link>
           <p>This page should render a single recipebook created by a user using recipes from the user's favorites list</p>
         <Footer />
       </div>

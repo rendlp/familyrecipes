@@ -4,6 +4,7 @@ import Header from '../header'
 import Footer from '../footer'
 import { getCurrentRecipe, shareRecipeWithGroup } from '../../actions/actions'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 
 
@@ -21,8 +22,9 @@ const RecipeBookRecipeView = (props) => {
   return (
     <div>
       <Header />
+      <Link to='/'><button className='backBtn'>Back</button></Link>
         <div id="recipe-display">
-          <img id="recipe-pic" src="http://place-hold.it/400/400" alt='' />
+          <img id="recipe-pic" src={props.currentRecipe.imgURL} alt='' />
 
               <h1 id="recipe-name">{props.currentRecipe.name}</h1>
               <div id="prep">
@@ -47,7 +49,7 @@ const RecipeBookRecipeView = (props) => {
 
 
         </div>
-        
+
       <Footer />
 
     </div>

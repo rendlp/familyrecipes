@@ -1,7 +1,6 @@
 import React, { useEffect, useContext } from 'react'
-import Logout from "./auth/Logout"
 import { AuthContext } from "../lib/auth"
-import { BrowserRouter as Router, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const LogoutButton = props => {
     const { user } = useContext(AuthContext)
@@ -13,14 +12,11 @@ const LogoutButton = props => {
     return (
 
         <div className="logoutDiv">
-
-            <span className='userSpan'>{user}</span>
-            <Logout />
-
+          <Link to="/upload"><button className="uploadButton">Upload Recipe</button></Link>
+          <Link to="/user_profile"><button className='userSpan'>{user}</button></Link>
+    
         </div>
-
     )
 }
-
 
 export default LogoutButton
