@@ -142,6 +142,9 @@ border: none;
 button:hover {
   background-color: rgb(142,50,40);
   color: white;
+  width: 115px;
+  text-align: center;
+  height: 44px;
 }
 
 label {
@@ -241,7 +244,7 @@ p {
 }
 
 .leftP:hover {
-  text-decoration-line: line-through;
+  font-size:28px;
   color: rgb(122,60,80);
 }
 
@@ -360,12 +363,16 @@ h1 {
 }
 
 .userSpan {
-  color: black;
-  font-size: 20px;
+  color: white;
   margin: 20px;
-  border: 1px solid grey;
   padding: 8px;
+  background-color: red;
+  width: 110px;
+  height: 35px;
   border-radius: 3%;
+  font-size: 14px;
+  box-shadow: 0 6px 6px -6px black;
+  transition: 0.3s;
 }
 
 #canvas {
@@ -510,6 +517,11 @@ h2 {
   font-size: 32px;
   color: white;
   text-decoration: none;
+  transition: 0.3s;
+}
+
+h2:hover {
+  font-size: 35px;
 }
 
 /* .title {
