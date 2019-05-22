@@ -8,7 +8,7 @@ class UserMessages extends Component {
     return (
       <div>
         <Header />
-        <button><Link to='/'>Back</Link></button>
+        <Link to='/'><button className='backBtn'>Back</button></Link>
           <p>This page should render a user's messages</p>
         <Footer />
       </div>

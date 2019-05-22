@@ -22,7 +22,7 @@ const UserRecipe = (props) => {
   return (
       <div>
         <Header />
-        <button><Link to='/'>Back</Link></button>
+        <Link to='/'><button className='backBtn'>Back</button></Link>
         {props.userRecipes.map(recipe => (
           <Link to={'user_recipes/' + recipe.recipe_id}><p>{recipe.name}</p></Link>
         ))}

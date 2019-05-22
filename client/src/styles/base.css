@@ -192,6 +192,7 @@ margin-top: 10px;
 
 h2 {
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-weight: 400;
 
 }
 
@@ -224,6 +225,8 @@ font-size: 18px;
 
 } */
 
+
+
 .formInput {
   margin: 12px;
 }
@@ -233,21 +236,22 @@ p {
   color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   transition: 0.3s;
+  text-shadow: 1px 1px rgb(142,50,40);
 
 }
 
-p:hover {
+.leftP:hover {
   text-decoration-line: line-through;
   color: rgb(122,60,80);
 }
 
-.uploadDiv {
+/* .uploadDiv {
   display: flex;
   flex-direction: row;
   margin: 0 auto;
   width: 100%;
   height: 868px;
-}
+} */
 
 h1 {
   text-align: center;
@@ -255,6 +259,7 @@ h1 {
   font-weight: 200;
   font-size: 72px;
   margin: 0 auto;
+  text-shadow: 1px 1px rgb(142,50,40);
 }
 
 ::-webkit-input-placeholder {
@@ -302,6 +307,51 @@ h1 {
   margin: 0 auto;
 }
 
+.groupUL .groupLI {
+  list-style-type: none;
+  font-size: 25px;
+  text-align: center;
+  align-items: center;
+  margin: 12px;
+  border-radius: 1.5%;
+}
+
+.groupUL {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
+
+}
+
+.groupContainer {
+  display: flex;
+  flex-direction: row;
+  height: 700px;
+  overflow: scroll;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.groupSpanP {
+  color: white;
+}
+
+.groupLI-div{
+  border: 1px solid grey;
+  width: 380px;
+  height: 500px;
+  background-color: rgb(122,68,70);
+  text-align: center;
+  align-items: center;
+  margin: 12px;
+  border-radius: 1.5%;
+  text-shadow: 1px 1px rgb(142,50,40);
+  
+}
+
 .logoutDiv {
   display:flex;
   flex-direction: row;
@@ -313,6 +363,9 @@ h1 {
   color: black;
   font-size: 20px;
   margin: 20px;
+  border: 1px solid grey;
+  padding: 8px;
+  border-radius: 3%;
 }
 
 #canvas {
@@ -352,7 +405,7 @@ h1 {
 
 .footer {
   width: 100%;
-  height: 600px;
+  height: 500px;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -437,19 +490,20 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 750px;
-  width: 100%;
+  height: 700px;
+  width: 1200px;
   margin: 0 auto;
+  overflow: scroll;
 }
 
 .left-panel {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   border-bottom: 2px solid lightgrey;
-  width: 200px;
-  height: 400px;
+  width: 175px;
+  height: 510px;
   padding: 10px;
-  margin: 0 auto;
+
 }
 
 h2 {
@@ -509,25 +563,26 @@ a:visited {
   border: 1px solid lightgrey;
  
 }
-
+/* 
 .recipeUL {
   display: flex;
   flex-direction: column;
   text-decoration: none;
   color: white;
   list-style-type: none;
-}
+} */
 
-.recipeLI {
+/* .recipeLI {
   margin: 0 auto;
   font-size: 20px;
   color: white;
   border-bottom: 1px solid black;
-}
+  
+} */
 
-.recipeLI:hover {
+/* .recipeLI:hover {
   text-decoration-line: line-through;
-}
+} */
 
 .imgUploadDiv {
   display: flex;
@@ -563,6 +618,7 @@ a:visited {
 
 .uploadButton {
   margin: 0 auto;
+
 }
 
 .footerSpan {
@@ -575,15 +631,31 @@ a:visited {
   display: flex;
   flex-direction: row;
   margin: 0 auto;
+  
+}
+
+.wrapper {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.booksList {
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+  margin-bottom: 20px;
+
 }
 
 .book {
   border: 1px solid grey;
   width: 380px;
-  height: 700px;
-  background-color: red;
+  height: 500px;
+  background-color: rgb(122,68,70);
   text-align: center;
   align-items: center;
   margin: 12px;
   border-radius: 1.5%;
+  text-shadow: 1px 1px rgb(142,50,40);
+ 
 }
