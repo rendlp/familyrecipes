@@ -20,22 +20,14 @@ function UploadParentFunctional (props) {
         ingredient: {
           list: []
         },
-        image: []
+        image: ""
   };
 
 
-    const [name, setName] = useState('')
+
     const [nameError, setNameError] = useState('')
-
-
-    function Validator() {
-      let valid = true
-
-      if (forms.RecipeName === '') {
-        valid = false
-        setNameError('Cannot be blank')
-      }
-    }
+    const [ingredientsError, setIngredientsError] = useState('')
+    let image_url = forms.image
 
     function manageForm(ctx, payload) {
         console.log('updating', ctx, payload);
@@ -47,13 +39,49 @@ function UploadParentFunctional (props) {
     }
 
 
-
-    function handleForm(e) {
-        e.preventDefault();
+    // on form submit
+    function handleForm() {
+        // e.preventDefault();
         console.log(forms);
         addRecipe(forms);
-        props.history.push('/user_recipes');
+        // props.history.push('/user_recipes');
     };
+
+    // form validation
+    function validator(e) {
+      e.preventDefault()
+      let valid = false
+
+      // if the recipe being submitted has been named, validate form
+      if (forms.name.name === '' || forms.name.name === undefined) {
+          valid = false
+          setNameError('Recipe Name Cannot Be Blank')
+      } else {
+        valid = true
+        setNameError("")
+      }
+      // if at least 1 ingredient has been submitted, validate form
+      if (forms.ingredient.list.length === 0 || forms.ingredient.list.length === undefined) {
+        valid = false
+        setIngredientsError('Please Include At Least One Ingredient')
+      } else {
+        valid = true
+        setIngredientsError('')
+      }
+      // If no image uploaded, send a string to database post and validate form.
+      // if (image_url === "" || image_url === undefined) {
+      //   valid = true
+      //   image_url = 'No Pic Added'
+      // } else {
+      //   valid = true
+      // }
+
+      console.log('image url =', image_url)
+      console.log('valid', valid)
+      if (valid = true) {
+        handleForm()
+      }
+    }
 
     return (
      <div className="uploadDiv">
@@ -61,12 +89,14 @@ function UploadParentFunctional (props) {
         <button className='backBtn'><Link to='/'>Back</Link></button>
 
         <div id="name/prep">
+            <label>{nameError}</label>
             <Name manageForm={manageForm} formData={forms.RecipeName} />
             <Prep manageForm={manageForm} formData={forms.PrepTime} />
         </div>
 
 
         <div className="ingredients">
+            <label>{ingredientsError}</label>
             <h1 className=''>Ingredients</h1>
             <Ingredient manageForm={manageForm} formData={forms.ingredient} />
             {/* <IngredientList manageForm={manageIngredients} formData={ingredientList} /> */}
@@ -78,7 +108,7 @@ function UploadParentFunctional (props) {
         <div id="image-upload">
             <h1>Image</h1>
             <ImageUpload addImageToForm={addImageToForm} manageForm={manageForm} formData={forms.image} />
-            <form onSubmit={handleForm}>
+            <form onSubmit={validator}>
               <button className='submitButton'>Submit</button>
             </form>
         </div>

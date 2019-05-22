@@ -42,6 +42,10 @@ const ImageUpload = (props) => {
         () => {
             storage.ref('images').child(image.name).getDownloadURL().then(url => {
                 console.log(url);
+                let image_url = url
+                if (image_url === "") {
+                  image_url = "No Pic Added"
+                }
                 props.addImageToForm(url)
                 setUrl(url)
             })
