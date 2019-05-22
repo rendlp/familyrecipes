@@ -37,7 +37,7 @@ const Group = props => {
                     </ul>
                     <div id="inviteUserLink">
                         <Link to={`/group/${group_id}/inviteUser`}>
-                                <p>Invite a user</p>
+                                <button>Add a user to {currentGroup}</button>
                         </Link>
                     </div>
                     <h3>{currentGroup} recipes:</h3>

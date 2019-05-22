@@ -179,18 +179,40 @@ router.post('/groups', (req, res, next) => {
 })
 
 router.post('/group_user_links/addUser', (req, res, next) => {
-  const sql =`
-  INSERT INTO
-    group_user_links (group_id, username)
-  VALUES
-    (?, ?)
-  `
-  conn.query(sql, [req.body.group_id, req.body.username], (err, results, fields) => {
-    console.log(err)
-    res.json({
-      message: "user added to group"
+  
+  const checksql = `
+    SELECT 
+      count(1) as count 
+    FROM
+      group_user_links
+    WHERE 
+      group_id =? AND username = ?
+    `
+
+    conn.query(checksql, [req.body.group_id, req.body.username], (err, results, fields) => {
+      console.log(err)
+
+      const count = results[0].count
+
+      if (count > 0) {
+      res.status(409).json({
+        error: "user is a group member already"
+      })
+    } else {
+      const sql =`
+        INSERT INTO
+          group_user_links (group_id, username)
+        VALUES
+          (?, ?)
+      `
+      conn.query(sql, [req.body.group_id, req.body.username], (err, results, fields) => {
+        console.log(err)
+        res.json({
+          message: "user added to group"
+        })
+      })
+      }
     })
-  })
 })
 
 
@@ -208,6 +230,7 @@ router.post('/recipes', (req, res, next) => {
     message: 'recipe posted'
     })
   })
+
 // listen for a post call into the application's database(group_recipe_links table)
 router.post('/group_recipe_links', (req, res, next) => {
   const sql =`
@@ -225,18 +248,57 @@ router.post('/group_recipe_links', (req, res, next) => {
   })
 })
   // allow a post call to add a link between a user and a recipebook created by said user
-  router.post('/user_recipebooks_links', (req, res, next) => {
-    const sql =`
-    INSERT INTO
-      user_recipebooks_links (recipe_id, recipebook_id, recipe_name)
-    VALUES
-      (?, ?, ?)
-    `
 
-    conn.query(sql, [req.body.recipe_id, req.body.recipebook_id, req.body.recipe_name], (err, results, fields) => {
-      res.json({message: 'recipe added to group'})
-      })
+
+  router.post('/user_recipebooks_links', (req, res, next) => {
+    
+    const checksql =`
+    SELECT 
+      count(1) as count
+    FROM
+      user_recipebooks_links
+    WHERE
+      recipe_id = ? AND recipebook_id = ? AND recipe_name = ?
+    `
+    conn.query(checksql, [req.body.recipe_id, req.body.recipebook_id, req.body.recipe_name], (err, results, fields) => {
+      console.log(err)
+
+      const count = results[0].count
+
+      if (count > 0) {
+        res.status(409).json({
+          error: 'recipe book already includes the recipe'
+        })
+      } else {
+        const sql =`
+        INSERT INTO
+          user_recipebooks_links (recipe_id, recipebook_id, recipe_name)
+        VALUES
+          (?, ?, ?)
+        `
+
+        conn.query(sql, [req.body.recipe_id, req.body.recipebook_id, req.body.recipe_name], (err, results, fields) => {
+          console.log(err)
+          res.json({
+            message: 'recipe added to recipebook'
+          })
+        })
+      } 
     })
+})
+
+    // router.post('/user_recipebooks_links', (req, res, next) => {
+    //   const sql =`
+    //   INSERT INTO
+    //     user_recipebooks_links (recipe_id, recipebook_id, recipe_name)
+    //   VALUES
+    //     (?, ?, ?)
+    //   `
+  
+    //   conn.query(sql, [req.body.recipe_id, req.body.recipebook_id, req.body.recipe_name], (err, results, fields) => {
+    //     res.json({message: 'recipe added to recipebook'})
+    //     })
+    //   })
 
 
 // router that recieves calls to all recipes in the database
@@ -279,37 +341,6 @@ router.get('/groupRecipes', (req, res, next) => {
     })
   })
 
-
-
-// router.post('/ingredients', (req, res, next) => {
-//   const ingredients = req.body.ingredients
-
-
-//   const sql =
-//   ` INSERT INTO ingredients (ingredients) VALUES (?)`
-
-
-
-
-
-//   conn.query(sql, [ingredients], (err, results, fields) => {
-//     const count = results.count
-//   })
-// })
-
-// // BOTH POST
-
-// router.post('/both', (req, res, next) => {
-//   const ingred_id = req.body.ingred_id
-//   const recipe_id = req.body.recipe_id
-
-//   const sql = `
-//   INSERT INTO both (ingred_id, recipe_id) VALUES (?, ?)`
-
-//   conn.query(sql, [both], (err, results, fields) => {
-//     res.json({ "message": "added" })
-//   })
-// })
 
 // LOGIN POST
 
