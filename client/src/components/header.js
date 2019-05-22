@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // import { Link } from 'react-router-dom'
 import nettles from '../components/assets/nettle.jpg'
 import LogoutButton from './logout-button'
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
   render() {
@@ -10,6 +11,7 @@ class Header extends Component {
         <div className='logosDiv'>
         <img className='logoImg'src={nettles} alt={nettles} />
         <p className="logo">nettles</p>
+        
         </div>
         <LogoutButton />
       </div>

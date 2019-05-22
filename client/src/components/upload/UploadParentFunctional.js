@@ -4,11 +4,11 @@ import Name from './Name';
 import Prep from './Prep';
 import Directions from './Directions';
 import Ingredient from './Ingredient'
-import { BrowserRouter as Router, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {addRecipe} from '../../actions/actions'
-import IngredientList from './IngredientList'
-import Header from '../header'
-import Footer from '../footer'
+// import IngredientList from './IngredientList'
+// import Header from '../header'
+// import Footer from '../footer'
 import ImageUpload from './ImageUpload';
 
 function UploadParentFunctional () {
@@ -41,7 +41,7 @@ function UploadParentFunctional () {
     return (
      <div className="uploadDiv">
          
-        <button className='backBtn'><Link to='/'>Back</Link></button>
+         <Link to='/'><button className='backBtn'>Back</button></Link>
 
         <div id="name/prep">
             <Name manageForm={manageForm} formData={forms.RecipeName} />

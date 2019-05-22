@@ -18,14 +18,14 @@ const RecipeBookListAccountHome= (props) => {
     const userRecipeBooks = useSelector(appstate => appstate.userRecipeBooks)
 
     return (
-        <div className="book">
+        <div className='booksList'>
             {userRecipeBooks.map((recipebook, i) => (
-                <div key={'recipebook' + i}>
+                <div className="book"key={'recipebook' + i}>
                 <Link 
                         to={`/user_fav_recipes/recipebook/` + recipebook.recipebook_id}>
-                    <h1>
+                    <h2>
                         {recipebook.recipebook_name}
-                    </h1>
+                    </h2>
                 </Link>
                 </div>
             ))}

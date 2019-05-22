@@ -1,4 +1,4 @@
-import React, { Component, Suspense, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { storage } from '../firebase'
 import useFormInput from '../hooks/useFormInput'
 

@@ -23,6 +23,7 @@ const Group = props => {
 
     return (
                 <div className = "groupUserList">
+                    <Link to='/'><button className='backBtn'>Back</button></Link>
                     <h1>{currentGroup}</h1>
                     <h3>{currentGroup} members:</h3>
                     <ul>

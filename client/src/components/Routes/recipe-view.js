@@ -39,7 +39,7 @@ const RecipeView = (props) => {
   return (
     <div>
       <Header />
-      <button><Link to='/'>Back</Link></button>
+      <Link to='/'><button className='backBtn'>Back</button></Link>
         <div id="recipe-display">
           <img id="recipe-pic" src={props.currentRecipe.imgURL} alt='' />
 
