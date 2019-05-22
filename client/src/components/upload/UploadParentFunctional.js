@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import { AuthContext } from '../../lib/auth'
 import Name from './Name';
 import Prep from './Prep';
@@ -13,15 +13,29 @@ import ImageUpload from './ImageUpload';
 
 function UploadParentFunctional (props) {
 
-    const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
 
-    const forms = {
+  const forms = {
         username: {user},
         ingredient: {
           list: []
         },
         image: []
-    };
+  };
+
+
+    const [name, setName] = useState('')
+    const [nameError, setNameError] = useState('')
+
+
+    function Validator() {
+      let valid = true
+
+      if (forms.RecipeName === '') {
+        valid = false
+        setNameError('Cannot be blank')
+      }
+    }
 
     function manageForm(ctx, payload) {
         console.log('updating', ctx, payload);
@@ -32,6 +46,8 @@ function UploadParentFunctional (props) {
       forms.image = img
     }
 
+
+
     function handleForm(e) {
         e.preventDefault();
         console.log(forms);
@@ -41,7 +57,7 @@ function UploadParentFunctional (props) {
 
     return (
      <div className="uploadDiv">
-         
+
         <button className='backBtn'><Link to='/'>Back</Link></button>
 
         <div id="name/prep">
@@ -63,11 +79,11 @@ function UploadParentFunctional (props) {
             <h1>Image</h1>
             <ImageUpload addImageToForm={addImageToForm} manageForm={manageForm} formData={forms.image} />
             <form onSubmit={handleForm}>
-         <button className='submitButton'>Submit</button>
-        </form>
+              <button className='submitButton'>Submit</button>
+            </form>
         </div>
 
-        
+
      </div>
     )
 };
