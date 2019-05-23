@@ -1,19 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import Header from '../header'
 import Footer from '../footer'
 import  { Link } from 'react-router-dom'
 import Logout from "../auth/Logout"
 import { getUserInfo } from '../../actions/actions'
+import {AuthContext} from '../../lib/auth'
 
-const GroupMemberProfile = props => {
+const UserProfileEdit = props => {
 
-
-
-
-const user = props.match.params.username
-
-console.log(user)
+  const { user } = useContext(AuthContext)
 
     useEffect(() => {
       getUserInfo(user)
@@ -25,8 +21,7 @@ console.log(user)
     return (
       <div>
         <Header />
-        <Link to='/'><button className='backBtn'>Back</button></Link>
-        <div className="userProfileDisplay">
+        <div className="userProfileEdit">
           <img className="user-pic" src={userInfo.userPicURL} alt='' />
           <p>username:</p>
           <p>{user}</p>
@@ -35,11 +30,10 @@ console.log(user)
           <p>Last Name:</p>
           <p>{userInfo.lastname}</p>
         </div>
-
           <Logout />
         <Footer />
       </div>
     )
 }
 
-export default GroupMemberProfile
+export default UserProfileEdit
