@@ -8,9 +8,7 @@ const util = require('util');
 
 // GROUPS
 
-
-
-
+//get user groups
 
 router.get('/groups', (req, res, next) => {
   const sql = `
@@ -29,6 +27,138 @@ router.get('/groups', (req, res, next) => {
     console.log('index backend - get groups - ' + results)
   })
 })
+
+//get group members
+
+router.get('/groupUsers', (req, res, next) => {
+  const sql = `
+  SELECT
+	  gul.username, g.groupname
+  FROM
+	  group_user_links gul, groups g
+  WHERE
+  gul.group_id = g.group_id AND gul.group_id = ?
+  `
+
+  conn.query(sql, [req.query.group_id],(err, results, fields) => {
+    res.json({
+      groupUsers: results
+    })
+
+  })
+})
+
+// create a group
+
+router.post('/groups', (req, res, next) => {
+  const sql =`
+  INSERT INTO
+    groups (groupname)
+  VALUES
+    (?)
+  `
+  const sql2 =`
+  INSERT INTO group_user_links (group_id, username)
+     VALUES (?,?);
+  `
+  conn.query(sql, [req.body.groupname], (err, results, fields) => {
+    console.log(results)
+    conn.query(sql2, [results.insertId, req.body.username], (err, results, fields) => {
+      console.log(err)
+      res.json({
+      message: "group added"
+      })
+    })
+  })
+})
+
+//add a user to group
+
+router.post('/group_user_links/addUser', (req, res, next) => {
+  
+  const checksql = `
+    SELECT 
+      count(1) as count 
+    FROM
+      group_user_links
+    WHERE 
+      group_id =? AND username = ?
+    `
+
+    conn.query(checksql, [req.body.group_id, req.body.username], (err, results, fields) => {
+      console.log(err)
+
+      const count = results[0].count
+
+      if (count > 0) {
+      res.status(409).json({
+        error: "user is a group member already"
+      })
+    } else {
+      const sql =`
+        INSERT INTO
+          group_user_links (group_id, username)
+        VALUES
+          (?, ?)
+      `
+      conn.query(sql, [req.body.group_id, req.body.username], (err, results, fields) => {
+        console.log(err)
+        res.json({
+          message: "user added to group"
+        })
+      })
+      }
+    })
+})
+
+// USER
+
+router.get('/users',(req, res, next) => {
+  const sql =`
+    SELECT
+      firstname, lastname, userPicURL
+    FROM
+      users
+    WHERE
+      username = ?`
+
+    conn.query(sql, [req.query.username], (err, results, fields) => {
+    res.json({results})
+  })
+})
+
+//search for a user by username
+
+router.get('/usersSearch', (req, res, next) => {
+  const sql = `
+    SELECT
+      ifnull((
+    SELECT
+      username
+    FROM
+      users
+    WHERE
+      username = ?
+    ), 'usernotfound') as username
+    `
+  if (req.query.username === '') {
+    res.json({
+      username:''
+    })
+  } else {
+
+  conn.query(sql, [req.query.username],(err, results, fields) => {
+    res.json({
+      username: results[0].username
+    })
+    console.log(results[0].username)
+
+  })
+}
+})
+
+
+//RECIPES
 
 //get call to grab a user's favorited recipe List
 router.get('/user_favorites', (req, res, next) => {
@@ -125,113 +255,6 @@ router.get('/user_recipebooks_links', (req, res, next) => {
     })
   })
 })
-
-router.get('/groupUsers', (req, res, next) => {
-  const sql = `
-  SELECT
-	  gul.username, g.groupname
-  FROM
-	  group_user_links gul, groups g
-  WHERE
-  gul.group_id = g.group_id AND gul.group_id = ?
-  `
-
-  conn.query(sql, [req.query.group_id],(err, results, fields) => {
-    res.json({
-      groupUsers: results
-    })
-
-  })
-})
-
-router.get('/usersSearch', (req, res, next) => {
-  const sql = `
-  SELECT
-    ifnull((
-  SELECT
-    username
-  FROM
-	  users
-  WHERE
-    username = ?
-  ), 'usernotfound') as username
-  `
-  if (req.query.username === '') {
-    res.json({
-      username:''
-    })
-  } else {
-
-  conn.query(sql, [req.query.username],(err, results, fields) => {
-    res.json({
-      username: results[0].username
-    })
-    console.log(results[0].username)
-
-  })
-}
-})
-
-
-router.post('/groups', (req, res, next) => {
-  const sql =`
-  INSERT INTO
-    groups (groupname)
-  VALUES
-    (?)
-  `
-  const sql2 =`
-  INSERT INTO group_user_links (group_id, username)
-     VALUES (?,?);
-  `
-  conn.query(sql, [req.body.groupname], (err, results, fields) => {
-    console.log(results)
-    conn.query(sql2, [results.insertId, req.body.username], (err, results, fields) => {
-      console.log(err)
-      res.json({
-      message: "group added"
-      })
-    })
-  })
-})
-
-router.post('/group_user_links/addUser', (req, res, next) => {
-  
-  const checksql = `
-    SELECT 
-      count(1) as count 
-    FROM
-      group_user_links
-    WHERE 
-      group_id =? AND username = ?
-    `
-
-    conn.query(checksql, [req.body.group_id, req.body.username], (err, results, fields) => {
-      console.log(err)
-
-      const count = results[0].count
-
-      if (count > 0) {
-      res.status(409).json({
-        error: "user is a group member already"
-      })
-    } else {
-      const sql =`
-        INSERT INTO
-          group_user_links (group_id, username)
-        VALUES
-          (?, ?)
-      `
-      conn.query(sql, [req.body.group_id, req.body.username], (err, results, fields) => {
-        console.log(err)
-        res.json({
-          message: "user added to group"
-        })
-      })
-      }
-    })
-})
-
 
 // RECIPE POST
 

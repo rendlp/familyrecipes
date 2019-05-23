@@ -25,6 +25,7 @@ import GroupRecipeView from './Routes/GroupRecipeView'
 import FavRecipeView from './Routes/FavRecipeView'
 import RecipeBookView from './Routes/RecipeBookView'
 import RecipeBookRecipeView from './Routes/RecipeBookRecipeView'
+import GroupMemberProfile from './Routes/GroupMemberProfile'
 
 
 class App extends Component {
@@ -65,6 +66,7 @@ class App extends Component {
               <AuthRoute path="/user_fav_recipes/:recipe_id" exact component={FavRecipeView} />
               <AuthRoute path="/user_fav_recipes/recipebook/:recipebook_id" exact component={RecipeBookView} />
               <AuthRoute path="/user_fav_recipes/recipebook/:recipebook_id/:recipe_id" exact component={RecipeBookRecipeView} />
+              <AuthRoute path="/:groupname/:username" exact component={GroupMemberProfile} />
               </Switch>
             </div>
           </Router>
