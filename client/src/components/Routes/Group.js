@@ -29,7 +29,7 @@ const Group = props => {
                     <ul>
                     {groupUsers.map((user, i) => (
                             <li key={`user - `+i}>
-                                <Link to={"/userProfile/"+user.username}>
+                                <Link to={`/${currentGroup}/${user.username}`}>
                             <span>{user.username}</span>
                                 </Link>   
                             </li>
