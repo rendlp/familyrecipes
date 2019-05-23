@@ -26,7 +26,7 @@ const Prep = (props) => {
                 onChange= {changeForm}  >
 
                 <option>Hours?</option>
-                <option value='0' >0 Hours</option>
+                <option value='0' >None</option>
                 <option value='1'>1 Hour</option>
                 <option value='2'>2 Hours</option>
                 <option value='3'>3 Hours</option>
@@ -50,7 +50,7 @@ const Prep = (props) => {
                 onChange= {changeForm} >
 
                 <option>Minutes?</option>
-                <option value="0">0 Minutes</option>
+                <option value="0">None</option>
                 <option value="5">5 Minutes</option>
                 <option value="10">10 Minutes</option>
                 <option value="15">15 Minutes</option>

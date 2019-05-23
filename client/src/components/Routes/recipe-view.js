@@ -42,8 +42,7 @@ const RecipeView = (props) => {
       <Link to='/'><button className='backBtn'>Back</button></Link>
         <div id="recipe-display">
           <img id="recipe-pic" src={props.currentRecipe.imgURL} alt='' />
-
-              <h1 id="recipe-name">{props.currentRecipe.name}</h1>
+              <h1 id="recipe-name">{props.currentRecipe.name == null ? 'No Name Added to Recipe' : props.currentRecipe.name}</h1>
               <div id="prep">
                 <h2 id="prep-header">Prep Time</h2>
                 <p id="prep-hours">Hours: {props.currentRecipe.prepHours}</p>
@@ -59,7 +58,7 @@ const RecipeView = (props) => {
               </div>
               <div id="directions">
                 <h2 id="directions-header">Directions</h2>
-                <p id="recipe-directions">{props.currentRecipe.directions}</p>
+                <p id="recipe-directions">{props.currentRecipe.directions == null ? "No Directions Included With Recipe" : props.currentRecipe.directions}</p>
               </div>
 
               <button onClick={handleClick}>Add to Favorite List</button>
