@@ -22,15 +22,15 @@ const UserProfile = props => {
       <div>
         <Header />
         <Link to='/'><button className='backBtn'>Back</button></Link>
-      
+        <div className="userProfileDisplay">
+          <img className="user-pic" src={userInfo.userPicURL} alt='' />
           <p>username:</p>
           <p>{user}</p>
           <p>First Name:</p>
           <p>{userInfo.firstname}</p>
           <p>Last Name:</p>
           <p>{userInfo.lastname}</p>
-          <p>userPic:</p>
-          <p>{userInfo.userPic}</p>
+        </div>
 
           <Logout />
         <Footer />
