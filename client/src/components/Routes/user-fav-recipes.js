@@ -6,7 +6,6 @@ import {getUserFavorites} from '../../actions/actions'
 import {getRecipeBooks} from '../../actions/actions'
 import Header from '../header'
 import Footer from '../footer'
-import LogoutButton from '../logout-button'
 import {Link} from 'react-router-dom'
 
 

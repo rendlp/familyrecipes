@@ -28,7 +28,7 @@ const RecipeView = (props) => {
 
   const [groupChosen, setGroupChosen] = useState('')
 
-  console.log( 'recipeId - ',recipeId, 'groupChosen - ', groupChosen, 'recipeName - ', recipeName)
+  // console.log( 'recipeId - ',recipeId, 'groupChosen - ', groupChosen, 'recipeName - ', recipeName)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -39,7 +39,7 @@ const RecipeView = (props) => {
   return (
     <div>
       <Header />
-      <button><Link to='/'>Back</Link></button>
+      <Link to='/'><button className='backBtn'>Back</button></Link>
         <div id="recipe-display">
           <img id="recipe-pic" src={props.currentRecipe.imgURL} alt='' />
 
@@ -75,14 +75,14 @@ const RecipeView = (props) => {
               name="shareWithGroup"
               id="shareWithGroup"
               className="shareDropdown">
-                <option>Select a group</option>
+                <option value=''>Select a group</option>
               {groups.map((group, i) => (
                 <option value={group.group_id} key={"group - "+i}>
                   {group.groupname}
                 </option>
               ))}
             </select>
-            <button type="submit">
+            <button className={groupChosen === '' ? 'hidden' : ''} type="submit">
                 Share
             </button>
           </form>

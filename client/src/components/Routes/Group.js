@@ -23,12 +23,13 @@ const Group = props => {
 
     return (
                 <div className = "groupUserList">
+                    <Link to='/'><button className='backBtn'>Back</button></Link>
                     <h1>{currentGroup}</h1>
                     <h3>{currentGroup} members:</h3>
                     <ul>
                     {groupUsers.map((user, i) => (
                             <li key={`user - `+i}>
-                                <Link to={"/userProfile/"+user.username}>
+                                <Link to={`/${currentGroup}/${user.username}`}>
                             <span>{user.username}</span>
                                 </Link>   
                             </li>
@@ -36,7 +37,7 @@ const Group = props => {
                     </ul>
                     <div id="inviteUserLink">
                         <Link to={`/group/${group_id}/inviteUser`}>
-                                <p>Invite a user</p>
+                                <button>Add a user to {currentGroup}</button>
                         </Link>
                     </div>
                     <h3>{currentGroup} recipes:</h3>
