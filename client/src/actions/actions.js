@@ -71,6 +71,8 @@ export function addImage(img) {
 export function addRecipe(recipe) {
     const ingredients = recipe.ingredient.list.map(x => x.name)
 
+
+
     Axios.post('/api/recipes', {
         name: recipe.name.name,
         prepHours: recipe.prepTime.prepHours,
