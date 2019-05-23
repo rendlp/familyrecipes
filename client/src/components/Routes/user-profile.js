@@ -31,6 +31,7 @@ const UserProfile = props => {
           <p>Last Name:</p>
           <p>{userInfo.lastname}</p>
         </div>
+        <Link to='/user_profile/edit'><button className='backBtn'>Edit Profile</button></Link>
 
           <Logout />
         <Footer />

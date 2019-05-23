@@ -11,12 +11,12 @@ const GroupMemberProfile = props => {
 
 
 
-const username = props.match.params.username
+const user = props.match.params.username
 
-console.log(username)
+console.log(user)
 
     useEffect(() => {
-      getUserInfo(username)
+      getUserInfo(user)
     },[])
 
   const userInfo = useSelector(appstate => appstate.userInfo)
@@ -29,7 +29,7 @@ console.log(username)
         <div className="userProfileDisplay">
           <img className="user-pic" src={userInfo.userPicURL} alt='' />
           <p>username:</p>
-          <p>{username}</p>
+          <p>{user}</p>
           <p>First Name:</p>
           <p>{userInfo.firstname}</p>
           <p>Last Name:</p>
