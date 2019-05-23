@@ -31,7 +31,7 @@ const Group = props => {
                             <li key={`user - `+i}>
                                 <Link to={`/${currentGroup}/${user.username}`}>
                             <span>{user.username}</span>
-                                </Link>   
+                                </Link>
                             </li>
                         ))}
                     </ul>
@@ -46,9 +46,9 @@ const Group = props => {
                             <li key={`recipe - `+i}>
                                 <Link to={`/${currentGroup}/Recipes/` + recipe.recipe_id}>
                                     <p>
-                                        {recipe.name}
+                                        {recipe.name == null ? "Unnamed Recipe" : recipe.name}
                                     </p>
-                                </Link>   
+                                </Link>
                             </li>
                         ))}
                     </ul>

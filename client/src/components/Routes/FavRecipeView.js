@@ -43,7 +43,7 @@ const FavRecipeView = (props) => {
         <div id="recipe-display">
           <img id="recipe-pic" src={props.currentRecipe.imgURL} alt='' />
 
-              <h1 id="recipe-name">{props.currentRecipe.name}</h1>
+              <h1 id="recipe-name">{props.currentRecipe.name == null ? "Unnamed Recipe" : props.currentRecipe.name}</h1>
               <div id="prep">
                 <h2 id="prep-header">Prep Time</h2>
                 <p id="prep-hours">Hours: {props.currentRecipe.prepHours}</p>
@@ -59,7 +59,7 @@ const FavRecipeView = (props) => {
               </div>
               <div id="directions">
                 <h2 id="directions-header">Directions</h2>
-                <p id="recipe-directions">{props.currentRecipe.directions}</p>
+                <p id="recipe-directions">{props.currentRecipe.directions == null ? "Directions Not Included With Recipe" : props.currentRecipe.directions}</p>
               </div>
 
         </div>
@@ -79,7 +79,7 @@ const FavRecipeView = (props) => {
                 </option>
               ))}
             </select>
-            <button 
+            <button
               className={recipeBookChosen === '' ? 'hidden' : ''}
               type="submit">
                 Add
