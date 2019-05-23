@@ -205,9 +205,11 @@ router.post('/recipes', (req, res, next) => {
   `
 
   conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.directions, req.body.servings, req.body.username, req.body.ingredients, req.body.imgURL], (err, results, fields) => {
-    message: 'recipe posted'
+    res.json({
+      message: 'recipe posted'
     })
   })
+})
 // listen for a post call into the application's database(group_recipe_links table)
 router.post('/group_recipe_links', (req, res, next) => {
   const sql =`

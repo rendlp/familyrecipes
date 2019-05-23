@@ -78,7 +78,8 @@ export function addRecipe(recipe) {
         directions: recipe.directions.directions,
         servings: recipe.prepTime.serves,
         username: recipe.username.user,
-        imgURL: recipe.image,
+        // validate if image has no upload
+        imgURL: typeof recipe.image === 'string' ? recipe.image : null,
         ingredients: ingredients.join("*/*")
     })
 }
@@ -176,7 +177,7 @@ export function getGroupRecipes(group_id) {
     })
   }
 
-  
+
 // for potential future use
 
 // export function Date() {

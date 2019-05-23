@@ -27,11 +27,15 @@ function UploadParentFunctional (props) {
 
     const [nameError, setNameError] = useState('')
     const [ingredientsError, setIngredientsError] = useState('')
-    let image_url = forms.image
+    const [directionsError, setDirectionsError] = useState('')
+
+
+
 
     function manageForm(ctx, payload) {
-        console.log('updating', ctx, payload);
+        // console.log('updating', ctx, payload);
         forms[ctx] = {...payload};
+        console.log('payload:', payload)
     };
 
     function addImageToForm(img) {
@@ -42,43 +46,59 @@ function UploadParentFunctional (props) {
     // on form submit
     function handleForm() {
         // e.preventDefault();
-        console.log(forms);
         addRecipe(forms);
-        // props.history.push('/user_recipes');
+        props.history.push('/user_recipes');
     };
 
     // form validation
     function validator(e) {
       e.preventDefault()
-      let valid = false
+      let valid = true
 
       // if the recipe being submitted has been named, validate form
-      if (forms.name.name === '' || forms.name.name === undefined) {
-          valid = false
-          setNameError('Recipe Name Cannot Be Blank')
+      if (forms.name) {
+        if (forms.name.name === '' || forms.name.name === undefined) {
+            valid = false
+            setNameError('Recipe Name Cannot Be Blank')
+        } else if (forms.name.name.length > 0) {
+
+          setNameError("")
+          valid = true
+        }
       } else {
-        valid = true
-        setNameError("")
+        forms.name = ''
+        valid = false
       }
+
+      if (forms.directions) {
+        setDirectionsError('')
+        if (forms.directions.directions === '' || forms.directions.directions === undefined) {
+          valid = false
+          setDirectionsError('Please Include Directions With Your Recipe')
+        } else {
+          setDirectionsError('')
+
+        }
+      } else {
+        forms.directions = ""
+        valid = false
+      }
+
+
       // if at least 1 ingredient has been submitted, validate form
       if (forms.ingredient.list.length === 0 || forms.ingredient.list.length === undefined) {
         valid = false
         setIngredientsError('Please Include At Least One Ingredient')
       } else {
-        valid = true
         setIngredientsError('')
       }
-      // If no image uploaded, send a string to database post and validate form.
-      // if (image_url === "" || image_url === undefined) {
-      //   valid = true
-      //   image_url = 'No Pic Added'
-      // } else {
-      //   valid = true
-      // }
+        // console.log('directions =', forms.directions)
+        // console.log('name =', forms.name)
+        // console.log('ingredients =', forms.ingredient.list)
+        console.log('validation =', valid)
+        // console.log(forms)
 
-      console.log('image url =', image_url)
-      console.log('valid', valid)
-      if (valid = true) {
+      if (valid === true) {
         handleForm()
       }
     }
@@ -103,6 +123,7 @@ function UploadParentFunctional (props) {
         </div>
 
         <div id="text-directions">
+            <label>{directionsError}</label>
             <Directions manageForm={manageForm} formData={forms.Directions} />
         </div>
         <div id="image-upload">
