@@ -76,6 +76,8 @@ export function addImage(img) {
 export function addRecipe(recipe) {
     const ingredients = recipe.ingredient.list.map(x => x.name)
 
+
+
     Axios.post('/api/recipes', {
         name: recipe.name.name,
         prepHours: recipe.prepTime.prepHours,
@@ -83,7 +85,8 @@ export function addRecipe(recipe) {
         directions: recipe.directions.directions,
         servings: recipe.prepTime.serves,
         username: recipe.username.user,
-        imgURL: recipe.image,
+        // validate if image has no upload
+        imgURL: typeof recipe.image === 'string' ? recipe.image : null,
         ingredients: ingredients.join("*/*")
     })
 }
@@ -184,6 +187,8 @@ export function getGroupRecipes(group_id) {
   }
 
 
+
+
   // export function Storage(ref) {
 //     static displayFirebaseStorageImg(ref: String, callback: (url:String))
 //     const imageRef = firebase.storage().ref(ref);
@@ -191,6 +196,7 @@ export function getGroupRecipes(group_id) {
 //     imageRef.getDownloadURL().then((url: String) => callback(url))
 // }
   
+
 // for potential future use
 
 // export function Date() {
