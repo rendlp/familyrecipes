@@ -449,11 +449,15 @@ h3 {
   box-shadow: 5px 8px 8px -6px black;
   text-shadow: 1px 1px rgb(142,50,40);
   font-size: 26px;
+  transition: 0.3s;
+  color: white;
+  
 }
 
 .recipeListP:hover{
   width: 310px;
   height: 310px;
+  transition: 0.3s;
 }
 
 .recipeListP:hover {
@@ -469,7 +473,7 @@ h3 {
   flex-direction: row;
   flex-wrap: wrap;
   margin: 5px;
-  width: 100%;
+ 
   
 }
 
