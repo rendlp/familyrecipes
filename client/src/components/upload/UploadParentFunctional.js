@@ -44,6 +44,7 @@ function UploadParentFunctional (props) {
 
 
     return (
+
      <div className="uploadDiv">
      
          <Link to='/'><button className='abutton'>Back</button></Link>
