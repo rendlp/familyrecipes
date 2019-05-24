@@ -25,8 +25,10 @@ console.log(props.addedRecipesInsideRecipebooks)
       <Header />
       <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
       {props.addedRecipesInsideRecipebooks.map(recipe => (
+
         <ul className='groupUL'>
-          <Link to={`/user_fav_recipes/recipebook/${recipebookID}/${recipe.recipe_id}`}><li className='groupLI'>{recipe.recipe_name}</li></Link>
+          <Link to={`/user_fav_recipes/recipebook/${recipebookID}/${recipe.recipe_id}`}><li>{recipe.recipe_name == null ? "Unnamed Recipe" : recipe.recipe_name}</li></Link>
+
         </ul>
       ))}
       <Footer />

@@ -43,7 +43,7 @@ const FavRecipeView = (props) => {
         <div id="recipe-display">
           <img id="recipe-pic" src={props.currentRecipe.imgURL} alt='' />
 
-              <h1 id="recipe-name">{props.currentRecipe.name}</h1>
+              <h1 id="recipe-name">{props.currentRecipe.name == null ? "Unnamed Recipe" : props.currentRecipe.name}</h1>
               <div id="prep">
                 <h2 id="prep-header">Prep Time</h2>
                 <p id="prep-hours">Hours: {props.currentRecipe.prepHours}</p>
@@ -59,7 +59,7 @@ const FavRecipeView = (props) => {
               </div>
               <div id="directions">
                 <h2 id="directions-header">Directions</h2>
-                <p id="recipe-directions">{props.currentRecipe.directions}</p>
+                <p id="recipe-directions">{props.currentRecipe.directions == null ? "Directions Not Included With Recipe" : props.currentRecipe.directions}</p>
               </div>
 
         </div>
@@ -72,14 +72,20 @@ const FavRecipeView = (props) => {
               name="shareWithGroup"
               id="shareWithGroup"
               className="shareDropdown">
-                <option>Select a Recipe Book</option>
+                <option value=''>Select a Recipe Book</option>
                 {userRecipeBooks.map((recipeBook, i) => (
                 <option value={recipeBook.recipebook_id} key={"group - "+i}>
                   {recipeBook.recipebook_name}
                 </option>
               ))}
             </select>
-            <button className='abutton' type="submit">
+
+        
+
+            <button
+              className={recipeBookChosen === '' ? 'hidden' : 'abutton'}
+              type="submit">
+
                 Add
             </button>
           </form>

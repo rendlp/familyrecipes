@@ -3,9 +3,7 @@ import Axios from 'axios'
 // import { checkPropTypes, string } from 'prop-types'
 import * as firebase from 'firebase/app'
 
-// export function addBoth(both) {
-//     Axios.post('/api/both', both)
-// }
+// GROUPS
 
 export function getGroups(user) {
     Axios.get(`/api/groups?username=${user}`).then(resp => {
@@ -15,13 +13,6 @@ export function getGroups(user) {
         })
     })
 }
-
-// export function Storage(ref) {
-//     static displayFirebaseStorageImg(ref: String, callback: (url:String))
-//     const imageRef = firebase.storage().ref(ref);
-
-//     imageRef.getDownloadURL().then((url: String) => callback(url))
-// }
 
 
 export function getGroupUsers(group_id) {
@@ -42,23 +33,47 @@ export function createGroup(groupName, user) {
     })
 }
 
+// USER
+
 export function searchUser(userNameSearched) {
-        Axios.get(`/api/usersSearch?username=${userNameSearched}`).then(resp => {
-            store.dispatch({
-                type: 'FOUND_USER',
-                payload: resp.data.username
-            })
-            console.log(resp.data.username)
+    Axios.get(`/api/usersSearch?username=${userNameSearched}`).then(resp => {
+        store.dispatch({
+            type: 'FOUND_USER',
+            payload: resp.data.username
         })
+        console.log(resp.data.username)
+    })
 }
 
 export function addUserToGroup(group_id, username) {
-    console.log(group_id, username)
-    return Axios.post('/api/group_user_links/addUser', {
-        group_id: group_id,
-        username: username
+console.log(group_id, username)
+return Axios.post('/api/group_user_links/addUser', {
+    group_id: group_id,
+    username: username
+})
+}
+
+export function  getUserInfo(user) {
+    return Axios.get(`/api/users?username=${user}`).then(resp => {
+        store.dispatch({
+        type: 'GET_USER_INFO',
+        payload: resp.data.results[0]
+        })
+        console.log(resp.data.results[0])
     })
 }
+
+export function editUserData(firstname, lastname, image, user) {
+    console.log(firstname, lastname)
+    return Axios.put('/api/users/edit', {
+        firstname: firstname,
+        lastname: lastname,
+        userPicURL: image,
+        username: user
+    })
+    }
+
+// RECIPES
 
 // a function that will send uploaded images to the application's database
 export function addImage(img) {
@@ -71,6 +86,8 @@ export function addImage(img) {
 export function addRecipe(recipe) {
     const ingredients = recipe.ingredient.list.map(x => x.name)
 
+
+
     Axios.post('/api/recipes', {
         name: recipe.name.name,
         prepHours: recipe.prepTime.prepHours,
@@ -78,7 +95,8 @@ export function addRecipe(recipe) {
         directions: recipe.directions.directions,
         servings: recipe.prepTime.serves,
         username: recipe.username.user,
-        imgURL: recipe.image,
+        // validate if image has no upload
+        imgURL: typeof recipe.image === 'string' ? recipe.image : null,
         ingredients: ingredients.join("*/*")
     })
 }
@@ -140,6 +158,8 @@ export function getGroupRecipes(group_id) {
     })
   }
 
+  // RECIPE BOOKS
+
   // a function that will grab a user's list of created recipebooks from the application's database
   export function getRecipeBooks(user) {
     Axios.get(`/api/user_recipebooks?username=${user}`).then(resp => {
@@ -176,7 +196,17 @@ export function getGroupRecipes(group_id) {
     })
   }
 
+
+
+
+  // export function Storage(ref) {
+//     static displayFirebaseStorageImg(ref: String, callback: (url:String))
+//     const imageRef = firebase.storage().ref(ref);
+
+//     imageRef.getDownloadURL().then((url: String) => callback(url))
+// }
   
+
 // for potential future use
 
 // export function Date() {

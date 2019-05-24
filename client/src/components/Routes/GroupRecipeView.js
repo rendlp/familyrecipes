@@ -34,11 +34,12 @@ const GroupRecipeView = (props) => {
 
   return (
     <div>
+
     <Header />
     <div className='divHeader'>
     <Link to='/user_recipes'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
     <div className='space'></div>
-    <h1 className="recipe-name">{props.currentRecipe.name}</h1>
+     <h1 className="recipe-name">{recipeName == null ? "Unnamed Recipe" : recipeName}</h1>
     </div>
     <div className='recipeContainer'>
     <img className="recipe-pic" src={props.currentRecipe.imgURL || 'https://via.placeholder.com/400'} alt='' />
@@ -57,9 +58,11 @@ const GroupRecipeView = (props) => {
                   ))}
                 </ul>
               </div>
+
               <div className="directions">
                 <h2 className="directions-header">Directions</h2>
-                <p className="recipe-directions">{props.currentRecipe.directions}</p>
+                <p className="recipe-directions">{props.currentRecipe.directions == null ? "Directions Not Included With Recipe" : props.currentRecipe.directions}</p>
+
               </div>
         </div>
         </div>

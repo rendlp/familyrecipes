@@ -33,7 +33,7 @@ const InviteUser = props => {
 
     return (
                 <div className = "inviteUser">
-                    <h1>Invite a user to this group</h1>
+                    <h1>Add a user to {props.currentGroup}</h1>
                     <form id="searchUser" onSubmit={handleSubmit}>
                         <input
                             autoComplete="off"
@@ -42,6 +42,7 @@ const InviteUser = props => {
                             id="groupName"
                             placeholder="Search a username..."
                             onChange={e => setUserName(e.target.value)}
+                            value={userNameSearched}
                         />
                         <button type="submit">
                             Search

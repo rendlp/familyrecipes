@@ -26,6 +26,7 @@ const Group = props => {
     console.log(groupRecipes)
 
     return (
+
         <div>
          <Header />
           <div className = "groupViewContainer">
@@ -72,9 +73,9 @@ const Group = props => {
                     <li className='groupUserLI' key={`recipe - `+i}>
                         <Link to={`/${currentGroup}/Recipes/` + recipe.recipe_id}>
                             <div className='groupRecipe-Div'>
-                            <p className='groupUserP'>
-                                {recipe.name}
-                            </p>
+                              <p className='groupUserP'>
+                                        {recipe.name == null ? "Unnamed Recipe" : recipe.name}
+                                    </p>
                             </div>
                         </Link>   
                     </li>
@@ -82,20 +83,9 @@ const Group = props => {
             </ul>
             </div>
             </div>
-
-          
-
-         
-
-            
-            
             
             </div>
 
-            
-            
-           
-          
 
         </div>
         <Footer />

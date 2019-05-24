@@ -26,6 +26,7 @@ const UserRecipe = (props) => {
   return (
       <div className='userRecipeContainer'>
         <Header />
+
         <div className='divHeader'>
         <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
         <div className='space'></div>
@@ -34,13 +35,8 @@ const UserRecipe = (props) => {
         <div className='userRecipeDiv'>
          <div className='recipeDiv'>
         {props.userRecipes.map(recipe => (
-          <Link 
-          className='recipeLink' 
-          to={'user_recipes/' + recipe.recipe_id}>
-            <p 
-            className='recipeListP'>{recipe.name}
-            </p>
-          </Link>
+          <Link className='recipeLink'key={'recipe'+i} to={'user_recipes/' + recipe.recipe_id}><p>{recipe.name == null ? "Unnamed Recipe" : recipe.name}</p></Link>
+
         ))}
          </div>
         </div>
