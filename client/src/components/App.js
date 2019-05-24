@@ -36,18 +36,18 @@ class App extends Component {
         <Provider store={store}>
           <Router>
             <div className="appContainer">
-             
+
               {/* public routes */}
               <Switch>
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
               </Switch>
 
-              {/* private routes */}
+              {/* private routes test */}
               <Switch>
               <AuthRoute path="/" exact component={AccountHome} />
 
-    
+
               <AuthRoute path="/upload" component={UploadParentFunctional} />
               {/* <AuthRoute path="/uploadphoto" exact component={uploadPhoto} /> */}
               <AuthRoute path="/user_recipes" exact component={UserRecipe} />
