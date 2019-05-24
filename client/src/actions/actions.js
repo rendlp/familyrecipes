@@ -18,6 +18,7 @@ export function getGroups(user) {
 export function getGroupUsers(group_id) {
     if (group_id) {
         Axios.get(`/api/groupUsers?group_id=${group_id}`).then(resp => {
+          console.log(resp.data.groupUsers)
             store.dispatch({
                 type: 'GET_GROUP_USERS',
                 payload: resp.data.groupUsers

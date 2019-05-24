@@ -39,13 +39,14 @@ const RecipeView = (props) => {
 
   return (
     <div>
-
     <Header />
+
     <div className='divHeader'>
     <Link to='/user_recipes'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
     <div className='space'></div>
        <h1 className="recipe-name">{props.currentRecipe.name == null ? 'No Name Added to Recipe' : props.currentRecipe.name}</h1>
     </div>
+    
     <div className='recipeContainer'>
     <img className="recipe-pic" src={props.currentRecipe.imgURL || 'https://via.placeholder.com/400'} alt='' />
         <div className="recipe-display">
@@ -106,8 +107,7 @@ const RecipeView = (props) => {
                 
               ))}
             </select>
-
-            <button className={groupChosen === '' ? 'hidden' : 'abuttonS'} type="submit">
+            <button className={groupChosen === '' ? 'hidden' : 'abutton'} type="submit">
                 Share
             </button>
 
