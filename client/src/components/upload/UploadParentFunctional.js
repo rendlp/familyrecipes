@@ -44,6 +44,7 @@ function UploadParentFunctional (props) {
 
 
     return (
+
      <div className="uploadDiv">
 
 
