@@ -33,7 +33,7 @@ const Group = props => {
           <div className='divHeader'>
           <Link 
             to='/user_groups'>
-             <FontAwesomeIcon className='faBack2' icon="arrow-left" />
+             <FontAwesomeIcon className='faBack' icon="arrow-left" />
             </Link>
         <div className='space'></div>
         <h1 className='group-recipe-name'>{currentGroup}'s Recipes</h1>

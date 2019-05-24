@@ -9,7 +9,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const GroupMemberProfile = props => {
 
+  function backFunction(e) {
+    e.preventDefault()
+    props.history.goBack()
 
+}
 
 
 const user = props.match.params.username
@@ -27,7 +31,7 @@ console.log(user)
       <div>
         <Header />
         <div className='divHeader'>
-        <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
+        <div className='backArrowDiv' onClick={backFunction}><FontAwesomeIcon className='faBack' icon="arrow-left" /></div>
         <div className='space'></div>
         <h1 className='recipe-name'>{user}</h1>
         </div>

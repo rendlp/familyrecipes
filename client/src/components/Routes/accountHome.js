@@ -12,25 +12,26 @@ class AccountHome extends Component {
 
         <Header />
         <div className="left-panel">
-          <h1 className='recipe-name'>Books</h1>
+          <h1 className='title'>Books</h1>
           <Link to="/user_recipes"><p className="leftP">Recipes</p></Link>
           <Link to="/user_groups"><p className="leftP">Groups</p></Link>
           <Link to="/user_fav_recipes"><p className="leftP">Favorites</p></Link>
+        <div className='space2'></div>
+         
+        <Link to={"/createrecipebook"}>
+          <button className='abutton'>Create Book</button>
+        </Link>
 
-          {/* <Link to="user_messages"><p className="leftP">My Messages</p></Link> */}
-          {/* <Link to="/user_profile"><p className="leftP">My Profile</p></Link> */}
-          {/* <Link to="/upload"><button className="uploadButton">Upload Recipe</button></Link> */}
         </div>
 
         <div className="canvas2">
-          
           <div className="books">
-            
             <RecipeBookListAccountHome />
           </div>
-          </div>
-        <Footer />
         </div>
+        
+        <Footer />
+      </div>
     )
   }
 }

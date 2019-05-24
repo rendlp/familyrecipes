@@ -8,6 +8,7 @@ import { getUserInfo } from '../../actions/actions'
 import {AuthContext} from '../../lib/auth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+
 const UserProfile = props => {
 
   const { user } = useContext(AuthContext)
