@@ -4,7 +4,7 @@ import useFormInput from '../hooks/useFormInput'
 
 
 const ImageUpload = (props) => {
-    const [image, setImage] = useState(null)
+    const [image, setImage] = useState({})
     const [url, setUrl] = useState('')
     const [progress, setProgress] = useState(0)
 
@@ -24,7 +24,7 @@ const ImageUpload = (props) => {
 
     const handleUpload = e => {
         e.preventDefault()
-        const uploadTask = storage.ref(`images/${image.name === null ? "" : image.name}`).put(image)
+        const uploadTask = storage.ref(`images/${image.name}`).put(image)
         uploadTask.on('state_changed',
 
         // PROGRESS
