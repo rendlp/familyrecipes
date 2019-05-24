@@ -119,7 +119,20 @@ export function getUserRecipes(user) {
   })
 }
 
-export function getCurrentRecipe(recipeId) {
+export function getCurrentUserOwnedRecipe(recipe_id, user, history) {
+    Axios.get(`/api/recipes/current/userOwned?recipe_id=${recipe_id}&user=${user}`).then(resp => {
+        console.log(resp.data[0].ingredients.split("*/*"))
+      store.dispatch({
+        type: "GET_CURRENT_RECIPE",
+        currentRecipe: resp.data[0],
+        currentRecipeIngredients: resp.data[0].ingredients.split("*/*")
+      })
+    }).catch(err => {
+        history.push('/no')
+    })
+  }
+
+  export function getCurrentRecipe(recipeId) {
     Axios.get(`/api/recipes/current?recipe_id=${recipeId}`).then(resp => {
         console.log(resp.data[0].ingredients.split("*/*"))
       store.dispatch({
