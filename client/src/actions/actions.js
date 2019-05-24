@@ -63,6 +63,16 @@ export function  getUserInfo(user) {
     })
 }
 
+export function editUserData(firstname, lastname, image, user) {
+    console.log(firstname, lastname)
+    return Axios.put('/api/users/edit', {
+        firstname: firstname,
+        lastname: lastname,
+        userPicURL: image,
+        username: user
+    })
+    }
+
 // RECIPES
 
 // a function that will send uploaded images to the application's database

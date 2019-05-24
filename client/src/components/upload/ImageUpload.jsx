@@ -24,11 +24,7 @@ const ImageUpload = (props) => {
 
     const handleUpload = e => {
         e.preventDefault()
-        // if (image === null) {
-        //   setImage({})
-        // }
-        const uploadTask = storage.ref(`images/${image.name}`).put(image)
-        console.log('image =', image)
+        const uploadTask = storage.ref(`images/${image.name === null ? "" : image.name}`).put(image)
         uploadTask.on('state_changed',
 
         // PROGRESS

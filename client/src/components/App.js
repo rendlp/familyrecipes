@@ -26,6 +26,7 @@ import FavRecipeView from './Routes/FavRecipeView'
 import RecipeBookView from './Routes/RecipeBookView'
 import RecipeBookRecipeView from './Routes/RecipeBookRecipeView'
 import GroupMemberProfile from './Routes/GroupMemberProfile'
+import UserProfileEdit from './Routes/user-profile-edit'
 
 
 class App extends Component {
@@ -35,19 +36,18 @@ class App extends Component {
         <Provider store={store}>
           <Router>
             <div className="appContainer">
-             
+
               {/* public routes */}
               <Switch>
-                <Route exact path="/home" component={Landing} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
               </Switch>
 
-              {/* private routes */}
+              {/* private routes test */}
               <Switch>
               <AuthRoute path="/" exact component={AccountHome} />
 
-    
+
               <AuthRoute path="/upload" component={UploadParentFunctional} />
               {/* <AuthRoute path="/uploadphoto" exact component={uploadPhoto} /> */}
               <AuthRoute path="/user_recipes" exact component={UserRecipe} />
@@ -66,6 +66,7 @@ class App extends Component {
               <AuthRoute path="/user_fav_recipes/:recipe_id" exact component={FavRecipeView} />
               <AuthRoute path="/user_fav_recipes/recipebook/:recipebook_id" exact component={RecipeBookView} />
               <AuthRoute path="/user_fav_recipes/recipebook/:recipebook_id/:recipe_id" exact component={RecipeBookRecipeView} />
+              <AuthRoute path="/user_profile/edit" exact component={UserProfileEdit} />>
               <AuthRoute path="/:groupname/:username" exact component={GroupMemberProfile} />
               </Switch>
             </div>

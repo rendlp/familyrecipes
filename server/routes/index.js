@@ -157,6 +157,26 @@ router.get('/usersSearch', (req, res, next) => {
 }
 })
 
+//edit user profile data
+
+router.put('/users/edit', (req, res, next) => {
+  const sql =`
+  UPDATE
+    users
+  SET
+    firstname = ?, lastname = ?, userPicURL = ?
+  WHERE
+    username = ?
+  `
+
+  conn.query(sql, [req.body.firstname, req.body.lastname, req.body.userPicURL, req.body.username], (err, results, fields) => {
+      res.json({
+      message: "user data updated"
+      })
+  })
+})
+
+
 
 //RECIPES
 
