@@ -35,6 +35,7 @@ import RecipeBookRecipeView from './Routes/RecipeBookRecipeView'
 
 import GroupMemberProfile from './Routes/GroupMemberProfile'
 import UserProfileEdit from './Routes/user-profile-edit'
+import RecipeViewEdit from './Routes/recipe-view-edit'
 
 
 
@@ -71,6 +72,7 @@ class App extends Component {
               <AuthRoute path="/group/:group_id" exact component={Group} />
               <AuthRoute path="/group/:group_id/inviteUser" exact component={InviteUser} />
               <AuthRoute path="/user_recipes/:recipe_id" exact component={RecipeView} />
+              <AuthRoute path="/user_recipes/:recipe_id/edit" exact component={RecipeViewEdit} />
               <AuthRoute path="/:groupname/Recipes/:recipe_id" exact component={GroupRecipeView} />
               <AuthRoute path="/user_fav_recipes/:recipe_id" exact component={FavRecipeView} />
               <AuthRoute path="/user_fav_recipes/recipebook/:recipebook_id" exact component={RecipeBookView} />

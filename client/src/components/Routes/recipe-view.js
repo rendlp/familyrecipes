@@ -65,6 +65,8 @@ const RecipeView = (props) => {
                 </ul>
               </div>
 
+              
+
               <div className="directions">
                 <h2 className="directions-header">Directions</h2>
                  <p className="recipe-directions">{props.currentRecipe.directions == null ? "No Directions Included With Recipe" : props.currentRecipe.directions}</p>
@@ -86,6 +88,9 @@ const RecipeView = (props) => {
             <div className='space'></div>
             <button className='abutton' onClick={handleClick}>Add to Favorite List</button>
             </div>
+
+            <Link to={`/user_recipes/${recipeId}/edit`}><button className='backBtn'>Edit Recipe</button></Link>
+            
             <label className='shareLabel'>
               Share recipe with a group:
             </label>
