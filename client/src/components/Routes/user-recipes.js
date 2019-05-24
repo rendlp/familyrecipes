@@ -5,6 +5,11 @@ import Footer from '../footer'
 import { getUserRecipes } from '../../actions/actions'
 import { AuthContext } from "../../lib/auth"
 import { connect } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+library.add(faArrowLeft)
 
 
 const UserRecipe = (props) => {
@@ -19,14 +24,23 @@ const UserRecipe = (props) => {
 
 
   return (
-      <div>
+      <div className='userRecipeContainer'>
         <Header />
 
-        <Link to='/'><button className='backBtn'>Back</button></Link>
-        {props.userRecipes.map((recipe,i) => (
-          <Link key={'recipe'+i} to={'user_recipes/' + recipe.recipe_id}><p>{recipe.name == null ? "Unnamed Recipe" : recipe.name}</p></Link>
+        <div className='divHeader'>
+        <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
+        <div className='space'></div>
+        <h1 className='recipe-name'>Recipes</h1>
+        </div>
+        <div className='userRecipeDiv'>
+         <div className='recipeDiv'>
+        {props.userRecipes.map(recipe => (
+          <Link className='recipeLink'key={'recipe'+i} to={'user_recipes/' + recipe.recipe_id}><p>{recipe.name == null ? "Unnamed Recipe" : recipe.name}</p></Link>
+
         ))}
-        <Footer />
+         </div>
+        </div>
+       <Footer />
       </div>
   )
 }

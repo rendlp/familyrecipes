@@ -5,6 +5,7 @@ import Footer from '../footer'
 import { getCurrentRecipe, getGroups, shareRecipeWithGroup, addFavoriteRecipe } from '../../actions/actions'
 import { connect, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const RecipeView = (props) => {
 
@@ -38,36 +39,54 @@ const RecipeView = (props) => {
 
   return (
     <div>
-      <Header />
-      <Link to='/'><button className='backBtn'>Back</button></Link>
-        <div id="recipe-display">
-          <img id="recipe-pic" src={props.currentRecipe.imgURL} alt='' />
-              <h1 id="recipe-name">{props.currentRecipe.name == null ? 'No Name Added to Recipe' : props.currentRecipe.name}</h1>
-              <div id="prep">
-                <h2 id="prep-header">Prep Time</h2>
-                <p id="prep-hours">Hours: {props.currentRecipe.prepHours}</p>
-                <p id="prep-minutes">Minutes: {props.currentRecipe.prepMinutes}</p>
+
+    <Header />
+    <div className='divHeader'>
+    <Link to='/user_recipes'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
+    <div className='space'></div>
+       <h1 className="recipe-name">{props.currentRecipe.name == null ? 'No Name Added to Recipe' : props.currentRecipe.name}</h1>
+    </div>
+    <div className='recipeContainer'>
+    <img className="recipe-pic" src={props.currentRecipe.imgURL || 'https://via.placeholder.com/400'} alt='' />
+        <div className="recipe-display">
+              <div className="prep">
+                <h2 className="prep-header">Prep</h2>
+                <p className="prep-hours">Hours: <p>{props.currentRecipe.prepHours}</p></p>
+                <p className="prep-minutes">Minutes: <p>{props.currentRecipe.prepMinutes}</p></p>
+                <p className='prep-servings'>Servings: <p>{props.currentRecipe.servings}</p></p>
+
               </div>
-              <div id="ingredients">
-                <h2 id="ingredients-header">Ingredients</h2>
-                <ul id="ingredients-content">
+              <div className="ingredients">
+                <h2 className="ingredients-header">Ingredients</h2>
+                <ul className="ingredients-contentUL">
                   {props.ingredients.map((ingredient, i) => (
-                    <li key={'ingredient'+i}>{ingredient}</li>
+                    <li className='ingredients-contentLI'key={'ingredient'+i}>{ingredient}</li>
                   ))}
                 </ul>
               </div>
-              <div id="directions">
-                <h2 id="directions-header">Directions</h2>
-                <p id="recipe-directions">{props.currentRecipe.directions == null ? "No Directions Included With Recipe" : props.currentRecipe.directions}</p>
+
+              <div className="directions">
+                <h2 className="directions-header">Directions</h2>
+                 <p className="recipe-directions">{props.currentRecipe.directions == null ? "No Directions Included With Recipe" : props.currentRecipe.directions}</p>
+
               </div>
-
-              <button onClick={handleClick}>Add to Favorite List</button>
-
-
         </div>
-        <div className="shareRecipeWithGroup">
+        </div>
+
+        <div className="shareDiv">
           <form onSubmit={handleSubmit}>
-            <label>
+             
+           
+
+{/* BUTTONS */}
+            <div className='recipeButtonDiv'>
+          
+            <div className='space'></div>
+       
+            <div className='space'></div>
+            <button className='abutton' onClick={handleClick}>Add to Favorite List</button>
+            </div>
+            <label className='shareLabel'>
               Share recipe with a group:
             </label>
             <select onChange={e => setGroupChosen(e.target.value)}
@@ -79,16 +98,20 @@ const RecipeView = (props) => {
                 <option value={group.group_id} key={"group - "+i}>
                   {group.groupname}
                 </option>
+                
               ))}
             </select>
-            <button className={groupChosen === '' ? 'hidden' : ''} type="submit">
+
+            <button className={groupChosen === '' ? 'hidden' : 'abuttonS'} type="submit">
                 Share
             </button>
+
           </form>
         </div>
+        
       <Footer />
-
     </div>
+    
   )
 }
 

@@ -5,7 +5,7 @@ import Footer from '../footer'
 import { getRecipesWithinRecipebooks } from '../../actions/actions'
 // import { AuthContext } from "../../lib/auth"
 import { connect } from 'react-redux'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const RecipeBookView = (props) => {
 
@@ -23,10 +23,12 @@ console.log(props.addedRecipesInsideRecipebooks)
   return (
     <div>
       <Header />
-      <Link to='/'><button className='backBtn'>Back</button></Link>
+      <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
       {props.addedRecipesInsideRecipebooks.map(recipe => (
-        <ul>
+
+        <ul className='groupUL'>
           <Link to={`/user_fav_recipes/recipebook/${recipebookID}/${recipe.recipe_id}`}><li>{recipe.recipe_name == null ? "Unnamed Recipe" : recipe.recipe_name}</li></Link>
+
         </ul>
       ))}
       <Footer />

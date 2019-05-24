@@ -79,9 +79,13 @@ const FavRecipeView = (props) => {
                 </option>
               ))}
             </select>
+
+        
+
             <button
-              className={recipeBookChosen === '' ? 'hidden' : ''}
+              className={recipeBookChosen === '' ? 'hidden' : 'abutton'}
               type="submit">
+
                 Add
             </button>
           </form>

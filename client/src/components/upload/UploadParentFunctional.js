@@ -45,12 +45,8 @@ function UploadParentFunctional (props) {
 
     return (
      <div className="uploadDiv">
-
-
-
-
-
-         <Link to='/'><button className='backBtn'>Back</button></Link>
+     
+         <Link to='/'><button className='abutton'>Back</button></Link>
 
 
         <div id="name/prep">
@@ -75,8 +71,10 @@ function UploadParentFunctional (props) {
             <h1>Image</h1>
             <ImageUpload addImageToForm={addImageToForm} manageForm={manageForm} formData={forms.image} />
             <form onSubmit={handleForm}>
-              <button className='submitButton'>Submit</button>
-            </form>
+
+         <button className='abutton'>Submit</button>
+        </form>
+
         </div>
 
 

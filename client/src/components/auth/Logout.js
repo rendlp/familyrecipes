@@ -7,11 +7,11 @@ const Logout = (props) => {
 
     return (
         <div>
-            <Button variant="contained" color="secondary" className='logoutButton' onClick={signout} >
+            <Button variant="contained" color="secondary" className='' onClick={signout} >
                 Log Out
             </Button>
       </div>
     )
 }
 
-export default Logout
+export default Logout;
