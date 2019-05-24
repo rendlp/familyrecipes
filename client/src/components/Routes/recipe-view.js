@@ -64,6 +64,8 @@ const RecipeView = (props) => {
 
               <button onClick={handleClick}>Add to Favorite List</button>
 
+              <Link to={`/user_recipes/${recipeId}/edit`}><button className='backBtn'>Edit Recipe</button></Link>
+
 
         </div>
         <div className="shareRecipeWithGroup">
