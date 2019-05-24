@@ -9,7 +9,6 @@ import Footer from '../footer'
 import {Link} from 'react-router-dom'
 
 
-
 const UserFavRecipes = (props) => {
 
   const { user } = useContext(AuthContext)
@@ -22,14 +21,12 @@ const UserFavRecipes = (props) => {
 
   const userFavorites = useSelector(appstate => appstate.userFavorites)
 
-
     console.log(props.userRecipeBooks)
 
-
     return (
-      <div>
+      <div className="createGroup">
         <Header />
-        <Link to='/'><button className='backBtn'>Back</button></Link>
+        <Link to='/'><button className='abutton'>Back</button></Link>
         <div>
 
 {/* USERS FAVORITES */}
@@ -62,7 +59,7 @@ const UserFavRecipes = (props) => {
         </div>
         <div id="createGroupLink">
             <Link to={"/createrecipebook"}>
-              <button >Create a RecipeBook</button>
+              <button className='abutton'>Create a RecipeBook</button>
             </Link>
         </div>
         <Footer />

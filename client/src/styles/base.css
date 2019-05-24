@@ -4,7 +4,8 @@ html {
 }
 
 .appContainer {
-  background-color: rgb(122,150,80);
+  /* background-color: rgb(122,170,80); */
+  background-color:  rgb(122,170,80);
 }
 
 *,
@@ -28,38 +29,27 @@ code {
     monospace;
 }
 
-/* .homePage {
-  display: flex;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-} */
-
 .hidden {
   display: none;
 }
 
 .login {
 width: 400px;
-height: 900px;
+height: 800px;
 margin: 0 auto;
-opacity: 0.8;
+opacity: 0.9;
+animation: fadeIn ease-in 1s;
+animation-delay: 0s;
+
+
 }
 
 .loginPageContainer {
   background: linear-gradient( rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.4) ), url('https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-159703.jpg');
   background-color: antiquewhite;
   background-size: 100%;
-
-}
-
-.invisible {
-  display: flex;
-  flex-direction: row;
   width: 100%;
-  height: 175px;
+  height: 100%;
 }
 
 .background {
@@ -93,29 +83,9 @@ font-size: 16px;
 text-align: center;
 }
 
-/* .mainContainer {
-width: 1600px;
-height: 800px;
-margin: auto;
-text-align: center;
-} */
-
 .loginInput {
 margin: 325px;
 }
-
-/* .timestamp {
-font-size: 14px;
-color: blue;
-}
-
-.username {
-color: white;
-}
-
-.userClass {
-color: blue;
-} */
 
 input {
 width: 300px;
@@ -135,16 +105,42 @@ font-size: 14px;
 box-shadow: 0 6px 6px -6px black;
 transition: 0.3s;
 border: none;
-
-
 }
 
-button:hover {
+.logoutButton {
+  transition: 0.3s;
+}
+
+.dropdownBtn {
+ width: 150px;
+ height: 35px;
+ border: 1px solid black;
+ padding: 10px;
+ color: black;
+ text-align: center;
+}
+
+.abutton:hover {
+  background-color: rgb(142,50,40);
+  color: white;
+
+  transition: 0.3s;
+  
+}
+
+.abuttonS:hover {
   background-color: rgb(142,50,40);
   color: white;
   width: 115px;
   text-align: center;
   height: 44px;
+  transition: 0.3s;
+}
+
+.abuttonS {
+    transition: 0.3s;
+    margin: 10px;
+  
 }
 
 label {
@@ -162,13 +158,12 @@ text-align: center;
 box-shadow: 0 6px 6px -6px black;
 font-size: 18px;
 margin: 4px;
-
 }
 
 .prep {
   display: flex;
   flex-direction: column;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .test {
@@ -196,7 +191,6 @@ margin-top: 10px;
 h2 {
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 font-weight: 400;
-
 }
 
 .directionDiv {
@@ -220,16 +214,6 @@ box-shadow: 0 6px 6px -6px black;
 font-size: 18px;
 }
 
-/* .mainContainer {
-  background-color: whitesmoke;
-  width: 100%;
-  height: 1400px;
-  margin: 0 auto;
-
-} */
-
-
-
 .formInput {
   margin: 12px;
 }
@@ -240,29 +224,27 @@ p {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   transition: 0.3s;
   text-shadow: 1px 1px rgb(142,50,40);
-
 }
 
 .leftP:hover {
-  font-size:28px;
+  font-size:27px;
   color: rgb(122,60,80);
 }
-
-/* .uploadDiv {
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  width: 100%;
-  height: 868px;
-} */
 
 h1 {
   text-align: center;
   color: lightgrey;
   font-weight: 200;
   font-size: 72px;
-  margin: 0 auto;
+  margin: auto;
   text-shadow: 1px 1px rgb(142,50,40);
+}
+
+h3 {
+  color: white;
+  border-bottom: 1px solid white;
+  font-size: 25px;
+  
 }
 
 ::-webkit-input-placeholder {
@@ -292,7 +274,6 @@ h1 {
   font-style: none;
   padding: 0;
   margin: 0 auto;
-
 }
 
 .ingredientUL .ingredientLI {
@@ -306,8 +287,121 @@ h1 {
   border-bottom: 1px solid lightgrey;
   box-shadow: 0 1px 1px rgb(0, 0, 0, 0.15), 0 10px 0 -5px #eee;
   line-height: 50px;
-  overflow: scroll;
   margin: 0 auto;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.createGroup  {
+  height: 600px;
+  width: 100%;
+}
+
+.groupViewContainer {
+  height: 100%;
+
+}
+
+.groupName {
+  font-size: 42px;
+  color: white;
+}
+
+.membersList {
+  border-bottom: 1px solid black;
+  width: 200px;
+  margin: 0 auto;
+
+}
+
+.groupUsers {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  list-style-type: none;
+  font-size: 25px;
+  color: white;
+  border-bottom: 1px solid white;
+}
+
+.groupUserLI {
+  margin: 5px;
+  color: white;
+}
+
+.currentGroup {
+ 
+  color: lightgrey;
+  font-size: 28px;
+}
+
+.groupUserP:hover{
+  font-size: 27px;
+  color: rgb(122,68,70);
+}
+
+.groupViewDiv { 
+  width: 100%;
+  display: flex;
+}
+
+.groupRecipesDiv {
+  width: 1340px;
+  height: 100%;
+  overflow-x: scroll;
+  margin: 0 auto;
+
+}
+
+.fa {
+  font-size: 14px;
+  
+}
+
+.faBack {
+  font-size: 42px;
+  margin-top: 33px;
+  margin-left: 14px;
+  color: white;
+  text-shadow: 1px 1px rgb(142,50,40);
+}
+
+.faBack2 {
+  font-size: 35px;
+  margin-top: 33px;
+  margin-left: 14px;
+  color: white;
+  text-shadow: 1px 1px rgb(142,50,40);
+}
+
+.faBack2:hover {
+  color: rgb(122,68,70);
+  /* font-size: 37px; */
+}
+
+.divHeader {
+  display: flex;
+  flex-direction: row;
+}
+
+.faBack:hover {
+  color: rgb(122,68,70);
+  /* font-size: 44px; */
+}
+
+.groupWrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.groupRecipe-Div {
+  background-color: rgb(122,68,70);
+  padding: 25px;
+  width: 250px;
+  height: 250px;
+  border-radius: 3%;
+  animation: fadeIn ease-in 1s;
+  animation-delay: 0s;
 }
 
 .groupUL .groupLI {
@@ -317,6 +411,7 @@ h1 {
   align-items: center;
   margin: 12px;
   border-radius: 1.5%;
+  
 }
 
 .groupUL {
@@ -324,9 +419,58 @@ h1 {
   flex-direction: row;
   width: 100%;
   margin: 0 auto;
+  list-style-type: none;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.userRecipeDiv {
+  height: 700px;
+  overflow: scroll;
+  width: 100%;
+  margin: 15px;
+  overflow-x: hidden;
+  animation: fadeIn ease-in 1s;
+  animation-delay: 0s;
   
 
+}
+
+.recipeListP {
+  margin: 20px;
+  border: 1px solid black;
+  background-color: rgb(122,68,70);
+  padding: 10px;
+  width: 280px;
+  height: 280px;
+  padding: 20px;
+  border-radius: 3%;
+  margin: auto;
+  text-align: center;
+  box-shadow: 5px 8px 8px -6px black;
+  text-shadow: 1px 1px rgb(142,50,40);
+  font-size: 26px;
+}
+
+.recipeListP:hover{
+  width: 310px;
+  height: 310px;
+}
+
+.recipeListP:hover {
+  font-size: 27px;
+}
+
+.recipeLink {
+  margin: 16px;
+}
+
+.recipeDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 5px;
+  width: 100%;
+  
 }
 
 .groupContainer {
@@ -334,8 +478,10 @@ h1 {
   flex-direction: row;
   height: 700px;
   overflow: scroll;
+  overflow-y: hidden;
   width: 1200px;
   margin: 0 auto;
+  
 }
 
 .groupSpanP {
@@ -352,7 +498,17 @@ h1 {
   margin: 12px;
   border-radius: 1.5%;
   text-shadow: 1px 1px rgb(142,50,40);
-  
+  animation: fadeIn ease-in 1s;
+  animation-delay: 0s;
+  box-shadow: 0 6px 6px -6px black;
+  transition: 0.3s;
+
+}
+
+.groupLI-div:hover {
+  width: 390px;
+  height: 530px;
+  transition: 0.3s;
 }
 
 .logoutDiv {
@@ -361,6 +517,7 @@ h1 {
   align-items: center;
   padding: 12px;
 }
+
 
 .userSpan {
   color: white;
@@ -379,17 +536,37 @@ h1 {
   height: 1500px;
 }
 
+.logoImgLogin {
+  width: 92px;
+  height: 92px;
+  border: none;
+  animation: fadeIn ease-in 1s;
+  animation-delay: 0s;
+  opacity: 0.8;
+}
+
 .logoImg {
   width: 92px;
   height: 92px;
   border: none;
+  opacity: 0.8;
+
 }
 
 .logo {
-  font-size: 70px;
+  font-size: 72px;
   position: relative;
   color: rgb(122,150,30);
   font-weight: 300;
+}
+
+.logoLogin {
+  font-size: 72px;
+  color: rgb(122,150,30);
+  font-weight: 300;
+  margin: 0 auto;
+  animation: fadeIn ease-in 1s;
+  animation-delay: 0s;
 }
 
 .logosDiv {
@@ -402,18 +579,57 @@ h1 {
 
 .header {
   width: 100%;
-  height: 95px;
+  height: 110px;
   background-color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 0 auto;
+  opacity: 0.9;
+}
+
+.loginHeader{
+  width: 100%;
+  height: 110px;
+  background-color: white;
+  justify-content: space-between;
+  margin: 0 auto;
+  opacity: 0.8;
+  display: flex;
+  flex-direction: row;
+  animation: fadeIn ease-in 1s;
+  animation-delay: 0s;
+
+}
+
+.logosLoginDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+
+ 
+}
+
+@keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1; };
+}
+
+.traditionP {
+  font-size: 48px;
+  color: lightgrey;
+  margin: 0 auto;
+  padding: 348px;
+  animation: fadeIn ease-in 1s;
+  animation-delay: 0s;
 }
 
 .footer {
   width: 100%;
   height: 500px;
-  background-color: white;
+  background-color: whitesmoke;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -423,7 +639,8 @@ h1 {
 .footerP {
   font-size: 28px;
   font-family: 'Roboto';
-  margin: 50px;
+  margin: 24px;
+  padding: 40px;
   color: black;
 
 }
@@ -433,6 +650,7 @@ h1 {
   left: 46px;
   color: black;
   text-decoration-color: none;
+  
 }
 
 .welcome {
@@ -462,6 +680,7 @@ h1 {
   margin-top: 42px;
 }
 
+
 .landing-images {
   height: 100%;
   width: 486px;
@@ -485,7 +704,25 @@ h1 {
 }
 
 .logoTitle {
+  margin: 0 auto;
   padding: 40px;
+  text-shadow: 3px 3px white;
+  font-size: 70px;
+  position: relative;
+  color: rgb(122,150,30);
+  font-weight: 300;
+  width: 100%;
+  height: 101%;
+  background-color: white;
+  
+}
+
+
+
+.invisible {
+  margin: 0 auto;
+  width: 100%;
+  height: 110px;
 }
 
 .questions {
@@ -501,7 +738,10 @@ h1 {
   width: 1200px;
   margin: 0 auto;
   overflow: scroll;
+  overflow-y: hidden;
+
 }
+
 
 .left-panel {
   display: flex;
@@ -510,7 +750,7 @@ h1 {
   width: 175px;
   height: 510px;
   padding: 10px;
-
+  
 }
 
 h2 {
@@ -524,14 +764,20 @@ h2:hover {
   font-size: 35px;
 }
 
-/* .title {
+.title {
   text-decoration: underline;
-} */
+  font-size: 42px;
+  margin: auto;
+}
+
+.accountHomeBooks {
+  display: flex;
+  flex-flow: wrap;
+}
 
 a {
   text-decoration: none;
   color: none;
-  
 }
 
 a:visited {
@@ -540,7 +786,15 @@ a:visited {
 }
 
 .ingredients {
-  margin: 8px;
+  margin: 0 auto;
+}
+
+.ingredients-contentUL .ingredients-contentLI {
+  list-style-type: none;
+  color: white;
+  font-size: 20px;
+  margin: 0 auto;
+  padding: 12px;
 }
 
 .ingredients-textarea {
@@ -550,15 +804,83 @@ a:visited {
 
 .recipe-display {
   display: flex;
-  flex-direction: column;
-  width: 1000px;
-  align-items: center;
+  flex-direction: row;
+  margin: 30px;
+  width: 800px;
+
+}
+
+.recipe-name {
+  color: white;
+  font-size: 50px;
+  text-decoration: underline;
+  margin-right: 1260px;
+}
+
+.group-recipe-name {
+ 
+    color: white;
+    font-size: 37px;
+    text-decoration: underline;
+    margin-right: 1260px;
+
+  
+}
+
+.recipe-pic {
+  margin: 25px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  position: relative;
+  border: 3px solid white;
+  box-shadow: 0 6px 6px -6px black;
+}
+
+.recipeContainer {
+  flex-direction: row;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.recipeButtonDiv {
+  display: flex;
+  flex-direction: row;
+  margin: 35px;
+}
+
+.shareDiv {
+  margin: 40px;
+}
+
+.space {
+  width: 20px;
+}
+
+.space2{
+  width: 20px;
+  height: 30px;
+}
+
+.shareLabel {
+  color: white;
+  text-shadow: 1px 1px rgb(142,50,40);
 }
 
 .recipe-display h2 {
-  font-size: 40px;
-  text-decoration: underline;
-  color: gray;
+  font-size: 36px;
+  margin: 10px;
+  color: lightgrey;
+  text-shadow: 1px 1px rgb(142,50,40);
+}
+
+.recipe-view {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  background-color: black;
+  width: 400px;
 }
 
 .recipe-display ul li{
@@ -566,15 +888,14 @@ a:visited {
   color: gray;
 }
 
-
 .imgUpload {
   margin-top: 10px;
   width: 150px;
   margin-right: auto;
   height: 150px;
   border: 1px solid lightgrey;
- 
 }
+
 /* 
 .recipeUL {
   display: flex;
@@ -603,7 +924,6 @@ a:visited {
   border: 1px solid lightgrey;
   background-color: whitesmoke;
   box-shadow: 0 6px 6px -6px black;
-  
 }
 
 .uploadDiv {
@@ -611,7 +931,6 @@ a:visited {
   flex-direction: row;
   margin: 0 auto;
   padding: 10px;
-  
 }
 
 .progress {
@@ -630,7 +949,7 @@ a:visited {
 
 .uploadButton {
   margin: 0 auto;
-
+  
 }
 
 .footerSpan {
@@ -643,7 +962,8 @@ a:visited {
   display: flex;
   flex-direction: row;
   margin: 0 auto;
-  
+  animation: fadeIn ease-in 1s;
+  animation-delay: 0s;
 }
 
 .wrapper {
@@ -654,9 +974,7 @@ a:visited {
 .booksList {
   display: flex;
   flex-direction: row;
-  overflow: scroll;
   margin-bottom: 20px;
-
 }
 
 .book {
@@ -669,5 +987,16 @@ a:visited {
   margin: 12px;
   border-radius: 1.5%;
   text-shadow: 1px 1px rgb(142,50,40);
- 
+  transition: 0.3s;
+  box-shadow: 5px 8px 8px -6px black;
+}
+
+.book:hover {
+  width: 390px;
+  height: 530px;
+  transition: 0.3s;
+}
+
+li {
+  cursor: pointer;
 }

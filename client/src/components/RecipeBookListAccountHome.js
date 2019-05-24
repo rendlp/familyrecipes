@@ -5,7 +5,6 @@ import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 
-
 const RecipeBookListAccountHome= (props) => {
 
     const { user } = useContext(AuthContext)
@@ -19,17 +18,21 @@ const RecipeBookListAccountHome= (props) => {
 
     return (
         <div className='booksList'>
+    
             {userRecipeBooks.map((recipebook, i) => (
-                <div className="book"key={'recipebook' + i}>
-                <Link 
-                        to={`/user_fav_recipes/recipebook/` + recipebook.recipebook_id}>
+
+               <Link 
+               to={`/user_fav_recipes/recipebook/` + recipebook.recipebook_id}>
+                   <div className="book"key={'recipebook' + i}>
+    
                     <h2>
                         {recipebook.recipebook_name}
                     </h2>
-                </Link>
+   
                 </div>
-            ))}
-        </div>
+                </Link>
+            ))}    
+     </div>
     )
 }
 

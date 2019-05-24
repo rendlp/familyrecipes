@@ -79,7 +79,7 @@ const FavRecipeView = (props) => {
                 </option>
               ))}
             </select>
-            <button type="submit">
+            <button className='abutton' type="submit">
                 Add
             </button>
           </form>

@@ -20,8 +20,6 @@ const CreateGroup = props => {
 
     }
 
-
-
     return (
       <div>
         <Header />
@@ -37,7 +35,9 @@ const CreateGroup = props => {
                         placeholder="Enter a group name..."
                         onChange={e => setGroupName(e.target.value)}
                     />
-                    <button type="submit">
+                    <button 
+                    type="submit"
+                    className='abutton'> 
                         Create group
                     </button>
 

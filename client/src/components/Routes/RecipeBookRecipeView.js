@@ -22,7 +22,7 @@ const RecipeBookRecipeView = (props) => {
   return (
     <div>
       <Header />
-      <Link to='/'><button className='backBtn'>Back</button></Link>
+      <Link to={`/user_fav_recipes/recipebook/` + recipebookID}><button className='abutton'>Back</button></Link>
         <div id="recipe-display">
           <img id="recipe-pic" src={props.currentRecipe.imgURL} alt='' />
 
@@ -44,10 +44,6 @@ const RecipeBookRecipeView = (props) => {
                 <h2 id="directions-header">Directions</h2>
                 <p id="recipe-directions">{props.currentRecipe.directions}</p>
               </div>
-
-
-
-
         </div>
 
       <Footer />

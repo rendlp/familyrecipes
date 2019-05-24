@@ -28,7 +28,7 @@ const CreateRecipebook = (props) => {
               name="recipebookName"
               onChange={e => setRecipebookName(e.target.value)}
         />
-        <button type="submit">Create Recipebook</button>
+        <button className='abutton' type="submit">Create Recipebook</button>
       </form>
     </div>
   )
