@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../header'
 import Footer from '../footer'
-import  { BrowserRouter as Route, Link } from 'react-router-dom'
+import  { Link } from 'react-router-dom'
 
 class UserMessages extends Component {
   render() {

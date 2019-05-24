@@ -4,7 +4,7 @@ import useFormInput from '../hooks/useFormInput'
 
 
 const ImageUpload = (props) => {
-    const [image, setImage] = useState(null)
+    const [image, setImage] = useState({})
     const [url, setUrl] = useState('')
     const [progress, setProgress] = useState(0)
 
@@ -46,8 +46,6 @@ const ImageUpload = (props) => {
                 setUrl(url)
             })
         })
-
-
     }
 
     return (
@@ -58,7 +56,7 @@ const ImageUpload = (props) => {
            <input className='uploadInput' type='file' onChange={handleChange}   />
            <input type="hidden" name="image" value={url} />
            <img name="image" src={url || 'https://via.placeholder.com/150'} className='imgUpload' alt='' value={url}  />
-           <button onClick={handleUpload}>Upload</button>
+           <button className='abutton' onClick={handleUpload}>Upload</button>
           </form>
         </div>
 

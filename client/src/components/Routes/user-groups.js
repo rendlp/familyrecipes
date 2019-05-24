@@ -8,7 +8,6 @@ class UserGroups extends Component {
     return (
       <div>
         <Header />
-        
           <GroupList />
         <Footer />
       </div>

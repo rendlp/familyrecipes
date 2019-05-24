@@ -32,7 +32,7 @@ const DisplayRecipe = (props) => {
     <div>
       <Header />
         <div id="recipe-display">
-          <img id="recipe-pic" src="http://place-hold.it/400/400" />
+          <img id="recipe-pic" src="http://place-hold.it/400/400" alt=''/>
 
               <h1 id="recipe-name">{props.currentRecipe.name}</h1>
               <div id="prep">
@@ -72,7 +72,7 @@ const DisplayRecipe = (props) => {
                 </option>
               ))}
             </select>
-            <button type="submit">
+            <button className='abutton' type="submit">
                 Share
             </button>
           </form>

@@ -3,6 +3,10 @@ import { AuthContext } from "../../lib/auth"
 import { useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 import { getGroupUsers, getGroupRecipes } from '../../actions/actions'
+import Header from '../header'
+import Footer from '../footer'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 const Group = props => {
 
@@ -22,38 +26,70 @@ const Group = props => {
     console.log(groupRecipes)
 
     return (
-                <div className = "groupUserList">
-                    <Link to='/'><button className='backBtn'>Back</button></Link>
-                    <h1>{currentGroup}</h1>
-                    <h3>{currentGroup} members:</h3>
-                    <ul>
-                    {groupUsers.map((user, i) => (
-                            <li key={`user - `+i}>
-                                <Link to={`/${currentGroup}/${user.username}`}>
-                            <span>{user.username}</span>
-                                </Link>   
-                            </li>
-                        ))}
-                    </ul>
-                    <div id="inviteUserLink">
-                        <Link to={`/group/${group_id}/inviteUser`}>
-                                <button>Add a user to {currentGroup}</button>
-                        </Link>
-                    </div>
-                    <h3>{currentGroup} recipes:</h3>
-                    <ul>
-                    {groupRecipes.map((recipe, i) => (
-                            <li key={`recipe - `+i}>
-                                <Link to={`/${currentGroup}/Recipes/` + recipe.recipe_id}>
-                                    <p>
-                                        {recipe.name}
-                                    </p>
-                                </Link>   
-                            </li>
-                        ))}
-                    </ul>
 
-                </div>
+        <div>
+         <Header />
+          <div className = "groupViewContainer">
+          <div className='divHeader'>
+          <Link 
+            to='/user_groups'>
+             <FontAwesomeIcon className='faBack2' icon="arrow-left" />
+            </Link>
+        <div className='space'></div>
+        <h1 className='group-recipe-name'>{currentGroup}'s Recipes</h1>
+        </div>
+        
+         <div className='groupWrapper'>
+           <div className='groupViewDiv'>
+      
+           <div className='membersList'>
+            {/* <h3>{currentGroup} members:</h3> */}
+             <ul className='groupUsers'>
+               {groupUsers.map((user, i) => (
+                    <li 
+                     className='groupUserLI'
+                     key={`user - `+i}>
+                      <Link 
+                       to={"/userProfile/"+user.username}>
+                        <p className='groupUserP'>
+                          {user.username}
+                        </p>
+                     </Link>   
+                    </li>
+                ))}
+            </ul>
+            <div className='invisible'></div>
+           
+                <Link to={`/group/${group_id}/inviteUser`}>
+                        <button className='abutton'>Invite a user</button>
+                </Link>
+           
+            </div>
+            
+            <div className='groupRecipesDiv'>
+          {/* <h1 className='currentGroup'>{currentGroup} recipes:</h1> */}
+            <ul className='groupUL'>
+            {groupRecipes.map((recipe, i) => (
+                    <li className='groupUserLI' key={`recipe - `+i}>
+                        <Link to={`/${currentGroup}/Recipes/` + recipe.recipe_id}>
+                            <div className='groupRecipe-Div'>
+                              <p className='groupUserP'>
+                                        {recipe.name == null ? "Unnamed Recipe" : recipe.name}
+                                    </p>
+                            </div>
+                        </Link>   
+                    </li>
+                ))}
+            </ul>
+            </div>
+            </div>
+            
+            </div>
+
+
+        </div>
+        <Footer />
+        </div>
 
 
     )

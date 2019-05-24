@@ -9,7 +9,6 @@ import Footer from '../footer'
 import {Link} from 'react-router-dom'
 
 
-
 const UserFavRecipes = (props) => {
 
   const { user } = useContext(AuthContext)
@@ -22,14 +21,12 @@ const UserFavRecipes = (props) => {
 
   const userFavorites = useSelector(appstate => appstate.userFavorites)
 
-
     console.log(props.userRecipeBooks)
 
-
     return (
-      <div>
+      <div className="createGroup">
         <Header />
-        <Link to='/'><button className='backBtn'>Back</button></Link>
+        <Link to='/'><button className='abutton'>Back</button></Link>
         <div>
 
 {/* USERS FAVORITES */}
@@ -40,7 +37,7 @@ const UserFavRecipes = (props) => {
                   <li key={'recipe' + i}>
                     <Link
                       to={`/user_fav_recipes/` + recipe.recipe_id}>
-                      {recipe.name}
+                      {recipe.name == null ? "Unnamed Recipe" : recipe.name}
                     </Link>
                   </li>
               ))}
@@ -51,9 +48,9 @@ const UserFavRecipes = (props) => {
         <ul className='recipeUL'>
           {props.userRecipeBooks.map((recipebook, i) => (
             <li className='recipeLI' key={'recipebook' + i}>
-              <Link 
+              <Link
                       to={`/user_fav_recipes/recipebook/` + recipebook.recipebook_id}>
-                      {recipebook.recipebook_name}
+                      {recipebook.recipebook_name == '' ? "Unnamed Recipe Book" : recipebook.recipebook_name}
               </Link>
             </li>
           ))}
@@ -62,7 +59,7 @@ const UserFavRecipes = (props) => {
         </div>
         <div id="createGroupLink">
             <Link to={"/createrecipebook"}>
-              <button >Create a RecipeBook</button>
+              <button className='abutton'>Create a RecipeBook</button>
             </Link>
         </div>
         <Footer />

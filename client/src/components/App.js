@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import '../styles/base.css'
+import 'semantic-ui-css/semantic.min.css'
 import { Provider } from 'react-redux'
 import store from '../store'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -25,9 +26,17 @@ import GroupRecipeView from './Routes/GroupRecipeView'
 import FavRecipeView from './Routes/FavRecipeView'
 import RecipeBookView from './Routes/RecipeBookView'
 import RecipeBookRecipeView from './Routes/RecipeBookRecipeView'
+
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+
+
+
 import GroupMemberProfile from './Routes/GroupMemberProfile'
 import UserProfileEdit from './Routes/user-profile-edit'
 import RecipeViewEdit from './Routes/recipe-view-edit'
+
 
 
 class App extends Component {
@@ -37,18 +46,18 @@ class App extends Component {
         <Provider store={store}>
           <Router>
             <div className="appContainer">
-             
+
               {/* public routes */}
               <Switch>
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
               </Switch>
 
-              {/* private routes */}
+              {/* private routes test */}
               <Switch>
               <AuthRoute path="/" exact component={AccountHome} />
 
-    
+
               <AuthRoute path="/upload" component={UploadParentFunctional} />
               {/* <AuthRoute path="/uploadphoto" exact component={uploadPhoto} /> */}
               <AuthRoute path="/user_recipes" exact component={UserRecipe} />

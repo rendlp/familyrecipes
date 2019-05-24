@@ -27,7 +27,6 @@ function UploadParentFunctional (props) {
   function manageForm(ctx, payload) {
         // console.log('updating', ctx, payload);
         forms[ctx] = {...payload};
-        console.log('payload:', payload)
     };
 
     function addImageToForm(img) {
@@ -45,13 +44,10 @@ function UploadParentFunctional (props) {
 
 
     return (
+
      <div className="uploadDiv">
-
-
-       
-
-         
-         <Link to='/'><button className='backBtn'>Back</button></Link>
+     
+         <Link to='/'><button className='abutton'>Back</button></Link>
 
 
         <div id="name/prep">
@@ -69,15 +65,17 @@ function UploadParentFunctional (props) {
         </div>
 
         <div id="text-directions">
-  
+
             <Directions manageForm={manageForm} formData={forms.Directions} />
         </div>
         <div id="image-upload">
             <h1>Image</h1>
             <ImageUpload addImageToForm={addImageToForm} manageForm={manageForm} formData={forms.image} />
             <form onSubmit={handleForm}>
-              <button className='submitButton'>Submit</button>
-            </form>
+
+         <button className='abutton'>Submit</button>
+        </form>
+
         </div>
 
 

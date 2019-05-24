@@ -9,8 +9,9 @@ import Paper from "@material-ui/core/Paper"
 import Typography from "@material-ui/core/Typography"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../lib/auth"
-import Header from '../header'
+import LoginHeader from '../LoginHeader'
 import Footer from '../footer'
+
 
 const Login = props => {
   const [username, setUsername] = useState("")
@@ -34,11 +35,13 @@ const Login = props => {
 
   return (
     <div className='loginPageContainer'>
-    {/* <Header /> */}
+        <LoginHeader />
     <div className="login">
       
       <div className='invisible'>
-        <h1 className='logoTitle'>nettles.</h1>
+      {/* <img className='logoImgLogin'src={nettles} alt={nettles} />
+        <h1 className='logoTitle'>nettles.</h1> */}
+  
         </div>
 
       <Paper className="pad">
@@ -47,7 +50,7 @@ const Login = props => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            <p className="punchtalk">Sign In</p>
+            {/* <p>sign in</p> */}
           </Typography>
         </div>
         <form onSubmit={sendLogin}>
@@ -80,7 +83,7 @@ const Login = props => {
             variant="contained"
             color="primary"
           >
-            Sign in
+            sign in
           </Button>
 
           <div className="or">or</div>
@@ -93,7 +96,7 @@ const Login = props => {
             variant="contained"
             color="secondary"
           >
-            <p>Register</p>
+           register
           </Button>
         </form>
       </Paper>
@@ -103,4 +106,4 @@ const Login = props => {
   )
 }
 
-export default Login
+export default Login;
