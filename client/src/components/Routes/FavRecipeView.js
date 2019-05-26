@@ -5,6 +5,8 @@ import Footer from '../footer'
 import { getCurrentRecipe, getRecipeBooks, addRecipeToRecipeBook} from '../../actions/actions'
 import { connect, useSelector } from 'react-redux'
 import GroupList from './GroupList';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom'
 
 
 
@@ -35,43 +37,49 @@ const FavRecipeView = (props) => {
     addRecipeToRecipeBook(recipeId, recipeBookChosen, recipeName)
   };
 
-
-
   return (
     <div>
-      <Header />
-        <div id="recipe-display">
-          <img id="recipe-pic" src={props.currentRecipe.imgURL} alt='' />
+    <Header />
 
-              <h1 id="recipe-name">{props.currentRecipe.name == null ? "Unnamed Recipe" : props.currentRecipe.name}</h1>
-              <div id="prep">
-                <h2 id="prep-header">Prep Time</h2>
-                <p id="prep-hours">Hours: {props.currentRecipe.prepHours}</p>
-                <p id="prep-minutes">Minutes: {props.currentRecipe.prepMinutes}</p>
+    <div className='divHeader'>
+    <Link to='/user_fav_recipes'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
+    <div className='space'></div>
+    <h1 className="recipe-name">{props.currentRecipe.name == null ? 'No Name Added to Recipe' : props.currentRecipe.name}</h1>
+    </div>
+
+        <div className="recipeContainer">
+          <img className="recipe-pic" src={props.currentRecipe.imgURL || 'https://via.placeholder.com/400'} alt='' />
+          <div className="recipe-display">   
+              <div className="prep">
+                <h2 className="prep-header">Prep</h2>
+                <p className="prep-hours">Hours: <p>{props.currentRecipe.prepHours}</p></p>
+                <p className="prep-minutes">Minutes: <p>{props.currentRecipe.prepMinutes}</p></p>
+                <p className="servings">Servings: <p>{props.currentRecipe.servings}</p></p>
               </div>
-              <div id="ingredients">
-                <h2 id="ingredients-header">Ingredients</h2>
-                <ul id="ingredients-content">
+
+              <div className="ingredients">
+                <h2 className="ingredients-header">Ingredients</h2>
+                <ul className="ingredients-contentUL">
                   {props.ingredients.map((ingredient, i) => (
-                    <li key={'ingredient'+i}>{ingredient}</li>
+                    <li className='ingredients-contentLI'key={'ingredient'+i}>{ingredient}</li>
                   ))}
                 </ul>
               </div>
-              <div id="directions">
-                <h2 id="directions-header">Directions</h2>
-                <p id="recipe-directions">{props.currentRecipe.directions == null ? "Directions Not Included With Recipe" : props.currentRecipe.directions}</p>
-              </div>
 
+              <div className="directions">
+                <h2 className="directions-header">Directions</h2>
+                <p className="recipe-directions">{props.currentRecipe.directions == null ? "Directions Not Included With Recipe" : props.currentRecipe.directions}</p>
+              </div>
+              </div>
         </div>
+
         <div className="shareRecipeWithGroup">
           <form onSubmit={handleSubmit}>
-            <label>
-              Add recipe to a recipe book:
-            </label>
+            <label className='shareLabel'>Add Recipe to Book: </label>
             <select onChange={e => setRecipeBookChosen(e.target.value)}
               name="shareWithGroup"
-              id="shareWithGroup"
               className="shareDropdown">
+
                 <option value=''>Select a Recipe Book</option>
                 {userRecipeBooks.map((recipeBook, i) => (
                 <option value={recipeBook.recipebook_id} key={"group - "+i}>
@@ -79,19 +87,16 @@ const FavRecipeView = (props) => {
                 </option>
               ))}
             </select>
-
-        
-
+       
             <button
               className={recipeBookChosen === '' ? 'hidden' : 'abutton'}
               type="submit">
-
                 Add
             </button>
           </form>
         </div>
-      <Footer />
 
+      <Footer />
     </div>
   )
 }
