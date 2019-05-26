@@ -33,4 +33,4 @@ const Directions = (props) => {
 
 }
 
-export default Directions;
+export default Directions

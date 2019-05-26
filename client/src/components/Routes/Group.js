@@ -28,12 +28,12 @@ const Group = props => {
     return (
 
         <div>
-         <Header />
+        <Header />
           <div className = "groupViewContainer">
-          <div className='divHeader'>
+          <div className='divHeader2'>
           <Link 
             to='/user_groups'>
-             <FontAwesomeIcon className='faBack2' icon="arrow-left" />
+             <FontAwesomeIcon className='faBack' icon="arrow-left" />
             </Link>
         <div className='space'></div>
         <h1 className='group-recipe-name'>{currentGroup}'s Recipes</h1>
@@ -72,11 +72,14 @@ const Group = props => {
             {groupRecipes.map((recipe, i) => (
                     <li className='groupUserLI' key={`recipe - `+i}>
                         <Link to={`/${currentGroup}/Recipes/` + recipe.recipe_id}>
+
                             <div className='groupRecipe-Div'>
-                              <p className='groupUserP'>
-                                        {recipe.name == null ? "Unnamed Recipe" : recipe.name}
-                                    </p>
+                              <h2 className='groupUserP'>
+                                 {recipe.name == null ? "Unnamed Recipe" : recipe.name}
+                                </h2>
+                                <img src='' alt='' />
                             </div>
+
                         </Link>   
                     </li>
                 ))}
@@ -88,6 +91,7 @@ const Group = props => {
 
 
         </div>
+        <div className='invisible'></div>
         <Footer />
         </div>
 

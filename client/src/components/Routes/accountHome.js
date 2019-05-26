@@ -14,14 +14,18 @@ const AccountHome = (props) => {
 
         <Header />
         <div className="left-panel">
+
           <h1 id='hello'>Recipe Books</h1>
+
           <Link to="/user_recipes"><p className="leftP">Recipes</p></Link>
           <Link to="/user_groups"><p className="leftP">Groups</p></Link>
           <Link to="/user_fav_recipes"><p className="leftP">Favorites</p></Link>
-
-          {/* <Link to="user_messages"><p className="leftP">My Messages</p></Link> */}
-          {/* <Link to="/user_profile"><p className="leftP">My Profile</p></Link> */}
-          {/* <Link to="/upload"><button className="uploadButton">Upload Recipe</button></Link> */}
+        <div className='space2'></div>
+         
+        <Link to={"/createrecipebook"}>
+          <button className='abutton'>Create Book</button>
+        </Link>
+       
         </div>
 
         <div className="canvas2">
@@ -30,9 +34,10 @@ const AccountHome = (props) => {
 
             <RecipeBookListAccountHome />
           </div>
-          </div>
-        <Footer />
         </div>
+        
+        <Footer />
+      </div>
     )
 
 }

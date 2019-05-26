@@ -8,7 +8,6 @@ import { AuthProvider, AuthRoute } from "../lib/auth"
 import Login from "./auth/Login"
 import Register from "./auth/Register"
 import AccountHome from './Routes/accountHome'
-import Landing from './Routes/landing'
 import UserRecipe from './Routes/user-recipes'
 import UserGroups from './Routes/user-groups'
 import UserMessages from './Routes/user-messages'
@@ -26,16 +25,11 @@ import GroupRecipeView from './Routes/GroupRecipeView'
 import FavRecipeView from './Routes/FavRecipeView'
 import RecipeBookView from './Routes/RecipeBookView'
 import RecipeBookRecipeView from './Routes/RecipeBookRecipeView'
-
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-
-
-
 import GroupMemberProfile from './Routes/GroupMemberProfile'
 import UserProfileEdit from './Routes/user-profile-edit'
-import RecipeViewEdit from './Routes/recipe-view-edit'
+import RecipeViewEdit from './RecipeEdit/recipe-view-edit'
+import NoWay from './NoWay'
+
 
 
 
@@ -56,6 +50,8 @@ class App extends Component {
               {/* private routes test */}
               <Switch>
               <AuthRoute path="/" exact component={AccountHome} />
+
+              <AuthRoute path="/no" exact component={NoWay} />
 
 
               <AuthRoute path="/upload" component={UploadParentFunctional} />

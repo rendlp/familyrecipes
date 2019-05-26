@@ -25,7 +25,7 @@ function UploadParentFunctional (props) {
   };
 
   function manageForm(ctx, payload) {
-        // console.log('updating', ctx, payload);
+        console.log('updating', ctx, payload);
         forms[ctx] = {...payload};
     };
 
@@ -36,10 +36,11 @@ function UploadParentFunctional (props) {
 
     // on form submit
     function handleForm(e) {
-        e.preventDefault();
-        addRecipe(forms);
-        props.history.push('/user_recipes');
-    };
+        e.preventDefault()
+        console.log(forms)
+        addRecipe(forms)
+        props.history.push('/user_recipes')
+    }
 
 
 

@@ -5,10 +5,15 @@ import Footer from '../footer'
 import  { Link } from 'react-router-dom'
 import Logout from "../auth/Logout"
 import { getUserInfo } from '../../actions/actions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const GroupMemberProfile = props => {
 
+  function backFunction(e) {
+    e.preventDefault()
+    props.history.goBack()
 
+}
 
 
 const user = props.match.params.username
@@ -25,11 +30,16 @@ console.log(user)
     return (
       <div>
         <Header />
-        <Link to='/'><button className='backBtn'>Back</button></Link>
+        <div className='divHeader2'>
+        <div className='backArrowDiv' onClick={backFunction}><FontAwesomeIcon className='faBack' icon="arrow-left" /></div>
+        <div className='space'></div>
+        <h1 className='recipe-name'>{user}</h1>
+        </div>
         <div className="userProfileDisplay">
+          
           <img className="user-pic" src={userInfo.userPicURL} alt='' />
-          <p>username:</p>
-          <p>{user}</p>
+
+        
           <p>First Name:</p>
           <p>{userInfo.firstname}</p>
           <p>Last Name:</p>

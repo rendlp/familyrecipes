@@ -107,16 +107,6 @@ const UserProfileEdit = props => {
             <button type="submit"> Update Profile</button>
         </form>
         
-
-        {/* <div className="userProfileEdit">
-          <img className="user-pic" src={userInfo.userPicURL} alt='' />
-          <p>username:</p>
-          <p>{user}</p>
-          <p>First Name:</p>
-          <p>{userInfo.firstname}</p>
-          <p>Last Name:</p>
-          <p>{userInfo.lastname}</p>
-        </div> */}
         <Footer />
       </div>
     )

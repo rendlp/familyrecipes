@@ -6,6 +6,8 @@ import  { Link } from 'react-router-dom'
 import Logout from "../auth/Logout"
 import { getUserInfo } from '../../actions/actions'
 import {AuthContext} from '../../lib/auth'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 const UserProfile = props => {
 
@@ -21,7 +23,7 @@ const UserProfile = props => {
     return (
       <div>
         <Header />
-        <Link to='/'><button className='backBtn'>Back</button></Link>
+        <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
         <div className="userProfileDisplay">
           <img className="user-pic" src={userInfo.userPicURL} alt='' />
           <p>username:</p>

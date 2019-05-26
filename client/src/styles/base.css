@@ -1,13 +1,16 @@
 html {
   box-sizing: border-box;
   font-family: "Roboto", arial, sans-serif;
+  background-color: whitesmoke;
 }
 
 .appContainer {
   /* background-color: rgb(122,170,80); */
-  background-color:  rgb(122,170,80);
-  height: 700px;
-  width: auto;
+
+  background: linear-gradient( rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.4) ), url('../components/assets/nettles.jpg');
+  background-color: antiquewhite;
+  background-size: 100%;
+
 }
 
 *,
@@ -64,7 +67,7 @@ animation-delay: 0s;
 }
 
 .loginPageContainer {
-  background: linear-gradient( rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.4) ), url('https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-159703.jpg');
+  background: linear-gradient( rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.4) ), url('../components/assets/nettles.jpg');
   background-color: antiquewhite;
   background-size: 100%;
   width: 100%;
@@ -157,6 +160,7 @@ border: none;
 }
 
 .abuttonS {
+
     transition: 0.3s;
     margin: 10px;
 }
@@ -170,6 +174,7 @@ border: none;
   color: white;
   transition: 0.3s;
   width: 130px;
+
 }
 
 label {
@@ -179,6 +184,7 @@ padding: 8px;
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 margin: 0 auto;
 }
+
 
 textarea {
   resize: none;
@@ -195,6 +201,7 @@ textarea {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  
 }
 
 .test {
@@ -217,11 +224,6 @@ margin: 0 auto;
 .submitButton{
 margin: auto;
 margin-top: 10px;
-}
-
-h2 {
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-font-weight: 400;
 }
 
 .directionDiv {
@@ -324,12 +326,28 @@ h3 {
 }
 
 .createGroup  {
-  height: 600px;
+  height: 595px;
   width: 100%;
+  margin: 0 auto;
 }
 
-.groupViewContainer {
-  height: 100%;
+.bookFavorites {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  height: 600px;
+}
+
+.createGroupInput {
+  margin: 10px 49px;
+}
+
+.test {
+  height: 700px;
+}
+
+.createGroupForm {
+  margin: 20px;
 
 }
 
@@ -370,7 +388,21 @@ h3 {
   color: rgb(122,68,70);
 }
 
-.groupViewDiv {
+
+.userProfileDisplay{
+  display: flex;
+  flex-direction: row;
+ 
+}
+
+.user-pic {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 2px solid whitesmoke;
+}
+
+.groupViewDiv { 
   width: 100%;
   display: flex;
 }
@@ -386,6 +418,13 @@ h3 {
 .fa {
   font-size: 14px;
 }
+
+.fa2 {
+  font-size: 100px;
+  margin: 0 auto;
+  color: whitesmoke;
+}
+
 
 .faBack {
   font-size: 42px;
@@ -405,12 +444,19 @@ h3 {
 
 .faBack2:hover {
   color: rgb(122,68,70);
-  /* font-size: 37px; */
 }
 
 .divHeader {
   display: flex;
   flex-direction: row;
+  background-color: black;
+  opacity: 0.9;
+}
+
+.divHeader2 {
+  display: flex;
+  flex-direction: row;
+ 
 }
 
 .faBack:hover {
@@ -426,11 +472,18 @@ h3 {
 .groupRecipe-Div {
   background-color: rgb(122,68,70);
   padding: 25px;
-  width: 250px;
-  height: 250px;
+  width: 280px;
+  height: 280px;
   border-radius: 3%;
   animation: fadeIn ease-in 1s;
   animation-delay: 0s;
+  transition: 0.3s;
+}
+
+.groupRecipe-Div:hover {
+  width: 300px;
+  height: 300px;
+  transition: 0.3s;
 }
 
 .groupUL .groupLI {
@@ -461,7 +514,10 @@ h3 {
   animation: fadeIn ease-in 1s;
   animation-delay: 0s;
 
+ }
 
+.userFavoriteContainer {
+  height: 100%;
 }
 
 .recipeListP {
@@ -502,6 +558,16 @@ h3 {
   flex-direction: row;
   flex-wrap: wrap;
   margin: 5px;
+
+}
+
+.recipeFavoritesDiv {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 400px;
+  overflow-x: scroll;
+
 }
 
 .groupContainer {
@@ -581,6 +647,7 @@ h3 {
   height: 92px;
   border: none;
   opacity: 0.8;
+  margin-top: 3px;
 
 }
 
@@ -608,9 +675,51 @@ h3 {
   padding: 10px;
 }
 
+.footerInput {
+  width: 280px;
+  font-size: 18px;
+  height: 45px;
+  box-shadow: 0 3px 3px -3px grey;
+  margin: 0 auto;
+
+}
+
+.footerText {
+  margin: -20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.footerImg {
+  width: 32px;
+  height: 32px;
+  justify-content: space-between;
+}
+
+.copyright {
+  color: grey;
+  font-size: 16px;
+  text-shadow: none;
+}
+
+.policy {
+  color: rgb(171, 158, 158);
+  font-size: 15px;
+  text-shadow: none;
+}
+
+.footerIcons {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  background-color: whitesmoke;
+  margin: 0 auto;
+  justify-content: space-evenly;
+}
+
 .header {
   width: 100%;
-  height: 110px;
+  height: 100px;
   background-color: white;
   display: flex;
   flex-direction: row;
@@ -621,11 +730,11 @@ h3 {
 
 .loginHeader {
   width: 100%;
-  height: 110px;
+  height: 100px;
   background-color: white;
   justify-content: space-between;
   margin: 0 auto;
-  opacity: 0.8;
+  opacity: 0.9;
   display: flex;
   flex-direction: row;
   animation: fadeIn ease-in 1s;
@@ -647,7 +756,7 @@ h3 {
 }
 
 .traditionP {
-  font-size: 48px;
+  font-size: 46px;
   color: lightgrey;
   margin: 0 auto;
   padding: 348px;
@@ -661,16 +770,17 @@ h3 {
   background-color: whitesmoke;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   text-align: center;
+  margin: 0 auto;
+
 }
 
 .footerP {
-  font-size: 28px;
-  font-family: 'Roboto';
-  margin: 24px;
-  padding: 40px;
+  font-size: 26px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: black;
+  font-weight: 200;
 
 }
 
@@ -754,13 +864,12 @@ h3 {
   background-color: white;
 }
 
-
-
 .invisible {
   margin: 0 auto;
   width: 100%;
   height: 110px;
 }
+
 
 .questions {
   position: relative;
@@ -785,26 +894,31 @@ h3 {
   flex-direction: column;
   border-bottom: 2px solid lightgrey;
   width: 175px;
+  opacity: 0.8;
   height: 510px;
   padding: 10px;
 
 }
 
 h2 {
-  font-size: 32px;
+  font-size: 35px;
   color: white;
   text-decoration: none;
   transition: 0.3s;
-}
-
-h2:hover {
-  font-size: 35px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 400;
+  text-align: center;
 }
 
 .title {
+  color: white;
+  font-size: 50px;
   text-decoration: underline;
-  font-size: 42px;
-  margin: auto;
+  margin-right: 1260px;
+  width: 100%;
+  text-align: initial;
 }
 
 .accountHomeBooks {
@@ -831,9 +945,10 @@ a:visited {
 .ingredients-contentUL .ingredients-contentLI {
   list-style-type: none;
   color: white;
-  font-size: 20px;
+  font-size: 25px;
   margin: 0 auto;
   padding: 12px;
+  text-shadow: 1px 1px rgb(142,50,40);
 }
 
 .ingredients-textarea {
@@ -854,6 +969,9 @@ a:visited {
   font-size: 50px;
   text-decoration: underline;
   margin-right: 1260px;
+  width: 100%;
+  height: 100%;
+  text-align: initial;
 }
 
 .group-recipe-name {
@@ -862,12 +980,16 @@ a:visited {
     font-size: 37px;
     text-decoration: underline;
     margin-right: 1260px;
+    width: 300px;
+    height: 100%;
+    text-align: initial;
+
 }
 
 .recipe-pic {
   margin: 25px;
-  width: 500px;
-  height: 500px;
+  width: 420px;
+  height: 420px;
   border-radius: 50%;
   position: relative;
   border: 3px solid white;
@@ -879,6 +1001,8 @@ a:visited {
   display: flex;
   height: 100%;
   width: 100%;
+  background-color: black;
+  opacity: 0.9;
 }
 
 .recipeButtonDiv {
@@ -888,7 +1012,10 @@ a:visited {
 }
 
 .shareDiv {
-  margin: 40px;
+
+  background-color: black;
+  padding: 10px;
+  opacity: 0.9;
 }
 
 .space {
@@ -933,6 +1060,7 @@ a:visited {
   border: 1px solid lightgrey;
 }
 
+
 #image-upload {
   height: 400px;
   width: 400px;
@@ -966,6 +1094,7 @@ a:visited {
 /* .recipeLI:hover {
   text-decoration-line: line-through;
 } */
+
 
 .imgUploadDiv {
   display: flex;
@@ -1013,7 +1142,7 @@ a:visited {
 
 .footerSpan {
   color: rgb(122,120,30);
-  font-size: 55px;
+  font-size: 48px;
   margin: 40px;
 }
 
@@ -1030,6 +1159,14 @@ a:visited {
   display: flex;
 }
 
+.bookCenter {
+  margin-top: 150px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1%;
+}
+
 .booksList {
   display: flex;
   flex-direction: row;
@@ -1042,7 +1179,7 @@ a:visited {
   height: 500px;
   background-color: rgb(122,68,70);
   text-align: center;
-  align-items: center;
+  align-content: center;
   margin: 12px;
   border-radius: 1.5%;
   text-shadow: 1px 1px rgb(142,50,40);

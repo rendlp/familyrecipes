@@ -1,10 +1,12 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { AuthContext } from "../../lib/auth"
 import Header from '../header'
 import Footer from '../footer'
 import { getCurrentRecipe, shareRecipeWithGroup } from '../../actions/actions'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 
@@ -18,36 +20,67 @@ const RecipeBookRecipeView = (props) => {
   useEffect(() => {
       getCurrentRecipe(recipeId)
   },[])
+  const groups = useSelector(appstate => appstate.groups)
+  const [groupChosen, setGroupChosen] = useState('')
 
   return (
+    
     <div>
       <Header />
-      <Link to={`/user_fav_recipes/recipebook/` + recipebookID}><button className='abutton'>Back</button></Link>
-        <div id="recipe-display">
-          <img id="recipe-pic" src={props.currentRecipe.imgURL} alt='' />
 
-              <h1 id="recipe-name">{props.currentRecipe.name == null ? "Unnamed Recipe" : props.currentRecipe.name}</h1>
-              <div id="prep">
-                <h2 id="prep-header">Prep Time</h2>
-                <p id="prep-hours">Hours: {props.currentRecipe.prepHours}</p>
-                <p id="prep-minutes">Minutes: {props.currentRecipe.prepMinutes}</p>
+      <div className='divHeader'>
+      <Link to={`/user_fav_recipes/recipebook/` + recipebookID}><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
+      <div className='space'></div>
+      <h1 className="recipe-name">{props.currentRecipe.name == null ? "Unnamed Recipe" : props.currentRecipe.name}</h1>
+      </div>
+
+        <div className="recipeContainer">
+          <img className="recipe-pic" src={props.currentRecipe.imgURL} alt='' />
+
+          <div className='recipe-display'>
+
+              <div className="prep">
+                <h2 className="prep-header">Prep</h2>
+                <p className="prep-hours">Hours: {props.currentRecipe.prepHours}</p>
+                <p className="prep-minutes">Minutes: {props.currentRecipe.prepMinutes}</p>
+                <p className='servings'>Servings: {props.currentRecipe.servings}</p>
               </div>
-              <div id="ingredients">
-                <h2 id="ingredients-header">Ingredients</h2>
-                <ul id="ingredients-content">
+              <div className="ingredients">
+                <h2 className="prep-header">Ingredients</h2>
+                <ul className="ingredients-contentUL">
                   {props.ingredients.map((ingredient, i) => (
-                    <li key={'ingredient'+i}>{ingredient}</li>
+                    <li className='ingredients-contentLI' key={'ingredient'+i}>{ingredient}</li>
                   ))}
-                </ul>
+           </ul>
               </div>
-              <div id="directions">
-                <h2 id="directions-header">Directions</h2>
-                <p id="recipe-directions">{props.currentRecipe.directions == null ? "Directions Not Included With Recipe" : props.currentRecipe.directions}</p>
+              
+              <div className="directions">
+                <h2 className="directions-header">Directions</h2>
+                <p className="recipe-directions">{props.currentRecipe.directions == null ? "Directions Not Included With Recipe" : props.currentRecipe.directions}
+                </p>
               </div>
         </div>
+        </div>
+       <div className='shareDiv'>
+        <label className='shareLabel'>
+          Share recipe with a group:
+        </label>
+        <select onChange={e => setGroupChosen(e.target.value)}
+          name="shareWithGroup"
+          id="shareWithGroup"
+          className="shareDropdown">
 
+          <option value=''>Select a group</option>
+
+          {groups.map((group, i) => (
+           <option value={group.group_id} key={"group - "+i}>{group.groupname}</option>
+              
+          ))}
+          
+        </select>
+        <div className='invisible'></div>
+        </div>
       <Footer />
-
     </div>
   )
 }
