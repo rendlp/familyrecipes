@@ -121,4 +121,4 @@ const ImageUpload = (props) => {
 //     }
 // }
 
-export default ImageUpload;
+export default ImageUpload

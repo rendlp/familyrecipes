@@ -7,7 +7,7 @@ import {getRecipeBooks} from '../../actions/actions'
 import Header from '../header'
 import Footer from '../footer'
 import {Link} from 'react-router-dom'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const UserFavRecipes = (props) => {
 
@@ -24,44 +24,56 @@ const UserFavRecipes = (props) => {
     console.log(props.userRecipeBooks)
 
     return (
-      <div className="createGroup">
-        <Header />
-        <Link to='/'><button className='abutton'>Back</button></Link>
-        <div>
+      <div className='userFavoriteContainer'>
+       <div>
+       <Header />
+
+      <div className='divHeader'>
+      <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
+      <div className='space2'></div>
+      <h1 className='recipe-name'>favorites</h1>
+      </div>
 
 {/* USERS FAVORITES */}
-          <h2>{`${user}'s Favorite Recipes:`}</h2>
 
-            <ul className='recipeUL'>
-              {props.userFavorites.map((recipe, i) => (
-                  <li key={'recipe' + i}>
-                    <Link
-                      to={`/user_fav_recipes/` + recipe.recipe_id}>
-                      {recipe.name == null ? "Unnamed Recipe" : recipe.name}
-                    </Link>
-                  </li>
-              ))}
-            </ul>
-{/* USERS RECIPES BOOKS */}
-        <h2>{`${user}'s Recipe Books:`}</h2>
+        <div>
+         <div className='recipeFavoritesDiv'>
 
-        <ul className='recipeUL'>
-          {props.userRecipeBooks.map((recipebook, i) => (
-            <li className='recipeLI' key={'recipebook' + i}>
-              <Link
-                      to={`/user_fav_recipes/recipebook/` + recipebook.recipebook_id}>
-                      {recipebook.recipebook_name == '' ? "Unnamed Recipe Book" : recipebook.recipebook_name}
+          {props.userFavorites.map((recipe, i) => (   
+
+               <Link
+                className='recipeLink' to={`/user_fav_recipes/` + recipe.recipe_id}>
+                <div className='recipeListP' key={'recipe' + i}>
+                {recipe.name == null ? "Unnamed Recipe" : recipe.name}  
+                </div>
               </Link>
-            </li>
-          ))}
-        </ul>
 
+            ))}
+          </div>
         </div>
-        <div id="createGroupLink">
+
+{/* USERS RECIPES BOOKS */}
+
+      <div className='bookFavorites'>
+  
+          {props.userRecipeBooks.map((recipebook, i) => (
+
+            <Link
+            className='recipeLink' to={`/user_fav_recipes/recipebook/` + recipebook.recipebook_id}>
+            <div className='book' key={'recipebook' + i}>       
+             <p>{recipebook.recipebook_name === '' ? "Unnamed Recipe Book" : recipebook.recipebook_name}</p>
+            </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+        
+        <div className="createGroupLink">
             <Link to={"/createrecipebook"}>
-              <button className='abutton'>Create a RecipeBook</button>
+              <button className='abutton'>Create Book</button>
             </Link>
         </div>
+        <div className='invisible'></div>
         <Footer />
       </div>
     )

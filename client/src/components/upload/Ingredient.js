@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import useFormInput from '../hooks/useFormInput'
-// import { saveInput } from '../../actions/saveInput'
 
 const Ingredient = (props) => {
     const [values] = useFormInput({...props.formData});
@@ -39,4 +38,4 @@ const Ingredient = (props) => {
 
 }
 
-export default Ingredient;
+export default Ingredient

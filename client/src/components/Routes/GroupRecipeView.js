@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useSelector, useState } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { AuthContext } from "../../lib/auth"
 import Header from '../header'
 import Footer from '../footer'
@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux'
 
 
 
@@ -17,6 +18,16 @@ const GroupRecipeView = (props) => {
   const recipeId = props.match.params.recipe_id
 
   const recipeName = props.currentRecipe.name
+
+  const currentGroupId = useSelector(appstate => appstate.currentGroupId)
+
+  console.log(currentGroupId)
+
+  function backFunction(e) {
+    e.preventDefault()
+    props.history.goBack()
+
+}
 
   useEffect(() => {
       getCurrentRecipe(recipeId)
@@ -37,7 +48,7 @@ const GroupRecipeView = (props) => {
 
     <Header />
     <div className='divHeader'>
-    <Link to='/user_recipes'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
+    <div onClick={backFunction}><FontAwesomeIcon className='faBack' icon="arrow-left" /></div>
     <div className='space'></div>
      <h1 className="recipe-name">{recipeName == null ? "Unnamed Recipe" : recipeName}</h1>
     </div>
@@ -72,7 +83,7 @@ const GroupRecipeView = (props) => {
 
 {/* BUTTONS */}
             <div className='recipeButtonDiv'>
-            <Link to='/user_recipes'><button className='abutton'>Back</button></Link>
+    
             <div className='space'></div>
        
             <div className='space'></div>

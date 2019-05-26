@@ -7,6 +7,7 @@ import { getRecipesWithinRecipebooks } from '../../actions/actions'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+
 const RecipeBookView = (props) => {
 
   // const { user } = useContext(AuthContext)
@@ -21,19 +22,30 @@ const RecipeBookView = (props) => {
 console.log(props.addedRecipesInsideRecipebooks)
 
   return (
-    <div>
+    <div className='userRecipeContainer'>
       <Header />
+
+      <div className='divHeader'>
       <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
+      <div className='space'></div>
+      <h1 className='recipe-name'>book name</h1>
+      </div>
+
+      <div className='userRecipeDiv'>
+        <div className='recipeDiv'>
+
       {props.addedRecipesInsideRecipebooks.map(recipe => (
 
-        <ul className='groupUL'>
-          <Link to={`/user_fav_recipes/recipebook/${recipebookID}/${recipe.recipe_id}`}><li>{recipe.recipe_name == null ? "Unnamed Recipe" : recipe.recipe_name}</li></Link>
+        <Link className='recipeLink' to={`/user_fav_recipes/recipebook/${recipebookID}/${recipe.recipe_id}`}>
+        <div className='recipeListP'>{recipe.recipe_name == null ? "Unnamed Recipe" : recipe.recipe_name}
+        </div>
+        </Link>
 
-        </ul>
       ))}
+        </div>
+       </div>
       <Footer />
     </div>
-
   )
 }
 
