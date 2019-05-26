@@ -45,7 +45,7 @@ animation-delay: 0s;
 }
 
 .loginPageContainer {
-  background: linear-gradient( rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.4) ), url('https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-159703.jpg');
+  background: linear-gradient( rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.4) ), url('../components/assets/nettles.jpg');
   background-color: antiquewhite;
   background-size: 100%;
   width: 100%;
@@ -605,6 +605,7 @@ h3 {
   height: 92px;
   border: none;
   opacity: 0.8;
+  margin-top: 3px;
 
 }
 
