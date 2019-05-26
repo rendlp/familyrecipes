@@ -5,13 +5,15 @@ import { useSelector } from 'react-redux'
 import  { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { AuthContext } from "../../lib/auth"
-import { getCurrentUserOwnedRecipe } from '../../actions/actions'
+import { getCurrentUserOwnedRecipe, editRecipe } from '../../actions/actions'
 import { storage } from '../firebase'
 
 const RecipeViewEdit = props => {
 
     const recipeId = props.match.params.recipe_id
     const { user } = useContext(AuthContext)
+
+    // console.log(recipeId)
 
     useEffect(() => {
         getCurrentUserOwnedRecipe(recipeId, user, props.history)
@@ -20,8 +22,8 @@ const RecipeViewEdit = props => {
     const currentRecipe = useSelector(appstate => appstate.currentRecipe)
     const currentRecipeIngredients = useSelector(appstate => appstate.currentRecipeIngredients)
 
-    console.log(currentRecipe)
-    console.log(currentRecipeIngredients)
+    // console.log(currentRecipe)
+    // console.log(currentRecipeIngredients)
 
     const [name, changeName] = useState(currentRecipe.name)
     const [prepHours, changePrepHours] = useState(currentRecipe.prepHours)
@@ -34,7 +36,7 @@ const RecipeViewEdit = props => {
     const [url, setUrl] = useState(currentRecipe.imgURL)
     const [progress, setProgress] = useState(0)
 
-    console.log(ingredients)
+    // console.log(ingredients)
 
 
     function handleEnter(e) {
@@ -48,7 +50,7 @@ const RecipeViewEdit = props => {
                 return newIngredients
             })
         }
-        console.log(ingredients)
+        // console.log(ingredients)
     }
 
     const handleChange = e => {
@@ -81,15 +83,14 @@ const RecipeViewEdit = props => {
                 setUrl(url)
             })
         })
-
-
     }
 
 
     function handleSubmit(e) {
-        e.preventDefault();
-        // editRecipe(forms);
-        console.log(name, prepHours, prepMinutes, servings, directions, ingredients, url)
+        e.preventDefault()
+        editRecipe(name, prepHours, prepMinutes, servings, directions, ingredients, url, recipeId)
+        // console.log(name, prepHours, prepMinutes, servings, directions, ingredients, url)
+        props.history.goBack()
     }
 
     return (
@@ -187,7 +188,6 @@ const RecipeViewEdit = props => {
 
             <div className="ingredients">
                 <h1 className=''>Ingredients</h1>
-                <form>
                     <input className="inputClass" type="text" name="list" placeholder="2 cups of flour..." onKeyDown={handleEnter} />
                     
                     <ul className='ingredientUL'>
@@ -195,7 +195,6 @@ const RecipeViewEdit = props => {
                             return <li className='ingredientLI' key={'ingredient'+i}>{item}</li>
                         })}
                     </ul>
-                </form>
             </div>
             <div className="text-directions">
                 <div className="directionDiv">
@@ -204,7 +203,7 @@ const RecipeViewEdit = props => {
                             type="text"
                             name="directions"
                             id="directions"
-                            onChange= {changeDirections}
+                            onChange= {e => changeDirections(e.target.value)}
                             value={directions}
                         />
                 </div>
