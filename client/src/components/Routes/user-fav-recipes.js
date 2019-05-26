@@ -44,7 +44,7 @@ const UserFavRecipes = (props) => {
                <Link
                 className='recipeLink' to={`/user_fav_recipes/` + recipe.recipe_id}>
                 <div className='recipeListP' key={'recipe' + i}>
-                {recipe.name == null ? "Unnamed Recipe" : recipe.name}  
+                <h2>{recipe.name == null ? "Unnamed Recipe" : recipe.name}</h2>
                 </div>
               </Link>
 
@@ -58,22 +58,30 @@ const UserFavRecipes = (props) => {
   
           {props.userRecipeBooks.map((recipebook, i) => (
 
-            <Link
-            className='recipeLink' to={`/user_fav_recipes/recipebook/` + recipebook.recipebook_id}>
-            <div className='book' key={'recipebook' + i}>       
-             <p>{recipebook.recipebook_name === '' ? "Unnamed Recipe Book" : recipebook.recipebook_name}</p>
-            </div>
+            <Link className='recipeLink' to={`/user_fav_recipes/recipebook/` + recipebook.recipebook_id}>
+             <div className='book' key={'recipebook' + i}> 
+
+              <div className='bookCenter'>   
+               <h2>
+                {recipebook.recipebook_name === '' ? "Unnamed Recipe Book" : recipebook.recipebook_name}
+               </h2>
+                <FontAwesomeIcon className='fa2' icon='book-open' />
+              </div> 
+
+             </div>
             </Link>
+            
           ))}
         </div>
       </div>
-        
+
+{/*         
         <div className="createGroupLink">
             <Link to={"/createrecipebook"}>
               <button className='abutton'>Create Book</button>
             </Link>
         </div>
-        <div className='invisible'></div>
+        <div className='invisible'></div> */}
         <Footer />
       </div>
     )
