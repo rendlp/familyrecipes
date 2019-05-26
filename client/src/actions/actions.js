@@ -83,7 +83,6 @@ export function addImage(img) {
     })
 }
 
-
 export function addRecipe(recipe) {
     const ingredients = recipe.ingredient.list.map(x => x.name)
 
@@ -99,6 +98,13 @@ export function addRecipe(recipe) {
         // validate if image has no upload
         imgURL: typeof recipe.image === 'string' ? recipe.image : null,
         ingredients: ingredients.join("*/*")
+    })
+}
+
+export function editRecipe(recipeId, name, prepHours, prepMinutes, servings, directions, ingredients, url) {
+    Axios.put('api/recipes/edit', {
+        recipeId, name, prepHours, prepMinutes, servings, directions, ingredients: ingredients.join("*/*"), 
+        url: typeof url === 'string' ? url : null
     })
 }
 

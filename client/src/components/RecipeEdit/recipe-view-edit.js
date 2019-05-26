@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import  { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { AuthContext } from "../../lib/auth"
-import { getCurrentUserOwnedRecipe } from '../../actions/actions'
+import { getCurrentUserOwnedRecipe, editRecipe } from '../../actions/actions'
 import { storage } from '../firebase'
 
 const RecipeViewEdit = props => {
@@ -81,14 +81,12 @@ const RecipeViewEdit = props => {
                 setUrl(url)
             })
         })
-
-
     }
 
 
     function handleSubmit(e) {
-        e.preventDefault();
-        // editRecipe(forms);
+        e.preventDefault()
+        editRecipe(recipeId, name, prepHours, prepMinutes, servings, directions, ingredients, url)
         console.log(name, prepHours, prepMinutes, servings, directions, ingredients, url)
     }
 
