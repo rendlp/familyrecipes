@@ -7,9 +7,11 @@ import Footer from '../footer'
 
 const CreateGroup = props => {
 
+  const [groupName, setGroupName] = useState('')
+  const [inputError, setInputError] = useState('')
+
     const { user } = useContext(AuthContext)
 
-    const [groupName, setGroupName] = useState('')
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -17,16 +19,28 @@ const CreateGroup = props => {
         createGroup(groupName, user).then(() => {
             props.history.goBack()
         })
+    }
 
+    function validator(input) {
+      input.preventDefault()
+      let valid = true
+
+      if (groupName == '') {
+        valid = false
+        setInputError('Group Name Cannot Be Blank')
+      }
+
+      if (valid == true) {
+        handleSubmit()
+      }
     }
 
     return (
       <div>
         <Header />
                 <div className = "createGroup">
-                <span>Create Group</span>
-                <form id="postCreatedGroup" onSubmit={handleSubmit}>
-                <label>Title:</label>
+                <form className="create-" onSubmit={validator}>
+                <label>{inputError}</label>
                     <input
                         autoComplete="off"
                         type="text"
@@ -35,9 +49,9 @@ const CreateGroup = props => {
                         placeholder="Enter a group name..."
                         onChange={e => setGroupName(e.target.value)}
                     />
-                    <button 
+                    <button
                     type="submit"
-                    className='abutton'> 
+                    className='abutton'>
                         Create group
                     </button>
 

@@ -1,18 +1,20 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from "../../lib/auth"
 import Header from '../header'
 import Footer from '../footer'
 import RecipeBookListAccountHome from '../RecipeBookListAccountHome'
 
-class AccountHome extends Component {
+const AccountHome = (props) => {
 
-  render() {
+  const { user } = useContext(AuthContext)
+
     return (
       <div className='wrapper'>
 
         <Header />
         <div className="left-panel">
-          <h1 className='recipe-name'>Books</h1>
+          <h1 id='hello'>Recipe Books</h1>
           <Link to="/user_recipes"><p className="leftP">Recipes</p></Link>
           <Link to="/user_groups"><p className="leftP">Groups</p></Link>
           <Link to="/user_fav_recipes"><p className="leftP">Favorites</p></Link>
@@ -23,16 +25,16 @@ class AccountHome extends Component {
         </div>
 
         <div className="canvas2">
-          
+
           <div className="books">
-            
+
             <RecipeBookListAccountHome />
           </div>
           </div>
         <Footer />
         </div>
     )
-  }
+
 }
 
 export default AccountHome;
