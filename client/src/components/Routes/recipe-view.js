@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from 'react'
 import { AuthContext } from "../../lib/auth"
 import Header from '../header'
 import Footer from '../footer'
-import { getCurrentRecipe, getGroups, shareRecipeWithGroup, addFavoriteRecipe } from '../../actions/actions'
+import { getCurrentUserOwnedRecipe, getGroups, shareRecipeWithGroup, addFavoriteRecipe } from '../../actions/actions'
 import { connect, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,7 +14,7 @@ const RecipeView = (props) => {
   const recipeName = props.currentRecipe.name
 
   useEffect(() => {
-      getCurrentRecipe(recipeId)
+      getCurrentUserOwnedRecipe(recipeId, user, props.history)
       getGroups(user)
   },[])
 
@@ -69,6 +69,7 @@ const RecipeView = (props) => {
            
 {/* BUTTONS */}
 
+<<<<<<< HEAD
   <div className="shareDiv">
     <form onSubmit={handleSubmit}>
       <div className='recipeButtonDiv'>
@@ -78,6 +79,34 @@ const RecipeView = (props) => {
         <div className='space'></div>
         <button className='abutton' onClick={handleClick}>Add to Favorite List</button>
       </div>          
+=======
+            <Link to={`/user_recipes/${recipeId}/edit`}><button className='backBtn'>Edit Recipe</button></Link>
+
+            <label className='shareLabel'>
+              Share recipe with a group:
+            </label>
+            <select onChange={e => setGroupChosen(e.target.value)}
+              name="shareWithGroup"
+              id="shareWithGroup"
+              className="shareDropdown">
+                <option value=''>Select a group</option>
+              {groups.map((group, i) => (
+                <option value={group.group_id} key={"group - "+i}>
+                  {group.groupname}
+                </option>
+                
+              ))}
+            </select>
+            <button className={groupChosen === '' ? 'hidden' : 'abutton'} type="submit">
+                Share
+            </button>
+
+          </form>
+        </div>
+        
+      <Footer />
+    </div>
+>>>>>>> master
     
         <label className='shareLabel'>Share recipe with a group:</label>
         <select onChange={e => setGroupChosen(e.target.value)}

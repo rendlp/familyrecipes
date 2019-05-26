@@ -158,7 +158,7 @@ router.get('/usersSearch', (req, res, next) => {
 })
 
 //edit user profile data
-
+  
 router.put('/users/edit', (req, res, next) => {
   const sql =`
   UPDATE
@@ -175,7 +175,6 @@ router.put('/users/edit', (req, res, next) => {
       })
   })
 })
-
 
 
 //RECIPES
@@ -233,6 +232,26 @@ router.post('/user_favorites', (req, res, next) => {
    })
 })
 
+router.put('/recipes/edit', (req, res, next) => {
+  const sql =`
+  UPDATE
+    recipes
+  SET
+    name = ?, prepHours = ?, prepMinutes = ?, servings = ?, directions = ?,ingredients = ?, imgURL = ?
+  WHERE
+    recipe_id = ?
+  `
+
+  conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url, req.body.recipe_id], (err, results, fields) => {
+
+    // console.log('recipe edit backend', req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url, req.body.recipe_id)
+
+      res.json({
+      message: "recipe updated"
+      })
+  })
+})
+
 // get call to grab a user's list of created recipebooks from the application's database(user_recipebooks table)
 router.get('/user_recipebooks', (req, res, next) => {
   const sql = `
@@ -286,12 +305,20 @@ router.post('/recipes', (req, res, next) => {
     (?, ?, ?, ?, ?, ?, ?, ?)
   `
 
+  const sql2 =`
+    INSERT INTO
+      user_recipe_auth (recipe_id, username)
+    VALUES
+      (?, ?)
+  `
   conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.directions, req.body.servings, req.body.username, req.body.ingredients, req.body.imgURL], (err, results, fields) => {
-    res.json({
-      message: 'recipe posted'
+    conn.query(sql2, [results.insertId, req.body.username], (err, results, fields) => {
+      console.log(err)
+      res.json({
+      message: "recipe posted"
+      })
     })
   })
-
 })
 
 
@@ -388,7 +415,48 @@ router.get('/recipes', (req, res, next) => {
   })
 })
 
-router.get('/recipes/current', (req, res, next) => {
+function authorized(req, res, next) {
+
+  console.log(req.query.user, req.query.recipe_id)
+
+
+
+  const sql =`
+      SELECT
+          count(1) as count 
+      FROM 
+          user_recipe_auth
+      WHERE
+          username = ? AND recipe_id= ?
+  `
+
+  conn.query(sql, [req.query.user, req.query.recipe_id], (err, results, fields) => {
+    
+  const count = results[0].count
+
+      if(count >= 1) {
+          next()
+      } else {
+          res.status(401).json({
+              message: 'Not Authorized'
+          })
+      }
+  })
+}
+
+router.get('/recipes/current/userOwned', authorized, (req, res, next) => {
+    const sql = `
+    SELECT *
+    FROM recipes
+    WHERE recipe_id = ?
+    `
+    conn.query(sql, [req.query.recipe_id],(error, results, fields) => {
+      res.json(results)
+      console.log(results)
+    })
+  })
+
+  router.get('/recipes/current', (req, res, next) => {
     const sql = `
     SELECT *
     FROM recipes
