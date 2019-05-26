@@ -157,6 +157,25 @@ router.get('/usersSearch', (req, res, next) => {
 }
 })
 
+//edit user profile data
+  
+router.put('/users/edit', (req, res, next) => {
+  const sql =`
+  UPDATE
+    users
+  SET
+    firstname = ?, lastname = ?, userPicURL = ?
+  WHERE
+    username = ?
+  `
+
+  conn.query(sql, [req.body.firstname, req.body.lastname, req.body.userPicURL, req.body.username], (err, results, fields) => {
+      res.json({
+      message: "user data updated"
+      })
+  })
+})
+
 
 //RECIPES
 
@@ -211,6 +230,26 @@ router.post('/user_favorites', (req, res, next) => {
       })
     }
    })
+})
+
+router.put('/recipes/edit', (req, res, next) => {
+  const sql =`
+  UPDATE
+    recipes
+  SET
+    name = ?, prepHours = ?, prepMinutes = ?, servings = ?, directions = ?,ingredients = ?, imgURL = ?
+  WHERE
+    recipe_id = ?
+  `
+
+  conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url, req.body.recipe_id], (err, results, fields) => {
+
+    // console.log('recipe edit backend', req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url, req.body.recipe_id)
+
+      res.json({
+      message: "recipe updated"
+      })
+  })
 })
 
 // get call to grab a user's list of created recipebooks from the application's database(user_recipebooks table)

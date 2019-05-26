@@ -101,11 +101,18 @@ export function addRecipe(recipe) {
     })
 }
 
-export function editRecipe(recipeId, name, prepHours, prepMinutes, servings, directions, ingredients, url) {
-    Axios.put('api/recipes/edit', {
-        recipeId, name, prepHours, prepMinutes, servings, directions, ingredients: ingredients.join("*/*"), 
-        url: typeof url === 'string' ? url : null
+export function editRecipe(name, prepHours, prepMinutes, servings, directions, ingredients, url, recipeId) {
+    Axios.put('/api/recipes/edit', { 
+        name: name,
+        prepHours: prepHours, 
+        prepMinutes: prepMinutes, 
+        servings: servings, 
+        directions: directions, 
+        ingredients: ingredients.join("*/*"), 
+        url: typeof url === 'string' ? url : null,
+        recipe_id: recipeId
     })
+    // console.log(name, prepHours, prepMinutes, servings, directions, ingredients.join("*/*"), url, recipeId)
 }
 
 export function shareRecipeWithGroup(recipeId, groupChosen, recipeName) {
