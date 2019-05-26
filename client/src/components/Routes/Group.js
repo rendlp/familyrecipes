@@ -30,7 +30,7 @@ const Group = props => {
         <div>
          <Header />
           <div className = "groupViewContainer">
-          <div className='divHeader'>
+          <div className='divHeader2'>
           <Link 
             to='/user_groups'>
              <FontAwesomeIcon className='faBack' icon="arrow-left" />
@@ -88,6 +88,7 @@ const Group = props => {
 
 
         </div>
+        <div className='invisible'></div>
         <Footer />
         </div>
 

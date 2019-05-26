@@ -1,11 +1,14 @@
 html {
   box-sizing: border-box;
   font-family: "Roboto", arial, sans-serif;
+  background-color: whitesmoke;
 }
 
 .appContainer {
   /* background-color: rgb(122,170,80); */
-  background-color:  rgb(122,170,80);
+  background: linear-gradient( rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.4) ), url('../components/assets/nettles.jpg');
+  background-color: antiquewhite;
+  background-size: 100%;
 }
 
 *,
@@ -138,8 +141,8 @@ border: none;
 }
 
 .abuttonS {
-    transition: 0.3s;
-    margin: 10px;
+  transition: 0.3s;
+  margin: 10px;
   
 }
 
@@ -150,6 +153,7 @@ padding: 8px;
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 margin: 0 auto;
 }
+
 
 textarea {
 width: 600px;
@@ -412,7 +416,14 @@ h3 {
 .divHeader {
   display: flex;
   flex-direction: row;
-  margin: -5px;
+  background-color: black;
+  opacity: 0.9;
+}
+
+.divHeader2 {
+  display: flex;
+  flex-direction: row;
+ 
 }
 
 .faBack:hover {
@@ -515,8 +526,6 @@ h3 {
   flex-direction: row;
   flex-wrap: wrap;
   margin: 5px;
- 
-  
 }
 
 .recipeFavoritesDiv {
@@ -526,7 +535,6 @@ h3 {
   height: 400px;
   overflow-x: scroll;
 }
-
 
 .groupContainer {
   display: flex;
@@ -633,9 +641,46 @@ h3 {
   padding: 10px;
 }
 
+.footerInput {
+  width: 300px;
+  font-size: 18px;
+  height: 45px;
+  box-shadow: 0 3px 3px -3px grey;
+}
+
+.footerImg {
+  width: 35px;
+  height: 35px;
+  justify-content: space-between;
+}
+
+.copyright {
+  color: grey;
+  font-size: 16px;
+  text-shadow: none;
+}
+
+.policy {
+  color: rgb(171, 158, 158);
+  font-size: 15px;
+  text-shadow: none;
+}
+
+.footerIcons {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  height: 100px;
+  background-color: whitesmoke;
+  align-content: center;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: space-evenly;
+}
+
 .header {
   width: 100%;
-  height: 110px;
+  height: 100px;
   background-color: white;
   display: flex;
   flex-direction: row;
@@ -646,11 +691,11 @@ h3 {
 
 .loginHeader{
   width: 100%;
-  height: 110px;
+  height: 100px;
   background-color: white;
   justify-content: space-between;
   margin: 0 auto;
-  opacity: 0.8;
+  opacity: 0.9;
   display: flex;
   flex-direction: row;
   animation: fadeIn ease-in 1s;
@@ -674,7 +719,7 @@ h3 {
 }
 
 .traditionP {
-  font-size: 48px;
+  font-size: 46px;
   color: lightgrey;
   margin: 0 auto;
   padding: 348px;
@@ -688,16 +733,17 @@ h3 {
   background-color: whitesmoke;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   text-align: center;
+  margin: 0 auto;
+
 }
 
 .footerP {
-  font-size: 28px;
-  font-family: 'Roboto';
-  margin: 24px;
-  padding: 40px;
+  font-size: 27px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: black;
+  font-weight: 100;
 
 }
 
@@ -773,13 +819,12 @@ h3 {
   
 }
 
-
-
 .invisible {
   margin: 0 auto;
   width: 100%;
   height: 110px;
 }
+
 
 .questions {
   position: relative;
@@ -804,6 +849,7 @@ h3 {
   flex-direction: column;
   border-bottom: 2px solid lightgrey;
   width: 175px;
+  opacity: 0.8;
   height: 510px;
   padding: 10px;
   
@@ -895,8 +941,6 @@ a:visited {
     width: 300px;
     height: 100%;
     text-align: initial;
-
-  
 }
 
 .recipe-pic {
@@ -913,7 +957,9 @@ a:visited {
   flex-direction: row;
   display: flex;
   height: 100%;
-  width: 1400px;
+  width: 100%;
+  background-color: black;
+  opacity: 0.9;
 }
 
 .recipeButtonDiv {
@@ -923,7 +969,10 @@ a:visited {
 }
 
 .shareDiv {
-  margin: 40px;
+
+  background-color: black;
+  padding: 10px;
+  opacity: 0.9;
 }
 
 .space {

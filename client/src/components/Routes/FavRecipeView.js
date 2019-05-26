@@ -72,7 +72,7 @@ const FavRecipeView = (props) => {
               </div>
               </div>
         </div>
-
+       <div className='shareDiv'>
         <div className="shareRecipeWithGroup">
           <form onSubmit={handleSubmit}>
             <label className='shareLabel'>Add Recipe to Book: </label>
@@ -95,7 +95,8 @@ const FavRecipeView = (props) => {
             </button>
           </form>
         </div>
-
+        <div className='invisible'></div>
+        </div>
       <Footer />
     </div>
   )

@@ -28,7 +28,7 @@ const UserFavRecipes = (props) => {
        <div>
        <Header />
 
-      <div className='divHeader'>
+      <div className='divHeader2'>
       <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
       <div className='space2'></div>
       <h1 className='recipe-name'>favorites</h1>

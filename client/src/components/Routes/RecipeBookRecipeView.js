@@ -61,7 +61,7 @@ const RecipeBookRecipeView = (props) => {
               </div>
         </div>
         </div>
-
+       <div className='shareDiv'>
         <label className='shareLabel'>
           Share recipe with a group:
         </label>
@@ -79,7 +79,7 @@ const RecipeBookRecipeView = (props) => {
           
         </select>
         <div className='invisible'></div>
-
+        </div>
       <Footer />
     </div>
   )

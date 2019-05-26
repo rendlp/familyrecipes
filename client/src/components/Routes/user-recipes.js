@@ -27,7 +27,7 @@ const UserRecipe = (props) => {
       <div className='userRecipeContainer'>
         <Header />
 
-        <div className='divHeader'>
+        <div className='divHeader2'>
         <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
         <div className='space'></div>
         <h1 className='recipe-name'>Recipes</h1>

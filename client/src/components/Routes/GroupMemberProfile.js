@@ -30,7 +30,7 @@ console.log(user)
     return (
       <div>
         <Header />
-        <div className='divHeader'>
+        <div className='divHeader2'>
         <div className='backArrowDiv' onClick={backFunction}><FontAwesomeIcon className='faBack' icon="arrow-left" /></div>
         <div className='space'></div>
         <h1 className='recipe-name'>{user}</h1>
