@@ -69,7 +69,6 @@ const RecipeView = (props) => {
            
 {/* BUTTONS */}
 
-<<<<<<< HEAD
   <div className="shareDiv">
     <form onSubmit={handleSubmit}>
       <div className='recipeButtonDiv'>
@@ -79,34 +78,6 @@ const RecipeView = (props) => {
         <div className='space'></div>
         <button className='abutton' onClick={handleClick}>Add to Favorite List</button>
       </div>          
-=======
-            <Link to={`/user_recipes/${recipeId}/edit`}><button className='backBtn'>Edit Recipe</button></Link>
-
-            <label className='shareLabel'>
-              Share recipe with a group:
-            </label>
-            <select onChange={e => setGroupChosen(e.target.value)}
-              name="shareWithGroup"
-              id="shareWithGroup"
-              className="shareDropdown">
-                <option value=''>Select a group</option>
-              {groups.map((group, i) => (
-                <option value={group.group_id} key={"group - "+i}>
-                  {group.groupname}
-                </option>
-                
-              ))}
-            </select>
-            <button className={groupChosen === '' ? 'hidden' : 'abutton'} type="submit">
-                Share
-            </button>
-
-          </form>
-        </div>
-        
-      <Footer />
-    </div>
->>>>>>> master
     
         <label className='shareLabel'>Share recipe with a group:</label>
         <select onChange={e => setGroupChosen(e.target.value)}
