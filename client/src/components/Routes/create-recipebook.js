@@ -38,7 +38,8 @@ const CreateRecipebook = (props) => {
 
   return (
     <div>
-      <form onSubmit={validator}>
+      <Header />
+      <form className="create-" onSubmit={validator}>
         <label>{groupInputError}</label>
         <input placeholder="Name your recipebook"
               name="recipebookName"
@@ -46,6 +47,7 @@ const CreateRecipebook = (props) => {
         />
         <button className='abutton' type="submit">Create Recipebook</button>
       </form>
+      <Footer />
     </div>
   )
 
