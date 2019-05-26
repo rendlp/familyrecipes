@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import nettles from '../components/assets/nettle.jpg'
 import LogoutButton from './logout-button'
-import { Link } from 'react-router-dom'
 
 
 class Header extends Component {
