@@ -7,8 +7,8 @@ import Ingredient from './Ingredient'
 import { Link } from 'react-router-dom'
 import {addRecipe} from '../../actions/actions'
 // import IngredientList from './IngredientList'
-// import Header from '../header'
-// import Footer from '../footer'
+import Header from '../header'
+import Footer from '../footer'
 import ImageUpload from './ImageUpload';
 import { withRouter } from 'react-router-dom'
 
@@ -45,41 +45,40 @@ function UploadParentFunctional (props) {
 
 
     return (
+      <div>
+        <Header />
+        <div className="uploadDiv">
 
-     <div className="uploadDiv">
-     
-         <Link to='/'><button className='abutton'>Back</button></Link>
+         {/*}<Link to='/'><button className='abutton'>Back</button></Link>*/}
 
 
-        <div id="name/prep">
-
-            <Name manageForm={manageForm} formData={forms.RecipeName} />
-            <Prep manageForm={manageForm} formData={forms.PrepTime} />
+        <div id="column1">
+          <Name manageForm={manageForm} formData={forms.RecipeName} />
+          <Prep manageForm={manageForm} formData={forms.PrepTime} />
+          <h1 className=''>Ingredients</h1>
+          <Ingredient manageForm={manageForm} formData={forms.ingredient} />
         </div>
 
+          <Directions manageForm={manageForm} formData={forms.Directions} />
 
-        <div className="ingredients">
 
-            <h1 className=''>Ingredients</h1>
-            <Ingredient manageForm={manageForm} formData={forms.ingredient} />
             {/* <IngredientList manageForm={manageIngredients} formData={ingredientList} /> */}
-        </div>
 
-        <div id="text-directions">
 
-            <Directions manageForm={manageForm} formData={forms.Directions} />
-        </div>
         <div id="image-upload">
             <h1>Image</h1>
             <ImageUpload addImageToForm={addImageToForm} manageForm={manageForm} formData={forms.image} />
-            <form onSubmit={handleForm}>
-
-         <button className='abutton'>Submit</button>
-        </form>
-
         </div>
 
+      </div>
 
+      <div id ="formButton">
+        <form onSubmit={handleForm}>
+          < button className='abutton'>Submit</button>
+        </form>
+      </div>
+
+      <Footer />
      </div>
     )
 };
