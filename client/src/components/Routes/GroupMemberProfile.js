@@ -30,16 +30,15 @@ console.log(user)
     return (
       <div>
         <Header />
+        
         <div className='divHeader2'>
         <div className='backArrowDiv' onClick={backFunction}><FontAwesomeIcon className='faBack' icon="arrow-left" /></div>
         <div className='space'></div>
         <h1 className='recipe-name'>{user}</h1>
         </div>
-        <div className="userProfileDisplay">
-          
-          <img className="user-pic" src={userInfo.userPicURL} alt='' />
 
-        
+        <div className="userProfileDisplay">
+          <img className="user-pic" src={userInfo.userPicURL} alt='' />    
           <p>First Name:</p>
           <p>{userInfo.firstname}</p>
           <p>Last Name:</p>

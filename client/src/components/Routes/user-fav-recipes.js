@@ -31,7 +31,7 @@ const UserFavRecipes = (props) => {
       <div className='divHeader2'>
       <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
       <div className='space2'></div>
-      <h1 className='recipe-name'>favorites</h1>
+      <h1 className='recipe-name'>Favorites</h1>
       </div>
 
 {/* USERS FAVORITES */}
@@ -44,6 +44,7 @@ const UserFavRecipes = (props) => {
                <Link
                 className='recipeLink' to={`/user_fav_recipes/` + recipe.recipe_id}>
                 <div className='recipeListP' key={'recipe' + i}>
+                  
                 <h2>{recipe.name == null ? "Unnamed Recipe" : recipe.name}</h2>
                 </div>
                 <img src={recipe.imgURL} alt=''></img>
@@ -71,7 +72,6 @@ const UserFavRecipes = (props) => {
 
              </div>
             </Link>
-            
           ))}
         </div>
       </div>

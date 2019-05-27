@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react'
+import { useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 import Header from '../header'
 import Footer from '../footer'
@@ -15,6 +16,10 @@ library.add(faArrowLeft)
 const UserRecipe = (props) => {
 
   const { user } = useContext(AuthContext)
+
+  const userRecipes = useSelector(appstate => appstate.userRecipes)
+
+  
 
   useEffect( () => {
       getUserRecipes(user)
@@ -42,7 +47,7 @@ const UserRecipe = (props) => {
 
             <div className='recipeListP'>
             <h2>{recipe.name == null ? "Unnamed Recipe" : recipe.name}</h2>
-            <img src={props.userRecipes.imgURL || 'https://via.placeholder.com/200'} alt='' />
+            <img className='recipeImgThumbnail' src={recipe.imgURL || 'https://via.placeholder.com/200'} alt='' />
             </div>
 
           </Link>
