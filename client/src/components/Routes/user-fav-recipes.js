@@ -63,6 +63,7 @@ const UserFavRecipes = (props) => {
              <div className='book' key={'recipebook' + i}> 
 
               <div className='bookCenter'>   
+              
                <h2>
                 {recipebook.recipebook_name === '' ? "Unnamed Recipe Book" : recipebook.recipebook_name}
                </h2>

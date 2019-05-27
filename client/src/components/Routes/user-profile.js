@@ -20,21 +20,22 @@ const UserProfile = props => {
   const userInfo = useSelector(appstate => appstate.userInfo)
   
   console.log(userInfo)
+  
     return (
       <div className='profileContainer'>
         <Header />
         <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
         
         <div className="userProfileDisplay">
-          <img className="user-pic" src={userInfo.userPicURL} alt='' />
-          <div className='profileInformation'>
+         <img className="user-pic" src={userInfo.userPicURL} alt='' />
+         <div className='profileInformation'>
           <p>Username:</p>
           <p>{user}</p>
           <p>First Name:</p>
           <p>{userInfo.firstname}</p>
           <p>Last Name:</p>
           <p>{userInfo.lastname}</p>
-          <Link to='/user_profile/edit'><button className='aButton'>Edit Profile</button></Link>
+          <Link to='/user_profile/edit'><button className='abutton'>Edit Profile</button></Link>
           </div>
 
         </div>

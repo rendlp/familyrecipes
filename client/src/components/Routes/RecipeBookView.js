@@ -29,24 +29,24 @@ console.log(props.addedRecipesInsideRecipebooks)
       <Header />
 
       <div className='divHeader2'>
-      <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
-      <div className='space'></div>
-      <h1 className='recipe-name'>book name</h1>
+       <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
+       <div className='space'></div>
+       <h1 className='recipe-name'>book name</h1>
       </div>
 
       <div className='userRecipeDiv'>
-        <div className='recipeDiv'>
+       <div className='recipeDiv'>
 
-      {props.addedRecipesInsideRecipebooks.map(recipe => (
+       {props.addedRecipesInsideRecipebooks.map(recipe => (
 
-        <Link className='recipeLink' to={`/user_fav_recipes/recipebook/${recipebookID}/${recipe.recipe_id}`}>
+      <Link className='recipeLink' to={`/user_fav_recipes/recipebook/${recipebookID}/${recipe.recipe_id}`}>
         <div className='recipeListP'>{recipe.recipe_name == null ? "Unnamed Recipe" : recipe.recipe_name}
         <img src={recipe.imgURL || 'https://via.placeholder.com/200'} alt='' />
         </div>
-        </Link>
+      </Link>
 
       ))}
-        </div>
+       </div>
        </div>
       <Footer />
     </div>
