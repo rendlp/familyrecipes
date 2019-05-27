@@ -71,21 +71,26 @@ const UserProfileEdit = props => {
     return (
       <div>
         <Header />
-        <div id="edit-canvas">
-
-        <p>username: {user}</p>
+        <div className="edit-canvas">
+      <h1 className='editProfileh1'>Edit Profile: </h1>
+        <h1>{user}</h1>
 
         <form onSubmit={handleSubmit}>
 
-        <div className ='imgUploadDiv' id='profile-image-upload'>
-           <progress className='progress' value={progress} max='100' />
-           <input className='uploadInput' type='file' onChange={handleChange}   />
-           <input type="hidden" name="image" value={image} />
-           <img name="image" src={typeof image === 'string' ? image : 'https://via.placeholder.com/150'} className='imgUpload' alt='' value={url}  />
-           <button onClick={handleUpload}>Upload</button>
+        <div className ='imgUploadDiv'>
+
+         <progress className='progress' value={progress} max='100' />
+         <input className='uploadInput' type='file' onChange={handleChange}   />
+         <input type="hidden" name="image" value={image} />
+
+         <div className='upload2'>
+         <img name="image" src={typeof image === 'string' ? image : 'https://via.placeholder.com/150'} className='imgUpload' alt='' value={url}  />
+         <button onClick={handleUpload}>Upload</button>
+        </div>
         </div>
 
-            <p>First Name:</p>
+        <div className='profileEdit'>
+            <h2>First Name:</h2>
                 <input
                     type="text"
                     name="firstname"
@@ -93,7 +98,7 @@ const UserProfileEdit = props => {
                     onChange= {e => changeFirstName(e.target.value)}
                     value=  {firstname}
                 />
-            <p>Last Name:</p>
+            <h2>Last Name:</h2>
                 <input
                     type="text"
                     name="lastname"
@@ -101,6 +106,7 @@ const UserProfileEdit = props => {
                     onChange= {e => changeLastName(e.target.value)}
                     value=  {lastname}
                 />
+        </div>
               <div id="update-profile"><button type="submit"> Update Profile</button></div>
             </form>
 

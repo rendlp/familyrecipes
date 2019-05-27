@@ -45,10 +45,10 @@ const UserRecipe = (props) => {
           
           <Link className='recipeLink'key={'recipe'+i} to={'user_recipes/' + recipe.recipe_id}>
 
-            <div className='recipeListP'>
-            <h2>{recipe.name == null ? "Unnamed Recipe" : recipe.name}</h2>
-            <img className='recipeImgThumbnail' src={recipe.imgURL || 'https://via.placeholder.com/200'} alt='' />
-            </div>
+          <div className='recipeListP'>
+          <h2 className='recipe-view-h2'>{recipe.name == null ? "Unnamed Recipe" : recipe.name}</h2>
+          <img className='recipeImgThumbnail' src={recipe.imgURL || 'https://via.placeholder.com/200'} alt='' />
+          </div>
 
           </Link>
 

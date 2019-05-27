@@ -170,6 +170,17 @@ border: none;
 
 }
 
+.abutton2 {
+  width: 125px;
+}
+
+.abutton2:hover {
+  background-color: rgb(142,50,40);
+  color: white;
+
+  transition: 0.3s;
+}
+
 .abuttonS:hover {
   background-color: rgb(142,50,40);
   color: white;
@@ -578,7 +589,7 @@ h3 {
   font-size: 26px;
   transition: 0.3s;
   color: white;
- 
+  
 }
 
 .recipeListP:hover{
@@ -948,7 +959,6 @@ h2 {
   text-decoration: none;
   transition: 0.3s;
   margin: 0 auto;
-  text-align: center;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: 400;
   text-align: center;
@@ -980,7 +990,6 @@ a:visited {
 
 .ingredients {
   margin: 0 auto;
-
 }
 
 .ingredients-contentUL .ingredients-contentLI {
@@ -1004,6 +1013,12 @@ a:visited {
   width: 100%;
   justify-content: flex-start;
 
+}
+
+.editProfileh1 {
+  font-size: 40px;
+  color: white;
+  text-decoration: underline;
 }
 
 .recipe-name {
@@ -1091,7 +1106,13 @@ a:visited {
 
 .recipe-display ul li{
   width: 100%;
-  color: gray;
+}
+
+.upload2 {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
 }
 
 .imgUpload {
@@ -1100,13 +1121,17 @@ a:visited {
   margin-right: auto;
   height: 150px;
   border: 1px solid lightgrey;
+  background-color: black;
 }
 
 .recipeImgThumbnail {
-  width: 200px;
-  height: 200px;
-  border-radius: 3%;
+  width: 220px;
+  height: 220px;
+  border-radius: 1.5%;
+}
 
+.recipe-view-h2 {
+  margin: 0 auto;
 }
 
 .image-upload {
@@ -1147,18 +1172,19 @@ a:visited {
 .imgUploadDiv {
   width: 300px;
   height: 400px;
-  flex-direction: column;
+
   border: 1px solid lightgrey;
   background-color: whitesmoke;
   box-shadow: 0 6px 6px -6px black;
 }
 
-#edit-canvas {
-  height: 1000px;
+.edit-canvas {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
 }
 
 #update-profile {
