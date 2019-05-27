@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { searchUser, getGroupUsers, addUserToGroup } from '../../actions/actions'
 import {connect} from 'react-redux'
+import Header from '../header'
+import Footer from '../footer'
 
 const InviteUser = props => {
 
@@ -32,26 +34,30 @@ const InviteUser = props => {
     }
 
     return (
-                <div className = "inviteUser">
-                    <h1>Add a user to {props.currentGroup}</h1>
-                    <form id="searchUser" onSubmit={handleSubmit}>
-                        <input
-                            autoComplete="off"
-                            type="text"
-                            name="searchUser"
-                            id="groupName"
-                            placeholder="Search a username..."
-                            onChange={e => setUserName(e.target.value)}
-                            value={userNameSearched}
-                        />
-                        <button type="submit">
-                            Search
-                        </button>
-                    </form>
-                    <p className={props.userFound === '' ? "hidden" : props.userFound === 'usernotfound' ? 'hidden': "userFoundDisplay"}>User found: {props.userFound}</p>
-                    <button onClick={handleAddUser} className={props.userFound === '' ? "hidden" : props.userFound === 'usernotfound' ? 'hidden': "userFoundDisplay"}>Add {props.userFound} to {props.currentGroup}</button>
-                    <p className={props.userFound === 'usernotfound' ? 'userNotFoundDisplay' : 'hidden'}>User not found</p>
-                </div>
+      <div>
+        <Header />
+        <div className = "inviteUser">
+          <h1>Add a user to {props.currentGroup}</h1>
+          <form className="create-" onSubmit={handleSubmit}>
+            <input
+              autoComplete="off"
+              type="text"
+              name="searchUser"
+              id="groupName"
+              placeholder="Search a username..."
+              onChange={e => setUserName(e.target.value)}
+              value={userNameSearched}
+            />
+            <button type="submit">
+                Search
+            </button>
+            </form>
+              <p className={props.userFound === '' ? "hidden" : props.userFound === 'usernotfound' ? 'hidden': "userFoundDisplay"}>User found: {props.userFound}</p>
+              <button onClick={handleAddUser} className={props.userFound === '' ? "hidden" : props.userFound === 'usernotfound' ? 'hidden': "userFoundDisplay"}>Add {props.userFound} to {props.currentGroup}</button>
+              <p className={props.userFound === 'usernotfound' ? 'userNotFoundDisplay' : 'hidden'}>User not found</p>
+          </div>
+        <Footer />
+      </div>
     )
 }
 
