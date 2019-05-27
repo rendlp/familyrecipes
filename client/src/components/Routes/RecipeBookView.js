@@ -37,9 +37,15 @@ console.log(props.addedRecipesInsideRecipebooks)
       <div className='userRecipeDiv'>
        <div className='recipeDiv'>
 
+<<<<<<< HEAD
        {props.addedRecipesInsideRecipebooks.map(recipe => (
 
       <Link className='recipeLink' to={`/user_fav_recipes/recipebook/${recipebookID}/${recipe.recipe_id}`}>
+=======
+      {props.addedRecipesInsideRecipebooks.map((recipe,i) => (
+
+        <Link key={'recipe - '+i} className='recipeLink' to={`/user_fav_recipes/recipebook/${recipebookID}/${recipe.recipe_id}`}>
+>>>>>>> master
         <div className='recipeListP'>{recipe.recipe_name == null ? "Unnamed Recipe" : recipe.recipe_name}
         <img src={recipe.imgURL || 'https://via.placeholder.com/200'} alt='' />
         </div>
