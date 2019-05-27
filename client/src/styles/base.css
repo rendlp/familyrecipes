@@ -359,7 +359,24 @@ h3 {
 .userProfileDisplay{
   display: flex;
   flex-direction: row;
+  margin: 0 auto;
+  background-color: black;
+  opacity: 0.9;
+  border-radius: 3%;
+  padding: 30px;
+  height: 100%;
+  width: 800px;
  
+}
+
+.profileContainer {
+  width: 100%;
+}
+
+.profileInformation {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
 }
 
 .user-pic {
@@ -367,6 +384,7 @@ h3 {
   height: 400px;
   border-radius: 50%;
   border: 2px solid whitesmoke;
+  margin: 0 auto;
 }
 
 .groupViewDiv { 

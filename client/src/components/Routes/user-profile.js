@@ -21,21 +21,24 @@ const UserProfile = props => {
   
   console.log(userInfo)
     return (
-      <div>
+      <div className='profileContainer'>
         <Header />
         <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
         <div className="userProfileDisplay">
           <img className="user-pic" src={userInfo.userPicURL} alt='' />
-          <p>username:</p>
+          <div className='profileInformation'>
+          <p>Username:</p>
           <p>{user}</p>
           <p>First Name:</p>
           <p>{userInfo.firstname}</p>
           <p>Last Name:</p>
           <p>{userInfo.lastname}</p>
-        </div>
-        <Link to='/user_profile/edit'><button className='backBtn'>Edit Profile</button></Link>
+          <Link to='/user_profile/edit'><button className='aButton'>Edit Profile</button></Link>
+          </div>
 
-          <Logout />
+        </div>
+        <div className='invisible' />
+      
         <Footer />
       </div>
     )

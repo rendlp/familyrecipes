@@ -13,8 +13,8 @@ class AccountHome extends Component {
         <Header />
         <div className="left-panel">
           <h1 className='title'>Books</h1>
-          <Link to="/user_recipes"><p className="leftP">Recipes</p></Link>
           <Link to="/user_groups"><p className="leftP">Groups</p></Link>
+          <Link to="/user_recipes"><p className="leftP">Recipes</p></Link>
           <Link to="/user_fav_recipes"><p className="leftP">Favorites</p></Link>
         <div className='space2'></div>
          
