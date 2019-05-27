@@ -21,7 +21,7 @@ const UserProfileEdit = props => {
     const [firstname, changeFirstName] = useState(userInfo.firstname)
     const [lastname, changeLastName] = useState(userInfo.lastname)
 
-    const [image, setImage] = useState(userInfo.userPicURL)
+    const [image, setImage] = useState(userInfo.userPicURL || {})
     const [url, setUrl] = useState(userInfo.userPicURL)
     const [progress, setProgress] = useState(0)
 
@@ -61,26 +61,23 @@ const UserProfileEdit = props => {
 
     function handleSubmit (e) {
         e.preventDefault()
-
         editUserData(firstname, lastname, image, user)
         props.history.goBack()
     }
 
-    
+
     console.log(image)
-  
+
     return (
       <div>
         <Header />
+        <div id="edit-canvas">
 
-        <p>username:</p>
-        <p>{user}</p>
-
-        
+        <p>username: {user}</p>
 
         <form onSubmit={handleSubmit}>
 
-        <div className ='imgUploadDiv'>
+        <div className ='imgUploadDiv' id='profile-image-upload'>
            <progress className='progress' value={progress} max='100' />
            <input className='uploadInput' type='file' onChange={handleChange}   />
            <input type="hidden" name="image" value={image} />
@@ -104,9 +101,11 @@ const UserProfileEdit = props => {
                     onChange= {e => changeLastName(e.target.value)}
                     value=  {lastname}
                 />
-            <button type="submit"> Update Profile</button>
-        </form>
-        
+              <div id="update-profile"><button type="submit"> Update Profile</button></div>
+            </form>
+
+        </div>
+
         <Footer />
       </div>
     )

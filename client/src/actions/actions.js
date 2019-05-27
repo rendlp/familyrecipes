@@ -3,6 +3,8 @@ import Axios from 'axios'
 // import { checkPropTypes, string } from 'prop-types'
 import * as firebase from 'firebase/app'
 
+
+
 // GROUPS
 
 export function getGroups(user) {
@@ -102,13 +104,13 @@ export function addRecipe(recipe) {
 }
 
 export function editRecipe(name, prepHours, prepMinutes, servings, directions, ingredients, url, recipeId) {
-    Axios.put('/api/recipes/edit', { 
+    Axios.put('/api/recipes/edit', {
         name: name,
-        prepHours: prepHours, 
-        prepMinutes: prepMinutes, 
-        servings: servings, 
-        directions: directions, 
-        ingredients: ingredients.join("*/*"), 
+        prepHours: prepHours,
+        prepMinutes: prepMinutes,
+        servings: servings,
+        directions: directions,
+        ingredients: ingredients.join("*/*"),
         url: typeof url === 'string' ? url : null,
         recipe_id: recipeId
     })
@@ -157,6 +159,8 @@ export function getCurrentUserOwnedRecipe(recipe_id, user, history) {
         history.push('/no')
     })
   }
+
+
 
 //   export function getCurrentUserOwnedRecipeToEdit(recipe_id, user, history) {
 //     Axios.get(`/api/recipes/current/userOwned?recipe_id=${recipe_id}&user=${user}`).then(resp => {
@@ -207,7 +211,7 @@ export function getGroupRecipes(group_id) {
       })
     })
   }
-  
+
 
   // RECIPE BOOKS
 
@@ -249,9 +253,9 @@ export function getGroupRecipes(group_id) {
     })
   }
 
- 
-  
-  
+
+
+
 
 
 //-----------------------------------------------------------//
@@ -262,7 +266,7 @@ export function getGroupRecipes(group_id) {
 
 //     imageRef.getDownloadURL().then((url: String) => callback(url))
 // }
-  
+
 
 // for potential future use
 
