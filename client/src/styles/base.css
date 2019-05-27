@@ -170,6 +170,17 @@ border: none;
 
 }
 
+.abutton2 {
+  width: 125px;
+}
+
+.abutton2:hover {
+  background-color: rgb(142,50,40);
+  color: white;
+
+  transition: 0.3s;
+}
+
 .abuttonS:hover {
   background-color: rgb(142,50,40);
   color: white;
