@@ -21,7 +21,7 @@ const UserProfileEdit = props => {
     const [firstname, changeFirstName] = useState(userInfo.firstname)
     const [lastname, changeLastName] = useState(userInfo.lastname)
 
-    const [image, setImage] = useState(userInfo.userPicURL)
+    const [image, setImage] = useState(userInfo.userPicURL || {})
     const [url, setUrl] = useState(userInfo.userPicURL)
     const [progress, setProgress] = useState(0)
 
@@ -61,7 +61,6 @@ const UserProfileEdit = props => {
 
     function handleSubmit (e) {
         e.preventDefault()
-
         editUserData(firstname, lastname, image, user)
         props.history.goBack()
     }
@@ -102,9 +101,9 @@ const UserProfileEdit = props => {
                     onChange= {e => changeLastName(e.target.value)}
                     value=  {lastname}
                 />
-
+              <div id="update-profile"><button type="submit"> Update Profile</button></div>
             </form>
-            <div id="update-profile"><button type="submit"> Update Profile</button></div>
+
         </div>
 
         <Footer />
