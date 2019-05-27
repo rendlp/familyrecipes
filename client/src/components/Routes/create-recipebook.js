@@ -11,7 +11,7 @@ const CreateRecipebook = (props) => {
   const { user } = useContext(AuthContext)
 
   const [recipebookName, setRecipebookName] = useState('')
-  const [groupInputError, setGroupInputError] = useState('')
+  const [recipebookError, setRecipebookError] = useState('')
 
   function handleSubmit(e) {
       // e.preventDefault()
@@ -26,9 +26,9 @@ const CreateRecipebook = (props) => {
 
       if (recipebookName == '') {
         valid = false
-        setGroupInputError('Cannot Be Blank')
+        setRecipebookError('Cannot Be Blank')
       } else {
-        setGroupInputError('')
+        setRecipebookError('')
       }
 
       if (valid === true) {
@@ -40,7 +40,7 @@ const CreateRecipebook = (props) => {
     <div>
       <Header />
       <form className="create-" onSubmit={validator}>
-        <label>{groupInputError}</label>
+        <label>{recipebookError}</label>
         <input placeholder="Name your recipebook"
               name="recipebookName"
               onChange={e => setRecipebookName(e.target.value)}

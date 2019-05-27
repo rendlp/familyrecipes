@@ -18,24 +18,21 @@ const UserProfile = props => {
     },[])
 
   const userInfo = useSelector(appstate => appstate.userInfo)
-  
+
   console.log(userInfo)
     return (
       <div>
         <Header />
-        <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
-        <div className="userProfileDisplay">
-          <img className="user-pic" src={userInfo.userPicURL} alt='' />
-          <p>username:</p>
-          <p>{user}</p>
-          <p>First Name:</p>
-          <p>{userInfo.firstname}</p>
-          <p>Last Name:</p>
-          <p>{userInfo.lastname}</p>
+        <div id="canvas-small">
+          <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
+          <div className="userProfileDisplay">
+            <img className="user-pic" src={userInfo.userPicURL} alt='' />
+            <p>Username: {user}</p>
+            <p>First Name: {userInfo.firstname}</p>
+            <p>Last Name: {userInfo.lastname}</p>
+          </div>
+          <div id="edit-profile"><Link to='/user_profile/edit'><button id="edit-profile">Edit Profile</button></Link></div>
         </div>
-        <Link to='/user_profile/edit'><button className='backBtn'>Edit Profile</button></Link>
-
-          <Logout />
         <Footer />
       </div>
     )
