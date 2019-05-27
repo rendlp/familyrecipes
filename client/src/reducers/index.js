@@ -13,7 +13,8 @@ const initialState = {
   userRecipeBooks: [],
   groupRecipes: [],
   addedRecipesInsideRecipebooks: [],
-  userInfo: {}
+  userInfo: {},
+
 }
 
 
@@ -59,9 +60,10 @@ export default function(state = initialState, action) {
 
     case "GET_RECIPES_WITHIN_RECIPEBOOKS":
       return {...state, addedRecipesInsideRecipebooks: action.payload}
-    
+
     case 'GET_USER_INFO':
       return {...state, userInfo: action.payload}
+
 
 
 

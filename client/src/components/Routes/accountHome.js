@@ -8,6 +8,7 @@ import RecipeBookListAccountHome from '../RecipeBookListAccountHome'
 const AccountHome = (props) => {
 
   const { user } = useContext(AuthContext)
+  const { register } = useContext(AuthContext)
 
     return (
       <div className='wrapper'>

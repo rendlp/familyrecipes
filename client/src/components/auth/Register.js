@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react"
+import {AuthContext} from '../../lib/auth'
 import Avatar from "@material-ui/core/Avatar"
 import Button from "@material-ui/core/Button"
 import FormControl from "@material-ui/core/FormControl"
@@ -7,7 +8,6 @@ import InputLabel from "@material-ui/core/InputLabel"
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
 import Paper from "@material-ui/core/Paper"
 import Typography from "@material-ui/core/Typography"
-import { AuthContext } from "../../lib/auth"
 import LoginHeader from '../LoginHeader'
 import Footer from '../footer'
 
@@ -20,13 +20,14 @@ const Register = props => {
   const [errorText, setErrorText] = useState("")
   const { register } = useContext(AuthContext)
 
+
   function sendRegister(e) {
     e.preventDefault()
     if (password === confirmPassword) {
       setPassError(false)
       register(username, password)
         .then(() => {
-          props.history.push("/")
+          props.history.push("/login")
         })
         .catch(err => {
           setUserError(true)
@@ -100,7 +101,7 @@ const Register = props => {
           </Button>
           </form>
         </Paper>
-    
+
       </div>
       <Footer />
     </div>
