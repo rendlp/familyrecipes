@@ -48,9 +48,10 @@ const Name = (props) => {
 
           return (
 
-              <div className="test">
-
+              <div>
                 <h1>Name</h1>
+
+
 
 
                 <input
