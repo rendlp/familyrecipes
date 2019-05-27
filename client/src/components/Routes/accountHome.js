@@ -21,11 +21,11 @@ const AccountHome = (props) => {
           <Link to="/user_groups"><p className="leftP">Groups</p></Link>
           <Link to="/user_fav_recipes"><p className="leftP">Favorites</p></Link>
         <div className='space2'></div>
-         
+
         <Link to={"/createrecipebook"}>
           <button className='abutton'>Create Book</button>
         </Link>
-       
+
         </div>
 
         <div className="canvas2">
@@ -35,7 +35,7 @@ const AccountHome = (props) => {
             <RecipeBookListAccountHome />
           </div>
         </div>
-        
+
         <Footer />
       </div>
     )
