@@ -40,13 +40,13 @@ const RecipeBookRecipeView = (props) => {
           <div className='recipe-display'>
 
               <div className="prep">
-                <h2 className="prep-header">Prep</h2>
+                <h2 className="recipe-header">Prep</h2>
                 <p className="prep-hours">Hours: {props.currentRecipe.prepHours}</p>
                 <p className="prep-minutes">Minutes: {props.currentRecipe.prepMinutes}</p>
                 <p className='servings'>Servings: {props.currentRecipe.servings}</p>
               </div>
               <div className="ingredients">
-                <h2 className="prep-header">Ingredients</h2>
+                <h2 className="recipe-header">Ingredients</h2>
                 <ul className="ingredients-contentUL">
                   {props.ingredients.map((ingredient, i) => (
                     <li className='ingredients-contentLI' key={'ingredient'+i}>{ingredient}</li>
@@ -55,7 +55,7 @@ const RecipeBookRecipeView = (props) => {
               </div>
               
               <div className="directions">
-                <h2 className="directions-header">Directions</h2>
+                <h2 className="recipe-header">Directions</h2>
                 <p className="recipe-directions">{props.currentRecipe.directions == null ? "Directions Not Included With Recipe" : props.currentRecipe.directions}
                 </p>
               </div>

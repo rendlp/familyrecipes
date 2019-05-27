@@ -45,14 +45,14 @@ const RecipeView = (props) => {
     <img className="recipe-pic" src={props.currentRecipe.imgURL || 'https://via.placeholder.com/400'} alt='' />
         <div className="recipe-display">
         <div className="prep">
-          <h2 className="prep-header">Prep</h2>
-          <p className="prep-hours">Hours: <p>{props.currentRecipe.prepHours}</p></p>
-          <p className="prep-minutes">Minutes: <p>{props.currentRecipe.prepMinutes}</p></p>
-          <p className='prep-servings'>Servings: <p>{props.currentRecipe.servings}</p></p>
+          <h2 className="recipe-header">Prep</h2>
+          <p className="prep-hours">Hours: {props.currentRecipe.prepHours}</p>
+          <p className="prep-minutes">Minutes: {props.currentRecipe.prepMinutes}</p>
+          <p className='prep-servings'>Servings: {props.currentRecipe.servings}</p>
 
         </div>
         <div className="ingredients">
-          <h2 className="ingredients-header">Ingredients</h2>
+          <h2 className="recipe-header">Ingredients</h2>
           <ul className="ingredients-contentUL">
             {props.ingredients.map((ingredient, i) => (
               <li className='ingredients-contentLI'key={'ingredient'+i}>{ingredient}</li>
@@ -61,7 +61,7 @@ const RecipeView = (props) => {
         </div>
     
         <div className="directions">
-         <h2 className="directions-header">Directions</h2>
+         <h2 className="recipe-header">Directions</h2>
          <p className="recipe-directions">{props.currentRecipe.directions == null ? "No Directions Included With Recipe" : props.currentRecipe.directions}</p>
         </div>
    </div>

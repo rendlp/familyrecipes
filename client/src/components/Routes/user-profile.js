@@ -24,6 +24,7 @@ const UserProfile = props => {
       <div className='profileContainer'>
         <Header />
         <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
+        
         <div className="userProfileDisplay">
           <img className="user-pic" src={userInfo.userPicURL} alt='' />
           <div className='profileInformation'>
