@@ -22,9 +22,8 @@ const GroupList = props => {
 
          <div className="left-panel">
           <h1 className='title'>Groups</h1>
-
-           <Link to="/user_recipes"><p className="leftP">Recipes</p></Link>
            <Link to="/"><p className="leftP">Books</p></Link>
+           <Link to="/user_recipes"><p className="leftP">Recipes</p></Link>
            <Link to="/user_fav_recipes"><p className="leftP">Favorites</p></Link>
            <div className='space2'></div>
            <Link to={"/creategroup"}><button className='abutton'>Create Group</button></Link>

@@ -42,7 +42,7 @@ code {
   margin-left: 199px;
 }
 
-#hello {
+.hello {
   font-size: 30px;
   width: 600px;
   height: 50px;
@@ -50,7 +50,7 @@ code {
   text-decoration: underline;
 }
 
-#edit-profile {
+.edit-profile {
   height: 50px;
   display: flex;
   justify-content: center;
@@ -58,11 +58,11 @@ code {
   margin-left: 290px;
 }
 
-#canvas {
-  height: 1000px;
+.canvas {
+  height: 100%;
 }
 
-#canvas-small {
+.canvas-small {
   height: 500px
 }
 
@@ -185,11 +185,11 @@ border: none;
     margin: 10px;
 }
 
-#upload-recipe-bttn {
+.upload-recipe-bttn {
   width: 130px;
 }
 
-#upload-recipe-bttn:hover {
+.upload-recipe-bttn:hover {
   background-color: rgb(142,50,40);
   color: white;
   transition: 0.3s;
@@ -230,20 +230,20 @@ textarea {
   margin: 0 auto;
 }
 
-#formcontainer {
-display: flex;
-flex-direction: row;
-background-color: whitesmoke;
-flex-wrap: nowrap;
-width: 100%;
-border: 1px solid lightgrey;
-height: 100%;
-margin: 0 auto;
+.formcontainer {
+  display: flex;
+  flex-direction: row;
+  background-color: whitesmoke;
+  flex-wrap: nowrap;
+  width: 100%;
+  border: 1px solid lightgrey;
+  height: 100%;
+  margin: 0 auto;
 }
 
 .submitButton{
-margin: auto;
-margin-top: 10px;
+  margin: auto;
+  margin-top: 10px;
 }
 
 .directionDiv {
@@ -253,18 +253,18 @@ margin-top: 10px;
 }
 
 .selectorDiv {
-display:flex;
-flex-direction: column;
+  display:flex;
+  flex-direction: column;
 }
 
 select {
-width: 290px;
-height: 52px;
-margin: 50px;
-font-size: 21px;
-text-align: center;
-box-shadow: 0 6px 6px -6px black;
-font-size: 18px;
+  width: 290px;
+  height: 52px;
+  margin: 50px;
+  font-size: 21px;
+  text-align: center;
+  box-shadow: 0 6px 6px -6px black;
+  font-size: 18px;
 }
 
 .formInput {
@@ -415,11 +415,22 @@ h3 {
   justify-content: space-evenly;
 }
 
+.profileContainer {
+  width: 100%;
+}
+
+.profileInformation {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
 .user-pic {
   width: 400px;
   height: 400px;
   border-radius: 50%;
   border: 2px solid whitesmoke;
+  margin: 0 auto;
 }
 
 .groupViewDiv {
@@ -802,7 +813,7 @@ h3 {
 
 .login-link {
   position: relative;
-  left: 46px;
+  /* left: 46px; */
   color: black;
   text-decoration-color: none;
 
@@ -819,7 +830,7 @@ h3 {
   background-color: rgb(142,50,40);
   border-radius: 20px;
   position: relative;
-  left: 165px;
+  /* left: 165px; */
 }
 
 .break2 {
@@ -828,7 +839,7 @@ h3 {
   background-color: rgb(142,50,40);
   border-radius: 20px;
   position: relative;
-  left: 165px;
+  /* left: 165px; */
 }
 
 .landing-intro {
@@ -889,7 +900,7 @@ h3 {
 
 .questions {
   position: relative;
-  left: 180px;
+  /* left: 180px; */
 }
 
 .canvas2 {
@@ -954,8 +965,8 @@ a:visited {
 
 .ingredients {
   margin: 0 auto;
-  position: absolute;
-  top: 525px;
+  /* position: absolute; */
+  /* top: 525px; */
 }
 
 .ingredients-contentUL .ingredients-contentLI {
@@ -1077,12 +1088,12 @@ a:visited {
 }
 
 
-#image-upload {
+.image-upload {
   height: 400px;
   width: 400px;
 }
 
-#formButton {
+.formButton {
   height: 50px;
   width: 100%;
   display: flex;
@@ -1142,7 +1153,7 @@ a:visited {
   height: 637px;
 }
 
-#text-directions {
+.text-directions {
   margin: 0 auto;
   position: absolute;
   left: 428px;

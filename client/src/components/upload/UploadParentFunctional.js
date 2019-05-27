@@ -11,6 +11,8 @@ import Header from '../header'
 import Footer from '../footer'
 import ImageUpload from './ImageUpload';
 import { withRouter } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 function UploadParentFunctional (props) {
 
@@ -41,19 +43,18 @@ function UploadParentFunctional (props) {
         addRecipe(forms)
         props.history.push('/user_recipes')
     }
-
-
+    
 
     return (
       <div>
         <Header />
-        <div id="canvas">
+        <div className="canvas">
         <div className="uploadDiv">
 
-         {/*}<Link to='/'><button className='abutton'>Back</button></Link>*/}
+        <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
 
 
-        <div id="column1">
+        <div className="column1">
           <Name manageForm={manageForm} formData={forms.RecipeName} />
           <Prep manageForm={manageForm} formData={forms.PrepTime} />
           <h1 className=''>Ingredients</h1>
@@ -62,18 +63,16 @@ function UploadParentFunctional (props) {
 
           <Directions manageForm={manageForm} formData={forms.Directions} />
 
-
             {/* <IngredientList manageForm={manageIngredients} formData={ingredientList} /> */}
 
-
-        <div id="image-upload">
+        <div className="image-upload">
             <h1>Image</h1>
             <ImageUpload addImageToForm={addImageToForm} manageForm={manageForm} formData={forms.image} />
         </div>
 
       </div>
 
-      <div id ="formButton">
+      <div className ="formButton">
         <form onSubmit={handleForm}>
           < button className='abutton'>Submit</button>
         </form>

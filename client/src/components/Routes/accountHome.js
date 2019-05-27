@@ -11,15 +11,14 @@ const AccountHome = (props) => {
   const { register } = useContext(AuthContext)
 
     return (
+
       <div className='wrapper'>
-
         <Header />
+        
         <div className="left-panel">
-
-          <h1 id='hello'>Recipe Books</h1>
-
-          <Link to="/user_recipes"><p className="leftP">Recipes</p></Link>
+          <h1 className='title'>Books</h1>
           <Link to="/user_groups"><p className="leftP">Groups</p></Link>
+          <Link to="/user_recipes"><p className="leftP">Recipes</p></Link>
           <Link to="/user_fav_recipes"><p className="leftP">Favorites</p></Link>
         <div className='space2'></div>
 

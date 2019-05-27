@@ -27,7 +27,7 @@ const LogoutButton = props => {
     return (
 
         <div className="logoutDiv">
-        <Link to="/upload"><button id="upload-recipe-bttn"><FontAwesomeIcon className='fa' icon="upload" /> Upload Recipe</button></Link>
+        <Link to="/upload"><button className="upload-recipe-bttn"><FontAwesomeIcon className='fa' icon="upload" /> Upload Recipe</button></Link>
         <div className='space'></div>
         {/* <Link to="/user_profile"><button className='userSpan'>{user}</button></Link> */}
 
