@@ -34,10 +34,11 @@ console.log(props.addedRecipesInsideRecipebooks)
       <div className='userRecipeDiv'>
         <div className='recipeDiv'>
 
-      {props.addedRecipesInsideRecipebooks.map(recipe => (
+      {props.addedRecipesInsideRecipebooks.map((recipe,i) => (
 
-        <Link className='recipeLink' to={`/user_fav_recipes/recipebook/${recipebookID}/${recipe.recipe_id}`}>
+        <Link key={'recipe - '+i} className='recipeLink' to={`/user_fav_recipes/recipebook/${recipebookID}/${recipe.recipe_id}`}>
         <div className='recipeListP'>{recipe.recipe_name == null ? "Unnamed Recipe" : recipe.recipe_name}
+        <img src={recipe.imgURL} alt=''></img>
         </div>
         </Link>
 
