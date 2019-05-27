@@ -13,10 +13,13 @@ const GroupList = props => {
        getGroups(user)
     },[user])
 
+
+
         const groups = useSelector(appstate => appstate.groups)
 
     return (
         <div className='wrapper'>
+
          <div className="left-panel">
           <h1 className='title'>Groups</h1>
            <Link to="/"><p className="leftP">Books</p></Link>
@@ -44,6 +47,7 @@ const GroupList = props => {
                 </div>
             </Link>                      
         ))}
+
         </div>
       </div>
      </div>

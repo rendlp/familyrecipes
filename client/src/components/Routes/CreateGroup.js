@@ -9,9 +9,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const CreateGroup = props => {
 
+  const [groupName, setGroupName] = useState('')
+  const [inputError, setInputError] = useState('')
+
     const { user } = useContext(AuthContext)
 
-    const [groupName, setGroupName] = useState('')
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -19,7 +21,20 @@ const CreateGroup = props => {
         createGroup(groupName, user).then(() => {
             props.history.goBack()
         })
+    }
 
+    function validator(input) {
+      input.preventDefault()
+      let valid = true
+
+      if (groupName == '') {
+        valid = false
+        setInputError('Group Name Cannot Be Blank')
+      }
+
+      if (valid == true) {
+        handleSubmit()
+      }
     }
 
     return (
@@ -35,8 +50,10 @@ const CreateGroup = props => {
             </div>
          
                 <div className = "createGroup">
-                <form className="createGroupForm" onSubmit={handleSubmit}>
-              
+
+                <form className="create-" onSubmit={validator}>
+                <label>{inputError}</label>
+
                     <input
                         className='createGroupInput'
                         autoComplete="off"
@@ -45,10 +62,12 @@ const CreateGroup = props => {
                         name="groupName"
                         placeholder="Enter a group name..."
                         onChange={e => setGroupName(e.target.value)}
-                    /> 
-                    <button 
+
+                    />
+                    <button
+
                     type="submit"
-                    className='abutton'> 
+                    className='abutton'>
                         Create group
                     </button>
 

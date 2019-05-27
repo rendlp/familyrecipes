@@ -19,26 +19,21 @@ const LogoutButton = props => {
 
     const options = [
 
-        { key: 1, text: <Link to="/user_profile">{user}</Link>, value: 1 },
-        { key: 2, text: 'test option', value: 2 },
+        { key: 1, text: <Link to="/user_profile">My Profile</Link>, value: 1 },
         { key: 3, text: <Logout />, value: 3 },
-        
+
       ]
 
     return (
 
         <div className="logoutDiv">
-        <div className='space'></div> 
+        <Link to="/upload"><button className="upload-recipe-bttn"><FontAwesomeIcon className='fa' icon="upload" /> Upload Recipe</button></Link>
+        <div className='space'></div>
+        {/* <Link to="/user_profile"><button className='userSpan'>{user}</button></Link> */}
 
-         <Link to="/upload">
-            <button className="abutton">
-              <FontAwesomeIcon className='fa' icon="upload" /> Upload
-            </button>
-         </Link>
+         <Dropdown className='dropdownBtn' text={user} selection options={options}  />
 
-         <div className='space'></div>
-         
-         <Dropdown className='dropdownBtn' text='My Profile'selection options={options}  />
+
         </div>
     )
 }

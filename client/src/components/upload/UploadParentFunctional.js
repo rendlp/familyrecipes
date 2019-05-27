@@ -7,10 +7,12 @@ import Ingredient from './Ingredient'
 import { Link } from 'react-router-dom'
 import {addRecipe} from '../../actions/actions'
 // import IngredientList from './IngredientList'
-// import Header from '../header'
-// import Footer from '../footer'
+import Header from '../header'
+import Footer from '../footer'
 import ImageUpload from './ImageUpload';
 import { withRouter } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 function UploadParentFunctional (props) {
 
@@ -41,45 +43,43 @@ function UploadParentFunctional (props) {
         addRecipe(forms)
         props.history.push('/user_recipes')
     }
-
-
+    
 
     return (
+      <div>
+        <Header />
+        <div className="canvas">
+        <div className="uploadDiv">
 
-     <div className="uploadDiv">
-     
-         <Link to='/'><button className='abutton'>Back</button></Link>
+        <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
 
 
-        <div id="name/prep">
-
-            <Name manageForm={manageForm} formData={forms.RecipeName} />
-            <Prep manageForm={manageForm} formData={forms.PrepTime} />
+        <div className="column1">
+          <Name manageForm={manageForm} formData={forms.RecipeName} />
+          <Prep manageForm={manageForm} formData={forms.PrepTime} />
+          <h1 className=''>Ingredients</h1>
+          <Ingredient manageForm={manageForm} formData={forms.ingredient} />
         </div>
 
+          <Directions manageForm={manageForm} formData={forms.Directions} />
 
-        <div className="ingredients">
-
-            <h1 className=''>Ingredients</h1>
-            <Ingredient manageForm={manageForm} formData={forms.ingredient} />
             {/* <IngredientList manageForm={manageIngredients} formData={ingredientList} /> */}
-        </div>
 
-        <div id="text-directions">
-
-            <Directions manageForm={manageForm} formData={forms.Directions} />
-        </div>
-        <div id="image-upload">
+        <div className="image-upload">
             <h1>Image</h1>
             <ImageUpload addImageToForm={addImageToForm} manageForm={manageForm} formData={forms.image} />
-            <form onSubmit={handleForm}>
-
-         <button className='abutton'>Submit</button>
-        </form>
-
         </div>
 
+      </div>
 
+      <div className ="formButton">
+        <form onSubmit={handleForm}>
+          < button className='abutton'>Submit</button>
+        </form>
+      </div>
+      </div>
+
+      <Footer />
      </div>
     )
 };

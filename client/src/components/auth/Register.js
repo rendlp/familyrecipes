@@ -8,7 +8,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
 import Paper from "@material-ui/core/Paper"
 import Typography from "@material-ui/core/Typography"
 import { AuthContext } from "../../lib/auth"
-import Header from '../header'
+import LoginHeader from '../LoginHeader'
 import Footer from '../footer'
 
 const Register = props => {
@@ -39,10 +39,13 @@ const Register = props => {
   }
 
   return (
-    <div>
-      {/* <Header /> */}
+    <div className="loginPageContainer">
+       <LoginHeader />
 
-      <div className="login">
+    <div className="register">
+        <div className='invisible'>
+        </div>
+
         <Paper className="pad">
           <div className="loginIcon">
             <Avatar>
@@ -97,6 +100,7 @@ const Register = props => {
           </Button>
           </form>
         </Paper>
+    
       </div>
       <Footer />
     </div>
