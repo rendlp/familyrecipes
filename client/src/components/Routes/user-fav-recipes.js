@@ -47,6 +47,7 @@ const UserFavRecipes = (props) => {
                   
                 <h2>{recipe.name == null ? "Unnamed Recipe" : recipe.name}</h2>
                 </div>
+                <img src={recipe.imgURL} alt=''></img>
               </Link>
 
             ))}

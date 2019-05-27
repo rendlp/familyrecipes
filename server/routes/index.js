@@ -183,7 +183,7 @@ router.put('/users/edit', (req, res, next) => {
 router.get('/user_favorites', (req, res, next) => {
   const sql = `
     SELECT
-      name, recipe_id
+      *
     FROM
       user_favorites
     WHERE
@@ -282,18 +282,28 @@ router.post('/user_recipebooks', (req, res, next) => {
 
 // get call to grab a list of recipes that were saved inside a recipebook created by the user(user_recipebooks_links table)
 router.get('/user_recipebooks_links', (req, res, next) => {
+  
   const sql = `
   SELECT *
   FROM user_recipebooks_links
   WHERE recipebook_id = ?`
 
+  // const sql2 = `
+  // SELECT *
+  // FROM
+  //   recipes
+  // WHERE
+  //   recipe_id = ?
+  // `
+
   conn.query(sql, [req.query.recipebook_id], (err, results, fields) => {
-    console.log(err)
+    console.log(results)
     res.json({
-      addedRecipesInsideRecipebooks: results,
+      addedRecipesInsideRecipebooks: results
     })
   })
 })
+
 
 // RECIPE POST
 
@@ -411,15 +421,10 @@ router.get('/recipes', (req, res, next) => {
   `
   conn.query(sql, [req.query.username],(error, results, fields) => {
     res.json(results)
-    console.log(results)
   })
 })
 
 function authorized(req, res, next) {
-
-  console.log(req.query.user, req.query.recipe_id)
-
-
 
   const sql =`
       SELECT
@@ -452,7 +457,6 @@ router.get('/recipes/current/userOwned', authorized, (req, res, next) => {
     `
     conn.query(sql, [req.query.recipe_id],(error, results, fields) => {
       res.json(results)
-      console.log(results)
     })
   })
 
@@ -464,7 +468,6 @@ router.get('/recipes/current/userOwned', authorized, (req, res, next) => {
     `
     conn.query(sql, [req.query.recipe_id],(error, results, fields) => {
       res.json(results)
-      console.log(results)
     })
   })
 
