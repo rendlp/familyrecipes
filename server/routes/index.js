@@ -405,7 +405,7 @@ router.post('/group_recipe_links', (req, res, next) => {
     FROM
       user_recipebooks_links
     WHERE
-      recipe_id = ? AND recipebook_id = ? AND recipe_name = ?
+      recipe_id = ? AND recipebook_id = ? AND name = ?
     `
     conn.query(checksql, [req.body.recipe_id, req.body.recipebook_id, req.body.recipe_name], (err, results, fields) => {
       console.log(err)
@@ -419,7 +419,7 @@ router.post('/group_recipe_links', (req, res, next) => {
       } else {
         const sql =`
         INSERT INTO
-          user_recipebooks_links (recipe_id, recipebook_id, recipe_name)
+          user_recipebooks_links (recipe_id, recipebook_id, name)
         VALUES
           (?, ?, ?)
         `

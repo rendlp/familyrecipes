@@ -47,12 +47,11 @@ function UploadParentFunctional (props) {
 
     return (
       <div>
-        <Header />
-        <div className="canvas">
-        <div className="uploadDiv">
+      <Header />
+       <div className="canvas">
+       <div className="uploadDiv">
 
         <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
-
 
         <div className="column1">
           <Name manageForm={manageForm} formData={forms.RecipeName} />
@@ -63,25 +62,23 @@ function UploadParentFunctional (props) {
 
           <Directions manageForm={manageForm} formData={forms.Directions} />
 
-            {/* <IngredientList manageForm={manageIngredients} formData={ingredientList} /> */}
-
         <div className="image-upload">
-            <h1>Image</h1>
-            <ImageUpload addImageToForm={addImageToForm} manageForm={manageForm} formData={forms.image} />
+          <h1>Image</h1>
+          <ImageUpload addImageToForm={addImageToForm} manageForm={manageForm} formData={forms.image} />
         </div>
-
+     
+       <form onSubmit={handleForm}>
+        < button className='abutton'>Submit</button>
+       </form>
+      
       </div>
 
-      <div className ="formButton">
-        <form onSubmit={handleForm}>
-          < button className='abutton'>Submit</button>
-        </form>
-      </div>
-      </div>
+      
+    </div>
 
-      <Footer />
-     </div>
-    )
+    <Footer />
+</div>
+  )
 };
 
 export default withRouter(UploadParentFunctional);
