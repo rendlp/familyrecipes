@@ -74,7 +74,9 @@ const FavRecipeView = (props) => {
               </div>
               </div>
         </div>
-       <div className='sharDiv'>
+
+        
+       <div className='shareBtnDiv'>
         <div className="shareRecipeWithGroup">
 
           <form onSubmit={handleSubmit}>
