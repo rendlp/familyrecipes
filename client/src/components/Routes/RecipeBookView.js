@@ -40,7 +40,7 @@ console.log(props.addedRecipesInsideRecipebooks)
       {props.addedRecipesInsideRecipebooks.map((recipe,i) => (
 
         <Link key={'recipe - '+i} className='recipeLink' to={`/user_fav_recipes/recipebook/${recipebookID}/${recipe.recipe_id}`}>
-        <div className='recipeListP'>{recipe.recipe_name == null ? "Unnamed Recipe" : recipe.recipe_name}
+        <div className='recipeListP'>{recipe.name == null ? "Unnamed Recipe" : recipe.name}
         <img className='recipeImgThumbnail' src={recipe.imgURL || 'https://via.placeholder.com/200'} alt='' />
         </div>
       </Link>

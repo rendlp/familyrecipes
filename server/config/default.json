@@ -1,7 +1,7 @@
 {
     "db": {
       "hostname": "localhost",
-      "username": "famrecipes",
+      "username": "familyrecipes",
       "password": "w83jfw8lawk3weklj",
       "database": "familyvault"
     },
