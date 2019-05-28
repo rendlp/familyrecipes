@@ -219,7 +219,7 @@ const RecipeViewEdit = props => {
                 <input className='uploadInput' type='file' onChange={handleChange}   />
                 <input type="hidden" name="image" value={image} />
                 <img name="image" src={typeof image === 'string' ? image : 'https://via.placeholder.com/150'} className='imgUpload' alt='' value={url}  />
-                <button onClick={handleUpload}>Upload</button>
+                <button className='abutton' onClick={handleUpload}>Upload</button>
             </div>
             </div>
             

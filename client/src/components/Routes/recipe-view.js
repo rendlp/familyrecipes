@@ -34,6 +34,7 @@ const RecipeView = (props) => {
   };
 
   return (
+    
     <div>
     <Header />
 
@@ -44,8 +45,8 @@ const RecipeView = (props) => {
     </div>
 
     <div className='recipeContainer'>
-      <div>
-    <img className="recipe-pic" src={props.currentRecipe.imgURL || {nettles}} alt='' />
+    <div>
+    <img className="recipe-pic" src={props.currentRecipe.imgURL || nettles } alt='' />
     </div>
     
         <div className="recipe-display">
@@ -94,7 +95,7 @@ const RecipeView = (props) => {
             </option>
             ))}
           </select>
-          <button className={groupChosen === '' ? 'hidden' : 'abutton'} type="submit">
+          <button className={groupChosen === '' ? 'hidden' : 'abutton3'} type="submit">
               Share
           </button>
          </form>
