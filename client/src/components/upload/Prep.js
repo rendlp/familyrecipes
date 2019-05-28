@@ -13,7 +13,7 @@ const Prep = (props) => {
 
         return (
             <form id="prep-form">
-            <div className="prep">
+            <div className="prep2">
             <label htmlFor='name' className="prep-label" />
              <div className="selectorDiv">
 

@@ -425,11 +425,8 @@ router.post('/group_recipe_links', (req, res, next) => {
       } else {
         const sql =`
         INSERT INTO
-<<<<<<< HEAD
-          user_recipebooks_links (recipe_id, recipebook_id, name)
-=======
           user_recipebooks_links (recipe_id, recipebook_id, name, imgURL)
->>>>>>> bb7c8a905aa6332cafe72ba77b2d0b7cec9e34bf
+
         VALUES
           (?, ?, ?, ?)
         `
