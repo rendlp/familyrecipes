@@ -15,17 +15,18 @@ const UserProfile = props => {
 
     useEffect(() => {
       getUserInfo(user)
+      console.log(userInfo)
     },[])
 
   const userInfo = useSelector(appstate => appstate.userInfo)
-  
+
   console.log(userInfo)
-  
+
     return (
       <div className='profileContainer'>
         <Header />
         <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
-        
+
         <div className="userProfileDisplay">
         <div className='profileHeader'>
          <img className="user-pic" src={userInfo.userPicURL} alt='' />
@@ -43,7 +44,7 @@ const UserProfile = props => {
 
         </div>
 
-        <div className='invisible' /> 
+        <div className='invisible' />
         <Footer />
       </div>
     )

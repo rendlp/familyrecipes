@@ -16,7 +16,6 @@ const CreateGroup = props => {
 
 
     function handleSubmit(e) {
-      
         createGroup(groupName, user).then(() => {
             props.history.goBack()
         })
@@ -40,14 +39,14 @@ const CreateGroup = props => {
       <div>
         <Header />
         <div className='divHeader'>
-        <Link 
+        <Link
             to='/user_groups'>
              <FontAwesomeIcon className='faBack' icon="arrow-left" />
             </Link>
             <div className='space'></div>
             <h1 className='recipe-name'>Create Group</h1>
             </div>
-         
+
                 <div className = "createRecipeContainer">
 
                 <form className="create-" onSubmit={validator}>

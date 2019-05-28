@@ -18,6 +18,8 @@ const FavRecipeView = (props) => {
 
   const recipeName = props.currentRecipe.name
 
+  const url = props.currentRecipe.imgURL
+
   useEffect(() => {
       getCurrentRecipe(recipeId)
       getRecipeBooks(user)
@@ -29,11 +31,11 @@ const FavRecipeView = (props) => {
 
   const [recipeBookChosen, setRecipeBookChosen] = useState('')
 
-  // console.log( 'recipeId - ',recipeId, 'recipeBookChosen - ', recipeBookChosen, 'recipeName - ', recipeName)
+  console.log( 'recipeId - ',recipeId, 'recipeBookChosen - ', recipeBookChosen, 'recipeName - ', recipeName, 'url -', url)
 
   function handleSubmit(e) {
     e.preventDefault();
-    addRecipeToRecipeBook(recipeId, recipeBookChosen, recipeName)
+    addRecipeToRecipeBook(recipeId, recipeBookChosen, recipeName, url)
   };
 
   return (
@@ -50,7 +52,7 @@ const FavRecipeView = (props) => {
           <div>
           <img className="recipe-pic" src={props.currentRecipe.imgURL || {nettles}} alt='' />
           </div>
-          <div className="recipe-display">   
+          <div className="recipe-display">
               <div className="prep">
                 <h2 className="recipe-header">Prep</h2>
                 <p className="prep-hours">Hours: <p>{props.currentRecipe.prepHours}</p></p>
@@ -72,8 +74,9 @@ const FavRecipeView = (props) => {
               </div>
               </div>
         </div>
-       <div className='shareDiv'>
+       <div className='sharDiv'>
         <div className="shareRecipeWithGroup">
+
           <form onSubmit={handleSubmit}>
             <label className='shareLabel'>Add Recipe to Book: </label>
             <select onChange={e => setRecipeBookChosen(e.target.value)}
@@ -87,7 +90,7 @@ const FavRecipeView = (props) => {
                 </option>
               ))}
             </select>
-       
+
             <button
               className={recipeBookChosen === '' ? 'hidden' : 'abutton'}
               type="submit">
