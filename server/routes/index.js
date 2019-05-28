@@ -179,6 +179,86 @@ router.put('/users/edit', (req, res, next) => {
 
 //RECIPES
 
+// router that recieves calls to all recipes in the database
+router.get('/recipes', (req, res, next) => {
+  const sql = `
+  SELECT *
+  FROM recipes
+  WHERE username = ?
+  `
+  conn.query(sql, [req.query.username],(error, results, fields) => {
+    res.json(results)
+  })
+})
+
+
+// checks if user is the owner of the recipe he's trying to display, then displays or reroutes
+
+function authorized(req, res, next) {
+
+  const sql =`
+      SELECT
+          count(1) as count 
+      FROM 
+          user_recipe_auth
+      WHERE
+          username = ? AND recipe_id= ?
+  `
+
+  conn.query(sql, [req.query.user, req.query.recipe_id], (err, results, fields) => {
+    
+  const count = results[0].count
+
+      if(count >= 1) {
+          next()
+      } else {
+          res.status(401).json({
+              message: 'Not Authorized'
+          })
+      }
+  })
+}
+
+router.get('/recipes/current/userOwned', authorized, (req, res, next) => {
+    const sql = `
+    SELECT *
+    FROM recipes
+    WHERE recipe_id = ?
+    `
+    conn.query(sql, [req.query.recipe_id],(error, results, fields) => {
+      res.json(results)
+    })
+  })
+
+  router.get('/recipes/current', (req, res, next) => {
+    const sql = `
+    SELECT *
+    FROM recipes
+    WHERE recipe_id = ?
+    `
+    conn.query(sql, [req.query.recipe_id],(error, results, fields) => {
+      res.json(results)
+    })
+  })
+
+//get recipes shared with the diplayed group
+router.get('/groupRecipes', (req, res, next) => {
+    const sql = `
+    SELECT
+      *
+    FROM
+      group_recipe_links grl
+    WHERE
+      grl.group_id = ?
+    `
+
+    conn.query(sql, [req.query.group_id],(err, results, fields) => {
+      res.json({results})
+    })
+  })
+
+//RECIPE FAVORITES
+
 //get call to grab a user's favorited recipe List
 router.get('/user_favorites', (req, res, next) => {
   const sql = `
@@ -197,7 +277,7 @@ router.get('/user_favorites', (req, res, next) => {
     })
 })
 
-//post call to hold a recipe that a user has just favorited
+//checks if a recipe is already favorite and then adds it to user favorites
 router.post('/user_favorites', (req, res, next) => {
 
   const checksql = `
@@ -232,126 +312,8 @@ router.post('/user_favorites', (req, res, next) => {
    })
 })
 
-//RECIPE EDIT
 
-//recipes table edit
-
-
-
-router.put('/recipes/edit', (req, res, next) => {
-  const sql =`
-  UPDATE
-    recipes
-
-  SET
-    name = ?, prepHours = ?, prepMinutes = ?, servings = ?, directions = ?,ingredients = ?, imgURL = ?
-
-  WHERE
-    recipe_id = ?
-  `
-
-  conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url,req.body.recipe_id], (err, results, fields) => {
-
-    // console.log('recipe edit backend', req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url, req.body.recipe_id)
-
-      res.json({
-      message: "recipe updated"
-      })
-  })
-})
-
-router.put('/group_recipe_links/edit', (req, res, next) => {
-  const sql =`
-  UPDATE
-    group_recipe_links
-
-  SET
-    name = ?, imgURL = ?
-
-  WHERE
-    recipe_id = ?
-  `
-
-  conn.query(sql, [req.body.name, req.body.url, req.body.recipe_id], (err, results, fields) => {
-
-      res.json({
-      message: "recipe updated"
-      })
-  })
-})
-
-router.put('/user_favorites/edit', (req, res, next) => {
-  const sql =`
-  UPDATE
-    user_favorites
-
-  SET
-    name = ?, imgURL = ?
-
-  WHERE
-    recipe_id = ?
-  `
-
-  conn.query(sql, [req.body.name, req.body.url, req.body.recipe_id], (err, results, fields) => {
-
-      res.json({
-      message: "recipe updated"
-      })
-  })
-})
-
-router.put('/user_recipebooks_links/edit', (req, res, next) => {
-  const sql =`
-  UPDATE
-    user_recipebooks_links
-
-  SET
-    name = ?, imgURL = ?
-
-  WHERE
-    recipe_id = ?
-  `
-
-  conn.query(sql, [req.body.name, req.body.url, req.body.recipe_id], (err, results, fields) => {
-
-      res.json({
-      message: "recipe updated"
-      })
-  })
-})
-
-//recipes table edit
-
-
-
-// router.put('/recipes/edit', (req, res, next) => {
-//   const sql =`
-//   UPDATE
-//     recipes r, user_favorites uf, user_recipebooks_links url, group_recipe_links grl
-
-//   SET
-//     r.name = ?, r.prepHours = ?, r.prepMinutes = ?, r.servings = ?, r.directions = ?,r.ingredients = ?, r.imgURL = ?,
-
-//     url.name = ?, url.imgURL = ?,
-//     uf.name = ?, uf.imgURL = ?,
-//     grl.name = ?, grl.imgURL = ?
-
-//   WHERE
-//     r.recipe_id = ? AND
-//     uf.recipe_id = ? AND
-//     url.recipe_id= ? AND
-//     grl.recipe_id = ?
-//   `
-
-//   conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url,req.body.name, req.body.url, req.body.name, req.body.url, req.body.name, req.body.url, req.body.recipe_id, req.body.recipe_id, req.body.recipe_id, req.body.recipe_id], (err, results, fields) => {
-
-//     // console.log('recipe edit backend', req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url, req.body.recipe_id)
-
-//       res.json({
-//       message: "recipe updated"
-//       })
-//   })
-// })
+// RECIPE BOOKS
 
 // get call to grab a user's list of created recipebooks from the application's database(user_recipebooks table)
 router.get('/user_recipebooks', (req, res, next) => {
@@ -380,6 +342,7 @@ router.post('/user_recipebooks', (req, res, next) => {
   })
 })
 
+//get current recipe book
 router.get('/user_recipebooks/current', (req, res, next) => {
   const sql = `
   SELECT *
@@ -402,14 +365,6 @@ router.get('/user_recipebooks_links', (req, res, next) => {
   SELECT *
   FROM user_recipebooks_links
   WHERE recipebook_id = ?`
-
-  // const sql2 = `
-  // SELECT *
-  // FROM
-  //   recipes
-  // WHERE
-  //   recipe_id = ?
-  // `
 
   conn.query(sql, [req.query.recipebook_id], (err, results, fields) => {
     console.log(results)
@@ -486,9 +441,9 @@ router.post('/group_recipe_links', (req, res, next) => {
     }
   })
 })
+
+
   // allow a post call to add a link between a user and a recipebook created by said user
-
-
   router.post('/user_recipebooks_links', (req, res, next) => {
 
     const checksql =`
@@ -528,80 +483,90 @@ router.post('/group_recipe_links', (req, res, next) => {
 })
 
 
-// router that recieves calls to all recipes in the database
-router.get('/recipes', (req, res, next) => {
-  const sql = `
-  SELECT *
-  FROM recipes
-  WHERE username = ?
+//RECIPE EDIT
+
+router.put('/recipes/edit', (req, res, next) => {
+  const sql =`
+  UPDATE
+    recipes
+
+  SET
+    name = ?, prepHours = ?, prepMinutes = ?, servings = ?, directions = ?,ingredients = ?, imgURL = ?
+
+  WHERE
+    recipe_id = ?
   `
-  conn.query(sql, [req.query.username],(error, results, fields) => {
-    res.json(results)
+
+  conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url,req.body.recipe_id], (err, results, fields) => {
+
+      res.json({
+      message: "recipe updated"
+      })
   })
 })
 
-function authorized(req, res, next) {
-
+router.put('/group_recipe_links/edit', (req, res, next) => {
   const sql =`
-      SELECT
-          count(1) as count
-      FROM
-          user_recipe_auth
-      WHERE
-          username = ? AND recipe_id= ?
+  UPDATE
+    group_recipe_links
+
+  SET
+    name = ?, imgURL = ?
+
+  WHERE
+    recipe_id = ?
   `
 
-  conn.query(sql, [req.query.user, req.query.recipe_id], (err, results, fields) => {
+  conn.query(sql, [req.body.name, req.body.url, req.body.recipe_id], (err, results, fields) => {
 
-  const count = results[0].count
-
-      if(count >= 1) {
-          next()
-      } else {
-          res.status(401).json({
-              message: 'Not Authorized'
-          })
-      }
+      res.json({
+      message: "recipe updated"
+      })
   })
-}
+})
 
-router.get('/recipes/current/userOwned', authorized, (req, res, next) => {
-    const sql = `
-    SELECT *
-    FROM recipes
-    WHERE recipe_id = ?
-    `
-    conn.query(sql, [req.query.recipe_id],(error, results, fields) => {
-      res.json(results)
-    })
+router.put('/user_favorites/edit', (req, res, next) => {
+  const sql =`
+  UPDATE
+    user_favorites
+
+  SET
+    name = ?, imgURL = ?
+
+  WHERE
+    recipe_id = ?
+  `
+
+  conn.query(sql, [req.body.name, req.body.url, req.body.recipe_id], (err, results, fields) => {
+
+      res.json({
+      message: "recipe updated"
+      })
   })
+})
 
-  router.get('/recipes/current', (req, res, next) => {
-    const sql = `
-    SELECT *
-    FROM recipes
-    WHERE recipe_id = ?
-    `
-    conn.query(sql, [req.query.recipe_id],(error, results, fields) => {
-      res.json(results)
-    })
+router.put('/user_recipebooks_links/edit', (req, res, next) => {
+  const sql =`
+  UPDATE
+    user_recipebooks_links
+
+  SET
+    name = ?, imgURL = ?
+
+  WHERE
+    recipe_id = ?
+  `
+
+  conn.query(sql, [req.body.name, req.body.url, req.body.recipe_id], (err, results, fields) => {
+
+      res.json({
+      message: "recipe updated"
+      })
   })
+})
 
-router.get('/groupRecipes', (req, res, next) => {
-    const sql = `
-    SELECT
-      *
-    FROM
-      group_recipe_links grl
-    WHERE
-      grl.group_id = ?
-    `
 
-    conn.query(sql, [req.query.group_id],(err, results, fields) => {
-      res.json({results})
-    })
-  })
-
+//AUTH//
 
 // LOGIN POST
 

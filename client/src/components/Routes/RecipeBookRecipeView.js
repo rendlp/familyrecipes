@@ -19,8 +19,6 @@ const RecipeBookRecipeView = (props) => {
 
   useEffect(() => {
       getCurrentRecipe(recipeId)
-      getGroups(user)
-
   },[])
   
   const groups = useSelector(appstate => appstate.groups)
@@ -64,25 +62,6 @@ const RecipeBookRecipeView = (props) => {
                 </p>
               </div>
         </div>
-        </div>
-       <div className='shareBtnDiv'>
-        <label className='shareLabel'>
-          Share recipe with a group:
-        </label>
-        <select onChange={e => setGroupChosen(e.target.value)}
-          name="shareWithGroup"
-          id="shareWithGroup"
-          className="shareDropdown">
-
-          <option value=''>Select a group</option>
-
-          {groups.map((group, i) => (
-           <option value={group.group_id} key={"group - "+i}>{group.groupname}</option>
-              
-          ))}
-          
-        </select>
-        <div className='invisible'></div>
         </div>
       <Footer />
     </div>
