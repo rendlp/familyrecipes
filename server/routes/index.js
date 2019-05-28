@@ -75,13 +75,13 @@ router.post('/groups', (req, res, next) => {
 //add a user to group
 
 router.post('/group_user_links/addUser', (req, res, next) => {
-  
+
   const checksql = `
-    SELECT 
-      count(1) as count 
+    SELECT
+      count(1) as count
     FROM
       group_user_links
-    WHERE 
+    WHERE
       group_id =? AND username = ?
     `
 
@@ -158,7 +158,7 @@ router.get('/usersSearch', (req, res, next) => {
 })
 
 //edit user profile data
-  
+
 router.put('/users/edit', (req, res, next) => {
   const sql =`
   UPDATE
@@ -279,13 +279,13 @@ router.get('/user_favorites', (req, res, next) => {
 
 //checks if a recipe is already favorite and then adds it to user favorites
 router.post('/user_favorites', (req, res, next) => {
-  
+
   const checksql = `
-    SELECT 
-      count(1) as count 
+    SELECT
+      count(1) as count
     FROM
       user_favorites
-    WHERE 
+    WHERE
       name = ? AND recipe_id = ? AND username = ?
     `
 
@@ -360,7 +360,7 @@ router.get('/user_recipebooks/current', (req, res, next) => {
 
 // get call to grab a list of recipes that were saved inside a recipebook created by the user(user_recipebooks_links table)
 router.get('/user_recipebooks_links', (req, res, next) => {
-  
+
   const sql = `
   SELECT *
   FROM user_recipebooks_links
@@ -407,11 +407,11 @@ router.post('/recipes', (req, res, next) => {
 router.post('/group_recipe_links', (req, res, next) => {
 
   const checksql = `
-    SELECT 
-      count(1) as count 
+    SELECT
+      count(1) as count
     FROM
       group_recipe_links
-    WHERE 
+    WHERE
       group_id =? AND recipe_id = ? AND name = ?
     `
 
@@ -445,9 +445,9 @@ router.post('/group_recipe_links', (req, res, next) => {
 
   // allow a post call to add a link between a user and a recipebook created by said user
   router.post('/user_recipebooks_links', (req, res, next) => {
-    
+
     const checksql =`
-    SELECT 
+    SELECT
       count(1) as count
     FROM
       user_recipebooks_links
@@ -467,6 +467,7 @@ router.post('/group_recipe_links', (req, res, next) => {
         const sql =`
         INSERT INTO
           user_recipebooks_links (recipe_id, recipebook_id, name, imgURL)
+
         VALUES
           (?, ?, ?, ?)
         `
@@ -477,7 +478,7 @@ router.post('/group_recipe_links', (req, res, next) => {
             message: 'recipe added to recipebook'
           })
         })
-      } 
+      }
     })
 })
 
@@ -506,6 +507,7 @@ router.put('/recipes/edit', (req, res, next) => {
 
 router.put('/group_recipe_links/edit', (req, res, next) => {
   const sql =`
+
   UPDATE
     group_recipe_links
 
@@ -517,6 +519,7 @@ router.put('/group_recipe_links/edit', (req, res, next) => {
   `
 
   conn.query(sql, [req.body.name, req.body.url, req.body.recipe_id], (err, results, fields) => {
+
 
       res.json({
       message: "recipe updated"

@@ -77,14 +77,10 @@ const GroupRecipeView = (props) => {
         </div>
         </div>
 
-        <div className="shareDiv">
-       
-
 {/* BUTTONS */}
+        <div className="shareBtnDiv"> 
             <div className='recipeButtonDiv'>
-    
             <div className='space'></div>
-       
             <div className='space'></div>
             <button className='abutton' onClick={handleClick}>Add to Favorite List</button>
             </div>
