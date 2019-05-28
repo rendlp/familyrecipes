@@ -37,14 +37,21 @@ console.log(user)
         </div>
 
         <div className="userProfileDisplay">
+        <div>
           <img className="user-pic" src={userInfo.userPicURL} alt='' />    
-          <p>First Name:</p>
-          <p>{userInfo.firstname}</p>
-          <p>Last Name:</p>
-          <p>{userInfo.lastname}</p>
         </div>
 
-          <Logout />
+        <div className='profileInformation'>
+          <h3>Username:</h3>
+          <p>{user}</p>
+          <h3>First Name:</h3>
+          <p>{userInfo.firstname}</p>
+          <h3>Last Name:</h3>
+          <p>{userInfo.lastname}</p>
+        </div>
+        </div>
+
+        <div className='invisible'></div>
         <Footer />
       </div>
     )

@@ -71,32 +71,28 @@ const Group = props => {
           {/* <h1 className='currentGroup'>{currentGroup} recipes:</h1> */}
             <ul className='groupUL'>
             {groupRecipes.map((recipe, i) => (
-                    <li className='groupUserLI' key={`recipe - `+i}>
-                        <Link to={`/${currentGroup}/Recipes/` + recipe.recipe_id}>
+                <li className='groupUserLI' key={`recipe - `+i}>
+                    <Link to={`/${currentGroup}/Recipes/` + recipe.recipe_id}>
 
-                            <div className='recipeListP'>
-                              <h2 className='recipe-name-h2'>
-                                 {recipe.name == null ? "Unnamed Recipe" : recipe.name}
-                                </h2>
+                        <div className='recipeListP'>
+                            <h2 className='recipe-name-h2'>
+                                {recipe.name == null ? "Unnamed Recipe" : recipe.name}
+                            </h2>
+                            
+                            <img className='recipeImgThumbnail' src={recipe.imgURL || {nettles}}  alt='' />
+                        </div>
 
-                                <img className='recipeImgThumbnail' src={recipe.imgURL || {nettles}}  alt='' />
-
-                            </div>
-
-                        </Link>   
-                    </li>
-                ))}
-            </ul>
-            </div>
-            </div>
-            
-            </div>
-
-
-        </div>
+                    </Link>   
+                </li>
+            ))}
+        </ul>
+    </div>
+    </div>
+    </div>
+    </div>
         <div className='invisible'></div>
-        <Footer />
-        </div>
+    <Footer />
+</div>
 
 
     )
