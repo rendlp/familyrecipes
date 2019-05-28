@@ -16,7 +16,7 @@ router.get('/groups', (req, res, next) => {
 	  g.groupname, g.group_id
   FROM
 	  groups g, users u, group_user_links gul
-    WHERE
+  WHERE
 	  gul.group_id = g.group_id AND gul.username = u.username AND u.username = ?
   `
 
@@ -233,6 +233,92 @@ router.post('/user_favorites', (req, res, next) => {
 })
 
 //RECIPE EDIT
+
+//recipes table edit
+
+
+
+router.put('/recipes/edit', (req, res, next) => {
+  const sql =`
+  UPDATE
+    recipes
+
+  SET
+    name = ?, prepHours = ?, prepMinutes = ?, servings = ?, directions = ?,ingredients = ?, imgURL = ?
+
+  WHERE
+    recipe_id = ?
+  `
+
+  conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url,req.body.recipe_id], (err, results, fields) => {
+
+    // console.log('recipe edit backend', req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url, req.body.recipe_id)
+
+      res.json({
+      message: "recipe updated"
+      })
+  })
+})
+
+router.put('/group_recipe_links/edit', (req, res, next) => {
+  const sql =`
+  UPDATE
+    group_recipe_links
+
+  SET
+    name = ?, imgURL = ?
+
+  WHERE
+    recipe_id = ?
+  `
+
+  conn.query(sql, [req.body.name, req.body.url, req.body.recipe_id], (err, results, fields) => {
+
+      res.json({
+      message: "recipe updated"
+      })
+  })
+})
+
+router.put('/user_favorites/edit', (req, res, next) => {
+  const sql =`
+  UPDATE
+    user_favorites
+
+  SET
+    name = ?, imgURL = ?
+
+  WHERE
+    recipe_id = ?
+  `
+
+  conn.query(sql, [req.body.name, req.body.url, req.body.recipe_id], (err, results, fields) => {
+
+      res.json({
+      message: "recipe updated"
+      })
+  })
+})
+
+router.put('/user_recipebooks_links/edit', (req, res, next) => {
+  const sql =`
+  UPDATE
+    user_recipebooks_links
+
+  SET
+    name = ?, imgURL = ?
+
+  WHERE
+    recipe_id = ?
+  `
+
+  conn.query(sql, [req.body.name, req.body.url, req.body.recipe_id], (err, results, fields) => {
+
+      res.json({
+      message: "recipe updated"
+      })
+  })
+})
 
 //recipes table edit
 
