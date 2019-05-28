@@ -47,6 +47,7 @@ const RecipeView = (props) => {
       <div>
     <img className="recipe-pic" src={props.currentRecipe.imgURL || {nettles}} alt='' />
     </div>
+    
         <div className="recipe-display">
           <div className="prep">
             <h2 className="recipe-header">Prep</h2>
@@ -54,7 +55,7 @@ const RecipeView = (props) => {
             <p className="prep-minutes">Minutes: {props.currentRecipe.prepMinutes}</p>
             <p className='prep-servings'>Servings: {props.currentRecipe.servings}</p>
           </div>
-        </div>
+   
         <div className="ingredients">
           <h2 className="recipe-header">Ingredients</h2>
           <ul className="ingredients-contentUL">
@@ -67,6 +68,7 @@ const RecipeView = (props) => {
          <h2 className="recipe-header">Directions</h2>
          <p className="recipe-directions">{props.currentRecipe.directions == null ? "No Directions Included With Recipe" : props.currentRecipe.directions}</p>
         </div>
+      </div>
       </div>
   {/* BUTTONS */}
 
