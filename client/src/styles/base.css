@@ -46,6 +46,22 @@ code {
   opacity: 0.9;
 }
 
+#dropdownBtn {
+  z-index: 1;
+}
+
+
+.recipeContainer {
+  flex-direction: row;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.9;
+  z-index: 0;
+
+}
+
 .createRecipeDiv {
   display: flex;
   flex-direction: row;
@@ -530,9 +546,9 @@ h3 {
   display: flex;
   flex-direction: row;
   background-color: black;
-  opacity: 0.9;
   width: 100%;
-  height: 100px;
+  height: 92px;
+ 
 }
 
 .divHeader2 {
@@ -1110,15 +1126,6 @@ a:visited {
 
 }
 
-.recipeContainer {
-  flex-direction: row;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  background-color: black;
-  opacity: 0.9;
-
-}
 
 .recipeButtonDiv {
   display: flex;

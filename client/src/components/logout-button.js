@@ -31,7 +31,7 @@ const LogoutButton = props => {
         <div className='space'></div>
         {/* <Link to="/user_profile"><button className='userSpan'>{user}</button></Link> */}
 
-         <Dropdown className='dropdownBtn' text={user} selection options={options}  />
+         <Dropdown  id='dropdownBtn' text={user} selection options={options}  />
 
 
         </div>
