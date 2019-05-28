@@ -1,15 +1,12 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { AuthContext } from "../../lib/auth"
 import Header from '../header'
 import Footer from '../footer'
-import { getCurrentRecipe, getGroups, addFavoriteRecipe, shareRecipeWithGroup } from '../../actions/actions'
+import { getCurrentRecipe, getGroups, addFavoriteRecipe } from '../../actions/actions'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux'
-
-
+import nettles from '../assets/nettle.jpg'
 
 
 const GroupRecipeView = (props) => {
@@ -53,7 +50,9 @@ const GroupRecipeView = (props) => {
      <h1 className="recipe-name">{recipeName == null ? "Unnamed Recipe" : recipeName}</h1>
     </div>
     <div className='recipeContainer'>
-    <img className="recipe-pic" src={props.currentRecipe.imgURL || 'https://via.placeholder.com/400'} alt='' />
+    <div>
+    <img className="recipe-pic" src={props.currentRecipe.imgURL || {nettles}} alt='' />
+    </div>
         <div className="recipe-display">
               <div className="prep">
                 <h2 className="prep-header">Prep</h2>

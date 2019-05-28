@@ -35,11 +35,28 @@ code {
 }
 
 .create- {
-  width: 1000px;
-  height: 300px;
+  width: 100%;
+  height: 400px;
   display: flex;
   align-items: center;
-  margin-left: 199px;
+  background-color: red;
+  margin-bottom: 80px;
+  justify-content: center;
+  background-color: black;
+  opacity: 0.9;
+}
+
+.createRecipeDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.createRecipeContainer {
+  height: 100%;
+  background-color: black;
+  opacity: 0.9;
+
 }
 
 .hello {
@@ -153,6 +170,14 @@ border: none;
   transition: 0.3s;
 }
 
+.Dropdown {
+z-index: 1;
+}
+
+.options {
+  z-index: 1;
+}
+/* 
 .dropdownBtn {
  width: 150px;
  height: 35px;
@@ -160,14 +185,14 @@ border: none;
  padding: 10px;
  color: black;
  text-align: center;
-}
+ z-index: 1;
+ 
+} */
 
 .abutton:hover {
   background-color: rgb(142,50,40);
   color: white;
-
   transition: 0.3s;
-
 }
 
 .abutton2 {
@@ -177,7 +202,6 @@ border: none;
 .abutton2:hover {
   background-color: rgb(142,50,40);
   color: white;
-
   transition: 0.3s;
 }
 
@@ -191,12 +215,9 @@ border: none;
 }
 
 .abuttonS {
-
-    transition: 0.3s;
-    margin: 10px;
+  transition: 0.3s;
+  margin: 10px;
 }
-
-.
 
 .upload-recipe-bttn {
   width: 130px;
@@ -359,12 +380,6 @@ h3 {
   list-style-type: none;
 }
 
-.createGroup  {
-  height: 595px;
-  width: 100%;
-  margin: 0 auto;
-}
-
 .bookFavorites {
   display: flex;
   flex-direction: row;
@@ -374,6 +389,10 @@ h3 {
 
 .createGroupInput {
   margin: 10px 49px;
+}
+
+.createGroupDiv {
+  margin-right: 550px;
 }
 
 .test {
@@ -503,12 +522,13 @@ h3 {
   flex-direction: row;
   background-color: black;
   opacity: 0.9;
+  width: 100%;
+  height: 100px;
 }
 
 .divHeader2 {
   display: flex;
   flex-direction: row;
-
 }
 
 .faBack:hover {
@@ -1025,10 +1045,10 @@ a:visited {
   color: white;
   font-size: 50px;
   text-decoration: underline;
-  margin-right: 1260px;
   width: 100%;
   height: 100%;
   text-align: initial;
+
 }
 
 .group-recipe-name {
@@ -1036,7 +1056,6 @@ a:visited {
     color: white;
     font-size: 37px;
     text-decoration: underline;
-    margin-right: 1260px;
     width: 300px;
     height: 100%;
     text-align: initial;
@@ -1047,10 +1066,12 @@ a:visited {
   margin: 25px;
   width: 420px;
   height: 420px;
+  max-width: 420px;
+  max-height: 420px;
   border-radius: 50%;
-  position: relative;
   border: 3px solid white;
   box-shadow: 0 6px 6px -6px black;
+ 
 }
 
 .recipeContainer {
@@ -1060,6 +1081,7 @@ a:visited {
   width: 100%;
   background-color: black;
   opacity: 0.9;
+
 }
 
 .recipeButtonDiv {
@@ -1124,15 +1146,25 @@ a:visited {
   background-color: black;
 }
 
-.recipeImgThumbnail {
-  width: 220px;
-  height: 220px;
-  border-radius: 1.5%;
+.createBookContainer {
+   width: 100%;
+   height: 500px;
+   background-color: black;
+   opacity: 0.9;
+   margin: 0 auto;
 }
 
-.recipe-view-h2 {
-  margin: 0 auto;
+.recipeImgThumbnail {
+  width: 200px;
+  height: 200px;
+  border-radius: 1.5%;
+  border: 1px solid lightgrey;
 }
+
+/* .recipe-view-h2 {
+  margin: 0 auto;
+
+} */
 
 .image-upload {
   height: 400px;
@@ -1202,6 +1234,7 @@ a:visited {
 
 .directions {
   width: 600px;
+  text-align: center;
 }
 
 .text-directions {

@@ -2,12 +2,12 @@ import React, { useEffect, useContext, useState } from 'react'
 import { AuthContext } from "../../lib/auth"
 import Header from '../header'
 import Footer from '../footer'
-import { getCurrentRecipe, shareRecipeWithGroup } from '../../actions/actions'
+import { getCurrentRecipe } from '../../actions/actions'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import nettles from '../assets/nettle.jpg'
 
 
 const RecipeBookRecipeView = (props) => {
@@ -20,6 +20,7 @@ const RecipeBookRecipeView = (props) => {
   useEffect(() => {
       getCurrentRecipe(recipeId)
   },[])
+  
   const groups = useSelector(appstate => appstate.groups)
   const [groupChosen, setGroupChosen] = useState('')
 
@@ -35,8 +36,9 @@ const RecipeBookRecipeView = (props) => {
       </div>
 
         <div className="recipeContainer">
-          <img className="recipe-pic" src={props.currentRecipe.imgURL} alt='' />
-
+          <div>
+          <img className="recipe-pic" src={props.currentRecipe.imgURL || {nettles}} alt='' />
+          </div>
           <div className='recipe-display'>
 
               <div className="prep">
