@@ -5,7 +5,7 @@ import Footer from '../footer'
 import  { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { AuthContext } from "../../lib/auth"
-import { getCurrentUserOwnedRecipe, editRecipe } from '../../actions/actions'
+import { getCurrentUserOwnedRecipe, editRecipe, editRecipeInGroupLinks, editRecipeInUserFavorites, editRecipeInUserRecipebooksLinks } from '../../actions/actions'
 import { storage } from '../firebase'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -90,6 +90,9 @@ const RecipeViewEdit = props => {
     function handleSubmit(e) {
         e.preventDefault()
         editRecipe(name, prepHours, prepMinutes, servings, directions, ingredients, url, recipeId)
+        editRecipeInGroupLinks(name, url, recipeId)
+        editRecipeInUserFavorites(name, url, recipeId)
+        editRecipeInUserRecipebooksLinks(name, url, recipeId)
         // console.log(name, prepHours, prepMinutes, servings, directions, ingredients, url)
         props.history.goBack()
     }

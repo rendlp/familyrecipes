@@ -114,6 +114,30 @@ export function editRecipe(name, prepHours, prepMinutes, servings, directions, i
     // console.log(name, prepHours, prepMinutes, servings, directions, ingredients.join("*/*"), url, recipeId)
 }
 
+export function editRecipeInGroupLinks(name, url, recipeId) {
+    Axios.put('/api/group_recipe_links/edit', {
+        name: name,
+        url: typeof url === 'string' ? url : null,
+        recipe_id: recipeId
+    })
+}
+
+export function editRecipeInUserFavorites(name, url, recipeId) {
+    Axios.put('/api/user_favorites/edit', {
+        name: name,
+        url: typeof url === 'string' ? url : null,
+        recipe_id: recipeId
+    })
+}
+
+export function editRecipeInUserRecipebooksLinks(name, url, recipeId) {
+    Axios.put('/api/user_recipebooks_links/edit', {
+        name: name,
+        url: typeof url === 'string' ? url : null,
+        recipe_id: recipeId
+    })
+}
+
 export function shareRecipeWithGroup(recipeId, groupChosen, recipeName, url) {
     Axios.post('/api/group_recipe_links', {
         recipe_id: recipeId,
