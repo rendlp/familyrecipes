@@ -589,7 +589,7 @@ h3 {
   font-size: 26px;
   transition: 0.3s;
   color: white;
-  
+
 }
 
 .recipeListP:hover{
@@ -1068,8 +1068,7 @@ a:visited {
   margin: 35px;
 }
 
-.shareDiv {
-
+.sharDiv {
   background-color: black;
   padding: 10px;
   opacity: 0.9;
