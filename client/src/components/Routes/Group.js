@@ -37,7 +37,7 @@ const Group = props => {
              <FontAwesomeIcon className='faBack' icon="arrow-left" />
             </Link>
         <div className='space'></div>
-        <h1 className='group-recipe-name'>{currentGroup}'s Users</h1>
+        <h1 className='group-recipe-name'>{currentGroup}</h1>
         </div>
 
          <div className='groupWrapper'>
