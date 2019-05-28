@@ -220,11 +220,12 @@ export function getGroupRecipes(group_id) {
     })
   }
 
-  export function addRecipeToRecipeBook(recipeId, recipeBookChosen, recipeName) {
+  export function addRecipeToRecipeBook(recipeId, recipeBookChosen, recipeName, url) {
     Axios.post('/api/user_recipebooks_links', {
       recipe_id: recipeId,
       recipebook_id: recipeBookChosen,
-      recipe_name: recipeName
+      recipe_name: recipeName,
+        url: url
     })
 }
 

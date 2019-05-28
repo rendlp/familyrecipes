@@ -232,34 +232,40 @@ router.post('/user_favorites', (req, res, next) => {
    })
 })
 
-router.put('/recipes/edit', (req, res, next) => {
-  const sql =`
-  UPDATE
-    recipes r, user_favorites uf, user_recipebooks_links url, group_recipe_links grl
+//RECIPE EDIT
 
-  SET
-    r.name = ?, r.prepHours = ?, r.prepMinutes = ?, r.servings = ?, r.directions = ?,r.ingredients = ?, r.imgURL = ?,
+//recipes table edit
 
-    url.name = ?, url.imgURL = ?,
-    uf.name = ?, uf.imgURL = ?,
-    grl.name = ?, grl.imgURL = ?
 
-  WHERE
-    r.recipe_id = ? AND
-    uf.recipe_id = ? AND
-    url.recipe_id= ? AND
-    grl.recipe_id = ?
-  `
 
-  conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url,req.body.name, req.body.url, req.body.name, req.body.url, req.body.name, req.body.url, req.body.recipe_id, req.body.recipe_id, req.body.recipe_id, req.body.recipe_id], (err, results, fields) => {
+// router.put('/recipes/edit', (req, res, next) => {
+//   const sql =`
+//   UPDATE
+//     recipes r, user_favorites uf, user_recipebooks_links url, group_recipe_links grl
 
-    // console.log('recipe edit backend', req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url, req.body.recipe_id)
+//   SET
+//     r.name = ?, r.prepHours = ?, r.prepMinutes = ?, r.servings = ?, r.directions = ?,r.ingredients = ?, r.imgURL = ?,
 
-      res.json({
-      message: "recipe updated"
-      })
-  })
-})
+//     url.name = ?, url.imgURL = ?,
+//     uf.name = ?, uf.imgURL = ?,
+//     grl.name = ?, grl.imgURL = ?
+
+//   WHERE
+//     r.recipe_id = ? AND
+//     uf.recipe_id = ? AND
+//     url.recipe_id= ? AND
+//     grl.recipe_id = ?
+//   `
+
+//   conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url,req.body.name, req.body.url, req.body.name, req.body.url, req.body.name, req.body.url, req.body.recipe_id, req.body.recipe_id, req.body.recipe_id, req.body.recipe_id], (err, results, fields) => {
+
+//     // console.log('recipe edit backend', req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url, req.body.recipe_id)
+
+//       res.json({
+//       message: "recipe updated"
+//       })
+//   })
+// })
 
 // get call to grab a user's list of created recipebooks from the application's database(user_recipebooks table)
 router.get('/user_recipebooks', (req, res, next) => {
@@ -405,7 +411,7 @@ router.post('/group_recipe_links', (req, res, next) => {
     FROM
       user_recipebooks_links
     WHERE
-      recipe_id = ? AND recipebook_id = ? AND recipe_name = ?
+      recipe_id = ? AND recipebook_id = ? AND name = ?
     `
     conn.query(checksql, [req.body.recipe_id, req.body.recipebook_id, req.body.recipe_name], (err, results, fields) => {
       console.log(err)
@@ -419,12 +425,12 @@ router.post('/group_recipe_links', (req, res, next) => {
       } else {
         const sql =`
         INSERT INTO
-          user_recipebooks_links (recipe_id, recipebook_id, recipe_name)
+          user_recipebooks_links (recipe_id, recipebook_id, name, imgURL)
         VALUES
-          (?, ?, ?)
+          (?, ?, ?, ?)
         `
 
-        conn.query(sql, [req.body.recipe_id, req.body.recipebook_id, req.body.recipe_name], (err, results, fields) => {
+        conn.query(sql, [req.body.recipe_id, req.body.recipebook_id, req.body.recipe_name, req.body.url], (err, results, fields) => {
           console.log(err)
           res.json({
             message: 'recipe added to recipebook'
