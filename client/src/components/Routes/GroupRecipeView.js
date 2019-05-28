@@ -56,9 +56,9 @@ const GroupRecipeView = (props) => {
         <div className="recipe-display">
               <div className="prep">
                 <h2 className="recipe-header">Prep</h2>
-                <p className="prep-hours">Hours: <p>{props.currentRecipe.prepHours}</p></p>
-                <p className="prep-minutes">Minutes: <p>{props.currentRecipe.prepMinutes}</p></p>
-                <p className='prep-servings'>Servings: <p>{props.currentRecipe.servings}</p></p>
+                <p className="prep-hours">Hours: {props.currentRecipe.prepHours}</p>
+                <p className="prep-minutes">Minutes: {props.currentRecipe.prepMinutes}</p>
+                <p className='prep-servings'>Servings: {props.currentRecipe.servings}</p>
               </div>
               <div className="ingredients">
                 <h2 className="recipe-header">Ingredients</h2>

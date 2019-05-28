@@ -5,6 +5,7 @@ import Footer from '../footer'
 import Logout from "../auth/Logout"
 import { getUserInfo } from '../../actions/actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import nettles from '../assets/nettle.jpg'
 
 const GroupMemberProfile = props => {
 
@@ -38,7 +39,7 @@ console.log(user)
 
         <div className="userProfileDisplay">
         <div>
-          <img className="user-pic" src={userInfo.userPicURL} alt='' />    
+          <img className="user-pic" src={userInfo.userPicURL || nettles } alt='' />    
         </div>
 
         <div className='profileInformation'>
