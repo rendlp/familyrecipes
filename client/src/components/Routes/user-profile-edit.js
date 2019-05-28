@@ -14,6 +14,7 @@ const UserProfileEdit = props => {
 
     useEffect(() => {
       getUserInfo(user)
+      console.log(firstname, lastname, image, user)
     },[])
 
     const userInfo = useSelector(appstate => appstate.userInfo)
@@ -72,7 +73,7 @@ const UserProfileEdit = props => {
       <div>
         <Header />
         <div className="edit-canvas">
-      <h1 className='editProfileh1'>Edit Profile: </h1>
+      <h1 className='editProfileh1'>Edit Profile </h1>
         <h1>{user}</h1>
 
         <form onSubmit={handleSubmit}>
@@ -84,7 +85,9 @@ const UserProfileEdit = props => {
          <input type="hidden" name="image" value={image} />
 
          <div className='upload2'>
+         <div>
          <img name="image" src={typeof image === 'string' ? image : 'https://via.placeholder.com/150'} className='imgUpload' alt='' value={url}  />
+         </div>
          <button onClick={handleUpload}>Upload</button>
         </div>
         </div>
