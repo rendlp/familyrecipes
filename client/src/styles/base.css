@@ -1015,11 +1015,12 @@ h3 {
 .left-panel {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 290px;
   background-color: black;
   opacity: 0.8;
   height: 705px;
   padding: 10px;
+  text-align: center;
 
 }
 
@@ -1040,7 +1041,7 @@ h2 {
   text-decoration: underline;
   margin-right: 1260px;
   width: 100%;
-  text-align: initial;
+  text-align: center;
 }
 
 .accountHomeBooks {
