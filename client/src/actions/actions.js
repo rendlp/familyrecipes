@@ -1,8 +1,5 @@
 import store from '../store'
 import Axios from 'axios'
-// import { checkPropTypes, string } from 'prop-types'
-import * as firebase from 'firebase/app'
-
 
 
 // GROUPS

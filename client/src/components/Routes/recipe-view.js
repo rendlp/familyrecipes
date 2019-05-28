@@ -6,6 +6,7 @@ import { getCurrentUserOwnedRecipe, getGroups, shareRecipeWithGroup, addFavorite
 import { connect, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import nettles from '../assets/nettle.jpg'
 
 const RecipeView = (props) => {
 
@@ -33,14 +34,18 @@ const RecipeView = (props) => {
 
   return (
     <div>
-      <Header />
-      <div className='divHeader'>
-        <Link to='/user_recipes'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
-        <div className='space'></div>
-        <h1 className="recipe-name">{props.currentRecipe.name == null ? 'No Name Added to Recipe' : props.currentRecipe.name}</h1>
-      </div>
-      <div className='recipeContainer'>
-        <img className="recipe-pic" src={props.currentRecipe.imgURL || 'https://via.placeholder.com/400'} alt='' />
+    <Header />
+
+    <div className='divHeader'>
+    <Link to='/user_recipes'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
+    <div className='space'></div>
+    <h1 className="recipe-name">{props.currentRecipe.name == null ? 'No Name Added to Recipe' : props.currentRecipe.name}</h1>
+    </div>
+
+    <div className='recipeContainer'>
+      <div>
+    <img className="recipe-pic" src={props.currentRecipe.imgURL || {nettles}} alt='' />
+    </div>
         <div className="recipe-display">
           <div className="prep">
             <h2 className="recipe-header">Prep</h2>
