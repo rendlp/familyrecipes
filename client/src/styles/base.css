@@ -601,6 +601,22 @@ h3 {
   height: 100%;
 }
 
+.errorLabel {
+  color: red;
+}
+
+.errorLabel2 {
+  color: red;
+  margin-left: 420px;
+}
+
+.errorDiv{
+
+  width: 200px;
+  height: 100px;
+  margin: 0 auto;
+}
+
 .recipeListP {
   margin: 20px;
   border: 1px solid black;

@@ -44,23 +44,26 @@ const CreateRecipebook = (props) => {
     <div className='divHeader2'>
     <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
     <div className='space'></div>
-    <h1 className='recipe-name'>Recipes</h1>
+    <h1 className='recipe-name'>Create Book</h1>
     </div>
-
+    <div className='createRecipeContainer'>
     <form className="create-" onSubmit={validator}>
 
-    <div className='createRecipeDiv'>
-     <label>{recipebookError}</label>
+   
+    
+     <label className='errorLabel'>{recipebookError}</label> 
+     <div className='createGroupDiv'>
      <input 
+       className='createGroupInput'
        placeholder="Name your recipebook"
        name="recipebookName"
        onChange={e => setRecipebookName(e.target.value)}
     />
-     <div className='space2'></div>
+   
       <button className='abutton' type="submit">Create Recipebook</button>
-     </div> 
+      </div>
     </form>
-
+    </div>
       <Footer />
     </div>
   )
