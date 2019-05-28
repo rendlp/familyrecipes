@@ -31,8 +31,6 @@ import RecipeViewEdit from './RecipeEdit/recipe-view-edit'
 import NoWay from './NoWay'
 
 
-
-
 class App extends Component {
   render() {
     return (
@@ -50,12 +48,8 @@ class App extends Component {
               {/* private routes test */}
               <Switch>
               <AuthRoute path="/" exact component={AccountHome} />
-
               <AuthRoute path="/no" exact component={NoWay} />
-
-
               <AuthRoute path="/upload" component={UploadParentFunctional} />
-              {/* <AuthRoute path="/uploadphoto" exact component={uploadPhoto} /> */}
               <AuthRoute path="/user_recipes" exact component={UserRecipe} />
               <AuthRoute path="/user_groups" exact component={UserGroups} />
               <AuthRoute path="/user_messages" exact component={UserMessages} />
