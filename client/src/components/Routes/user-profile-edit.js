@@ -84,7 +84,9 @@ const UserProfileEdit = props => {
          <input type="hidden" name="image" value={image} />
 
          <div className='upload2'>
+         <div>
          <img name="image" src={typeof image === 'string' ? image : 'https://via.placeholder.com/150'} className='imgUpload' alt='' value={url}  />
+         </div>
          <button onClick={handleUpload}>Upload</button>
         </div>
         </div>

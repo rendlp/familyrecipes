@@ -27,20 +27,23 @@ const UserProfile = props => {
         <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
         
         <div className="userProfileDisplay">
+        <div className='profileHeader'>
          <img className="user-pic" src={userInfo.userPicURL} alt='' />
+         <Link to='/user_profile/edit'><button className='abutton'>Edit Profile</button></Link>
+        </div>
+
          <div className='profileInformation'>
-          <p>Username:</p>
+          <h3>Username:</h3>
           <p>{user}</p>
-          <p>First Name:</p>
+          <h3>First Name:</h3>
           <p>{userInfo.firstname}</p>
-          <p>Last Name:</p>
+          <h3>Last Name:</h3>
           <p>{userInfo.lastname}</p>
-          <Link to='/user_profile/edit'><button className='abutton'>Edit Profile</button></Link>
-          </div>
+         </div>
 
         </div>
-        <div className='invisible' />
-      
+
+        <div className='invisible' /> 
         <Footer />
       </div>
     )
