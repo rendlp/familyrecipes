@@ -235,14 +235,19 @@ router.post('/user_favorites', (req, res, next) => {
 router.put('/recipes/edit', (req, res, next) => {
   const sql =`
   UPDATE
-    recipes
+    recipes r, user_favorites uf, user_recipebooks_links url
   SET
-    name = ?, prepHours = ?, prepMinutes = ?, servings = ?, directions = ?,ingredients = ?, imgURL = ?
+    r.name = ?, r.prepHours = ?, r.prepMinutes = ?, r.servings = ?, r.directions = ?,r.ingredients = ?, r.imgURL = ?,
+
+    url.name = ?, url.imgURL = ?,
+    uf.name= ?, uf.imgURL = ?
   WHERE
-    recipe_id = ?
+    r.recipe_id = ? AND
+    uf.recipe_id = ? AND
+    url.recipe_id= ?
   `
 
-  conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url, req.body.recipe_id], (err, results, fields) => {
+  conn.query(sql, [req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url,req.body.name, req.body.url, req.body.name, req.body.url, req.body.recipe_id, req.body.recipe_id, req.body.recipe_id], (err, results, fields) => {
 
     // console.log('recipe edit backend', req.body.name, req.body.prepHours, req.body.prepMinutes, req.body.servings, req.body.directions, req.body.ingredients, req.body.url, req.body.recipe_id)
 
