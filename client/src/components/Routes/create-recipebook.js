@@ -48,8 +48,6 @@ const CreateRecipebook = (props) => {
     </div>
     <div className='createRecipeContainer'>
     <form className="create-" onSubmit={validator}>
-
-   
     
      <label className='errorLabel'>{recipebookError}</label> 
      <div className='createGroupDiv'>
