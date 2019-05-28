@@ -29,26 +29,26 @@ const DisplayRecipe = (props) => {
   return (
     <div>
       <Header />
-        <div id="recipe-display">
-          <img id="recipe-pic" src="http://place-hold.it/400/400" alt=''/>
+        <div className="recipe-display">
+          <img className="recipe-pic" src="http://place-hold.it/400/400" alt=''/>
 
-              <h1 id="recipe-name">{props.currentRecipe.name}</h1>
-              <div id="prep">
-                <h2 id="prep-header">Prep Time</h2>
-                <p id="prep-hours">Hours: {props.currentRecipe.prepHours}</p>
-                <p id="prep-minutes">Minutes: {props.currentRecipe.prepMinutes}</p>
+              <h1 className="recipe-name">{props.currentRecipe.name}</h1>
+              <div className="prep">
+                <h2 className="prep-header">Prep Time</h2>
+                <p className="prep-hours">Hours: {props.currentRecipe.prepHours}</p>
+                <p className="prep-minutes">Minutes: {props.currentRecipe.prepMinutes}</p>
               </div>
-              <div id="ingredients">
-                <h2 id="ingredients-header">Ingredients</h2>
-                <ul id="ingredients-content">
+              <div className="ingredients">
+                <h2 className="ingredients-header">Ingredients</h2>
+                <ul className="ingredients-content">
                   {props.ingredients.map((ingredient, i) => (
                     <li key={'ingredient'+i}>{ingredient}</li>
                   ))}
                 </ul>
               </div>
-              <div id="directions">
-                <h2 id="directions-header">Directions</h2>
-                <p id="recipe-directions">{props.currentRecipe.directions}</p>
+              <div className="directions">
+                <h2 className="directions-header">Directions</h2>
+                <p className="recipe-directions">{props.currentRecipe.directions}</p>
               </div>
         </div>
 
@@ -60,7 +60,7 @@ const DisplayRecipe = (props) => {
             </label>
             <select onChange={e => setGroupChosen(e.target.value)}
               name="shareWithGroup"
-              id="shareWithGroup"
+              className="shareWithGroup"
               className="shareDropdown">
               {groups.map((group, i) => (
                 <option value={group.group_id} key={"group - "+i}>

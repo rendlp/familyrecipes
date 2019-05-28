@@ -34,6 +34,7 @@ const RecipeView = (props) => {
   };
 
   return (
+    
     <div>
     <Header />
 
@@ -44,8 +45,8 @@ const RecipeView = (props) => {
     </div>
 
     <div className='recipeContainer'>
-      <div>
-    <img className="recipe-pic" src={props.currentRecipe.imgURL || {nettles}} alt='' />
+    <div>
+    <img className="recipe-pic" src={props.currentRecipe.imgURL || nettles } alt='' />
     </div>
     
         <div className="recipe-display">
