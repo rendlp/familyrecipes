@@ -48,7 +48,6 @@ const CreateGroup = props => {
             </div>
 
                 <div className = "createRecipeContainer">
-
                 <form className="create-" onSubmit={validator}>
                 <label className='errorLabel2'>{inputError}</label>
           <div className='createGroupDiv'>

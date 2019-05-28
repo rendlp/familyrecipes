@@ -7,6 +7,8 @@ import Logout from "../auth/Logout"
 import { getUserInfo, editUserData } from '../../actions/actions'
 import {AuthContext} from '../../lib/auth'
 import { storage } from '../firebase'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const UserProfileEdit = props => {
 
@@ -70,14 +72,19 @@ const UserProfileEdit = props => {
     console.log(image)
 
     return (
-      <div>
-        <Header />
-        <div className="edit-canvas">
-      <h1 className='editProfileh1'>Edit Profile </h1>
-        <h1>{user}</h1>
+    <div>
+    <Header />
 
-        <form onSubmit={handleSubmit}>
-
+   
+     <div className='divHeader'>
+     <Link to='/user_profile'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
+     <div className='space'></div>
+     <h1 className='editProfileh1'>Edit {user}'s Profile </h1>
+    </div>
+   
+    <div className="edit-canvas">
+        <form className='editProfileForm' onSubmit={handleSubmit}>
+<div className='test'>
         <div className ='imgUploadDiv'>
 
          <progress className='progress' value={progress} max='100' />
@@ -90,8 +97,8 @@ const UserProfileEdit = props => {
          </div>
          <button onClick={handleUpload}>Upload</button>
         </div>
+        
         </div>
-
         <div className='profileEdit'>
             <h2>First Name:</h2>
                 <input
@@ -110,9 +117,11 @@ const UserProfileEdit = props => {
                     value=  {lastname}
                 />
         </div>
-              <div id="update-profile"><button type="submit"> Update Profile</button></div>
+     
+              <div id="update-profile"><button className='abutton' type="submit"> Update Profile</button></div>
+            
+            </div>
             </form>
-
         </div>
 
         <Footer />
