@@ -52,7 +52,7 @@ const FavRecipeView = (props) => {
           <div>
           <img className="recipe-pic" src={props.currentRecipe.imgURL || {nettles}} alt='' />
           </div>
-          <div className="recipe-display">   
+          <div className="recipe-display">
               <div className="prep">
                 <h2 className="recipe-header">Prep</h2>
                 <p className="prep-hours">Hours: <p>{props.currentRecipe.prepHours}</p></p>
@@ -74,7 +74,9 @@ const FavRecipeView = (props) => {
               </div>
               </div>
         </div>
-       <div className='shareDiv'>
+
+        
+       <div className='shareBtnDiv'>
         <div className="shareRecipeWithGroup">
 
           <form onSubmit={handleSubmit}>
@@ -90,7 +92,7 @@ const FavRecipeView = (props) => {
                 </option>
               ))}
             </select>
-       
+
             <button
               className={recipeBookChosen === '' ? 'hidden' : 'abutton'}
               type="submit">
