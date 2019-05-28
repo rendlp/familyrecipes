@@ -23,7 +23,8 @@ const Directions = (props) => {
                     <textarea
                         type="text"
                         name="directions"
-                        id="directions"
+                        className="directions"
+                        placeholder="First step is to..."
                         onChange= {changeForm}
                         value={values.directions || ''}
                     />

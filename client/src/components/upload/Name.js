@@ -50,16 +50,13 @@ const Name = (props) => {
 
               <div>
                 <h1>Name</h1>
-
-
-
-
                 <input
                   type="text"
                   name="name"
                   className="formInput"
                   onChange= {changeForm}
                   value=  {values.name || ''}
+                  placeholder="Grandma's Famous Chicken"
                 />
               </div>
 

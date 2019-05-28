@@ -27,7 +27,7 @@ const CreateGroup = props => {
 
       if (groupName == '') {
         valid = false
-        setInputError('Group Name Cannot Be Blank')
+        setInputError('Cannot Be Blank')
       }
 
       if (valid == true) {
@@ -50,7 +50,7 @@ const CreateGroup = props => {
                 <div className = "createRecipeContainer">
 
                 <form className="create-" onSubmit={validator}>
-                <label>{inputError}</label>
+                <label className='errorLabel2'>{inputError}</label>
           <div className='createGroupDiv'>
                     <input
                         className='createGroupInput'
