@@ -27,7 +27,7 @@ const CreateGroup = props => {
 
       if (groupName == '') {
         valid = false
-        setInputError('Cannot Be Blank')
+        setInputError('Cannot be blank')
       }
 
       if (valid == true) {
