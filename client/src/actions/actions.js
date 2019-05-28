@@ -53,7 +53,7 @@ return Axios.post('/api/group_user_links/addUser', {
 })
 }
 
-export function  getUserInfo(user) {
+export function getUserInfo(user) {
     return Axios.get(`/api/users?username=${user}`).then(resp => {
         store.dispatch({
         type: 'GET_USER_INFO',
@@ -73,7 +73,7 @@ export function editUserData(firstname, lastname, image, user) {
     })
     }
 
-// RECIPES POSTING
+// RECIPE POSTING
 
 // a function that will send uploaded images to the application's database
 export function addImage(img) {
@@ -100,6 +100,8 @@ export function addRecipe(recipe) {
     })
 }
 
+//RECIPE EDIT
+
 export function editRecipe(name, prepHours, prepMinutes, servings, directions, ingredients, url, recipeId) {
     Axios.put('/api/recipes/edit', {
         name: name,
@@ -111,7 +113,6 @@ export function editRecipe(name, prepHours, prepMinutes, servings, directions, i
         url: typeof url === 'string' ? url : null,
         recipe_id: recipeId
     })
-    // console.log(name, prepHours, prepMinutes, servings, directions, ingredients.join("*/*"), url, recipeId)
 }
 
 export function editRecipeInGroupLinks(name, url, recipeId) {
@@ -138,6 +139,9 @@ export function editRecipeInUserRecipebooksLinks(name, url, recipeId) {
     })
 }
 
+
+//RECIPE LINKING
+
 export function shareRecipeWithGroup(recipeId, groupChosen, recipeName, url) {
     Axios.post('/api/group_recipe_links', {
         recipe_id: recipeId,
@@ -146,6 +150,7 @@ export function shareRecipeWithGroup(recipeId, groupChosen, recipeName, url) {
         url: url
     })
 }
+
 
 // a function that will post a favorited recipe to the application's database(user_favories table)
 export function addFavoriteRecipe(name, recipe_id, user, url) {
@@ -184,26 +189,6 @@ export function getCurrentUserOwnedRecipe(recipe_id, user, history) {
   }
 
 
-
-//   export function getCurrentUserOwnedRecipeToEdit(recipe_id, user, history) {
-//     Axios.get(`/api/recipes/current/userOwned?recipe_id=${recipe_id}&user=${user}`).then(resp => {
-//         console.log(resp.data)
-//       store.dispatch({
-//         type: "GET_CURRENT_RECIPE",
-//         currentRecipe: {
-//             name: resp.data[0].name,
-//             ingredient: {
-//                 list: resp.data[0].ingredients.split("*/*")
-//             },
-//             directions: resp.data[0].directions,
-//             prepHours: resp.data[0].prepHours,
-//         }
-//       })
-//     }).catch(err => {
-//         history.push('/no')
-//     })
-//   }
-
   export function getCurrentRecipe(recipeId) {
     Axios.get(`/api/recipes/current?recipe_id=${recipeId}`).then(resp => {
         console.log(resp.data[0].ingredients.split("*/*"))
@@ -224,6 +209,7 @@ export function getGroupRecipes(group_id) {
       })
     })
   }
+
   // function that grabs a user's list of favorited recipes
   export function getUserFavorites(user) {
     Axios.get(`/api/user_favorites?username=${user}`).then(resp => {
@@ -286,28 +272,3 @@ export function getGroupRecipes(group_id) {
 
     })
   }
-
-
-
-
-
-
-//-----------------------------------------------------------//
-
-  // export function Storage(ref) {
-//     static displayFirebaseStorageImg(ref: String, callback: (url:String))
-//     const imageRef = firebase.storage().ref(ref);
-
-//     imageRef.getDownloadURL().then((url: String) => callback(url))
-// }
-
-
-// for potential future use
-
-// export function Date() {
-//     Date.now();
-// }
-
-// export function cancelCourse() {
-//     document.getElementById("create-course-form").reset();
-//   }

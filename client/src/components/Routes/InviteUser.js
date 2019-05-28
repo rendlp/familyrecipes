@@ -51,7 +51,7 @@ const InviteUser = props => {
         <div className = "inviteUser">
          <div className='hidden2'>
           <p className={props.userFound === '' ? "hidden" : props.userFound === 'usernotfound' ? 'hidden': "userFoundDisplay"}>User found: {props.userFound}</p>
-          <button className='abutton3' onClick={handleAddUser} className={props.userFound === '' ? "hidden" : props.userFound === 'usernotfound' ? 'hidden': "userFoundDisplay"}>Add {props.userFound} to {props.currentGroup}</button>
+          <button onClick={handleAddUser} className={props.userFound === '' ? "hidden" : props.userFound === 'usernotfound' ? 'hidden': 'abutton3'}>Add {props.userFound} to {props.currentGroup}</button>
           <p className={props.userFound === 'usernotfound' ? 'userNotFoundDisplay' : 'hidden'}>User not found</p>
         </div>
 

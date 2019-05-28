@@ -7,7 +7,7 @@ const NoWay = (props) => {
     return (
         <div>
         <Header />
-            <h1>No Way</h1>
+            <h1>You're either trying to view a recipe that doesn't belong to you or you lost your connection</h1>
         <Footer />
         </div>
     )
