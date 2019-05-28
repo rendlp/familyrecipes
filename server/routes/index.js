@@ -507,10 +507,6 @@ router.put('/recipes/edit', (req, res, next) => {
 
 router.put('/group_recipe_links/edit', (req, res, next) => {
   const sql =`
-<<<<<<< HEAD
-=======
-
->>>>>>> 30e9ba07394c6bfca6ce5589d7f3ffb94b4006a5
   UPDATE
     group_recipe_links
 
@@ -522,10 +518,6 @@ router.put('/group_recipe_links/edit', (req, res, next) => {
   `
 
   conn.query(sql, [req.body.name, req.body.url, req.body.recipe_id], (err, results, fields) => {
-<<<<<<< HEAD
-=======
-
->>>>>>> 30e9ba07394c6bfca6ce5589d7f3ffb94b4006a5
 
       res.json({
       message: "recipe updated"
