@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import Header from '../header'
 import Footer from '../footer'
-import  { Link } from 'react-router-dom'
 import Logout from "../auth/Logout"
 import { getUserInfo } from '../../actions/actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

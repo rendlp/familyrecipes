@@ -6,6 +6,7 @@ import { getCurrentUserOwnedRecipe, getGroups, shareRecipeWithGroup, addFavorite
 import { connect, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import nettles from '../assets/nettle.jpg'
 
 const RecipeView = (props) => {
 
@@ -42,7 +43,9 @@ const RecipeView = (props) => {
     </div>
     
     <div className='recipeContainer'>
-    <img className="recipe-pic" src={props.currentRecipe.imgURL || 'https://via.placeholder.com/400'} alt='' />
+      <div>
+    <img className="recipe-pic" src={props.currentRecipe.imgURL || {nettles}} alt='' />
+    </div>
         <div className="recipe-display">
         <div className="prep">
           <h2 className="recipe-header">Prep</h2>

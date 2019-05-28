@@ -49,11 +49,11 @@ const CreateGroup = props => {
             <h1 className='recipe-name'>Create Group</h1>
             </div>
          
-                <div className = "createGroup">
+                <div className = "createRecipeContainer">
 
                 <form className="create-" onSubmit={validator}>
                 <label>{inputError}</label>
-
+          <div className='createGroupDiv'>
                     <input
                         className='createGroupInput'
                         autoComplete="off"
@@ -70,7 +70,7 @@ const CreateGroup = props => {
                     className='abutton'>
                         Create group
                     </button>
-
+                    </div>
 
                 </form>
 

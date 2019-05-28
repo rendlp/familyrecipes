@@ -6,7 +6,7 @@ import { getGroupUsers, getGroupRecipes } from '../../actions/actions'
 import Header from '../header'
 import Footer from '../footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import nettles from '../assets/nettle.jpg'
 
 const Group = props => {
 
@@ -29,6 +29,7 @@ const Group = props => {
 
         <div>
         <Header />
+        
           <div className = "groupViewContainer">
           <div className='divHeader2'>
           <Link 
@@ -73,11 +74,11 @@ const Group = props => {
                     <li className='groupUserLI' key={`recipe - `+i}>
                         <Link to={`/${currentGroup}/Recipes/` + recipe.recipe_id}>
 
-                            <div className='groupRecipe-Div'>
-                              <h2 className='groupUserP'>
+                            <div className='recipeListP'>
+                              <h2 className='recipe-name-h2'>
                                  {recipe.name == null ? "Unnamed Recipe" : recipe.name}
                                 </h2>
-                                <img src='' alt='' />
+                                <img className='recipeImgThumbnail' src={recipe.imgURL || {nettles}}  alt='' />
                             </div>
 
                         </Link>   

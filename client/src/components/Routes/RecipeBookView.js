@@ -7,6 +7,7 @@ import { getRecipesWithinRecipebooks } from '../../actions/actions'
 // import { AuthContext } from "../../lib/auth"
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import nettles from '../assets/nettle.jpg'
 
 
 const RecipeBookView = (props) => {
@@ -40,8 +41,9 @@ console.log(props.addedRecipesInsideRecipebooks)
       {props.addedRecipesInsideRecipebooks.map((recipe,i) => (
 
         <Link key={'recipe - '+i} className='recipeLink' to={`/user_fav_recipes/recipebook/${recipebookID}/${recipe.recipe_id}`}>
-        <div className='recipeListP'>{recipe.recipe_name == null ? "Unnamed Recipe" : recipe.recipe_name}
-        <img className='recipeImgThumbnail' src={recipe.imgURL || 'https://via.placeholder.com/200'} alt='' />
+        <div className='recipeListP'>
+        <h2 className='recipe-view-h2'>{recipe.recipe_name == null ? "Unnamed Recipe" : recipe.recipe_name}</h2>
+        <img className='recipeImgThumbnail' src={recipe.imgURL || {nettles}} alt='' />
         </div>
       </Link>
 
