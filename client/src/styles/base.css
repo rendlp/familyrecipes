@@ -787,7 +787,7 @@ h3 {
 
 .header {
   width: 100%;
-  height: 100px;
+  height: 91px;
   background-color: white;
   display: flex;
   flex-direction: row;
@@ -1027,6 +1027,8 @@ a:visited {
   display: flex;
   flex-direction: row;
   margin: 0 auto;
+  text-align: center;
+  padding: 20px;
 
 }
 
@@ -1047,13 +1049,12 @@ a:visited {
 }
 
 .group-recipe-name {
-
-    color: white;
-    font-size: 37px;
-    text-decoration: underline;
-    width: 300px;
-    height: 100%;
-    text-align: initial;
+  color: white;
+  font-size: 37px;
+  text-decoration: underline;
+  width: 300px;
+  height: 100%;
+  text-align: initial;
 
 }
 
@@ -1106,7 +1107,7 @@ a:visited {
 }
 
 .recipe-header {
-  font-size: 36px;
+  font-size: 32px;
   margin: 10px;
   color: lightgrey;
   text-shadow: 1px 1px rgb(142,50,40);

@@ -173,7 +173,6 @@ const RecipeViewEdit = props => {
                  className="formInput"
                  type='text'
                  name='serves'
-            
                  onChange={e => changeServings(e.target.value)} >
 
                     <option value={servings}>Serves: {servings}</option>
