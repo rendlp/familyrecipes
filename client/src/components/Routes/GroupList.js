@@ -36,8 +36,8 @@ const GroupList = props => {
                 
         {groups.map((item, i) => (
 
-            <Link to={"/group/"+item.group_id}>
-                <div className='groupLI-div' key={`group - `+i}> 
+            <Link to={"/group/"+item.group_id} key={`group - `+i}>
+                <div className='groupLI-div'> 
                 <div className='bookCenter'>
                      
                 <h2>{item.groupname}</h2>  

@@ -78,7 +78,9 @@ const Group = props => {
                               <h2 className='recipe-name-h2'>
                                  {recipe.name == null ? "Unnamed Recipe" : recipe.name}
                                 </h2>
+
                                 <img className='recipeImgThumbnail' src={recipe.imgURL || {nettles}}  alt='' />
+
                             </div>
 
                         </Link>   
