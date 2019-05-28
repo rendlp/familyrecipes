@@ -3,6 +3,9 @@ import { searchUser, getGroupUsers, addUserToGroup } from '../../actions/actions
 import {connect} from 'react-redux'
 import Header from '../header'
 import Footer from '../footer'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 const InviteUser = props => {
 
@@ -36,8 +39,22 @@ const InviteUser = props => {
     return (
       <div>
         <Header />
+        <div className='divHeader'>
+        <Link
+          to='/user_groups'>
+          <FontAwesomeIcon className='faBack' icon="arrow-left" />
+        </Link>
+          <div className='space'></div>
+          <h1 className='recipe-name'>Invite User</h1>
+        </div>
+
         <div className = "inviteUser">
-          <h1>Add a user to {props.currentGroup}</h1>
+         <div className='hidden2'>
+          <p className={props.userFound === '' ? "hidden" : props.userFound === 'usernotfound' ? 'hidden': "userFoundDisplay"}>User found: {props.userFound}</p>
+          <button className='abutton3' onClick={handleAddUser} className={props.userFound === '' ? "hidden" : props.userFound === 'usernotfound' ? 'hidden': "userFoundDisplay"}>Add {props.userFound} to {props.currentGroup}</button>
+          <p className={props.userFound === 'usernotfound' ? 'userNotFoundDisplay' : 'hidden'}>User not found</p>
+        </div>
+
           <form className="create-" onSubmit={handleSubmit}>
             <input
               autoComplete="off"
@@ -48,13 +65,12 @@ const InviteUser = props => {
               onChange={e => setUserName(e.target.value)}
               value={userNameSearched}
             />
-            <button type="submit">
+            
+            <button className='abutton3' type="submit">
                 Search
             </button>
+            
             </form>
-              <p className={props.userFound === '' ? "hidden" : props.userFound === 'usernotfound' ? 'hidden': "userFoundDisplay"}>User found: {props.userFound}</p>
-              <button onClick={handleAddUser} className={props.userFound === '' ? "hidden" : props.userFound === 'usernotfound' ? 'hidden': "userFoundDisplay"}>Add {props.userFound} to {props.currentGroup}</button>
-              <p className={props.userFound === 'usernotfound' ? 'userNotFoundDisplay' : 'hidden'}>User not found</p>
           </div>
         <Footer />
       </div>
@@ -68,4 +84,5 @@ function mapStateToProps(appState){
         currentGroup: appState.currentGroup
     }
 }
+
 export default connect(mapStateToProps)(InviteUser)
