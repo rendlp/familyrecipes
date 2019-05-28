@@ -8,6 +8,7 @@ import Header from '../header'
 import Footer from '../footer'
 import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import nettles from '../assets/nettle.jpg'
 
 const UserFavRecipes = (props) => {
 
@@ -47,7 +48,7 @@ const UserFavRecipes = (props) => {
                 key={'favoriteR' + i}>
                 <div className='recipeListP'>
                 <h2 className='recipe-view-h2'>{recipe.name == null ? "Unnamed Recipe" : recipe.name}</h2>
-                <img className='recipeImgThumbnail' src={recipe.imgURL} alt=''></img>
+                <img className='recipeImgThumbnail' src={recipe.imgURL || {nettles} } alt=''></img>
               </div>
                 
               </Link>

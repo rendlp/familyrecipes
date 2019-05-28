@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
+import nettles from '../assets/nettle.jpg'
 
 library.add(faArrowLeft)
 
@@ -18,7 +19,6 @@ const UserRecipe = (props) => {
   const { user } = useContext(AuthContext)
 
   const userRecipes = useSelector(appstate => appstate.userRecipes)
-
   
 
   useEffect( () => {
@@ -45,10 +45,10 @@ const UserRecipe = (props) => {
           
           <Link className='recipeLink'key={'recipe'+i} to={'user_recipes/' + recipe.recipe_id}>
 
-          <div className='recipeListP'>
+         <div className='recipeListP'>
           <h2 className='recipe-view-h2'>{recipe.name == null ? "Unnamed Recipe" : recipe.name}</h2>
-          <img className='recipeImgThumbnail' src={recipe.imgURL || 'https://via.placeholder.com/200'} alt='' />
-          </div>
+          <img className='recipeImgThumbnail' src={recipe.imgURL || {nettles}} alt='' />
+         </div>
 
           </Link>
 
