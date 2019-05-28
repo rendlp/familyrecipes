@@ -63,7 +63,7 @@ const RecipeBookRecipeView = (props) => {
               </div>
         </div>
         </div>
-       <div className='shareDiv'>
+       <div className='shareBtnDiv'>
         <label className='shareLabel'>
           Share recipe with a group:
         </label>
