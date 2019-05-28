@@ -219,10 +219,10 @@ router.post('/user_favorites', (req, res, next) => {
         })
       } else {
       const sql = `
-      INSERT INTO user_favorites (name, recipe_id, username)
-      VALUES (?, ?, ?)`
+      INSERT INTO user_favorites (name, recipe_id, username, imgURL)
+      VALUES (?, ?, ?, ?)`
 
-      conn.query(sql, [req.body.recipeName, req.body.recipe_id, req.body.username], (err, results, fields) => {
+      conn.query(sql, [req.body.recipeName, req.body.recipe_id, req.body.username, req.body.url], (err, results, fields) => {
         console.log(err)
         res.json({
           message: 'recipe added to favorites list',
@@ -386,12 +386,12 @@ router.post('/group_recipe_links', (req, res, next) => {
     } else {
       const sql =`
         INSERT INTO
-          group_recipe_links (group_id, recipe_id, name)
+          group_recipe_links (group_id, recipe_id, name, imgURL)
         VALUES
-          (?, ?, ?)
+          (?, ?, ?, ?)
         `
 
-      conn.query(sql, [req.body.group_id, req.body.recipe_id, req.body.name], (err, results, fields) => {
+      conn.query(sql, [req.body.group_id, req.body.recipe_id, req.body.name, req.body.url], (err, results, fields) => {
         console.log(results);
         res.json({
           message: 'recipe added to group'

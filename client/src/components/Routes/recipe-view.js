@@ -13,6 +13,7 @@ const RecipeView = (props) => {
   const { user } = useContext(AuthContext)
   const recipeId = props.match.params.recipe_id
   const recipeName = props.currentRecipe.name
+  const url = props.currentRecipe.imgURL
 
   useEffect(() => {
       getCurrentUserOwnedRecipe(recipeId, user, props.history)
@@ -20,7 +21,7 @@ const RecipeView = (props) => {
   },[])
 
   function handleClick(e) {
-  addFavoriteRecipe(props.currentRecipe.name, recipeId, user )
+  addFavoriteRecipe(props.currentRecipe.name, recipeId, user, url )
   }
 
   const groups = useSelector(appstate => appstate.groups)
@@ -28,7 +29,7 @@ const RecipeView = (props) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    shareRecipeWithGroup(recipeId, groupChosen, recipeName)
+    shareRecipeWithGroup(recipeId, groupChosen, recipeName, url)
 
   };
 

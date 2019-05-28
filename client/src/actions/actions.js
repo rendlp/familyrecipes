@@ -114,20 +114,22 @@ export function editRecipe(name, prepHours, prepMinutes, servings, directions, i
     // console.log(name, prepHours, prepMinutes, servings, directions, ingredients.join("*/*"), url, recipeId)
 }
 
-export function shareRecipeWithGroup(recipeId, groupChosen, recipeName) {
+export function shareRecipeWithGroup(recipeId, groupChosen, recipeName, url) {
     Axios.post('/api/group_recipe_links', {
         recipe_id: recipeId,
         group_id: groupChosen,
-        name: recipeName
+        name: recipeName,
+        url: url
     })
 }
 
 // a function that will post a favorited recipe to the application's database(user_favories table)
-export function addFavoriteRecipe(name, recipe_id, user) {
+export function addFavoriteRecipe(name, recipe_id, user, url) {
     Axios.post(`/api/user_favorites`, {
       recipeName: name,
       recipe_id: recipe_id,
-      username: user
+      username: user,
+      url: url
     })
   }
 
