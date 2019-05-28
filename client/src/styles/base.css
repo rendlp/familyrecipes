@@ -1058,6 +1058,10 @@ a:visited {
   text-shadow: 1px 1px rgb(142,50,40);
 }
 
+.ingredients ul {
+  padding-inline-start:0px;
+}
+
 .ingredients-textarea {
   height: 300px;
   width: 1000px;
