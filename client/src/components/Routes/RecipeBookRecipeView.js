@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from 'react'
 import { AuthContext } from "../../lib/auth"
 import Header from '../header'
 import Footer from '../footer'
-import { getCurrentRecipe } from '../../actions/actions'
+import { getCurrentRecipe, getGroups } from '../../actions/actions'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -19,6 +19,8 @@ const RecipeBookRecipeView = (props) => {
 
   useEffect(() => {
       getCurrentRecipe(recipeId)
+      getGroups(user)
+
   },[])
   
   const groups = useSelector(appstate => appstate.groups)
