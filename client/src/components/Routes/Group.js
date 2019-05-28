@@ -29,44 +29,44 @@ const Group = props => {
 
         <div>
         <Header />
-        
+
           <div className = "groupViewContainer">
           <div className='divHeader2'>
-          <Link 
+          <Link
             to='/user_groups'>
              <FontAwesomeIcon className='faBack' icon="arrow-left" />
             </Link>
         <div className='space'></div>
-        <h1 className='group-recipe-name'>{currentGroup}'s Recipes</h1>
+        <h1 className='group-recipe-name'>{currentGroup}'s Users</h1>
         </div>
-        
+
          <div className='groupWrapper'>
            <div className='groupViewDiv'>
-      
+
            <div className='membersList'>
             {/* <h3>{currentGroup} members:</h3> */}
              <ul className='groupUsers'>
                {groupUsers.map((user, i) => (
-                    <li 
+                    <li
                      className='groupUserLI'
                      key={`user - `+i}>
-                      <Link 
+                      <Link
                        to={"/userProfile/"+user.username}>
                         <p className='groupUserP'>
                           {user.username}
                         </p>
-                     </Link>   
+                     </Link>
                     </li>
                 ))}
             </ul>
             <div className='invisible'></div>
-           
+
                 <Link to={`/group/${group_id}/inviteUser`}>
                         <button className='abutton'>Invite a user</button>
                 </Link>
-           
+
             </div>
-            
+
             <div className='groupRecipesDiv'>
           {/* <h1 className='currentGroup'>{currentGroup} recipes:</h1> */}
             <ul className='groupUL'>
@@ -78,11 +78,11 @@ const Group = props => {
                             <h2 className='recipe-name-h2'>
                                 {recipe.name == null ? "Unnamed Recipe" : recipe.name}
                             </h2>
-                            
+
                             <img className='recipeImgThumbnail' src={recipe.imgURL || {nettles}}  alt='' />
                         </div>
 
-                    </Link>   
+                    </Link>
                 </li>
             ))}
         </ul>

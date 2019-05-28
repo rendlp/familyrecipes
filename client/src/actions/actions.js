@@ -68,7 +68,7 @@ export function editUserData(firstname, lastname, image, user) {
     return Axios.put('/api/users/edit', {
         firstname: firstname,
         lastname: lastname,
-        userPicURL: image,
+        userPicURL: typeof image === 'string' ? image : null,
         username: user
     })
     }
