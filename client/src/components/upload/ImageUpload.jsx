@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { storage } from '../firebase'
 import useFormInput from '../hooks/useFormInput'
+import nettles from '../assets/nettle.jpg'
 
 
 const ImageUpload = (props) => {
@@ -55,7 +56,7 @@ const ImageUpload = (props) => {
            <progress className='progress' value={progress} max='100' />
            <input className='uploadInput' type='file' onChange={handleChange}   />
            <input type="hidden" name="image" value={url} />
-           <img name="image" src={url || 'https://via.placeholder.com/150'} className='imgUpload' alt='' value={url}  />
+           <img name="image" src={url || nettles } className='imgUpload' alt='' value={url}  />
            <button className='abutton' onClick={handleUpload}>Upload</button>
           </form>
         </div>

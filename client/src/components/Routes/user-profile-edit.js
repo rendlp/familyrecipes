@@ -8,6 +8,7 @@ import { getUserInfo, editUserData } from '../../actions/actions'
 import {AuthContext} from '../../lib/auth'
 import { storage } from '../firebase'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import nettles from '../assets/nettles.jpg'
 
 
 const UserProfileEdit = props => {
@@ -93,7 +94,7 @@ const UserProfileEdit = props => {
 
          <div className='upload2'>
          <div>
-         <img name="image" src={typeof image === 'string' ? image : 'https://via.placeholder.com/150'} className='imgUpload' alt='' value={url}  />
+         <img name="image" src={typeof image === 'string' ? image : nettles } className='imgUpload' alt='' value={url}  />
          </div>
          <button onClick={handleUpload}>Upload</button>
         </div>

@@ -8,6 +8,7 @@ import { AuthContext } from "../../lib/auth"
 import { getCurrentUserOwnedRecipe, editRecipe, editRecipeInGroupLinks, editRecipeInUserFavorites, editRecipeInUserRecipebooksLinks } from '../../actions/actions'
 import { storage } from '../firebase'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import nettles from '../assets/nettle.jpg'
 
 
 const RecipeViewEdit = props => {
@@ -218,7 +219,7 @@ const RecipeViewEdit = props => {
                 <progress className='progress' value={progress} max='100' />
                 <input className='uploadInput' type='file' onChange={handleChange}   />
                 <input type="hidden" name="image" value={image} />
-                <img name="image" src={typeof image === 'string' ? image : 'https://via.placeholder.com/150'} className='imgUpload' alt='' value={url}  />
+                <img name="image" src={typeof image === 'string' ? image : nettles } className='imgUpload' alt='' value={url}  />
                 <button className='abutton' onClick={handleUpload}>Upload</button>
             </div>
             </div>
