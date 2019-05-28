@@ -46,7 +46,7 @@ const UserRecipe = (props) => {
 
          <div className='recipeListP'>
           <h2 className='recipe-view-h2'>{recipe.name == null ? "Unnamed Recipe" : recipe.name}</h2>
-          <img className='recipeImgThumbnail' src={recipe.imgURL || {nettles}} alt='' />
+          <img className='recipeImgThumbnail' src={ recipe.imgURL || nettles } alt='' />
          </div>
 
           </Link>
