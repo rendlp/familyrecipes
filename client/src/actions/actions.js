@@ -244,10 +244,20 @@ export function getGroupRecipes(group_id) {
   // a function that will grab recipes saved within a user's created recipebook
   export function getRecipesWithinRecipebooks(recipebook_id) {
     Axios.get(`/api/user_recipebooks_links?recipebook_id=${recipebook_id}`).then(resp => {
-      console.log(resp.data.addedRecipesInsideRecipebooks)
       store.dispatch({
         type: "GET_RECIPES_WITHIN_RECIPEBOOKS",
         payload: resp.data.addedRecipesInsideRecipebooks
+      })
+
+    })
+  }
+
+  export function getCurrentRecipeBook(recipebook_id) {
+    Axios.get(`/api/user_recipebooks/current?recipebook_id=${recipebook_id}`).then(resp => {
+      console.log(resp.data.results[0])
+      store.dispatch({
+        type: "GET_CURRENT_RECIPEBOOK",
+        payload: resp.data.results[0]
       })
 
     })

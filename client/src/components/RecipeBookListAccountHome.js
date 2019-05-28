@@ -21,8 +21,9 @@ const RecipeBookListAccountHome= (props) => {
             {userRecipeBooks.map((recipebook, i) => (
 
                <Link 
-               to={`/user_fav_recipes/recipebook/` + recipebook.recipebook_id}>
-                   <div className="book"key={'recipebook' + i}>
+                key={'recipebook n' + i}
+                to={`/user_fav_recipes/recipebook/` + recipebook.recipebook_id}>
+                   <div className="book" >
 
                     <div className='bookCenter'>
                     <h2>

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 import Header from '../header'
 import Footer from '../footer'
-import { getRecipesWithinRecipebooks } from '../../actions/actions'
+import { getRecipesWithinRecipebooks, getCurrentRecipeBook } from '../../actions/actions'
 // import { AuthContext } from "../../lib/auth"
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,12 +17,15 @@ const RecipeBookView = (props) => {
 
   const userRecipes = useSelector(appstate => appstate.addedRecipesInsideRecipebooks)
 
+  const currentRecipeBook = useSelector(appstate => appstate.currentRecipeBook)
+
   useEffect( () => {
       getRecipesWithinRecipebooks(recipebookID)
+      getCurrentRecipeBook(recipebookID)
 
   }, [recipebookID])
 
-console.log(props.addedRecipesInsideRecipebooks)
+console.log(currentRecipeBook)
 
   return (
     <div className='userRecipeContainer'>
@@ -31,7 +34,7 @@ console.log(props.addedRecipesInsideRecipebooks)
       <div className='divHeader2'>
        <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
        <div className='space'></div>
-       <h1 className='recipe-name'>book name</h1>
+       <h1 className='recipe-name'>{currentRecipeBook.recipebook_name}</h1>
       </div>
 
       <div className='userRecipeDiv'>

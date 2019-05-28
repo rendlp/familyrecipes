@@ -41,8 +41,11 @@ const UserFavRecipes = (props) => {
 
           {props.userFavorites.map((recipe, i) => (   
 
-              <Link className='recipeLink' to={`/user_fav_recipes/` + recipe.recipe_id}>
-                <div className='recipeListP' key={'recipe' + i}>
+              <Link 
+                className='recipeLink' 
+                to={`/user_fav_recipes/` + recipe.recipe_id}
+                key={'favoriteR' + i}>
+                <div className='recipeListP'>
                 <h2 className='recipe-view-h2'>{recipe.name == null ? "Unnamed Recipe" : recipe.name}</h2>
                 <img className='recipeImgThumbnail' src={recipe.imgURL} alt=''></img>
               </div>
@@ -59,8 +62,12 @@ const UserFavRecipes = (props) => {
   
           {props.userRecipeBooks.map((recipebook, i) => (
 
-            <Link className='recipeLink' to={`/user_fav_recipes/recipebook/` + recipebook.recipebook_id}>
-             <div className='book' key={'recipebook' + i}> 
+            <Link 
+              className='recipeLink' 
+              to={`/user_fav_recipes/recipebook/` + recipebook.recipebook_id}
+              key={'recipebook' + i}>
+              
+             <div className='book'> 
 
               <div className='bookCenter'>   
               
