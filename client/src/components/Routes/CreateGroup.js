@@ -16,8 +16,7 @@ const CreateGroup = props => {
 
 
     function handleSubmit(e) {
-        e.preventDefault()
-
+      
         createGroup(groupName, user).then(() => {
             props.history.goBack()
         })

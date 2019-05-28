@@ -172,17 +172,6 @@ border: none;
 }
 
 
-.dropdownBtn {
- width: 150px;
- height: 35px;
- border: 1px solid black;
- padding: 10px;
- color: black;
- text-align: center;
- z-index: 1;
- 
-} 
-
 .abutton:hover {
   background-color: rgb(142,50,40);
   color: white;
@@ -435,7 +424,6 @@ h3 {
   color: rgb(122,68,70);
 }
 
-
 .userProfileDisplay{
   display: flex;
   flex-direction: row;
@@ -460,8 +448,8 @@ h3 {
 }
 
 .user-pic {
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   border-radius: 50%;
   border: 2px solid whitesmoke;
   margin: 0 auto;
@@ -603,6 +591,7 @@ h3 {
   font-size: 26px;
   transition: 0.3s;
   color: white;
+  
   
 }
 
@@ -1154,10 +1143,11 @@ a:visited {
   border: 1px solid lightgrey;
 }
 
-/* .recipe-view-h2 {
+.recipe-view-h2 {
   margin: 0 auto;
-
-} */
+  overflow-y: auto;
+  height: 40px;
+} 
 
 .image-upload {
   height: 400px;
