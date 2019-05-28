@@ -170,7 +170,7 @@ const RecipeViewEdit = props => {
                  className="formInput"
                  type='text'
                  name='serves'
-                 id='serves'
+            
                  onChange={e => changeServings(e.target.value)} >
 
                     <option value={servings}>Serves: {servings}</option>
@@ -203,7 +203,6 @@ const RecipeViewEdit = props => {
                         <textarea
                             type="text"
                             name="directions"
-                            id="directions"
                             onChange= {e => changeDirections(e.target.value)}
                             value={directions}
                         />

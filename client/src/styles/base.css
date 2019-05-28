@@ -252,8 +252,7 @@ textarea {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 120px;
-
+  width: 125px;
 
 }
 
@@ -1011,7 +1010,7 @@ a:visited {
 
 .ingredients {
   margin: 0 auto;
-  width: 400px;
+  width: 500px;
 }
 
 .ingredients-contentUL .ingredients-contentLI {
@@ -1032,8 +1031,7 @@ a:visited {
   display: flex;
   flex-direction: row;
   margin: 30px;
-  width: 1200px;
-  justify-content: flex-start;
+  width: 400px;
 
 }
 
@@ -1092,7 +1090,7 @@ a:visited {
   margin: 35px;
 }
 
-.shareDiv {
+.shareBtnDiv {
   background-color: black;
   padding: 10px;
   opacity: 0.9;
@@ -1235,7 +1233,7 @@ a:visited {
 }
 
 .directions {
-  width: 600px;
+  width: 800px;
   text-align: center;
 
 }
