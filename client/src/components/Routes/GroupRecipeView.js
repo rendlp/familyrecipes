@@ -18,6 +18,8 @@ const GroupRecipeView = (props) => {
 
   const currentGroupId = useSelector(appstate => appstate.currentGroupId)
 
+  const url = props.currentRecipe.imgURL
+
   console.log(currentGroupId)
 
   function backFunction(e) {
@@ -32,7 +34,7 @@ const GroupRecipeView = (props) => {
   },[])
 
   function handleClick(e) {
-  addFavoriteRecipe(props.currentRecipe.name, recipeId, user )
+  addFavoriteRecipe(props.currentRecipe.name, recipeId, user, url)
   }
 
 

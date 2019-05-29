@@ -21,7 +21,7 @@ const RecipeView = (props) => {
   },[])
 
   function handleClick(e) {
-  addFavoriteRecipe(props.currentRecipe.name, recipeId, user, url )
+  addFavoriteRecipe(props.currentRecipe.name, recipeId, user, url)
   }
 
   const groups = useSelector(appstate => appstate.groups)

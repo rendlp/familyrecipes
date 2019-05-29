@@ -12,8 +12,9 @@ const AccountHome = (props) => {
 
     return (
 
-      <div className='wrapper'>
+      <div >
         <Header />
+        <div className='wrapper'>
         
         <div className="left-panel">
           <h1 className='title'>Books</h1>
@@ -36,6 +37,7 @@ const AccountHome = (props) => {
           </div>
         </div>
 
+        </div>
         <Footer />
       </div>
     )
