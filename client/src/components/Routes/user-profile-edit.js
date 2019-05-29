@@ -86,20 +86,15 @@ const UserProfileEdit = props => {
     <div className="edit-canvas">
         <form className='editProfileForm' onSubmit={handleSubmit}>
 <div className='test'>
-        <div className ='imgUploadDiv'>
+        <div className ='EditimgUploadDiv'>
 
          <progress className='progress' value={progress} max='100' />
          <input className='uploadInput' type='file' onChange={handleChange}   />
          <input type="hidden" name="image" value={image} />
-
-         <div className='upload2'>
-         <div>
-         <img name="image" src={typeof image === 'string' ? image : nettles } className='imgUpload' alt='' value={url}  />
-         </div>
          <button onClick={handleUpload}>Upload</button>
+         <img name="image" src={typeof image === 'string' ? image : nettles } className='imgUpload' alt='' value={url}  />
         </div>
         
-        </div>
         <div className='profileEdit'>
             <h2>First Name:</h2>
                 <input
