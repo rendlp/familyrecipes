@@ -101,10 +101,12 @@ const RecipeViewEdit = props => {
     return (
         <div>
         <Header />
+        <div className="test3">
+       <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
+       </div>
+
          <div className="canvas">
          <div className="uploadDiv">
-
-         <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
 
           <form className='editForm' onSubmit={handleSubmit}>
               
@@ -228,7 +230,6 @@ const RecipeViewEdit = props => {
             </div>
         </form>
         </div>
-  
     <Footer />
   
 </div>
