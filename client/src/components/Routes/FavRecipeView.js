@@ -100,7 +100,7 @@ const FavRecipeView = (props) => {
             </button>
           </form>
         </div>
-        <div className='invisible'></div>
+        
         </div>
       <Footer />
     </div>

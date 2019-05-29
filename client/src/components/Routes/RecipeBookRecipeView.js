@@ -63,6 +63,7 @@ const RecipeBookRecipeView = (props) => {
               </div>
         </div>
         </div>
+        
       <Footer />
     </div>
   )
