@@ -48,12 +48,16 @@ function UploadParentFunctional (props) {
     return (
       <div>
       <Header />
-       <div className="canvas">
-       <div className="uploadDiv">
+       <div className="test3">
+       <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
+       </div>
+      
+     <div  className='canvas'>
 
-        <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
-
+        
+        <div className="uploadDiv">
         <div className="column1">
+          
           <Name manageForm={manageForm} formData={forms.RecipeName} />
           <Prep manageForm={manageForm} formData={forms.PrepTime} />
           <h1 className=''>Ingredients</h1>
@@ -79,7 +83,7 @@ function UploadParentFunctional (props) {
       </div>
 
       
-    </div>
+      </div>  
 
     <Footer />
 </div>

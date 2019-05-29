@@ -224,10 +224,9 @@ const RecipeViewEdit = props => {
             </div>
             </div>
             
-            <button type="submit">Edit Recipe</button>
+            <button className='abutton' type="submit">Edit Recipe</button>
         </form>
         </div>
-  
     <Footer />
   
 </div>
