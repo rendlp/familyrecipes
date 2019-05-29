@@ -209,22 +209,23 @@ const RecipeViewEdit = props => {
                             onChange= {e => changeDirections(e.target.value)}
                             value={directions}
                         />
+                    <button type="submit" className="abutton recipe-submit-button" >Edit Recipe</button>
                 </div>
+               
             </div>
             
            <div className='image-upload'>
            <h1>Image</h1>
-            <div className ='imgUploadDiv'>
+            <div className ='EditimgUploadDiv'>
                 
                 <progress className='progress' value={progress} max='100' />
                 <input className='uploadInput' type='file' onChange={handleChange}   />
                 <input type="hidden" name="image" value={image} />
-                <img name="image" src={typeof image === 'string' ? image : nettles } className='imgUpload' alt='' value={url}  />
                 <button className='abutton' onClick={handleUpload}>Upload</button>
+                <img name="image" src={typeof image === 'string' ? image : nettles } className='imgUpload' alt='' value={url}  />
+                
             </div>
             </div>
-            
-            <button type="submit">Edit Recipe</button>
         </form>
         </div>
   
