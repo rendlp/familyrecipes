@@ -37,7 +37,7 @@ const RecipeBookRecipeView = (props) => {
 
         <div className="recipeContainer">
           <div>
-          <img className="recipe-pic" src={props.currentRecipe.imgURL || {nettles}} alt='' />
+          <img className="recipe-pic" src={ props.currentRecipe.imgURL || nettles } alt='' />
           </div>
           <div className='recipe-display'>
 

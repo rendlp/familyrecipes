@@ -35,15 +35,13 @@ function UploadParentFunctional (props) {
       forms.image = img
     }
 
-
     // on form submit
     function handleForm(e) {
         e.preventDefault()
         console.log(forms)
         addRecipe(forms)
         props.history.push('/user_recipes')
-    }
-    
+    } 
 
     return (
       <div>
@@ -52,9 +50,7 @@ function UploadParentFunctional (props) {
        <Link to='/'><FontAwesomeIcon className='faBack' icon="arrow-left" /></Link>
        </div>
       
-     <div  className='canvas'>
-
-        
+     <div  className='canvas'>    
         <div className="uploadDiv">
         <div className="column1">
           
@@ -70,19 +66,14 @@ function UploadParentFunctional (props) {
           <form onSubmit={handleForm}>
                 < button className='abutton recipe-submit-button'>Submit
                 </button>
-        </form>
+          </form>
         </div>
 
         <div className="image-upload">
           <h1>Image</h1>
           <ImageUpload addImageToForm={addImageToForm} manageForm={manageForm} formData={forms.image} />
         </div>
-     
-       
-      
-      </div>
-
-      
+      </div>   
       </div>  
 
     <Footer />
