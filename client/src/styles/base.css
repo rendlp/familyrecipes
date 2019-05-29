@@ -1381,7 +1381,7 @@ a:visited {
 }
 
 .wrapper {
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   display: flex;
 }
 
