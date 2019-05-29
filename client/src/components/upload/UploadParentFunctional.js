@@ -60,16 +60,21 @@ function UploadParentFunctional (props) {
           <Ingredient manageForm={manageForm} formData={forms.ingredient} />
         </div>
 
+        <div className="directionDiv">
           <Directions manageForm={manageForm} formData={forms.Directions} />
+
+          <form onSubmit={handleForm}>
+                < button className='abutton recipe-submit-button'>Submit
+                </button>
+        </form>
+        </div>
 
         <div className="image-upload">
           <h1>Image</h1>
           <ImageUpload addImageToForm={addImageToForm} manageForm={manageForm} formData={forms.image} />
         </div>
      
-       <form onSubmit={handleForm}>
-        < button className='abutton'>Submit</button>
-       </form>
+       
       
       </div>
 

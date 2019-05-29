@@ -304,6 +304,9 @@ textarea {
   width: 600px;
   margin: 0 auto;
   font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   
 }
 
@@ -1183,11 +1186,18 @@ a:visited {
 .imgUpload {
   margin-top: 10px;
   width: 150px;
-  margin-right: auto;
   height: 150px;
   border: 1px solid lightgrey;
   background-color: black;
 }
+
+.imgUploadDiv button {
+  margin-top: 20px;
+}
+.imgUploadDiv img {
+  margin-top: 20px;
+}
+
 
 .createBookContainer {
    width: 100%;
@@ -1211,8 +1221,11 @@ a:visited {
 }
 
 .image-upload {
-  height: 400px;
-  width: 400px;
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .formButton {
@@ -1251,10 +1264,18 @@ a:visited {
 
 .imgUploadDiv {
   width: 300px;
-  height: 400px;
+  height: 500px;
   border: 1px solid lightgrey;
   background-color: whitesmoke;
   box-shadow: 0 6px 6px -6px black;
+  margin-top:20px;
+}
+
+.imgUploadDiv form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
 }
 
 .editProfileForm {
@@ -1307,8 +1328,8 @@ a:visited {
 
 .uploadInput {
   border: 1px solid lightgrey;
-  width: 250px;
-  height: 70px;
+  width: 197px;
+  height: 23px;
   margin-top: 5px;
 
 }
@@ -1373,4 +1394,8 @@ a:visited {
 
 li {
   cursor: pointer;
+}
+
+.recipe-submit-button {
+  margin-top:30px;
 }

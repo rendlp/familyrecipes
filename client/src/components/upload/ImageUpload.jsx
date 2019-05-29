@@ -56,8 +56,9 @@ const ImageUpload = (props) => {
            <progress className='progress' value={progress} max='100' />
            <input className='uploadInput' type='file' onChange={handleChange}   />
            <input type="hidden" name="image" value={url} />
-           <img name="image" src={url || nettles } className='imgUpload' alt='' value={url}  />
            <button className='abutton' onClick={handleUpload}>Upload</button>
+           <img name="image" src={url || nettles } className='imgUpload' alt='' value={url}  />
+           
           </form>
         </div>
 

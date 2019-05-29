@@ -13,10 +13,8 @@ const Directions = (props) => {
 
         return (
         
-                <div className="directionDiv">
-                    <label
-                        htmlFor='name'
-                        className="directions-text"></label>
+                <div >
+                    
                     <h1>Directions</h1>
 
 
