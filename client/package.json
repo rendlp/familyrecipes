@@ -8,7 +8,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "js-sha512": "^0.8.0",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.17.1",
